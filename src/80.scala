@@ -1,0 +1,25 @@
+package net.tisue.euler
+import Euler._
+
+// For the first 100 natural numbers, find the total of the digital sums of the first 100
+// decimal digits for all the irrational square roots.
+
+// The continued fraction & convergents code from problem 66 was much too
+// slow for this problem so I used this which is much simpler anyway:
+// http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method
+
+class Problem80 extends Problem(80, "40886") {
+  def solve = {
+    val digits = 100
+    def isSquare(n:Int) = { val r = math.sqrt(n).toInt; r * r == n }
+    def roundingDivide(d1:BigDecimal,d2:BigDecimal) =  // drop down to java.math.BigDecimal
+      new BigDecimal(d1.bigDecimal.divide(d2.bigDecimal,digits,java.math.RoundingMode.DOWN))
+    def babylonian(n:Int) = {
+      val s = Stream.iterate(BigDecimal(n))(x => ((x + roundingDivide(n,x)) / 2)
+                                                 .setScale(digits,BigDecimal.RoundingMode.DOWN))
+      s.zip(s.tail).find{case (d1,d2) => d1 == d2}.get._1
+    }
+    def digitalSum(d:BigDecimal) = d.toString.view.filter(_.isDigit).take(digits).map(_.asDigit).sum
+    (1 to 100).filter(!isSquare(_)).map(n => digitalSum(babylonian(n))).sum
+  }
+}
