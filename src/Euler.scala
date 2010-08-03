@@ -48,7 +48,7 @@ object Euler {
 
   // Haskell has these, dunno why they're not in Scala. some of these
   // could go on Iterable, actually, instead of Stream specifically
-  implicit def pimpMyStream[T](s1: Stream[T]): RichStream[T] = new RichStream(s1)
+  implicit def toRichStream[T](s1: Stream[T]): RichStream[T] = new RichStream(s1)
   class RichStream[T1](s1: Stream[T1]) {
     // I would like axe this and replace it everywhere with (s1, s2).zipped.map(...),
     // but I can't because of this ticket:
@@ -74,7 +74,7 @@ object Euler {
   }
 
   // add gcd method to Int
-  implicit def pimpMyInt(i: Int): MyRichInt = new MyRichInt(i)
+  implicit def toRichInt(i: Int): MyRichInt = new MyRichInt(i)
   class MyRichInt(i: Int) {
     // perhaps there's some better way on both of these than going through String?
     def gcd(j: Int) = (BigInt(i) gcd BigInt(j)).toString.toInt
@@ -82,14 +82,14 @@ object Euler {
   }
 
   // add digits method to Long
-  implicit def pimpMyLong(i: Long): MyRichLong = new MyRichLong(i)
+  implicit def toRichLong(i: Long): MyRichLong = new MyRichLong(i)
   class MyRichLong(i: Long) {
     // perhaps there's some better way than going through String?
     def digits = i.toString.view.map(_.asDigit).toList
   }
 
   // add digits method to BigInt
-  implicit def pimpMyBigInt(i: BigInt): MyRichBigInt = new MyRichBigInt(i)
+  implicit def toRichBigInt(i: BigInt): MyRichBigInt = new MyRichBigInt(i)
   class MyRichBigInt(i: BigInt) {
     // perhaps there's some better way than going through String?
     def digits = i.toString.view.map(_.asDigit).toList
