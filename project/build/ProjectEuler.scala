@@ -26,8 +26,6 @@ class ProjectEuler(info: ProjectInfo) extends DefaultProject(info) {
   override def parallelExecution = true
   
   /// ScalaTest
-  // val snapshots = "Scala Tools Repository" at
-  //   "http://scala-tools.org/repo-snapshots"
   val scalatest = "org.scalatest" % "scalatest" % "1.2" % "test"
 
   /// Scalaz
