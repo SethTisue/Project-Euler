@@ -29,6 +29,6 @@ class ProjectEuler(info: ProjectInfo) extends DefaultProject(info) {
   val scalatest = "org.scalatest" % "scalatest" % "1.2" % "test"
 
   /// Scalaz
-  val scalaz = "com.googlecode.scalaz" %% "scalaz-core" % "5.0"
+  // val scalaz = "com.googlecode.scalaz" %% "scalaz-core" % "5.0"
 
 }
