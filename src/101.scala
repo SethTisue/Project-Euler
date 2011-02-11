@@ -16,8 +16,6 @@ import Euler._
 class Problem101 extends Problem(101, "37076114526") {
   def differences(ns: Seq[BigInt]) =
     (ns.tail, ns).zipped.map(_ - _)
-  // I tried using "Iterator.iterate" here instead of Stream.iterate but hit a bug in
-  // Iterator.iterate (fix will be in Scala 2.8.0.RC2) - ST 4/28/10
   def diagonal(ns: Seq[BigInt]) =
     Iterator.iterate(ns)(differences)
       .takeWhile(_.nonEmpty)
