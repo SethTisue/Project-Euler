@@ -1,6 +1,14 @@
 package net.tisue.euler
 import Euler._
 
+// THIS IS BROKEN.  I got the right answer for the wrong reason.
+// When I changed it to use Scala 2.9's combinations method, it broke
+// because old method for that gives the answers in a different order.
+// I looked on the forum and it's common for people to get my new wrong
+// answer of 1256 and the reason is disallowing fractional intermediate
+// results.  So this code needs to be redone to use rationals instead
+// of integers.
+
 // By using each of the digits from the set, {1, 2, 3, 4}, exactly once, and making use of the four
 // arithmetic operations (+, -, *, /) and brackets/parentheses, it is possible to form different
 // positive integer targets.
