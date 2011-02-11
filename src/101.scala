@@ -34,7 +34,7 @@ class Problem101 extends Problem(101, "37076114526") {
     val coefficients = List[BigInt](1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1)
     val sequence = Stream.from(1).map(n => coefficients.reduceLeft(_ * n + _))
     sequence.take(coefficients.size - 1)  // subtract one so there's always a mismatch
-      .inits.drop(1)  // drop one to skip empty stream
+      .inits
       .map(extrapolate)
       .map(mismatch(sequence, _))
       .sum
