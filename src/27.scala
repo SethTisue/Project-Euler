@@ -24,7 +24,7 @@ class Problem27 extends Problem(27, "-59231") {
       val range = -limit to limit
       val candidates = for(a <- range; b <- range)
                        yield (a, b)
-      val (a, b) = maximize(candidates)((primeCount _).tupled)
+      val (a, b) = candidates.maxBy((primeCount _).tupled)
       a * b
     }
     search(999)

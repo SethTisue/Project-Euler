@@ -18,7 +18,7 @@ class Problem85 extends Problem(85, "2772") {
   def closeness(w: Int, h: Int) =
     math.abs(rectangles(w, h) - 2000000)
   def solve = {
-    val (w, h) = minimize(candidates)((closeness _).tupled)
+    val (w, h) = candidates.minBy((closeness _).tupled)
     w * h
   }
 }

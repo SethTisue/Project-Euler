@@ -9,6 +9,6 @@ class Problem99 extends Problem(99, "709") {
      val pairs = io.Source.fromFile("dat/99.txt").mkString.split("\n")
       .map(_.split(",").map(_.toInt))
     def magnitude(index:Int) = pairs(index) match { case Array(a,b) => math.log(a) * b }
-    1 + maximize(0 until pairs.size)(magnitude)
+    1 + (0 until pairs.size).maxBy(magnitude)
   }
 }

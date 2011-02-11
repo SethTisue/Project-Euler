@@ -15,6 +15,6 @@ class Problem39 extends Problem(39, "840") {
           if a * a + b * b == c * c}
         yield (a, b, c)
     }
-    maximize(1 until 1000)(triangles(_).size)
+    (1 until 1000).maxBy(triangles(_).size)
   }
 }

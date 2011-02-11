@@ -37,7 +37,7 @@ class Problem66 extends Problem(66, "661") {
       Stream.from(1).map(len => continuedFraction(n).take(len).map(new BigRational(_))
                                   .reduceRight((next,partialResult) => partialResult.reciprocal + next))
     def smallestX(d:Int) = convergents(d).find(r => isSolution(r.numer,r.denom,d)).get.numer
-    def solve(maxD:Int) = maximize((1 to maxD).filter(!isSquare(_)))(smallestX)
+    def solve(maxD:Int) = (1 to maxD).filter(!isSquare(_)).maxBy(smallestX)
     solve(1000)
   }
 }

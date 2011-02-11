@@ -6,9 +6,10 @@ import Euler._
 // immediately to the left of 3/7.
 
 class Problem71 extends Problem(71, "428570") {
-  def solve = {
-     maximize((1 to 1000000).map(d => (d * 3 / 7, d)).filter{case (n,d) => n * 7 != d * 3})
-            {case (n,d) => n.toDouble / d}
-      ._1
-  }
+  def solve =
+   (1 to 1000000)
+     .map(d => (d * 3 / 7, d))
+     .filter{case (n,d) => n * 7 != d * 3}
+     .maxBy{case (n, d) => n.toDouble / d}
+     ._1
 }

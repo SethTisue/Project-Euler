@@ -19,7 +19,7 @@ class Problem83 extends Problem(83, "425185") {
     dist((0,0)) = matrix(0)(0)
     var queue = matrix.indices.flatMap(i => matrix(i).indices.map((i,_))).toList
     while(!queue.isEmpty) {
-      val u = minimize(queue.filter(dist.isDefinedAt(_)))(dist)
+      val u = queue.filter(dist.isDefinedAt(_)).minBy(dist)
       queue = queue.filter(_ != u)
       for(v <- neighbors(u)) {
         val alt = dist(u) + matrix(v._1)(v._2)

@@ -27,7 +27,7 @@ class Problem70 extends Problem(70, "8319823") {
       // we redundantly recompute the factors here but it doesn't matter
       // since there aren't that many solutions to test
       def ratio(n:Int) = n.toDouble / totient(n,factors(n))
-      minimize((2 until limit).filter(isSolution))(ratio)
+      (2 until limit).filter(isSolution).minBy(ratio)
     }
     solve(10000000)  // takes about 21 seconds
   }

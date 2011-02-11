@@ -32,7 +32,7 @@ class Problem95 extends Problem(95, "14316") {
   }
   def solve = {
     val longest =
-      maximize(2 to 1000000)(n => cycle(chain(n).takeWhile(_ <= 1000000)).size)
+      (2 to 1000000).maxBy(n => cycle(chain(n).takeWhile(_ <= 1000000)).size)
     cycle(chain(longest)).min
   }
 }

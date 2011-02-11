@@ -21,13 +21,6 @@ object Euler {
         binarySearch(guess, upperBound)(tooBig)
     }
 
-  // not unlike max/min-one-of in NetLogo
-  // (note: 2.9 trunk has these as minBy/MaxBy)
-  def maximize[A, B : Ordering](ds: Iterable[A])(fn: A => B): A =
-    ds.max(Ordering.by(fn))
-  def minimize[A, B : Ordering](ds: Iterable[A])(fn: A => B): A =
-    ds.min(Ordering.by(fn))
-
   // pick n items in order from a longer list, in all possible ways
   def choose[T](n: Int, xs: List[T]): List[List[T]] =
     if(n > xs.size) Nil

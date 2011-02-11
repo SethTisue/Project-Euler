@@ -25,6 +25,6 @@ class Problem60 extends Problem(60, "26033") {
                filtered = primes.dropWhile(_ <= p).filter(isPair(p,_))
                soln <- solutions(n - 1,filtered)}
            yield p::soln
-    minimize(solutions(5,primesBelow(10000)))(_.sum).sum
+    solutions(5,primesBelow(10000)).minBy(_.sum).sum
   }
 }
