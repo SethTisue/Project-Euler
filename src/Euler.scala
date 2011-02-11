@@ -21,12 +21,6 @@ object Euler {
         binarySearch(guess, upperBound)(tooBig)
     }
 
-  // pick n items in order from a longer list, in all possible ways
-  def choose[T](n: Int, xs: List[T]): List[List[T]] =
-    if(n > xs.size) Nil
-    else if(n == 0) List(Nil)
-    else choose(n, xs.tail) ::: choose(n - 1, xs.tail).map(xs.head :: _)
-
   // permutations of a list of unique items.
   // CAUTION: doesn't work on lists containing repeats
   def permute[A](xs: List[A]): List[List[A]] = xs match {
