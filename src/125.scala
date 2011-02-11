@@ -23,6 +23,7 @@ class Problem125 extends Problem(125, "2906969179") {
                 .drop(2)  // ignore "sums" with zero or one term
                 .takeWhile(_ < limit))
       .filter(isPalindrome)
+      .toSeq
       .distinct
       .map(_.toLong)  // otherwise sum will overflow
       .sum

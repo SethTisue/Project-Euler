@@ -5,7 +5,7 @@ import org.scalatest.FunSuite
 abstract class Problem(number: Int, expected: String) extends FunSuite {
   test("problem " + number) {
     val (result, elapsed) = Euler.time(solve)
-    info(format("%.3f seconds", elapsed))
+    info("%.3f seconds".format(elapsed))
     assert(expected === result.toString)
   }
   def solve: Any

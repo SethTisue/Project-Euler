@@ -43,7 +43,7 @@ class Problem54 extends Problem(54, "376") {
            twoPairs _,
            nOfAKind(_: Hand, 2),
            nOfAKind(_: Hand, 1))
-    handFunctions.size - handFunctions.findIndexOf(_(hand))
+    handFunctions.size - handFunctions.indexWhere(_(hand))
   }
   def beats(hand1: Hand, hand2: Hand): Boolean = {
     def score(hand: Hand) = (handType(hand), groups(hand))
