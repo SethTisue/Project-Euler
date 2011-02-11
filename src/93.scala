@@ -13,12 +13,12 @@ import Euler._
 // Using the set, {1, 2, 3, 4}, it is possible to obtain thirty-one different target numbers of
 // which 36 is the maximum, and each of the numbers 1 to 28 can be obtained before encountering the
 // first non-expressible number.
-// Find the set of four distinct digits, a b < c d, for which the longest set of consecutive
+// Find the set of four distinct digits, a < b < c < d, for which the longest set of consecutive
 // positive integers, 1 to n, can be obtained, giving your answer as a string: abcd.
 
 class Problem93 extends Problem(93, "1258") {
   def solve = {
-     sealed abstract class Item
+    sealed abstract class Item
     case class Operator(c: Char, fn: (Int, Int) => Option[Int]) extends Item
     case class Digit(n: Int) extends Item
     val operators = List(Operator('+', (a, b) => Some(a + b)),
@@ -36,7 +36,7 @@ class Problem93 extends Problem(93, "1258") {
       if(stackHeight < 0) Nil
       else if(stackHeight == 1 && digits.isEmpty) List(Nil)
       else if(stackHeight < 2) pushes
-      else pushes ::: pops
+      else (pushes ::: pops)
     }
     def eval(items: List[Item], stack: List[Int]): Option[Int] =
       if(items.isEmpty)
@@ -58,7 +58,7 @@ class Problem93 extends Problem(93, "1258") {
         .filter(_ > 0)
     def smallestMissing(ns: Set[Int]): Int =
       Stream.from(1).find(!ns.contains(_)).get
-    choose(4, (1 to 9).toList).maxBy(ns => smallestMissing(targets(ns)))
+    (1 to 9).toList.combinations(4).toList.maxBy(ns => smallestMissing(targets(ns)))
       .mkString
   }
 }
