@@ -1,14 +1,6 @@
 package net.tisue.euler
 import Euler._
 
-// THIS IS BROKEN.  I got the right answer for the wrong reason.
-// When I changed it to use Scala 2.9's combinations method, it broke
-// because old method for that gives the answers in a different order.
-// I looked on the forum and it's common for people to get my new wrong
-// answer of 1256 and the reason is disallowing fractional intermediate
-// results.  So this code needs to be redone to use rationals instead
-// of integers.
-
 // By using each of the digits from the set, {1, 2, 3, 4}, exactly once, and making use of the four
 // arithmetic operations (+, -, *, /) and brackets/parentheses, it is possible to form different
 // positive integer targets.
@@ -24,15 +16,20 @@ import Euler._
 // Find the set of four distinct digits, a < b < c < d, for which the longest set of consecutive
 // positive integers, 1 to n, can be obtained, giving your answer as a string: abcd.
 
+// You have to be careful here to allow fractional intermediate results on the way
+// to getting an integer in the end, e.g. 1 / 2 + 3 / 6 = 1.
+
 class Problem93 extends Problem(93, "1258") {
+  type Number = BigRational
+  val Zero: BigRational = 0
   def solve = {
     sealed abstract class Item
-    case class Operator(c: Char, fn: (Int, Int) => Option[Int]) extends Item
+    case class Operator(c: Char, fn: (Number, Number) => Option[Number]) extends Item
     case class Digit(n: Int) extends Item
     val operators = List(Operator('+', (a, b) => Some(a + b)),
                          Operator('-', (a, b) => Some(a - b)),
                          Operator('*', (a, b) => Some(a * b)),
-                         Operator('/', (a, b) => if(b != 0 && a % b == 0) Some(a / b)
+                         Operator('/', (a, b) => if(b != Zero) Some(a / b)
                                                  else None))
     def expressions(digits: List[Digit], stackHeight: Int): List[List[Item]] = {
       def pushes =
@@ -46,7 +43,7 @@ class Problem93 extends Problem(93, "1258") {
       else if(stackHeight < 2) pushes
       else (pushes ::: pops)
     }
-    def eval(items: List[Item], stack: List[Int]): Option[Int] =
+    def eval(items: List[Item], stack: List[Number]): Option[Number] =
       if(items.isEmpty)
         Some(stack.head)
       else items.head match {
@@ -62,8 +59,10 @@ class Problem93 extends Problem(93, "1258") {
     def targets(ns: List[Int]): Set[Int] =
       expressions(ns.map(Digit(_)), 0)
         .flatMap(e => eval(e, Nil))
+        .filter(_.denom == 1)
+        .filter(_.toDouble > 0)
+        .map(_.toDouble.toInt)
         .toSet
-        .filter(_ > 0)
     def smallestMissing(ns: Set[Int]): Int =
       Stream.from(1).find(!ns.contains(_)).get
     (1 to 9).toList.combinations(4).toList.maxBy(ns => smallestMissing(targets(ns)))
