@@ -16,7 +16,7 @@ class Problem104 extends Problem(104, "329468") {
         .pow(k,MathContext.DECIMAL128)
         .divide(new BigDecimal(math.sqrt(5d)),MathContext.DECIMAL128)
         .toString.view.filter(_ != '.').take(9).map(_.asDigit).toList
-    def pandigital(ns:List[Int]) = ns.sum == 45 && ns.product == 362880
+    def pandigital(ns:Seq[Int]) = ns.sum == 45 && ns.product == 362880
     fibLastNines.zipWithIndex.filter{case (f,k) => pandigital(f.digits)}.map(_._2)
       .find(k => pandigital(fibFirstNine(k))).get
   }
