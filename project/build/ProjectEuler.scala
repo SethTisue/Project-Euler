@@ -23,7 +23,9 @@ class ProjectEuler(info: ProjectInfo) extends DefaultProject(info) {
   override def testSources = descendents(testSourceRoots, testSourceFilter)
   
   /// tests
-  override def parallelExecution = true
+  // we leave this as false because some problems chew large amounts of RAM,
+  // and if we end up running several of those at once we're in trouble - ST 2/24/11
+  override def parallelExecution = false
   
   /// ScalaTest
   val scalaToolsSnapshots = ScalaToolsSnapshots // for ScalaTest snapshot
