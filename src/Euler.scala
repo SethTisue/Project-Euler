@@ -56,23 +56,22 @@ object Euler {
   // add gcd method to Int
   implicit def toRichInt(i: Int): MyRichInt = new MyRichInt(i)
   class MyRichInt(i: Int) {
-    // perhaps there's some better way on both of these than going through String?
-    def gcd(j: Int) = (BigInt(i) gcd BigInt(j)).toString.toInt
-    def digits = i.toString.view.map(_.asDigit).toList
+    def gcd(j: Int): Int =
+      if(j == 0) i
+      else j.gcd(i - j * (i / j))
+    def digits: Seq[Int] = i.toString.map(_.asDigit)
   }
 
   // add digits method to Long
   implicit def toRichLong(i: Long): MyRichLong = new MyRichLong(i)
   class MyRichLong(i: Long) {
-    // perhaps there's some better way than going through String?
-    def digits = i.toString.view.map(_.asDigit).toList
+    def digits: Seq[Int] = i.toString.map(_.asDigit)
   }
 
   // add digits method to BigInt
   implicit def toRichBigInt(i: BigInt): MyRichBigInt = new MyRichBigInt(i)
   class MyRichBigInt(i: BigInt) {
-    // perhaps there's some better way than going through String?
-    def digits = i.toString.view.map(_.asDigit).toList
+    def digits: Seq[Int] = i.toString.map(_.asDigit)
   }
 
 }
