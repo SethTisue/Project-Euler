@@ -10,11 +10,14 @@ svn rm src/73.scala
 svn rm src/74.scala
 svn rm src/75.scala
 svn rm src/78.scala
+svn rm src/83.scala
 svn rm src/92.scala
+svn rm src/93.scala
 svn rm src/94.scala
 svn rm src/95.scala
 svn rm src/118.scala
 svn rm src/145.scala
+svn rm src/179.scala
 svn rm src/187.scala
 svn rm src/204.scala
 svn rm src/206.scala
