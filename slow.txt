@@ -1,9 +1,13 @@
+svn rm src/14.scala
 svn rm src/24.scala
+svn rm src/27.scala
 svn rm src/40.scala
 svn rm src/51.scala
 svn rm src/60.scala
+svn rm src/66.scala
 svn rm src/68.scala
 svn rm src/73.scala
+svn rm src/74.scala
 svn rm src/75.scala
 svn rm src/78.scala
 svn rm src/92.scala
