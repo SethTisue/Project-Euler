@@ -13,7 +13,7 @@ class ProjectEuler(info: ProjectInfo) extends DefaultProject(info) {
   // I removed -optimise until lampsvn.epfl.ch/trac/scala/ticket/3248
   // (marked as dupe of lampsvn.epfl.ch/trac/scala/ticket/3500) is fixed - ST 4/15/10
   override def compileOptions =
-    "-g -unchecked -Xfatal-warnings -encoding us-ascii"
+    "-unchecked -Xfatal-warnings -encoding us-ascii"
      .split(" ").map(CompileOption).toSeq ++ super.compileOptions
 
   // distinguish main sources from test sources
