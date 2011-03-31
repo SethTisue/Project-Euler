@@ -9,8 +9,9 @@ import Euler._
 // http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method
 
 // If I understood the whole BigDecimal math context/precision stuff better, I could
-// probably avoid dropping down to java.math.BigDecimal, but I don't feel like
-// messing with it for now - ST 3/31/11
+// probably avoid dropping down to java.math.BigDecimal, especially now that
+// lampsvn.epfl.ch/trac/scala/ticket/1812 is fixed in 2.9, but I don't feel like
+// messing with it right now - ST 3/31/11
 
 import java.math.{RoundingMode => J}
 import scala.math.BigDecimal.{RoundingMode => S}
