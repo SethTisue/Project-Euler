@@ -28,6 +28,7 @@ class Problem80 extends Problem(80, "40886") {
   def solve =
     (1 to 100)
       .filter(!isSquare(_))
+      .map(BigDecimal(_, java.math.MathContext.UNLIMITED))
       .map(n => digitalSum(firstDuplicate(babylonian(n))))
       .sum
 }
