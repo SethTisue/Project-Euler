@@ -18,9 +18,9 @@ class Problem80 extends Problem(80, "40886") {
     d.toString.view.filter(_.isDigit).take(digits).map(_.asDigit).sum
   def firstDuplicate[A](xs: Seq[A]) =
     xs.zip(xs.tail).find{case (d1, d2) => d1 == d2}.get._1
-  def babylonian(n:Int) =
+  def babylonian(n: BigDecimal) =
     firstDuplicate(
-      Stream.iterate(BigDecimal(n))(x => ((x + roundingDivide(n, x)) / 2)
+      Stream.iterate(n)(x => ((x + roundingDivide(n, x)) / 2)
         .setScale(digits, BigDecimal.RoundingMode.DOWN)))
   def solve =
     (1 to 100).filter(!isSquare(_)).map(n => digitalSum(babylonian(n))).sum
