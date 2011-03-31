@@ -2,7 +2,7 @@ package net.tisue.euler
 import Euler._
 import Primes._
 
-// 7 seconds!
+// 6 seconds!
 
 class Problem118 extends Problem(118, "44680") {
   // not that happy with the clarity of this function, but oh well
@@ -21,7 +21,7 @@ class Problem118 extends Problem(118, "44680") {
     if(n < 10000000) isSievedPrime(n)
     else isPrime(n)
   def countPrimePermutations(n: List[Int]) =
-    permute(n).map(_.mkString.toInt).count(fastPrimeTest)
+    n.permutations.map(_.mkString.toInt).count(fastPrimeTest)
   def countSolutions(ns: List[List[Int]]): Int =
     // this quick check on the sum of digits prunes the search space a lot
     if(ns.exists(x => x.size > 1 && x.sum % 3 == 0)) 0

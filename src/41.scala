@@ -12,5 +12,5 @@ import Primes._
 
 class Problem41 extends Problem(41, "7652413") {
   def solve =
-    permute((1 to 7).toList).map(_.mkString.toInt).filter(isPrime(_)).max
+    (1 to 7).permutations.map(_.mkString.toInt).filter(isPrime(_)).max
 }

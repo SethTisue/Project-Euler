@@ -21,13 +21,6 @@ object Euler {
         binarySearch(guess, upperBound)(tooBig)
     }
 
-  // permutations of a list of unique items.
-  // CAUTION: doesn't work on lists containing repeats
-  def permute[A](xs: List[A]): List[List[A]] = xs match {
-    case Nil => List(Nil)
-    case _ => xs.flatMap(x => permute(xs.filter(_ != x)).map(x :: _))
-  }
-
   def unfold[T1,T2](x: T1)(fn: T1 => Option[(T2, T1)]): Stream[T2] =
     fn(x) match {
       case None => Stream()

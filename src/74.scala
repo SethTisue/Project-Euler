@@ -36,7 +36,7 @@ class Problem74 extends Problem(74, "402") {
     val survivors = candidates.filter(isSolution)
     val permutations =
       for{c <- survivors
-          n <- permute(c.toString.toList.zipWithIndex).map(_.map(_._1).mkString.toInt)}
+          n <- c.toString.toList.zipWithIndex.permutations.map(_.map(_._1).mkString.toInt)}
       yield n
     permutations.distinct.count(isSolution)
   }

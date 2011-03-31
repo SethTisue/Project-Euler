@@ -9,9 +9,9 @@ import Euler._
 
 class Problem32 extends Problem(32, "45228") {
   def solve = {
-    def makeNum(digits: List[Int]) = digits.reduceLeft((a,b) => 10 * a + b)
+    def makeNum(digits: Seq[Int]) = digits.reduceLeft((a,b) => 10 * a + b)
     val products =
-      for{digits <- permute((1 to 9).toList)
+      for{digits <- (1 to 9).permutations
           len <- List(1, 2)
           n1 = makeNum(digits.take(len))
           n2 = makeNum(digits.slice(len, 5))
