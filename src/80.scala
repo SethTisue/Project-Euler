@@ -9,20 +9,19 @@ import Euler._
 // http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method
 
 class Problem80 extends Problem(80, "40886") {
+  val digits = 100
   def isSquare(n: Int) = { val r = math.sqrt(n).toInt; r * r == n }
   // drop down to java.math.BigDecimal to use API not exposed by the Scala wrapper
-  def roundingDivide(d1: BigDecimal, d2: BigDecimal, digits: Int) =
+  def roundingDivide(d1: BigDecimal, d2: BigDecimal) =
     new BigDecimal(d1.bigDecimal.divide(d2.bigDecimal, digits, java.math.RoundingMode.DOWN))
-  def digitalSum(d: BigDecimal, digits: Int) =
+  def digitalSum(d: BigDecimal) =
     d.toString.view.filter(_.isDigit).take(digits).map(_.asDigit).sum
   def firstDuplicate[A](xs: Seq[A]) =
     xs.zip(xs.tail).find{case (d1, d2) => d1 == d2}.get._1
-  def solve = {
-    val digits = 100
-    def babylonian(n:Int) =
-      firstDuplicate(
-        Stream.iterate(BigDecimal(n))(x => ((x + roundingDivide(n, x, digits)) / 2)
-          .setScale(digits, BigDecimal.RoundingMode.DOWN)))
-    (1 to 100).filter(!isSquare(_)).map(n => digitalSum(babylonian(n), digits)).sum
-  }
+  def babylonian(n:Int) =
+    firstDuplicate(
+      Stream.iterate(BigDecimal(n))(x => ((x + roundingDivide(n, x)) / 2)
+        .setScale(digits, BigDecimal.RoundingMode.DOWN)))
+  def solve =
+    (1 to 100).filter(!isSquare(_)).map(n => digitalSum(babylonian(n))).sum
 }
