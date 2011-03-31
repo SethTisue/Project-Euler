@@ -13,6 +13,8 @@ class Problem80 extends Problem(80, "40886") {
   // drop down to java.math.BigDecimal to use API not exposed by the Scala wrapper
   def roundingDivide(d1: BigDecimal, d2: BigDecimal, digits: Int) =
     new BigDecimal(d1.bigDecimal.divide(d2.bigDecimal, digits, java.math.RoundingMode.DOWN))
+  def digitalSum(d: BigDecimal, digits: Int) =
+    d.toString.view.filter(_.isDigit).take(digits).map(_.asDigit).sum
   def firstDuplicate[A](xs: Seq[A]) =
     xs.zip(xs.tail).find{case (d1, d2) => d1 == d2}.get._1
   def solve = {
@@ -21,8 +23,6 @@ class Problem80 extends Problem(80, "40886") {
       firstDuplicate(
         Stream.iterate(BigDecimal(n))(x => ((x + roundingDivide(n, x, digits)) / 2)
           .setScale(digits, BigDecimal.RoundingMode.DOWN)))
-    def digitalSum(d: BigDecimal) =
-      d.toString.view.filter(_.isDigit).take(digits).map(_.asDigit).sum
-    (1 to 100).filter(!isSquare(_)).map(n => digitalSum(babylonian(n))).sum
+    (1 to 100).filter(!isSquare(_)).map(n => digitalSum(babylonian(n), digits)).sum
   }
 }
