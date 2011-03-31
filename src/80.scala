@@ -8,6 +8,10 @@ import Euler._
 // slow for this problem so I used this which is much simpler anyway:
 // http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method
 
+// If I understood the whole BigDecimal math context/precision stuff better, I could
+// probably avoid dropping down to java.math.BigDecimal, but I don't feel like
+// messing with it for now - ST 3/31/11
+
 import java.math.{RoundingMode => J}
 import scala.math.BigDecimal.{RoundingMode => S}
 
