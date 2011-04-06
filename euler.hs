@@ -1,6 +1,6 @@
 import Control.Exception (assert)
 import Control.Monad (guard)
-import Control.Applicative (liftA2)
+import Control.Applicative ((<$>), (<*>))
 import Data.Char (digitToInt)
 import Data.List (tails, find, maximumBy)
 import Data.Maybe (fromJust)
@@ -50,7 +50,7 @@ primeFactors n = fac : primeFactors (n `quot` fac)
 -- clean up my solution
 
 problem1 = sum $ filter ok [1..999]
-    where ok = liftA2 (||) (divides 3) (divides 5)
+    where ok = (||) <$> divides 3 <*> divides 5
           divides a b = b `mod` a == 0
 
 problem2 = sum $ takeWhile (< 1000000) $ filter even fibs
