@@ -1,5 +1,6 @@
 import Control.Exception (assert)
 import Control.Monad (guard)
+import Control.Applicative (liftA2)
 import Data.Char (digitToInt)
 import Data.List (tails, find, maximumBy)
 import Data.Maybe (fromJust)
@@ -48,8 +49,9 @@ primeFactors n = fac : primeFactors (n `quot` fac)
 -- on others, I got it working first and then used the wiki code to
 -- clean up my solution
 
-problem1 = sum $ takeWhile (< 1000) $ filter ok [1..]
-    where ok n = n `mod` 3 == 0 || n `mod` 5 == 0
+problem1 = sum $ filter ok [1..999]
+    where ok = liftA2 (||) (divides 3) (divides 5)
+          divides a b = b `mod` a == 0
 
 problem2 = sum $ takeWhile (< 1000000) $ filter even fibs
     where fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
