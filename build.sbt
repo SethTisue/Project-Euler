@@ -4,7 +4,7 @@
 // - find out about: retrieveManaged, autoUpdate (enabled by default currently)
 // - don't put a blank line here
 // - can't disable parallel test execution yet
-scalaVersion := "2.9.0.RC1"
+scalaVersion := "2.9.0.RC2"
 
 name := "Seth's Project Euler solutions"
 
