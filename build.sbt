@@ -10,7 +10,7 @@ name := "Seth's Project Euler solutions"
 
 resolvers += ScalaToolsSnapshots
 
-libraryDependencies += "org.scalatest" % "scalatest" % "1.4-SNAPSHOT" % "test"
+libraryDependencies += "org.scalatest" % "scalatest" % "1.4.RC2" % "test"
 
 scalaSource in Compile <<= baseDirectory(_ / "src" / "main")
 
