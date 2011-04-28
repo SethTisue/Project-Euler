@@ -1,16 +1,19 @@
-// NOTES:
+// PROJECT NOTES:
+// - intentionally using ScalaTest 1.3, built for Scala 2.8, to test
+//   binary compatibility of 2.9/2.10 with 2.8
+// SBT NOTES:
 // - test-only works. no wildcards yet. use tab-completion
 // - "show x" or "inspect x" for any setting
 // - find out about: retrieveManaged, autoUpdate (enabled by default currently)
 // - don't put a blank line here
 // - can't disable parallel test execution yet
-scalaVersion := "2.9.0.RC2"
+scalaVersion := "2.10.0-SNAPSHOT"
 
 name := "Seth's Project Euler solutions"
 
 resolvers += ScalaToolsSnapshots
 
-libraryDependencies += "org.scalatest" % "scalatest" % "1.4.RC2" % "test"
+libraryDependencies += "org.scalatest" % "scalatest" % "1.3" % "test"
 
 scalaSource in Compile <<= baseDirectory(_ / "src" / "main")
 
