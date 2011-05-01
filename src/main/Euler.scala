@@ -31,11 +31,6 @@ object Euler {
   // could go on Iterable, actually, instead of Stream specifically
   implicit def toRichStream[T](s1: Stream[T]): RichStream[T] = new RichStream(s1)
   class RichStream[T1](s1: Stream[T1]) {
-    // I would like axe this and replace it everywhere with (s1, s2).zipped.map(...),
-    // but I can't because of this ticket:
-    // lampsvn.epfl.ch/trac/scala/ticket/2634 (closed as wontfix) - ST 11/16/09
-    def zipWith[T2,T3](s2: Stream[T2])(fn: (T1,T2)=>T3): Stream[T3] =
-      s1.zip(s2).map(fn.tupled)
     def circular: Stream[T1] = {
       lazy val s: Stream[T1] = s1 #::: s
       s
@@ -44,6 +39,15 @@ object Euler {
       unfold(s1){s1 =>
         if(s1.isEmpty) None
         else Some(s1.span(_ == s1.head))}
+  }
+
+  // thank you stackoverflow.com/questions/3895813/how-to-write-a-zipwith-method-that-returns-the-same-type-of-collection-as-those-p
+  // maybe I could use some of this same magic to make some of my other implicits work on more collection types!
+  implicit def toRichIterable[CC[X] <: Iterable[X], A](xs: CC[A]) = new RichIterable[A, CC](xs)
+  class RichIterable[A, CC[X] <: Iterable[X]](xs: Iterable[A]) {
+    import scala.collection.generic.CanBuildFrom
+    def zipWith[B, C](ys: Iterable[B])(f: (A, B) => C)(implicit cbf: CanBuildFrom[Nothing, C, CC[C]]): CC[C] =
+      xs.zip(ys).map(f.tupled)(collection.breakOut)
   }
 
   // add gcd method to Int
