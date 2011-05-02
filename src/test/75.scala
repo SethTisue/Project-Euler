@@ -33,8 +33,7 @@ class Problem75 extends Problem(75, "214954") {
         .flatMap(t => Stream.from(1).map(j => t.map(_ * j))
                                     .takeWhile(_.sum <= limit))
     def lengths(limit: Int) =
-      // don't know why the type annotation is needed
-      solutions(limit).toList.distinct.map((_: List[Int]).sum)
+      solutions(limit).toList.distinct.map(_.sum)
     uniqueCount(lengths(2000000))
   }
 }
