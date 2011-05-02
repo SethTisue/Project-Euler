@@ -11,12 +11,8 @@ import annotation.tailrec
 
 class Problem75 extends Problem(75, "214954") {
   // how many elements appear only once?
-  def uniqueCount[T](xs: List[T]): Int = {
-    def increment(map: Map[T,Int], key: T) =
-      map.updated(key, map(key) + 1)
-    val counts = xs.foldLeft(Map[T,Int]().withDefaultValue(0))(increment)
-    counts.count(_._2 == 1)
-  }
+  def uniqueCount[T](xs: List[T]): Int =
+    xs.groupBy(identity).count(_._2.size == 1)
   def solve = {
     // generate only the primitive triples for now (because this formula, if allowed to generate
     // non-primitive triples too, generates some of them, but not all of them!)
