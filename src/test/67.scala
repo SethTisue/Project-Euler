@@ -12,8 +12,8 @@ class Problem67 extends Problem(67, "7273") {
   def solve = {
      val triangle = io.Source.fromFile("dat/67.txt").mkString.trim.split("\n").toList
       .map(_.split(" ").toList.map(_.toInt))
-    def recurse(t:List[List[Int]]):Int = t match {
-      case List(List(n)) => n
+    def recurse(t: List[List[Int]]): Int = t match {
+      case Seq(Seq(n)) => n
       // yuck. this is really cryptic - ST 11/13/09
       case r0::r1::rest =>
         val rr0 = (r0, r0.tail).zipped.map(_ max _)

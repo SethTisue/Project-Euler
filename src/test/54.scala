@@ -32,7 +32,7 @@ class Problem54 extends Problem(54, "376") {
       hand.map(_.rank)
           .sorted
           .sliding(2)
-          .forall{case List(r1, r2) => r2 == r1 + 1}
+          .forall{case Seq(r1, r2) => r2 == r1 + 1}
     val handFunctions =
       List(straightFlush _,
            nOfAKind(_: Hand, 4),
