@@ -4,9 +4,13 @@ Solve it yourself first!
 
 This is the language I've done my serious solving in.
 
+Build and run using sbt.
+
 ## Haskell
 
 Some solutions ported from Scala.
+
+Build and run using make.
 
 ## NetLogo
 
