@@ -4,7 +4,7 @@ Solve it yourself first!
 
 This is the language I've done my serious solving in.
 
-Build and run using sbt.
+Build and run using xsbt (experimental sbt) 0.9.  Type `bin/xsbt` to start sbt, then enter `test` at the sbt prompt.
 
 ## Haskell
 
