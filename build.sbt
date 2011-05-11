@@ -7,13 +7,13 @@
 // - find out about: retrieveManaged, autoUpdate (enabled by default currently)
 // - don't put a blank line here
 // - can't disable parallel test execution yet
-scalaVersion := "2.9.0.RC4"
+scalaVersion := "2.9.0.RC5"
 
 name := "Seth's Project Euler solutions"
 
 resolvers += ScalaToolsSnapshots
 
-libraryDependencies += "org.scalatest" %% "scalatest" % "1.4.RC4" % "test"
+libraryDependencies += "org.scalatest" % "scalatest_2.9.0.RC4" % "1.4.RC4" % "test"
 
 scalaSource in Compile <<= baseDirectory(_ / "src" / "main")
 
