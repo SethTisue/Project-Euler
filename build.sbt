@@ -1,6 +1,3 @@
-// PROJECT NOTES:
-// - intentionally using ScalaTest 1.3, built for Scala 2.8, to test
-//   binary compatibility of 2.9/2.10 with 2.8
 // SBT NOTES:
 // - test-only works. no wildcards yet. use tab-completion
 // - "show x" or "inspect x" for any setting
