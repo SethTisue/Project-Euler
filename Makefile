@@ -12,4 +12,4 @@ clean:
 	rm -f euler euler.hi euler.o
 
 realclean:
-	svn status --no-ignore | grep '^[?I]' | cut -c 9- | tr '\n' '\0' | xargs -0 rm -rf
+	git clean -fdX
