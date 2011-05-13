@@ -1,14 +1,6 @@
-// SBT NOTES:
-// - test-only works. no wildcards yet. use tab-completion
-// - "show x" or "inspect x" for any setting
-// - find out about: retrieveManaged, autoUpdate (enabled by default currently)
-// - don't put a blank line here
-// - can't disable parallel test execution yet
 scalaVersion := "2.9.0"
 
 name := "Seth's Project Euler solutions"
-
-resolvers += ScalaToolsSnapshots
 
 libraryDependencies += "org.scalatest" %% "scalatest" % "1.4.1" % "test"
 
