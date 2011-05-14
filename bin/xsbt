@@ -1,10 +1,10 @@
 #!/bin/sh
 
 LAUNCH=`dirname $0`/sbt-launch-0.9.6.jar
+URL='http://typesafe.artifactoryonline.com/typesafe/ivy-releases/org.scala-tools.sbt/sbt-launch/0.9.6/sbt-launch.jar'
 
 if [ ! -f $LAUNCH ] ; then
-  curl 'http://typesafe.artifactoryonline.com/typesafe/ivy-releases/org.scala-tools.sbt/sbt-launch/0.9.6/sbt-launch.jar' -o $LAUNCH
-   
+  curl $URL -o $LAUNCH
 fi
 
 if [ `uname -s` = Linux ] ; then
