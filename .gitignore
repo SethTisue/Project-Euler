@@ -1,3 +1,6 @@
 *.jar
-/project
-/target
+*.hi
+*.o
+/euler
+/project/
+/target/
