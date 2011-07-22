@@ -1,4 +1,6 @@
-scalaVersion := "2.9.0-1"
+resolvers += "Scala-Tools Maven2 Snapshots Repository" at "http://scala-tools.org/repo-snapshots"
+
+scalaVersion := "2.10.0-SNAPSHOT"  // living dangerously
 
 name := "Seth's Project Euler solutions"
 
