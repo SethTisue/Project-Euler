@@ -2,11 +2,11 @@ package net.tisue.euler
 
 import org.scalatest.FunSuite
 
-abstract class Problem(number: Int, expected: String) extends FunSuite {
+abstract class Problem(number: Int, solution: String) extends FunSuite {
   test("problem " + number) {
     val (result, elapsed) = Euler.time(solve)
     info("%.3f seconds".format(elapsed))
-    assert(expected === result.toString)
+    assert(solution === result.toString)
   }
   def solve: Any
 }
