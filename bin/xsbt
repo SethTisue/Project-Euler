@@ -9,6 +9,7 @@ fi
 
 java \
   -Xmx1536M \
+  -XX:MaxPermSize=256M \
   -Dsbt.boot.directory=$HOME/.sbt/boot/ \
   $JAVA_OPTS \
   -classpath $LAUNCH \
