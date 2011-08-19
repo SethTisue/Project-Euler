@@ -14,7 +14,7 @@ Build and run using make.
 
 ## NetLogo
 
-These solutions were written for NetLogo 4.1.  NetLogo 5.0 has tasks (aka lambda, closures, first-class functions) now, so probably some of these solutions could be redone to use that, and tackling the more advanced problems would be more feasible.
+These solutions were originally written for NetLogo 4.1 and have been only lightly updated for 5.0.  NetLogo 5.0 has tasks (aka lambda, closures, first-class functions) now, so probably some of these solutions could be redone to use that, and tackling the more advanced problems would be more feasible.
 
 ## Clojure
 
