@@ -4,7 +4,8 @@ globals [primes mem]
 ;;;
 
 to problem1
-  output-print sum filter [? mod 3 = 0 or ? mod 5 = 0] n-values 1000 [?]
+  let pred task [? mod 3 = 0 or ? mod 5 = 0]
+  output-print sum filter pred n-values 1000 [?]
 end
 
 to problem2
@@ -30,7 +31,10 @@ to problem3
       set :primes fput n :primes
       while [target mod n = 0] [
         set target target / n
-        if target = 1 [ output-print n  stop ]
+        if target = 1 [
+          output-print n
+          stop
+        ]
       ]
     ]
     set n n + 1
@@ -44,7 +48,7 @@ to problem4
   foreach range 100 999 [
     let a ?
     set largest max sentence (list largest)
-                             filter [palindrome? ?]
+                             filter palindrome?
                                map [a * ?] range a 999
   ]
   output-print largest
@@ -61,7 +65,7 @@ end
 ;;;
 
 to problem5
-  output-print reduce [lcm ?1 ?2] range 2 20
+  output-print reduce lcm range 2 20
 end
 
 ; http://en.wikipedia.org/wiki/Least_common_multiple#Calculating_the_least_common_multiple
@@ -78,7 +82,8 @@ end
 ;;;
 
 to problem6
-  output-print (sum range 1 100) ^ 2 - sum map [? ^ 2] range 1 100
+  let square task [? ^ 2]
+  output-print (sum range 1 100) ^ 2 - sum map square range 1 100
 end
 
 ;;;
@@ -115,7 +120,7 @@ to problem8
   let result 0
   foreach n-values (length input-string - 4) [?] [
     let index ?
-    let product reduce [?1 * ?2] map [read-from-string ?] n-values 5 [item (index + ?) input-list]
+    let product reduce * map read-from-string n-values 5 [item (index + ?) input-list]
     if product > result [ set result product ]
   ]
   output-print result
@@ -199,7 +204,7 @@ to problem11
             [20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54]
             [01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48]]
   let dim length nums
-  let a array:from-list map [array:from-list ?] nums
+  let a array:from-list map array:from-list nums
   let result 0
   foreach n-values dim [?] [
     let i ?
@@ -386,7 +391,7 @@ to problem13
               "20849603980134001723930671666823555245252804609722"
               "53503534226472524250874054075591789781264330331690"]
   set inputs map [word "00" ?] inputs
-  let total reduce [big-add13 ?1 ?2] inputs
+  let total reduce big-add13 inputs
   output-print substring total 0 10
 end
 
@@ -534,9 +539,9 @@ end
 to-report recurse18 [total triangle]
   if empty? triangle [ report total ]
   report max list recurse18 (total + first first triangle)
-                           map [butlast ?] butfirst triangle
+                           map butlast butfirst triangle
                   recurse18 (total + item 1 first triangle)
-                            map [butfirst ?] butfirst triangle
+                            map butfirst butfirst triangle
 end
 
 ;;;
@@ -574,7 +579,7 @@ to-report big-add20 [n1 n2]
 end
 
 to-report pad [n len]
-  report reduce [word ?1 ?2] lput n n-values (len - length n) ["0"]
+  report reduce word lput n n-values (len - length n) ["0"]
 end
 
 to-report bigdec [n]
@@ -628,7 +633,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
-30
+30.0
 
 BUTTON
 14
@@ -1271,7 +1276,7 @@ Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 
 @#$#@#$#@
-NetLogo 5.0beta1
+NetLogo 5.0beta4
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
