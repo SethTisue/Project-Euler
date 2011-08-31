@@ -34,8 +34,6 @@ class Problem96 extends Problem(96, "24702") {
                     yield (0 to 80).toList.filter(n => n / 27 == i && n % 9 / 3 == j)
       rows ::: columns ::: boxes
     }
-    def replaceItem[T](l: List[T], i: Int, newValue: T) =
-      l.take(i) ::: newValue :: l.drop(i + 1)
     def repeat[A](x: A, fn: (A) => A): A = {
       val x2 = fn(x)
       if(x == x2) x
@@ -76,7 +74,7 @@ class Problem96 extends Problem(96, "24702") {
           case None => Some(puzzle)
           case Some(index) =>
             puzzle(index).flatMap{guess =>
-              solve3(repeat(replaceItem(puzzle, index, List(guess)),
+              solve3(repeat(puzzle.updated(index, List(guess)),
                             solve1and2))}
             .headOption
         }
