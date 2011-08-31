@@ -20,8 +20,10 @@ class Problem96 extends Problem(96, "24702") {
   type Puzzle = List[List[Int]]  // 81 lists of integers in 1-9 range
   type Group = List[Int]         // 9 integers in 0-80 range
   val groups: List[Group] = {
-    val rows    = for(i <- (0 to 8).toList) yield (0 to 80).toList.filter(_ / 9 == i)
-    val columns = for(i <- (0 to 8).toList) yield (0 to 80).toList.filter(_ % 9 == i)
+    val rows    = for(i <- (0 to 8).toList)
+                  yield (0 to 80).toList.filter(_ / 9 == i)
+    val columns = for(i <- (0 to 8).toList)
+                  yield (0 to 80).toList.filter(_ % 9 == i)
     val boxes   = for(i <- (0 to 2).toList; j <- 0 to 2)
                   yield (0 to 80).toList.filter(n => n / 27 == i && n % 9 / 3 == j)
     rows ::: columns ::: boxes
