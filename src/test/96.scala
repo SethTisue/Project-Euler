@@ -19,13 +19,6 @@ import Euler._
 class Problem96 extends Problem(96, "24702") {
   type Puzzle = List[List[Int]]  // 81 lists of integers in 1-9 range
   type Group = List[Int]         // 9 integers in 0-80 range
-  val puzzles: Iterator[Puzzle] =
-    io.Source.fromFile("dat/96.txt")
-      .getLines.filterNot(_.startsWith("Grid"))
-      .grouped(9)
-      .map(_.mkString.view.filter(_.isDigit).map(_.asDigit).toList
-            .map(d => if(d == 0) (1 to 9).toList
-                      else List(d)))
   val groups: List[Group] = {
     val rows    = for(i <- (0 to 8).toList) yield (0 to 80).toList.filter(_ / 9 == i)
     val columns = for(i <- (0 to 8).toList) yield (0 to 80).toList.filter(_ % 9 == i)
@@ -69,15 +62,25 @@ class Problem96 extends Problem(96, "24702") {
     if(!isValid(puzzle))
       None
     else
-      puzzle.indices.find(puzzle(_).size > 1) match {
-        case None => Some(puzzle)
-        case Some(index) =>
-          puzzle(index).flatMap{guess =>
-            solve3(repeat(puzzle.updated(index, List(guess)),
-                          solve1and2))}
-          .headOption
+      puzzle.indexWhere(_.size > 1) match {
+        case -1 =>
+          Some(puzzle)
+        case index =>
+          puzzle(index)
+            .flatMap{guess =>
+              solve3(repeat(puzzle.updated(index, List(guess)),
+                            solve1and2))}
+            .headOption
       }
+  val puzzles: Iterator[Puzzle] =
+    io.Source.fromFile("dat/96.txt")
+      .getLines.filterNot(_.startsWith("Grid"))
+      .grouped(9)
+      .map(_.mkString.view.filter(_.isDigit).map(_.asDigit).toList
+            .map(d => if(d == 0) (1 to 9).toList
+                      else List(d)))
   def solve =
-    puzzles.map(p => solve3(solve1and2(p)).get)
-     .map(_.take(3).map(_.head).mkString.toInt).sum
+    puzzles.flatMap(p => solve3(solve1and2(p)))
+     .map(_.take(3).map(_.head).mkString.toInt)
+     .sum
 }
