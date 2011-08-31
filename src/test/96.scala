@@ -26,10 +26,11 @@ class Problem96 extends Problem(96, "24702") {
                   yield (0 to 80).toList.filter(n => n / 27 == i && n % 9 / 3 == j)
     rows ::: columns ::: boxes
   }
-  def repeat[A](x: A, fn: (A) => A): A = {
-    val x2 = fn(x)
-    if(x == x2) x
-    else repeat(x2, fn)
+  // from initial guess x0, iterate until we find x such that fn(x) = x
+  def fixedPoint[A](x0: A)(fn: (A) => A): A = {
+    val x = fn(x0)
+    if(x == x0) x
+    else fixedPoint(x)(fn)
   }
   // I think that solve1, solve2, and solve3 could probably all be clarified, and their
   // interrelation could probably be clarified as well, but I feel like I've already spent enough
@@ -51,11 +52,14 @@ class Problem96 extends Problem(96, "24702") {
                          .flatMap(puzzle(_))
                          .count(_ == d) == 1)
       v.foldLeft(puzzle){(puzzle, d) =>
-        repeat(puzzle.zipWithIndex.map{case (entry, index) =>
-            if(group.contains(index) && entry.contains(d)) List(d)
-            else entry}, solve1)}}
+        val start =
+          puzzle.zipWithIndex.map{case (entry, index) =>
+            if(group.contains(index) && entry.contains(d))
+              List(d)
+            else entry}
+        fixedPoint(start)(solve1)}}
   def solve1and2(puzzle: Puzzle) =
-    repeat(repeat(puzzle, solve1), solve2)
+    fixedPoint(fixedPoint(puzzle)(solve1))(solve2)
   def isValid(puzzle: Puzzle) =
     groups.forall(g => g.flatMap(puzzle(_)).toSet.size == 9)
   def solve3(puzzle: Puzzle): Option[Puzzle] =
@@ -68,8 +72,7 @@ class Problem96 extends Problem(96, "24702") {
         case index =>
           puzzle(index)
             .flatMap{guess =>
-              solve3(repeat(puzzle.updated(index, List(guess)),
-                            solve1and2))}
+              solve3(fixedPoint(puzzle.updated(index, List(guess)))(solve1and2))}
             .headOption
       }
   val puzzles: Iterator[Puzzle] =
