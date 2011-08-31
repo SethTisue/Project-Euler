@@ -20,13 +20,10 @@ class Problem96 extends Problem(96, "24702") {
   def solve = {
     type Puzzle = List[List[Int]]  // 81 lists of integers in 1-9 range
     type Group = List[Int]         // 9 integers in 0-80 range
-    def nAtATime[T](size: Int, items: Iterator[T]): List[List[T]] =
-      if(!items.hasNext)
-        Nil
-      else
-        items.take(size).toList :: nAtATime(size, items)
-    val puzzles: List[Puzzle] =
-      nAtATime(9, io.Source.fromFile("dat/96.txt").getLines.filter(!_.startsWith("Grid")))
+    val puzzles: Iterator[Puzzle] =
+      io.Source.fromFile("dat/96.txt")
+        .getLines.filterNot(_.startsWith("Grid"))
+        .grouped(9)
         .map(_.mkString.view.filter(_.isDigit).map(_.asDigit).toList
               .map(d => if(d == 0) (1 to 9).toList
                         else List(d)))
