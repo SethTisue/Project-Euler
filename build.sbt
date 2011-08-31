@@ -1,4 +1,4 @@
-scalaVersion := "2.9.1.RC4"
+scalaVersion := "2.9.1"
 
 name := "Seth's Project Euler solutions"
 
