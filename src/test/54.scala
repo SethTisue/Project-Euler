@@ -1,8 +1,8 @@
 package net.tisue.euler
 import Euler._
 
-// The input file contains one thousand random hands dealt to two players.  How many hands does
-// player one win?
+// The input file contains one thousand random poker hands dealt to two players.  How many hands
+// does player one win?
 
 // (note: glguy's Haskell solution on the Euler forum is more elegant)
 
