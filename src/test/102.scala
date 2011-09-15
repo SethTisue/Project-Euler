@@ -20,6 +20,6 @@ class Problem102 extends Problem(102, "228") {
                 check(x1, y1, x2, y2, x3, y3) &&
                 check(x2, y2, x1, y1, x3, y3) &&
                 check(x3, y3, x1, y1, x2, y2)}
-      .toList.size  // seems like iterator ought to have its own size or length method...
+      .size
   }
 }
