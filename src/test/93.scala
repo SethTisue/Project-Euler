@@ -21,50 +21,49 @@ package net.tisue.euler
 class Problem93 extends Problem(93, "1258") {
   type Number = BigRational
   val Zero: BigRational = 0
-  def solve = {
-    sealed abstract class Item
-    case class Operator(c: Char, fn: (Number, Number) => Option[Number]) extends Item
-    case class Digit(n: Int) extends Item
-    val operators = List(Operator('+', (a, b) => Some(a + b)),
-                         Operator('-', (a, b) => Some(a - b)),
-                         Operator('*', (a, b) => Some(a * b)),
-                         Operator('/', (a, b) => if(b != Zero) Some(a / b)
-                                                 else None))
-    def expressions(digits: List[Digit], stackHeight: Int): List[List[Item]] = {
-      def pushes =
-        for(d <- digits; e <- expressions(digits diff List(d), stackHeight + 1))
-        yield d :: e
-      def pops =
-        for(o <- operators; e <- expressions(digits, stackHeight - 1))
-        yield o :: e
-      if(stackHeight < 0) Nil
-      else if(stackHeight == 1 && digits.isEmpty) List(Nil)
-      else if(stackHeight < 2) pushes
-      else (pushes ::: pops)
+  sealed abstract class Item
+  case class Operator(c: Char, fn: (Number, Number) => Option[Number]) extends Item
+  case class Digit(n: Int) extends Item
+  val operators = List(Operator('+', (a, b) => Some(a + b)),
+                       Operator('-', (a, b) => Some(a - b)),
+                       Operator('*', (a, b) => Some(a * b)),
+                       Operator('/', (a, b) => if(b != Zero) Some(a / b)
+                                               else None))
+  def expressions(digits: List[Digit], stackHeight: Int): List[List[Item]] = {
+    def pushes =
+      for(d <- digits; e <- expressions(digits diff List(d), stackHeight + 1))
+      yield d :: e
+    def pops =
+      for(o <- operators; e <- expressions(digits, stackHeight - 1))
+      yield o :: e
+    if(stackHeight < 0) Nil
+    else if(stackHeight == 1 && digits.isEmpty) List(Nil)
+    else if(stackHeight < 2) pushes
+    else (pushes ::: pops)
+  }
+  def eval(items: List[Item], stack: List[Number]): Option[Number] =
+    if(items.isEmpty)
+      Some(stack.head)
+    else items.head match {
+      case Operator(_, fn) =>
+        fn(stack(0), stack(1)) match {
+          case Some(n) =>
+            eval(items.tail, n :: stack.drop(2))
+          case None => None
+        }
+      case Digit(n) =>
+        eval(items.tail, n :: stack)
     }
-    def eval(items: List[Item], stack: List[Number]): Option[Number] =
-      if(items.isEmpty)
-        Some(stack.head)
-      else items.head match {
-        case Operator(_, fn) =>
-          fn(stack(0), stack(1)) match {
-            case Some(n) =>
-              eval(items.tail, n :: stack.drop(2))
-            case None => None
-          }
-        case Digit(n) =>
-          eval(items.tail, n :: stack)
-      }
-    def targets(ns: List[Int]): Set[Int] =
-      expressions(ns.map(Digit(_)), 0)
-        .flatMap(e => eval(e, Nil))
-        .filter(_.denom == 1)
-        .filter(_.toDouble > 0)
-        .map(_.toDouble.toInt)
-        .toSet
-    def smallestMissing(ns: Set[Int]): Int =
-      Stream.from(1).find(!ns.contains(_)).get
+  def targets(ns: List[Int]): Set[Int] =
+    expressions(ns.map(Digit(_)), 0)
+      .flatMap(e => eval(e, Nil))
+      .filter(_.denom == 1)
+      .filter(_.toDouble > 0)
+      .map(_.toDouble.toInt)
+      .toSet
+  def smallestMissing(ns: Set[Int]): Int =
+    Stream.from(1).find(!ns.contains(_)).get
+  def solve =
     (1 to 9).toList.combinations(4).toList.maxBy(ns => smallestMissing(targets(ns)))
       .mkString
-  }
 }

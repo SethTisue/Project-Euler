@@ -20,22 +20,20 @@ package net.tisue.euler
 // make it shorter by removing unneeded digits one at a time.
 
 class Problem79 extends Problem(79, "73162890") {
-  def solve = {
-     val keylog = List(319,680,180,690,129,620,762,689,762,318,368,710,720,710,629,168,160,
-                      689,716,731,736,729,316,729,729,710,769,290,719,680,318,389,162,289,
-                      162,718,729,319,790,680,890,362,319,760,316,729,380,319,728,716)
-      .toSet.toList.sorted.map(_.toString)
-    def contains(a:String,b:String):Boolean =
-      b.isEmpty || !a.isEmpty && (if(a(0) == b(0)) contains(a.drop(1),b.drop(1))
-                                  else contains(a.drop(1),b))
-    def nextAnswer(s:String):Option[String] =
-      (0 until s.size).map(j => (s.take(j) ++ s.drop(j + 1)).mkString)
-        .find(s => keylog.forall(key => contains(s,key)))
-    def iterate(guess:String):String =
-      nextAnswer(guess) match {
-        case None => guess
-        case Some(next) => iterate(next)
-      }
-    iterate(keylog.mkString)
-  }
+  val keylog = List(319, 680, 180, 690, 129, 620, 762, 689, 762, 318, 368, 710, 720, 710, 629, 168, 160,
+                    689, 716, 731, 736, 729, 316, 729, 729, 710, 769, 290, 719, 680, 318, 389, 162, 289,
+                    162, 718, 729, 319, 790, 680, 890, 362, 319, 760, 316, 729, 380, 319, 728, 716)
+    .toSet.toList.sorted.map(_.toString)
+  def contains(a: String, b: String): Boolean =
+    b.isEmpty || !a.isEmpty && (if(a(0) == b(0)) contains(a.drop(1), b.drop(1))
+                                else contains(a.drop(1), b))
+  def nextAnswer(s: String): Option[String] =
+    (0 until s.size).map(j => (s.take(j) ++ s.drop(j + 1)).mkString)
+      .find(s => keylog.forall(key => contains(s, key)))
+  def iterate(guess: String): String =
+    nextAnswer(guess) match {
+      case None => guess
+      case Some(next) => iterate(next)
+    }
+  def solve = iterate(keylog.mkString)
 }
