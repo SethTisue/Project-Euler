@@ -8,18 +8,18 @@ package net.tisue.euler
 // out the math.
 
 class Problem102 extends Problem(102, "228") {
+  def check(x1: Double, y1: Double, x2: Double, y2: Double, x3: Double, y3: Double) = {
+    val q = (((x2 - x3) * y2) - ((y2 - y3) * x2)) /
+            (((y3 - y2) * x1) - ((x3 - x2) * y1))
+    q < 0 || q > 1
+  }
   def solve = {
-    def check(x1:Double,y1:Double,x2:Double,y2:Double,x3:Double,y3:Double) = {
-      val q = (((x2 - x3) * y2) - ((y2 - y3) * x2)) /
-              (((y3 - y2) * x1) - ((x3 - x2) * y1))
-      q < 0 || q > 1
-    }
     io.Source.fromFile("dat/102.txt").getLines
       .map(_.trim.split(",").toList.map(_.toInt))
-      .filter{case Seq(x1,y1,x2,y2,x3,y3) =>
-                check(x1,y1,x2,y2,x3,y3) &&
-                check(x2,y2,x1,y1,x3,y3) &&
-                check(x3,y3,x1,y1,x2,y2)}
+      .filter{case Seq(x1, y1, x2, y2, x3, y3) =>
+                check(x1, y1, x2, y2, x3, y3) &&
+                check(x2, y2, x1, y1, x3, y3) &&
+                check(x3, y3, x1, y1, x2, y2)}
       .toList.size  // seems like iterator ought to have its own size or length method...
-    }
+  }
 }
