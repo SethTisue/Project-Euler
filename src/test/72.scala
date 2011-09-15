@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Primes._
 
 // How many elements would be contained in the set of reduced proper fractions with denominator <=

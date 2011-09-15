@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // Find the greatest product of five consecutive digits in this 1000-digit number.
 

@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // Some positive integers n have the property that the sum [ n + reverse(n) ] consists entirely of
 // odd (decimal) digits. For instance, 36 + 63 = 99 and 409 + 904 = 1313. We will call such numbers

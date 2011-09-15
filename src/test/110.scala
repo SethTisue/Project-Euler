@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Primes._
 
 // Like problem 108, but we have to be smarter.

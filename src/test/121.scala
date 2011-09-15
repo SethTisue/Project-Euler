@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 class Problem121 extends Problem(121, "2269") {
   // the inputs are how many discs of each color I have drawn so far

@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Primes._
 
 // What is the first triangle number to have over five hundred divisors?

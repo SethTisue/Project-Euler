@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // A number whose proper divisors when summed exceed the number is
 // called abundant.  Find the sum of all the positive integers which

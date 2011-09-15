@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Primes._
 
 // The radical of n, rad(n), is the product of distinct prime factors of n. For example, 504 = 2^3 x

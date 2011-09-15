@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // Find the sum of the digits in the number 100!.
 

@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // For the first 100 natural numbers, find the total of the digital sums of the first 100
 // decimal digits for all the irrational square roots.

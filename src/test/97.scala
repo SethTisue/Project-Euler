@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // Find the last ten digits of 28433 x 2 ^ 7830457 + 1.
 

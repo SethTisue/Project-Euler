@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // There are a lot of different ways you can solve this.
 // Cramer's Rule is one, Pascal's triangle is another.

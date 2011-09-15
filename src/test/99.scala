@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // Using a 22K text file containing one thousand lines with a base/exponent pair on each line,
 // determine which line number has the greatest numerical value.

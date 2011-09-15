@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Primes._
 import annotation.tailrec
 

@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Memo.memoize
 
 // How many numbers below a googol (10^100) are not bouncy?

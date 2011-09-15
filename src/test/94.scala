@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // We shall define an almost equilateral triangle to be a triangle for which two sides are equal and
 // the third differs by no more than one unit.  The almost equilateral triangle 5-5-6 has an area of

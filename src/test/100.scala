@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // If a box contains fifteen blue discs and six red discs and two discs are taken at random the
 // probability of taking two blue discs is (15/21)(14/20) = 1/2.  The next such arrangement

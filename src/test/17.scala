@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // If the numbers from 1 to 1000 inclusive is written out in words, how many letters are used?
 

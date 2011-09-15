@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // All square roots are periodic when written as continued fractions.
 // Exactly four continued fractions, for N <= 13, have an odd period.

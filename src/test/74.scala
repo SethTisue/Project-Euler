@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Memo.memoize
 
 // The number 145 is well known for the property that the sum of the factorial of its digits is

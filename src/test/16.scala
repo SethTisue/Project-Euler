@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // What is the sum of the digits of the number 2^1000?
 

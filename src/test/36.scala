@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // Find the sum of all numbers, less than one million, which are
 // palindromic in base 10 and base 2 (example: 585 = 1001001001).

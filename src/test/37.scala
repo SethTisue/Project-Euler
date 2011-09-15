@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Primes._
 
 // Find the sum of the only eleven primes that are both truncatable from left to right and right to

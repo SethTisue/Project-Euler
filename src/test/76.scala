@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // It is possible to write five as a sum in exactly six different ways:
 // 4 + 1

@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // The input file contains one thousand numbers written in valid, but not necessarily minimal, Roman
 // numerals.  Find the number of characters saved by writing each of these in their minimal form.

@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // Sum the even-valued terms in the Fibonacci sequence which do not exceed one million.
 

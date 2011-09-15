@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Memo.memoize
 
 // hardly any different from 114 & 115

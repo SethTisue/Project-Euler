@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // Consider quadratic Diophantine equations of the form:
 //   x^2 - Dy^2 = 1

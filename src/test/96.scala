@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // The input file contains fifty different Sudoku puzzles ranging in difficulty, but all with unique
 // solutions.  By solving all fifty puzzles find the sum of the 3-digit numbers found in the top

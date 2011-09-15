@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Primes._
 
 // How many numbers below fifty million can be expressed as the sum of a prime square, prime cube, and

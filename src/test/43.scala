@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Primes._
 
 // The number, 1406357289, is a 0 to 9 pandigital number because it is

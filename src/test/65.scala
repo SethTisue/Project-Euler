@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // The important mathematical constant, e, equals
 // [2; 1,2,1, 1,4,1, 1,6,1 , ... , 1,2k,1, ...].

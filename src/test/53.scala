@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // How many values of nCr, for 1 <= n <= 100, are greater than one million?
 

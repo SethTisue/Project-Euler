@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // If no digit is exceeded by the digit to its left it is called an increasing number; for example,
 // 134468.  Similarly if no digit is exceeded by the digit to its right it is called a decreasing

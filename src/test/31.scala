@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // In England there are eight coins in general circulation:
 //   1p, 2p, 5p, 10p, 20p, 50p, 1 pound (100p), 2 pound (200p)

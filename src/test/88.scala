@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Primes._
 
 // A natural number, N, that can be written as the sum and product of a given set of at least two

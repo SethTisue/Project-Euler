@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Primes._
 
 // We shall say that an n-digit number is pandigital if it makes use
@@ -12,5 +11,5 @@ import Primes._
 
 class Problem41 extends Problem(41, "7652413") {
   def solve =
-    (1 to 7).permutations.map(_.mkString.toInt).filter(isPrime(_)).max
+    (1 to 7).permutations.map(_.mkString.toInt).filter(isPrime).max
 }

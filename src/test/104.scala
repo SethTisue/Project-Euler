@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // Given that F(k) is the first Fibonacci number for which the first nine digits AND the last nine
 // digits are 1-9 pandigital, find k.

@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Primes._
 
 class Problem123 extends Problem(123, "21035") {

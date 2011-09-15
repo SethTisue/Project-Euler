@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 class Problem119 extends Problem(119, "248155780267521") {
   def isSolution(n: BigInt) = {

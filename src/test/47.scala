@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Primes._
 
 // The first two consecutive numbers to have two distinct prime factors are:

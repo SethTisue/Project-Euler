@@ -1,7 +1,7 @@
-package net.tisue
+package net.tisue.euler
 import annotation.tailrec
 
-package object euler {
+object Euler {
 
   // measure how long something takes to compute
   def time[T](fn: => T): (T, Double) = {

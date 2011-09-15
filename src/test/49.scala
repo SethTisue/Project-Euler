@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Primes._
 
 // The arithmetic sequence, 1487, 4817, 8147, in which each of the terms increases by 3330, is

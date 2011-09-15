@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Primes._
 
 // What is the smallest odd composite that cannot be written as the sum of a prime and twice a

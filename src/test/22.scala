@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // What is the total of all the name scores in the file?
 

@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // Find the maximum sum travelling from the top of the triangle to the base.
 

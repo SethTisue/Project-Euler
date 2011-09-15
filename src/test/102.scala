@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // Using a text file containing the coordinates of 1000 "random" triangles, find the number of
 // triangles for which the interior contains the origin.

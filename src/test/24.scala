@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // What is the millionth lexicographic permutation of the digits 0 through 9?
 

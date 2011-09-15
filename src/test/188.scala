@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // http://en.wikipedia.org/wiki/Modular_exponentiation#Right-to-left_binary_method
 

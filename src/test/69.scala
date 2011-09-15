@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Primes._
 
 // Euler's Totient function phi(n) is used to determine the number of numbers less than n which are

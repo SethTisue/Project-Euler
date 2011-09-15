@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // Find the minimal path sum in matrix.txt (from problem 81) by starting in any cell in the left
 // column and finishing in any cell in the right column, and only moving up, down, and right.

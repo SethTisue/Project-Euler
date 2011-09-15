@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // The ordered set 8128, 2882, 8281, has three interesting properties.  The set is cyclic, in that
 // the last two digits of each number is the first two digits of the next number (including the last

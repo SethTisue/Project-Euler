@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // The palindromic number 595 is interesting because it can be written as the sum of consecutive
 // squares: 6^2 + 7^2 + 8^2 + 9^2 + 10^2 + 11^2 + 12^2.

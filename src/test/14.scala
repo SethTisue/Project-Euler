@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import annotation.tailrec
 
 // This is actually faster if you don't memoize.

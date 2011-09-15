@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // Considering natural numbers of the form a ^ b where a, b < 100, what is the maximum digital sum?
 

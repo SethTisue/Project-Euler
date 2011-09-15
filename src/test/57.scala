@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // It is possible to show that the square root of two can be expressed as an infinite continued
 // fraction.  sqrt 2 = 1 + 1/(2 + 1/(2 + 1/(2 + ... ))) = 1.414213...  In the first one-thousand

@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // What is the greatest product of four numbers in any direction (up, down, left, right, or
 // diagonally) in the 20x20 grid?

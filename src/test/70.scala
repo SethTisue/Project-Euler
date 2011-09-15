@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Primes._
 
 // Find the value of n, 1 < n < 10^7, for which the totient phi(n) is a permutation of n and the ratio

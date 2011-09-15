@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // How many Lychrel numbers are there below ten thousand?  (You may assume 50 steps is adequate to
 // test.)

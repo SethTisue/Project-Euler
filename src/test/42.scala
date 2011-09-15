@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // The first ten triangle numbers are: 1, 3, 6, 10, 15, 21, 28, 36, 45, 55, ...
 // By converting each letter in a word to a number corresponding to

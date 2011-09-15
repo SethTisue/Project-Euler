@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // Find the last ten digits of the series, 1^1 + 2^2 + 3^3 + ... + 1000^1000.
 

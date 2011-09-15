@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // The input file contains one thousand random poker hands dealt to two players.  How many hands
 // does player one win?

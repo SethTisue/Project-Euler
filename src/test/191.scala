@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Memo.memoize
 
 class Problem191 extends Problem(191, "1918080160") {

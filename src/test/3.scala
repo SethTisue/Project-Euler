@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Primes._
 
 // What is the largest prime factor of the number 600851475143 ?

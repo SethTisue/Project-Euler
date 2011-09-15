@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Primes._
 
 // By replacing the 1st digit of *57, it turns out that six of the possible values: 157, 257, 457,

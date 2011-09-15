@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // Evaluate the sum of all the amicable numbers under 10000.
 // (In a pair of amicable numbers, each number is equal to the sum

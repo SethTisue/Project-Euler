@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // I wrote brute force code, then looked at the answer for low numbers and the pattern was obvious
 // and easy to convert to a closed form solution.  But I don't know why it works.

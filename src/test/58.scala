@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Primes._
 
 // Starting with 1 and spiralling anticlockwise in the following way, a square spiral with side

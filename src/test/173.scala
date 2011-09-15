@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 class Problem173 extends Problem(173, "1572729") {
   def solve = {

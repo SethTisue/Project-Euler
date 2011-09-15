@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // Find the sum of all numbers equal to the sum of the factorial of their digits (example: 145).
 

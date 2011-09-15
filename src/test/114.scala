@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Memo.memoize
 
 // I solved this from first principles, but after solving it, I looked it up

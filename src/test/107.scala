@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // Using a 6K text file containing a network with forty vertices, and given in matrix form, find the
 // maximum saving which can be achieved by removing redundant edges whilst ensuring that the network

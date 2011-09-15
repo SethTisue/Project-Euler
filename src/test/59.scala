@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // To encrypt a text file, convert the bytes to ASCII, then XOR each byte with a given value, taken
 // from a secret key.  If the key is shorter than the message, the key is repeated cyclically

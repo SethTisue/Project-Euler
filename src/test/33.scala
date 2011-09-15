@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // The fraction 49/98 is a curious fraction, as an inexperienced
 // mathematician in attempting to simplify it may incorrectly believe

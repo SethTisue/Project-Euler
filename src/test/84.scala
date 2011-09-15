@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 
 // In a game of Monopoly, statistically it can be shown that the three most popular squares, in
 // descending order, are JAIL, E3, and GO (squares 10, 24, 0 = 102400). If, instead of using two

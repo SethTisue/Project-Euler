@@ -1,5 +1,4 @@
 package net.tisue.euler
-import Euler._
 import Memo.memoize
 
 // same code as 114. still runs plenty fast (0.3 seconds) even with increased problem size.
