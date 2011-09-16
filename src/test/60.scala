@@ -14,16 +14,19 @@ import Primes._
 // to search the rest of the space as my code does.
 
 class Problem60 extends Problem(60, "26033") {
-  def solve = {
-    def concat(n1:Int,n2:Int) = (n1.toString + n2.toString).toInt
-    def isPair(n1:Int,n2:Int) = isPrime(concat(n1,n2)) && isPrime(concat(n2,n1))
-    def isSolution(n:Int,ns:List[Int]) = ns.forall(isPair(n,_)) // assumes ns was already checked
-    def solutions(n:Int,primes:List[Int]):List[List[Int]] =
-      if(n == 1) primes.map(List(_))
-      else for{p <- primes
-               filtered = primes.dropWhile(_ <= p).filter(isPair(p,_))
-               soln <- solutions(n - 1,filtered)}
-           yield p::soln
-    solutions(5,primesBelow(10000)).minBy(_.sum).sum
-  }
+  def concat(n1: Int, n2: Int) =
+    (n1.toString + n2.toString).toInt
+  def isPair(n1: Int, n2: Int) =
+    isPrime(concat(n1, n2)) && isPrime(concat(n2, n1))
+  def isSolution(n: Int, ns: List[Int]) =
+    ns.forall(isPair(n, _)) // assumes ns was already checked
+  def solutions(n: Int, primes: List[Int]): List[List[Int]] =
+    if(n == 1)
+      primes.map(List(_))
+    else for{p <- primes
+             filtered = primes.dropWhile(_ <= p).filter(isPair(p, _))
+             soln <- solutions(n - 1, filtered)}
+         yield p :: soln
+  def solve =
+    solutions(5, primesBelow(10000)).minBy(_.sum).sum
 }

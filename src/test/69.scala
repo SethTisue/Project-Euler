@@ -9,5 +9,8 @@ import Primes._
 // (People on the forum seem confident the algorithm is guaranteed to work.)
 
 class Problem69 extends Problem(69, "510510") {
-  def solve = primes.scanLeft(1)(_ * _).takeWhile(_ <= 1000000).last
+  def solve =
+    primes.scanLeft(1)(_ * _)
+      .takeWhile(_ <= 1000000)
+      .last
 }

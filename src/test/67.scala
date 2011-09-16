@@ -8,10 +8,13 @@ package net.tisue.euler
 // triangle).
 
 class Problem67 extends Problem(67, "7273") {
-  def solve = {
-     val triangle = io.Source.fromFile("dat/67.txt").mkString.trim.split("\n").toList
+  val triangle =
+    io.Source.fromFile("dat/67.txt")
+      .mkString.trim
+      .split("\n").toList
       .map(_.split(" ").toList.map(_.toInt))
-    def recurse(t: List[List[Int]]): Int = t match {
+  def recurse(t: List[List[Int]]): Int =
+    t match {
       case Seq(Seq(n)) => n
       // yuck. this is really cryptic - ST 11/13/09
       case r0::r1::rest =>
@@ -19,6 +22,6 @@ class Problem67 extends Problem(67, "7273") {
         val rr1 = (r1, rr0).zipped.map(_ + _)
         recurse(rr1 :: rest)
     }
+  def solve =
     recurse(triangle.reverse)
-  }
 }

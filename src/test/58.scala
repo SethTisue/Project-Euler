@@ -16,18 +16,17 @@ import Primes._
 // along both diagonals first falls below 10%?
 
 class Problem58 extends Problem(58, "26241") {
-  def solve = {
-    def next(n: Int, primeCount: Int) =
-      (n + 2,
-       primeCount + List(n * n + n + 1,
-                         n * n + n * 2 + 2,
-                         n * n + n * 3 + 3)
-                    .count(isPrime))
-    def isSolution(n: Int, primeCount: Int) =
-      primeCount.toDouble / (2 * n - 1) < 0.10
+  def next(n: Int, primeCount: Int) =
+    (n + 2,
+     primeCount + List(n * n + n + 1,
+                       n * n + n * 2 + 2,
+                       n * n + n * 3 + 3)
+                  .count(isPrime))
+  def isSolution(n: Int, primeCount: Int) =
+    primeCount.toDouble / (2 * n - 1) < 0.10
+  def solve =
     Stream.iterate((1,0))((next _).tupled)
       .tail
       .find((isSolution _).tupled)
       .get._1
-  }
 }
