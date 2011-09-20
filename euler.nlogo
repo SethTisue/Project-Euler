@@ -544,7 +544,10 @@ to-report recurse18 [total triangle]
                             map butfirst butfirst triangle
 end
 
-;;;
+;; Problem 19: My Scala solution uses the Java date classes.
+;; Accessing them from NetLogo would require writing an extension,
+;; and doing without them would require writing a bunch of (in my
+;; opinion) uninteresting code.
 
 to problem20
   let result bigfact "100"
