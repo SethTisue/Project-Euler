@@ -598,6 +598,21 @@ end
 
 ;;;
 
+to problem21
+  output-print sum filter is-amicable? bf bf n-values 10000 [?]
+end
+
+to-report is-amicable? [n]
+  let ds divisor-sum n
+  report n != ds and n = divisor-sum(ds)
+end
+
+to-report divisor-sum [n]
+  report sum filter [n mod ? = 0] n-values floor (n / 2) [? + 1]
+end
+
+;;;
+
 to problem25
   let f0 "1"
   let f1 "1"
@@ -1279,7 +1294,7 @@ Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 
 @#$#@#$#@
-NetLogo 5.0beta4
+NetLogo 5.0beta5
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
