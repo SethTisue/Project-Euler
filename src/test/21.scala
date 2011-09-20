@@ -14,12 +14,13 @@ package net.tisue.euler
 // below is correct in general.
 
 class Problem21 extends Problem(21, "31626") {
-  def solve = {
-    val divisorSums = Stream.from(0).map(n => (1 to n / 2).filter(n % _ == 0).sum)
-    (2 until 10000).flatMap{a => val b = divisorSums(a)
-                                 if(a > b && a == divisorSums(b))
-                                   List(b,a)
+  val divisorSums =
+    Stream.from(0).map(n =>
+      (1 to n / 2).filter(n % _ == 0).sum)
+  val solutions =
+    (2 until 10000).flatMap{n => val sum = divisorSums(n)
+                                 if(n > sum && n == divisorSums(sum))
+                                   List(sum, n)
                                  else Nil}
-                   .sum
-  }
+  def solve = solutions.sum
 }
