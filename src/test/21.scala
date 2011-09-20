@@ -11,12 +11,11 @@ package net.tisue.euler
 // general.
 
 class Problem21 extends Problem(21, "31626") {
-  val divisorSums =
-    Stream.from(0).map(n =>
-      (1 to n / 2).filter(n % _ == 0).sum)
+  def divisorSum(n: Int) =
+    (1 to n / 2).filter(n % _ == 0).sum
   val solutions =
-    (2 until 10000).flatMap{n => val sum = divisorSums(n)
-                                 if(n > sum && n == divisorSums(sum))
+    (2 until 10000).flatMap{n => val sum = divisorSum(n)
+                                 if(n > sum && n == divisorSum(sum))
                                    List(sum, n)
                                  else Nil}
   def solve = solutions.sum
