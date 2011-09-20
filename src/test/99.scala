@@ -4,10 +4,14 @@ package net.tisue.euler
 // determine which line number has the greatest numerical value.
 
 class Problem99 extends Problem(99, "709") {
-  def solve = {
-     val pairs = io.Source.fromFile("dat/99.txt").mkString.split("\n")
+  val pairs =
+    io.Source.fromFile("dat/99.txt").getLines
       .map(_.split(",").map(_.toInt))
-    def magnitude(index:Int) = pairs(index) match { case Array(a,b) => math.log(a) * b }
-    1 + (0 until pairs.size).maxBy(magnitude)
-  }
+      .toIndexedSeq
+  def magnitude(index: Int) =
+    pairs(index) match {
+      case Array(a, b) => math.log(a) * b
+    }
+  def solve =
+    1 + pairs.indices.maxBy(magnitude)
 }
