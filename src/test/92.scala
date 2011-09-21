@@ -13,10 +13,10 @@ package net.tisue.euler
 // combination of digits once.
 
 class Problem92 extends Problem(92, "8581146") {
-  val memory = Array.fill(1000)(false)
   def next(n: Int) = n.digits.map(d => d * d).sum
-  def chain(n: Int): Stream[Int] = n #:: chain(next(n))
+  def chain(n: Int) = Stream.iterate(n)(next)
   def solve = {
+    val memory = Array.fill(1000)(false)
     for(n <- 1 until 1000)
       memory(n) = chain(n).find(n => n == 1 || n == 89).get == 89
     (1 until 10000000).count(n => memory(next(n)))
