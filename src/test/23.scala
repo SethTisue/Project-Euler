@@ -12,6 +12,8 @@ class Problem23 extends Problem(23, "4179871") {
                     else List(f, i / f))
       .sum + 1
   def answer(limit: Int) = {
+    // It's easy to do without the mutability here, but at the expense of performance
+    // (at least, I couldn't find a version that didn't increase the runtime by 15x).
     val isSumOfTwoAbundants = Array.fill(limit)(false)
     val abundants = (2 until limit).filter(n => n < divisorSum(n))
     for {
