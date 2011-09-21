@@ -9,13 +9,11 @@ class Problem23 extends Problem(23, "4179871") {
     (2 to math.sqrt(i).toInt)
       .filter(i % _ == 0)
       .flatMap(f => if(f * f == i) List(f)
-                    else List(f,i / f))
+                    else List(f, i / f))
       .sum + 1
   def answer(limit: Int) = {
     val isSumOfTwoAbundants = Array.fill(limit)(false)
-    // without ".toList" in the next line, the performance goes
-    // down the drain (solution takes minutes instead of seconds)
-    val abundants = (2 until limit).filter(n => n < divisorSum(n)).toList
+    val abundants = (2 until limit).filter(n => n < divisorSum(n))
     for {
       a <- abundants
       b <- abundants
