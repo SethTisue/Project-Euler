@@ -5,7 +5,7 @@ package net.tisue.euler
 // 12 square units.  Find the sum of the perimeters of all almost equilateral triangles with
 // integral side lengths and area and whose perimeters do not exceed one billion (1,000,000,000).
 
-// This is a dumb brute force solution but runs plenty fast enough (4 seconds).
+// This is a dumb brute force solution but runs plenty fast enough (5 seconds).
 
 class Problem94 extends Problem(94, "518408346") {
   def isSquare(n: Long) = {
@@ -13,14 +13,12 @@ class Problem94 extends Problem(94, "518408346") {
     r * r == n
   }
   def solve = {
-    var n = 3L
     var result = 0L
-    while(6 * n <= 1000000000L) {
+    for(n <- 3L to (1000000000L / 6)) {
       if(isSquare(3 * n * n - 4 * n + 1))
         result += 6 * n - 2
       if(isSquare(3 * n * n + 4 * n + 1))
         result += 6 * n + 2
-      n += 1
     }
     result
   }
