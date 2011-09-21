@@ -1,34 +1,30 @@
 package net.tisue.euler
 
-// [...]
-
 class Problem98 extends Problem(98, "18769") {
-  def solve = {
-     val words =
-      io.Source.fromFile("dat/98.txt").mkString.trim.split(",")
+  val words =
+    io.Source.fromFile("dat/98.txt").mkString.trim.split(",")
       .map(_.drop(1).dropRight(1).mkString)
-    val anagrams: Iterable[List[String]] =
-      words.groupBy(_.sorted.mkString).values.map(_.toList).filter(_.size > 1)
-    val squares = Stream.from(1).map(n => n * n)
-    def squaresOfLength(n: Int) =
-      squares.map(_.toString).dropWhile(_.size < n).takeWhile(_.size == n).map(_.toInt)
-    // e.g. scramble(1296, "CARE", "RACE") => 9216
-    def scramble(n: Int, word1: String, word2: String): Option[Int] = {
-      val substitutions = Map() ++ (word1.view zip n.toString.view)
-      // "neither may a different letter have the same digital value as another letter"
-      if(substitutions.size == substitutions.values.toSet.size)
-        Some(word2.map(substitutions(_)).mkString.toInt)
-      else None
-    }
-    // slight loss of generality here: assume there are no anagram triples in the input. in the actual
-    // input there is one triple but the words are short so we can ignore it.
-    val solutions =
-      for{List(word1, word2) <- anagrams ++ anagrams.map(_.reverse)
-          squares = squaresOfLength(word1.size).toSet
-          s <- squares
-          scrambled <- scramble(s, word1, word2)
-          if s != scrambled && squares.contains(scrambled)}
-      yield s
-    solutions.max
+  val anagrams: Iterable[List[String]] =
+    words.groupBy(_.sorted.mkString).values.map(_.toList).filter(_.size > 1)
+  val squares = Stream.from(1).map(n => n * n)
+  def squaresOfLength(n: Int) =
+    squares.map(_.toString).dropWhile(_.size < n).takeWhile(_.size == n).map(_.toInt)
+  // e.g. scramble(1296, "CARE", "RACE") => 9216
+  def scramble(n: Int, word1: String, word2: String): Option[Int] = {
+    val substitutions = Map() ++ (word1.view zip n.toString.view)
+    // "neither may a different letter have the same digital value as another letter"
+    if(substitutions.size == substitutions.values.toSet.size)
+      Some(word2.map(substitutions(_)).mkString.toInt)
+    else None
   }
+  // slight loss of generality here: assume there are no anagram triples in the input. in the actual
+  // input there is one triple but the words are short so we can ignore it.
+  val solutions =
+    for{List(word1, word2) <- anagrams ++ anagrams.map(_.reverse)
+        squares = squaresOfLength(word1.size).toSet
+        s <- squares
+        scrambled <- scramble(s, word1, word2)
+        if s != scrambled && squares.contains(scrambled)}
+    yield s
+  def solve = solutions.max
 }
