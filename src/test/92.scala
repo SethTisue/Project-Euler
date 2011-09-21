@@ -9,16 +9,16 @@ package net.tisue.euler
 // amazing is that EVERY starting number will eventually arrive at 1 or 89.
 // How many starting numbers below ten million will arrive at 89?
 
-// 9 seconds on my iMac.  Making it faster would involve being smart about only testing each
+// 8 seconds on my iMac.  Making it faster would involve being smart about only testing each
 // combination of digits once.
 
 class Problem92 extends Problem(92, "8581146") {
   def next(n: Int) = n.digits.map(d => d * d).sum
   def chain(n: Int) = Stream.iterate(n)(next)
+  def stuck(n: Int) = n == 1 || n == 89
   def solve = {
-    val memory = Array.fill(1000)(false)
-    for(n <- 1 until 1000)
-      memory(n) = chain(n).find(n => n == 1 || n == 89).get == 89
+    val memory = IndexedSeq.tabulate(1000)(n =>
+      n > 0 && chain(n).find(stuck).get == 89)
     (1 until 10000000).count(n => memory(next(n)))
   }
 }
