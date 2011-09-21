@@ -613,6 +613,29 @@ end
 
 ;;;
 
+to problem22
+  file-open "dat/22.txt"
+  let words sort
+             read-from-string
+               reduce word
+                 fput "[" lput "]"
+                   map [ifelse-value (? = ",") [" "] [?]]
+                     string-to-list file-read-line
+  file-close
+  output-print sum map [score item ? words * (? + 1)] n-values length words [?]
+end
+
+to-report string-to-list [s]
+  report map [item ? s] n-values (length s) [?]
+end
+
+to-report score [s]
+  let alphabet "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  report sum map [1 + position ? alphabet] string-to-list s
+end
+
+;;;
+
 to problem25
   let f0 "1"
   let f1 "1"
