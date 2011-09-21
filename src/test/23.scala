@@ -16,8 +16,7 @@ class Problem23 extends Problem(23, "4179871") {
     val abundants = (2 until limit).filter(n => n < divisorSum(n))
     for {
       a <- abundants
-      b <- abundants
-      if a + b < limit
+      b <- abundants.takeWhile(a + _ < limit)
     } isSumOfTwoAbundants(a + b) = true
     (1 until limit).filter(!isSumOfTwoAbundants(_)).sum
   }
