@@ -4,18 +4,20 @@ package net.tisue.euler
 // What is the largest square number formed by any member of such a pair?
 
 class Problem98 extends Problem(98, "18769") {
-  val words =
+  val words: Iterable[String] =
     io.Source.fromFile("dat/98.txt").mkString.trim.split(",")
       .map(_.drop(1).dropRight(1).mkString)
   val anagrams: Iterable[List[String]] =
     words.groupBy(_.sorted.mkString).values.map(_.toList).filter(_.size > 1)
   val squares = Stream.from(1).map(n => n * n)
   def squaresOfLength(n: Int) =
-    squares.map(_.toString).dropWhile(_.size < n).takeWhile(_.size == n).map(_.toInt)
+    squares
+      .dropWhile(_.toString.size < n)
+      .takeWhile(_.toString.size == n)
   // e.g. scramble(1296, "CARE", "RACE") => 9216
   def scramble(n: Int, word1: String, word2: String): Option[Int] = {
-    val substitutions = Map() ++ (word1.view zip n.toString.view)
-    // "neither may a different letter have the same digital value as another letter"
+    val substitutions = (word1 zip n.toString).toMap
+    // "a letter [may not] have the same digital value as another letter"
     if(substitutions.size == substitutions.values.toSet.size)
       Some(word2.map(substitutions(_)).mkString.toInt)
     else None
