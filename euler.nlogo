@@ -636,6 +636,25 @@ end
 
 ;;;
 
+to problem23
+  let limit 28124
+  let is-sum-of-two n-values limit [false]
+  let abundants filter [? < divisor-sum ?] open-range 2 limit
+  foreach abundants [
+    let a1 ?
+    foreach filter [a1 + ? < limit] abundants [
+      set is-sum-of-two replace-item (a1 + ?) is-sum-of-two true
+    ]
+  ]
+  output-print sum filter [not item ? is-sum-of-two] open-range 1 limit
+end
+
+to-report open-range [a b]
+  report n-values (b - a) [? + a]
+end
+
+;;;
+
 to problem25
   let f0 "1"
   let f1 "1"
@@ -650,9 +669,9 @@ to problem25
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-315
+423
 10
-630
+738
 46
 30
 0
@@ -984,9 +1003,9 @@ NIL
 
 BUTTON
 121
-254
+255
 221
-287
+288
 NIL
 problem20
 NIL
@@ -1000,10 +1019,10 @@ NIL
 1
 
 BUTTON
-120
-290
-220
-323
+231
+10
+331
+43
 NIL
 problem25
 NIL
@@ -1017,11 +1036,62 @@ NIL
 1
 
 OUTPUT
-279
+387
 63
-616
+724
 392
 12
+
+BUTTON
+121
+290
+221
+323
+NIL
+problem21
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+BUTTON
+121
+326
+221
+359
+NIL
+problem22\n
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+BUTTON
+121
+361
+221
+394
+NIL
+problem23
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -1317,7 +1387,7 @@ Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 
 @#$#@#$#@
-NetLogo 5.0beta5
+NetLogo 5.0RC1
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
