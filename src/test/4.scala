@@ -34,13 +34,13 @@ class Problem4f extends Problem(4, "906609") with Problem4Helpers {
     def loop1(a: Int, winner: Int): Int =
       if(a < 100 || a * a <= winner) winner
       else {
-        @tailrec def loop2(p:Int):Int =
-          if(p <= winner) loop1(a - 1,winner)
-          else if(isPalindrome(p)) loop1(a - 1,p)
+        @tailrec def loop2(p: Int): Int =
+          if(p <= winner) loop1(a - 1, winner)
+          else if(isPalindrome(p)) loop1(a - 1, p)
           else loop2(p - a)
         loop2(a * a)
       }
-    loop1(999,0)
+    loop1(999, 0)
   }
 }
 
