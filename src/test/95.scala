@@ -9,7 +9,7 @@ import Memo.memoize
 
 class Problem95 extends Problem(95, "14316") {
   // mathworld.wolfram.com/DivisorFunction.html
-  def properDivisorSum(n:Int):Int =
+  def properDivisorSum(n: Int): Int =
     if(n == 1) 1
     else factors(n).group.map{fs => val factor = fs.head.toLong
                                     val exponent = fs.size
@@ -18,8 +18,8 @@ class Problem95 extends Problem(95, "14316") {
   val chain: Int => Stream[Int] = memoize(n =>
     n #:: chain(properDivisorSum(n)))
   // This part isn't very elegant. I'm not sure how to do better.
-  def cycle(ns:Stream[Int]):List[Int] = {
-    def recurse(ns:Stream[Int],seen:List[Int]):List[Int] =
+  def cycle(ns: Stream[Int]): List[Int] = {
+    def recurse(ns: Stream[Int],seen: List[Int]): List[Int] =
       ns match {
         case n #:: ns => if(seen.contains(n))
                            n :: seen.takeWhile(_ != n).reverse

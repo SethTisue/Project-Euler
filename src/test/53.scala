@@ -7,6 +7,6 @@ class Problem53 extends Problem(53, "4075") {
   def combinations(n: Int, r: Int) = fact(n) / (fact(r) * fact(n - r))
   def solve =
     (for{n <- 1 to 100; r <- 1 to n}
-     yield combinations(n,r))
+     yield combinations(n, r))
     .count(_ > 1000000)
 }

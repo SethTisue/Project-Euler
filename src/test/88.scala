@@ -22,24 +22,22 @@ import Primes._
 // assignment (stream = stream.dropWhile(...)).
 
 class Problem88 extends Problem(88, "7587457") {
-  def solve = {
-     val divisors = Stream.from(0).map(n => (2 to n).filter(n % _ == 0).toList)
-    def factorizations(n: Int) = {
-      def helper(n: Int, ceiling: Int): List[List[Int]] =
-        if(n == 1) List(Nil)
-        else
-          for{d <- divisors(n).takeWhile(_ <= ceiling)
-              f <- helper(n / d, d)}
-          yield d :: f
-      helper(n, n)
-    }
-    def getK(factors: List[Int]) = factors.size + factors.product - factors.sum
-    var stream = Stream.from(2).filter(!isPrime(_)).map(n => (n,factorizations(n)))
-    def solve(limit: Int) =
-      (for{k <- (2 to limit).toList
-           _ = (stream = stream.dropWhile(_._1 < k))
-           n = stream.find(_._2.exists(fs => getK(fs) == k)).get._1}
-       yield n).distinct.sum
-    solve(12000)
+  val divisors = Stream.from(0).map(n => (2 to n).filter(n % _ == 0).toList)
+  def factorizations(n: Int) = {
+    def helper(n: Int, ceiling: Int): List[List[Int]] =
+      if(n == 1) List(Nil)
+      else
+        for{d <- divisors(n).takeWhile(_ <= ceiling)
+            f <- helper(n / d, d)}
+        yield d :: f
+    helper(n, n)
   }
+  def getK(factors: List[Int]) = factors.size + factors.product - factors.sum
+  var stream = Stream.from(2).filter(!isPrime(_)).map(n => (n, factorizations(n)))
+  def solve(limit: Int) =
+    (for{k <- (2 to limit).toList
+         _ = (stream = stream.dropWhile(_._1 < k))
+         n = stream.find(_._2.exists(fs => getK(fs) == k)).get._1}
+     yield n).distinct.sum
+  def solve = solve(12000)
 }

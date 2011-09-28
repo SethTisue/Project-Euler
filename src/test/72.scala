@@ -15,12 +15,15 @@ import Primes._
 // but it might be useful if there are more problems later on this theme.
 
 class Problem72 extends Problem(72, "303963552391") {
-  def solve = {
-    def factors(n:Int):List[Int] =
-      if(isSievedPrime(n)) List(n)
-      else { val f = primes.find(n % _ == 0).get ; f :: factors(n / f) }
-    def totient(n:Int) = factors(n).toSet.foldLeft(n.toLong)((t,f) => t * (f - 1) / f)
-    def solve(limit:Int) = (2 to limit).map(totient).sum
-    solve(1000000)
-  }
+  def factors(n: Int): List[Int] =
+    if(isSievedPrime(n))
+      List(n)
+    else {
+      val f = primes.find(n % _ == 0).get
+      f :: factors(n / f)
+    }
+  def totient(n: Int) =
+    factors(n).distinct
+      .foldLeft(n.toLong)((t, f) => t * (f - 1) / f)
+  def solve = (2 to 1000000).map(totient).sum
 }
