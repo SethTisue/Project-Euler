@@ -7,18 +7,20 @@ import Primes._
 // 20 are squarefree. The sum of the distinct squarefree numbers in the first eight rows is 105.
 // Find the sum of the distinct squarefree numbers in the first 51 rows of Pascal's triangle.
 
-// To solve this, instead of using BigInt we represent numbers as lists of prime factors.
-// Once that crucial representational choice is made, we can be careless about performance
-// and still get a runtime of about 12 seconds.
+// To make this fast we represent a number as a Seq of prime factors.
 
 class Problem203 extends Problem(203, "34029210557338") {
-  def solve = {
-    def factorial(n: Int): List[Int] = if(n == 1) Nil else (2 to n).flatMap(factors).toList
-    def combinations(n: Int, r: Int) = factorial(n) diff (factorial(r) ++ factorial(n - r))
-    def row(n: Int) = (0 to n).map(combinations(n,_)).toList
-    def isSquareFree(ns: List[Int]) = ns.size == ns.toSet.size
-    def distincts(rowCount: Int) = (0 until rowCount).flatMap(row).toSet.filter(isSquareFree)
-    def answer(rowCount: Int) = distincts(rowCount).map(_.map(BigInt(_)).product).sum
-    answer(51)
-  }
+  def factorial(n: Int) =
+    (2 to n).flatMap(factors)
+  def combinations(n: Int, r: Int) =
+    factorial(n) diff (factorial(r) ++ factorial(n - r))
+  def row(n: Int) =
+    (0 to n).map(combinations(n, _))
+  def isSquareFree(ns: Seq[Int]) =
+    ns.size == ns.distinct.size
+  def distincts(rowCount: Int) =
+    (0 until rowCount).flatMap(row).toSet.filter(isSquareFree)
+  def answer(rowCount: Int) =
+    distincts(rowCount).map(_.map(BigInt(_)).product).sum
+  def solve = answer(51)
 }
