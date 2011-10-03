@@ -11,7 +11,7 @@ class Problem54 extends Problem(54, solution = "376") {
   type Hand = List[Card]
 
   // for example if hand is 9-9-8-8-7 (in any order), result is List((2, 9), (2, 8), (1, 7)) (so we
-  // can use Ordering[Iterable[(Int,Int)]] to compare two hands)
+  // can use Ordering[Iterable[(Int, Int)]] to compare two hands)
   def groups(hand: Hand): Seq[(Int, Int)] =
     hand.groupBy(_.rank)
         .mapValues(_.size)
@@ -56,12 +56,12 @@ class Problem54 extends Problem(54, solution = "376") {
 
   def beats(hand1: Hand, hand2: Hand): Boolean = {
     def score(hand: Hand) = (handType(hand), groups(hand))
-    val x = Ordering[(Int,Iterable[(Int, Int)])]; import x._
+    val x = Ordering[(Int, Iterable[(Int, Int)])]; import x._
     score(hand1) > score(hand2)
   }
 
   def solve = {
-    val input: List[(Hand,Hand)] = {
+    val input: List[(Hand, Hand)] = {
       def readCard(s: String) = Card("23456789TJQKA".indexOf(s(0)), s(1))
       for{line <- io.Source.fromFile("dat/54.txt").getLines.toList
           cards = line.split(" ").toList.map(readCard)}
