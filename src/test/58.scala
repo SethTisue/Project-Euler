@@ -25,7 +25,7 @@ class Problem58 extends Problem(58, "26241") {
   def isSolution(n: Int, primeCount: Int) =
     primeCount.toDouble / (2 * n - 1) < 0.10
   def solve =
-    Stream.iterate((1,0))((next _).tupled)
+    Stream.iterate((1, 0))((next _).tupled)
       .tail
       .find((isSolution _).tupled)
       .get._1

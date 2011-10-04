@@ -655,6 +655,28 @@ end
 
 ;;;
 
+to problem24
+  report nth-permutation 999999 n-values 10 [?]
+end
+
+to-report nth-permutation [n xs]
+  report item n sort map [reduce word ?] permutations xs
+end
+
+to-report permutations [xs]
+  report ifelse-value (empty? xs)
+    [ [[]] ]
+    [ reduce sentence map [insert-everywhere first xs ?] permutations butfirst xs ]
+end
+
+to-report insert-everywhere [x xs]
+  report ifelse-value (empty? xs)
+    [ (list (list x)) ]
+    [ fput (fput x xs) map [fput first xs ?] insert-everywhere x butfirst xs ]
+end
+
+;;;
+
 to problem25
   let f0 "1"
   let f1 "1"
@@ -1019,10 +1041,10 @@ NIL
 1
 
 BUTTON
-231
-10
-331
-43
+230
+45
+330
+78
 NIL
 problem25
 NIL
@@ -1083,6 +1105,23 @@ BUTTON
 394
 NIL
 problem23
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+BUTTON
+230
+10
+330
+43
+NIL
+problem24\n
 NIL
 1
 T
@@ -1405,5 +1444,5 @@ Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 
 @#$#@#$#@
-0
+1
 @#$#@#$#@

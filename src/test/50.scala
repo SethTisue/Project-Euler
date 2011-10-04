@@ -14,22 +14,20 @@ import annotation.tailrec
 // actually less elegant than the imperative version, I think.
 
 class Problem50 extends Problem(50, "997651") {
-  def solve = {
-    def solve(ps: Stream[Int], longest: List[Int]): Int = {
-      if(ps.take(longest.size + 1).sum >= 1000000)
-        longest.sum
-      else {
-        @tailrec def solve2(len: Int,newLongest: List[Int]): List[Int] = {
-          if(ps.take(len).sum >= 1000000) newLongest
-          else solve2(len + 1,
-                      if(isPrime(ps.take(len).sum)) ps.take(len).toList
-                      else newLongest)
-        }
-        solve(ps.tail, solve2(longest.size + 1, longest))
+  def solve(ps: Stream[Int], longest: List[Int]): Int = {
+    if(ps.take(longest.size + 1).sum >= 1000000)
+      longest.sum
+    else {
+      @tailrec def solve2(len: Int, newLongest: List[Int]): List[Int] = {
+        if(ps.take(len).sum >= 1000000) newLongest
+        else solve2(len + 1,
+                    if(isPrime(ps.take(len).sum)) ps.take(len).toList
+                    else newLongest)
       }
+      solve(ps.tail, solve2(longest.size + 1, longest))
     }
-    solve(primes, Nil)
   }
+  def solve = solve(primes, Nil)
 }
 
 // and an imperative version:

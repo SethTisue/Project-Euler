@@ -14,18 +14,18 @@ class Problem112 extends Problem(112, "1587000") {
     n < 10 || n % 10 <= (n % 100) / 10 && isDecreasing(n / 10)
   def isBouncy(n: Int) =
     !isIncreasing(n) && !isDecreasing(n)
-  def solve = {
-    def solve(min: Double) = {
-      // by using a recursive helper function we achieve pure-functionality,
-      // but I think the imperative version (see previous rev in svn) is
-      // more readable. I'd like to know if this can be both pure and elegant.
-      def helper(bouncies: Int, n: Int): Int =
-        if(n > 0 && bouncies.toDouble / n == min)
-          n
-        else
-          helper(if(isBouncy(n + 1)) bouncies + 1 else bouncies,n + 1)
-      helper(0, 0)
-    }
-    solve(0.99)
+  def solve(min: Double) = {
+    // by using a recursive helper function we achieve pure-functionality,
+    // but I think the imperative version (see previous rev in svn) is
+    // more readable. I'd like to know if this can be both pure and elegant.
+    def helper(bouncies: Int, n: Int): Int =
+      if(n > 0 && bouncies.toDouble / n == min)
+        n
+      else
+        helper(if(isBouncy(n + 1)) bouncies + 1
+               else bouncies,
+               n + 1)
+    helper(0, 0)
   }
+  def solve = solve(0.99)
 }

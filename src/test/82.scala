@@ -10,7 +10,7 @@ class Problem82 extends Problem(82, "260324") {
      val matrix = io.Source.fromFile("dat/81.txt")
       .getLines.map(_.trim.split(",").map(_.toInt)).toArray
     val range = 0 until matrix.size
-    // This is a little confusing because we address the matrix using (y,x)
+    // This is a little confusing because we address the matrix using (y, x)
     // rather than (x,y), but oh well
     for{x <- range.reverse.drop(1); y <- range}
       matrix(y)(x) = {
