@@ -9,7 +9,6 @@ fi
 
 java \
   -Xmx1536M \
-  -XX:MaxPermSize=128M \
   $JAVA_OPTS \
   -classpath $LAUNCH \
   xsbt.boot.Boot "$@"
