@@ -16,29 +16,29 @@ class Problem103 extends Problem(103, "111819202225") {
   def solve = {
     val solutions =
       for {
-        n1 <- Stream.from(1)
+        n1 <- Iterator.from(1)
         ss1 = augment(n1, Nil)
         if isSpecial(ss1)
-        n2 <- Stream.from(n1 + 1).takeWhile(_ + ss1.head.sum <= ceil)
+        n2 <- Iterator.from(n1 + 1).takeWhile(_ + ss1.head.sum <= ceil)
         ss2 = augment(n2, ss1)
         if isSpecial(ss2)
-        n3 <- Stream.from(n2 + 1).takeWhile(_ + ss2.head.sum <= ceil)
+        n3 <- Iterator.from(n2 + 1).takeWhile(_ + ss2.head.sum <= ceil)
         ss3 = augment(n3, ss2)
         if isSpecial(ss3)
-        n4 <- Stream.from(n3 + 1).takeWhile(_ + ss3.head.sum <= ceil)
+        n4 <- Iterator.from(n3 + 1).takeWhile(_ + ss3.head.sum <= ceil)
         ss4 = augment(n4, ss3)
         if isSpecial(ss4)
-        n5 <- Stream.from(n4 + 1).takeWhile(_ + ss4.head.sum <= ceil)
+        n5 <- Iterator.from(n4 + 1).takeWhile(_ + ss4.head.sum <= ceil)
         ss5 = augment(n5, ss4)
         if isSpecial(ss5)
-        n6 <- Stream.from(n5 + 1).takeWhile(_ + ss5.head.sum <= ceil)
+        n6 <- Iterator.from(n5 + 1).takeWhile(_ + ss5.head.sum <= ceil)
         ss6 = augment(n6, ss5)
         if isSpecial(ss6)
-        // n7 <- Stream.from(n6 + 1).takeWhile(_ + ss6.head.sum <= ceil)
+        // n7 <- Iterator.from(n6 + 1).takeWhile(_ + ss6.head.sum <= ceil)
         // ss7 = augment(n7, ss6)
         // if isSpecial(ss7)
       } yield ss6.head
-    solutions.head.mkString
+    solutions.next.mkString
   }
 }
     
