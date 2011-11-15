@@ -2,7 +2,49 @@ package net.tisue.euler
 
 // Given that A is an optimum special sum set for n = 7, find its set string.
 
-class Problem103 extends Problem(103, "69111213") {
+class Problem103 extends Problem(103, "111819202225") {
+  val ceil = 115
+  type SumSet = List[List[Int]]
+  def augment(x: Int, ss: SumSet) =
+    if(ss.isEmpty)
+      List(List(x))
+    else
+      (ss.head :+ x) +: ss.sliding(2).collect{case List(l1, l2) => l2 ++ l1.map(_ + x)}.toList :+ List(ss.head.sum + x)
+  def isSpecial(ss: SumSet): Boolean =
+    ss.forall(xs => xs.size == xs.toSet.size) &&
+    ss.sliding(2).forall{case List(xs1, xs2) => xs1.size == xs1.distinct.size && xs2.size == xs2.distinct.size && xs1.last < xs2.head; case _ => true}
+  def solve = {
+    val solutions =
+      for {
+        n1 <- Stream.from(1)
+        ss1 = augment(n1, Nil)
+        if isSpecial(ss1)
+        n2 <- Stream.from(n1 + 1).takeWhile(_ + ss1.head.sum <= ceil)
+        ss2 = augment(n2, ss1)
+        if isSpecial(ss2)
+        n3 <- Stream.from(n2 + 1).takeWhile(_ + ss2.head.sum <= ceil)
+        ss3 = augment(n3, ss2)
+        if isSpecial(ss3)
+        n4 <- Stream.from(n3 + 1).takeWhile(_ + ss3.head.sum <= ceil)
+        ss4 = augment(n4, ss3)
+        if isSpecial(ss4)
+        n5 <- Stream.from(n4 + 1).takeWhile(_ + ss4.head.sum <= ceil)
+        ss5 = augment(n5, ss4)
+        if isSpecial(ss5)
+        n6 <- Stream.from(n5 + 1).takeWhile(_ + ss5.head.sum <= ceil)
+        ss6 = augment(n6, ss5)
+        if isSpecial(ss6)
+        // n7 <- Stream.from(n6 + 1).takeWhile(_ + ss6.head.sum <= ceil)
+        // ss7 = augment(n7, ss6)
+        // if isSpecial(ss7)
+      } yield ss6.head
+    solutions.head.mkString
+  }
+}
+    
+/*      
+
+
   def distinctPartitions(n: Int) = {
     def helper(n: Int, min: Int): List[List[Int]] = {
       if (n == 0)
@@ -14,12 +56,6 @@ class Problem103 extends Problem(103, "69111213") {
   }
   val partitions =
     Stream.from(1).flatMap(distinctPartitions)
-  type SumSet = List[List[Int]]
-  def augment(ss: SumSet, x: Int) =
-    if(ss.isEmpty)
-      List(List(x))
-    else
-      (ss.head :+ x) +: ss.sliding(2).collect{case List(l1, l2) => l2 ++ l1.map(_ + x)}.toList :+ List(ss.head.sum + x)
   def expand(xs: List[Int]): SumSet =
     xs.foldLeft(Nil: SumSet)(augment)
   def isSpecial(ss: SumSet): Boolean =
@@ -28,8 +64,6 @@ class Problem103 extends Problem(103, "69111213") {
     partitions.filter(_.size == n).map(expand).find(isSpecial).map(_.head).get
   def solve = optimalSpecialSumSet(5).mkString
 }
-
-/*
 
 ( (3) )
 ( (3, 5) (8) )
