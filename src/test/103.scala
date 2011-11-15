@@ -2,6 +2,12 @@ package net.tisue.euler
 
 // Given that A is an optimum special sum set for n = 7, find its set string.
 
+// This is a pretty lame solution.  And it only runs fast (6 seconds) because
+// we cheat somewhat and start searching at 20.  If we start searching at 11,
+// it takes well over a minute.
+
+// Maybe I'll improve it someday.
+  
 class Problem103 extends Problem(103, "20313839404245") {
   val ceil = 300
   type SumSet = List[List[Int]]
@@ -21,7 +27,6 @@ class Problem103 extends Problem(103, "20313839404245") {
   def solve = {
     val solutions =
       for {
-        // bit of a cheat here to start at 20 because we know that's the answer
         n1 <- Iterator.from(20).takeWhile(_ <= ceil)
         _ = println(n1)
         ss1 = augment(n1, Nil)
