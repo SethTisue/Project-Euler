@@ -10,32 +10,43 @@ package net.tisue.euler
 //   2 steps: ((1 2 3) (1 2 4))
 //   3 steps: ((1 2 3 4) (1 2 3 5) (1 2 4 6) (1 2 4 7) (1 2 4 8))
 //   ...
-// generate each set from the last, noting new highest n's in a table.  stop when the table is full
-// to 200.  prune any search branch with n > 200.
+// generate each set from the last, noting new highest n's in a table.  stop when the
+// table is full to 200.  prune any search branch with n > 200.
+
+// After having got the right answer with some much-too-slow brute force code, I started googling.
+// The sequence is oeis.org/A003313 and according to en.wikipedia.org/wiki/Addition_chain
+// "Calculating an addition chain of minimal length is not easy" -- no algorithm exists that is
+// simple, general, and fast.
+
+// However from looking at the forums I learned that for small k (and 200 is small), you only need
+// to consider "star chains", where you're always including the current largest number in the next
+// sum.  With that knowledge the code is simple and fast.
 
 import collection.immutable.{ BitSet => S }
 
 class Problem122 extends Problem(122, "1582") {
   val limit = 200
-  var solutions = Map(1 -> 1)
-  def next(sets: List[S]): List[S] =
+  var solutions = Map(1 -> 0)
+  def next(sets: Set[S]): Set[S] =
     for {
       s <- sets
-      n1 <- s
-      n2 <- s.toList.dropWhile(n1 + _ <= s.max).takeWhile(n1 + _ <= limit)
+      n1 = s.max
+      n2 <- s.takeWhile(n1 + _ <= limit)
+      n = n1 + n2
+      if !solutions.contains(n) || solutions(n) == s.size
+      set = s + n
     } yield {
-      val set = s + (n1 + n2)
-      if(!solutions.contains(set.max)) {
-        println((solutions.size, set.max, set))
-        solutions = solutions.updated(set.max, set.size - 1)
+      if(!solutions.contains(n)) {
+        println((solutions.size, n, set))
+        solutions = solutions.updated(n, s.size)
       }
       set
     }
   def solve = {
-    var cur = List(S(1))
+    var cur = Set(S(1))
     while(solutions.size < limit) {
-      println((solutions.size, cur.size))
       cur = next(cur)
+      println((solutions.size, cur.size))
     }
     solutions.values.sum
   }
