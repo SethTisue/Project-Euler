@@ -29,15 +29,13 @@ class Problem122 extends Problem(122, "1582") {
     s.toList
       .map(k => s + (k + s.last))
       .takeWhile(_.last <= 200)
-  def solve = {
-    var cur = List(BitSet(1))
-    var m = Map[Int, Int]()
-    def isMinimal(s: BitSet) =
-      !m.contains(s.last)
-    while(cur.nonEmpty) {
-      cur = cur.flatMap(children).filter(isMinimal)
-      m ++= cur.map(bs => bs.last -> bs.size)
-    }
-    m.values.map(_ - 1).sum
+  def iterate(cur: List[BitSet], m: Map[Int, Int]) = {
+    def isMinimal(s: BitSet) = !m.contains(s.last)
+    val next = cur.flatMap(children).filter(isMinimal)
+    (next, m ++ next.map(bs => bs.last -> bs.size))
   }
+  def solve =
+    Iterator.iterate((List(BitSet(1)), Map[Int, Int]()))(Function.tupled(iterate))
+      .find(_._1.isEmpty).get
+      ._2.values.map(_ - 1).sum
 }
