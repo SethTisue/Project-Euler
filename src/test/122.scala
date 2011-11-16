@@ -22,32 +22,22 @@ package net.tisue.euler
 // to consider "star chains", where you're always including the current largest number in the next
 // sum.  With that knowledge the code is simple and fast.
 
-import collection.immutable.{ BitSet => S }
+import collection.immutable.BitSet
 
 class Problem122 extends Problem(122, "1582") {
-  val limit = 200
-  var solutions = Map(1 -> 0)
-  def next(sets: Set[S]): Set[S] =
-    for {
-      s <- sets
-      n1 = s.max
-      n2 <- s.takeWhile(n1 + _ <= limit)
-      n = n1 + n2
-      if !solutions.contains(n) || solutions(n) == s.size
-      set = s + n
-    } yield {
-      if(!solutions.contains(n)) {
-        println((solutions.size, n, set))
-        solutions = solutions.updated(n, s.size)
-      }
-      set
-    }
+  def children(s: BitSet): List[BitSet] =
+    s.toList
+      .map(k => s + (k + s.last))
+      .takeWhile(_.last <= 200)
   def solve = {
-    var cur = Set(S(1))
-    while(solutions.size < limit) {
-      cur = next(cur)
-      println((solutions.size, cur.size))
+    var cur = List(BitSet(1))
+    var m = Map[Int, Int]()
+    def isMinimal(s: BitSet) =
+      !m.contains(s.last)
+    while(cur.nonEmpty) {
+      cur = cur.flatMap(children).filter(isMinimal)
+      m ++= cur.map(bs => bs.last -> bs.size)
     }
-    solutions.values.sum
+    m.values.map(_ - 1).sum
   }
 }
