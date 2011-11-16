@@ -56,8 +56,10 @@ class Problem122Functional extends Problem(122, "1582") {
     val next = cur.flatMap(children).filter(isMinimal)
     (next, m ++ next.map(bs => bs.last -> bs.size))
   }
-  def solve =
-    Iterator.iterate((List(BitSet(1)), Map[Int, Int]()))(Function.tupled(iterate))
+  def solve = {
+    val start = (List(BitSet(1)), Map[Int, Int]())
+    Iterator.iterate(start)(Function.tupled(iterate))
       .find(_._1.isEmpty).get
       ._2.values.map(_ - 1).sum
+  }
 }
