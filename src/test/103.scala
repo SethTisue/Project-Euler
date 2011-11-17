@@ -28,7 +28,6 @@ class Problem103 extends Problem(103, "20313839404245") {
     val solutions =
       for {
         n1 <- Iterator.from(20).takeWhile(_ <= ceil)
-        _ = println(n1)
         ss1 = augment(n1, Nil)
         if isSpecial(ss1)
         n2 <- Iterator.from(n1 + 1).takeWhile(_ + n1 <= ceil)
