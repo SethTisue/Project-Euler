@@ -27,5 +27,5 @@ class Problem59 extends Problem(59, "107359") {
     .find(key => isEnglish(decrypt(cipherText, key)))
     .get
   def solve =
-    decrypt(cipherText, key).view.map(_.toInt).sum
+    decrypt(cipherText, key).map(_.toInt).sum
 }

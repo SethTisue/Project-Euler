@@ -13,7 +13,7 @@ class Problem104 extends Problem(104, "329468") {
     new BigDecimal((1 + math.sqrt(5d)) / 2)
       .pow(k, MathContext.DECIMAL128)
       .divide(new BigDecimal(math.sqrt(5d)), MathContext.DECIMAL128)
-      .toString.view.filter(_ != '.').take(9).map(_.asDigit).toList
+      .toString.filter(_ != '.').take(9).map(_.asDigit).toList
   def isPandigital(ns: Seq[Int]) =
     ns.sum == 45 && ns.product == 362880
   def solve =

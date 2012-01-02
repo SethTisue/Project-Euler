@@ -22,7 +22,7 @@ class Problem80 extends Problem(80, "40886") {
   def roundingDivide(d1: BigDecimal, d2: BigDecimal) =
     new BigDecimal(d1.bigDecimal.divide(d2.bigDecimal, digits, J.DOWN))
   def digitalSum(d: BigDecimal) =
-    d.toString.view.filter(_.isDigit).take(digits).map(_.asDigit).sum
+    d.toString.filter(_.isDigit).take(digits).map(_.asDigit).sum
   def firstDuplicate[A](xs: Seq[A]) =
     xs.zip(xs.tail).find{case (d1, d2) => d1 == d2}.get._1
   def babylonian(n: BigDecimal) =

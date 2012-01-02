@@ -20,7 +20,7 @@ class Problem51 extends Problem(51, "121313") {
       if(n == 0)
         List("")
       else
-        templates(n - 1).flatMap(template => "0123456789*".view.map(_ + template))
+        templates(n - 1).flatMap(template => "0123456789*".map(_ + template))
     val solutions =
       for{numDigits <- Stream.from(1)
           primes = nDigitPrimes(numDigits)

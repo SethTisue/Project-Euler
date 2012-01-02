@@ -13,7 +13,7 @@ class Problem42 extends Problem(42, "162") {
   val triangles = Stream.from(1).map(n => n * (n + 1) / 2)
   def isTriangle(n: Int) = n == triangles.dropWhile(_ < n).head
   val words = io.Source.fromFile("dat/42.txt").filter(_ != '"').mkString.split(",").toList
-  def score(word: String) = word.view.map(_ - 'A' + 1).sum
+  def score(word: String) = word.map(_ - 'A' + 1).sum
   def solve =
     words.count(word => isTriangle(score(word)))
 }

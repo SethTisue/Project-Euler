@@ -80,7 +80,7 @@ class Problem96 extends Problem(96, "24702") {
     io.Source.fromFile("dat/96.txt")
       .getLines.filterNot(_.startsWith("Grid"))
       .grouped(9)
-      .map(_.mkString.view.filter(_.isDigit).map(_.asDigit).toList
+      .map(_.mkString.filter(_.isDigit).map(_.asDigit).toList
             .map(d => if(d == 0) (1 to 9).toList
                       else List(d)))
   def solve =
