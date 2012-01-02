@@ -4,6 +4,7 @@
 *.jar
 *.hi
 *.o
+.ensime
 /euler
 /project/
 /target/
