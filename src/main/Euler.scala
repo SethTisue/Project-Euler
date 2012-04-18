@@ -27,9 +27,18 @@ package object euler {
       case Some((result, next)) => result #:: unfold(next)(fn)
     }
 
+  implicit def toRichStream[T](s1: Stream[T]): RichStream[T] = new RichStream(s1)
+  implicit def toRichIterable[CC[X] <: Iterable[X], A](xs: CC[A]) = new RichIterable[A, CC](xs)
+  implicit def toRichInt(i: Int): MyRichInt = new MyRichInt(i)
+  implicit def toRichLong(i: Long): MyRichLong = new MyRichLong(i)
+  implicit def toRichBigInt(i: BigInt): MyRichBigInt = new MyRichBigInt(i)
+
+}
+
+package euler {
+
   // Haskell has these, dunno why they're not in Scala. some of these
   // could go on Iterable, actually, instead of Stream specifically
-  implicit def toRichStream[T](s1: Stream[T]): RichStream[T] = new RichStream(s1)
   class RichStream[T1](s1: Stream[T1]) {
     def circular: Stream[T1] = {
       lazy val s: Stream[T1] = s1 #::: s
@@ -43,7 +52,6 @@ package object euler {
 
   // thank you stackoverflow.com/questions/3895813/how-to-write-a-zipwith-method-that-returns-the-same-type-of-collection-as-those-p
   // maybe I could use some of this same magic to make some of my other implicits work on more collection types!
-  implicit def toRichIterable[CC[X] <: Iterable[X], A](xs: CC[A]) = new RichIterable[A, CC](xs)
   class RichIterable[A, CC[X] <: Iterable[X]](xs: Iterable[A]) {
     import scala.collection.generic.CanBuildFrom
     def zipWith[B, C](ys: Iterable[B])(f: (A, B) => C)(implicit cbf: CanBuildFrom[Nothing, C, CC[C]]): CC[C] =
@@ -51,7 +59,6 @@ package object euler {
   }
 
   // add gcd method to Int
-  implicit def toRichInt(i: Int): MyRichInt = new MyRichInt(i)
   class MyRichInt(i: Int) {
     def gcd(j: Int): Int =
       if(j == 0) i
@@ -60,13 +67,11 @@ package object euler {
   }
 
   // add digits method to Long
-  implicit def toRichLong(i: Long): MyRichLong = new MyRichLong(i)
   class MyRichLong(i: Long) {
     def digits: Seq[Int] = i.toString.map(_.asDigit)
   }
 
   // add digits method to BigInt
-  implicit def toRichBigInt(i: BigInt): MyRichBigInt = new MyRichBigInt(i)
   class MyRichBigInt(i: BigInt) {
     def digits: Seq[Int] = i.toString.map(_.asDigit)
   }
