@@ -9,4 +9,4 @@ scalaSource in Compile <<= baseDirectory(_ / "src" / "main")
 scalaSource in Test <<= baseDirectory(_ / "src" / "test")
 
 scalacOptions ++= Seq("-deprecation", "-unchecked", "-Xfatal-warnings",
-	      	      "-encoding", "us-ascii")
+                      "-optimise", "-encoding", "us-ascii")
