@@ -30,5 +30,5 @@ class Problem118 extends Problem(118, "44680") {
       else product * p
     }
   def solve =
-    partitions(1 to 9 toList).map(countSolutions).sum
+    partitions((1 to 9).toList).map(countSolutions).sum
 }
