@@ -1,4 +1,5 @@
 package net.tisue
+import language.{ higherKinds, implicitConversions }
 import annotation.tailrec
 
 package object euler {

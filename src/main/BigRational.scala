@@ -1,5 +1,7 @@
 package net.tisue.euler
 
+import language.implicitConversions
+
 /// from Programming in Scala book, but converted to use BigInt
 
 class BigRational(n: BigInt, d: BigInt) { 
