@@ -6,5 +6,6 @@
 *.o
 .ensime
 /euler
-/project/
+/project/target/
+/project/project/
 /target/
