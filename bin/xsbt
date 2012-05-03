@@ -7,8 +7,12 @@ if [ ! -f $LAUNCH ] ; then
   curl -f $URL -o $LAUNCH || exit
 fi
 
+# some Euler solutions are RAM-hungry, plus several might be running
+# in parallel with each other, so we need lots and lots of heap.
+BIGHEAP=-Xmx6144m
+
 java \
-  -Xmx1536M \
+  $BIGHEAP \
   -XX:MaxPermSize=256m \
   $JAVA_OPTS \
   -classpath $LAUNCH \
