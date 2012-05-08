@@ -1,11 +1,10 @@
-resolvers += "Sonatype Snapshots" at
-  "https://oss.sonatype.org/content/groups/public"
+resolvers += ScalaToolsSnapshots
 
 scalaVersion := "2.10.0-M3"
 
 name := "Seth's Project Euler solutions"
 
-libraryDependencies += "org.scalatest" % "scalatest_2.10.0-M3" % "1.8-SNAPSHOT" % "test"
+libraryDependencies += "org.scalatest" %% "scalatest" % "1.8-SNAPSHOT" % "test"
 
 scalaSource in Compile <<= baseDirectory(_ / "src" / "main")
 
