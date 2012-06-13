@@ -4,7 +4,7 @@ Solve it yourself first!
 
 This is the language I've done my serious solving in.
 
-Type `bin/xsbt` to start sbt, then enter `test` at the sbt prompt.  (Run `ensime generate` if you want to use ENSIME.)
+Type `bin/sbt` to start sbt, then enter `test` at the sbt prompt.  (Run `ensime generate` if you want to use ENSIME.)
 
 ## Haskell
 
