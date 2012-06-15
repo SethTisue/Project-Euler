@@ -14,4 +14,5 @@ scalaSource in Test <<= baseDirectory(_ / "src" / "test")
 // https://issues.scala-lang.org/browse/SI-5927
 
 scalacOptions ++= Seq("-deprecation", "-unchecked", // "-Xfatal-warnings",
+                      "-Xlog-reflective-calls",
                       "-feature", "-optimise", "-encoding", "us-ascii")
