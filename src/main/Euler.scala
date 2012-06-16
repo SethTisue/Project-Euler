@@ -70,24 +70,3 @@ package object euler {
   }
 
 }
-
-/*
-code I might want in the future:
-
-  // first, stream merging stuff. based on the Haskell code at
-  // www.cs.dartmouth.edu/~cs8/W2009/lectures/streamsCont.txt
-  // note that for this particular application, we want to keep
-  // duplicates, not discard them.
-  def merge[T](s1: Stream[T], s2: Stream[T])(implicit o: Ordering[T]) : Stream[T] =
-    if(s1.isEmpty) s2
-    else if(s2.isEmpty) s1
-    else o.compare(s1.head, s2.head) match {
-      case -1 => s1.head #:: merge(s1.tail, s2)
-      case  _ => s2.head #:: merge(s1, s2.tail)
-    }
-  def mergeMerge[T](xss: Stream[Stream[T]])(implicit o: Ordering[T]): Stream[T] = {
-    def helper(items: Stream[T], streams: Stream[Stream[T]]): Stream[T] =
-      items.head #:: helper(merge(items.tail, streams.head), streams.tail)
-    helper(xss.head, xss.tail)
-  }
-*/
