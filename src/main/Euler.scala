@@ -59,8 +59,8 @@ package object euler {
     def digits: Seq[Int] = i.toString.map(_.asDigit)
   }
 
-  // thank you stackoverflow.com/questions/3895813/how-to-write-a-zipwith-method-that-returns-the-same-type-of-collection-as-those-p
-  // maybe I could use some of this same magic to make some of my other implicits work on more collection types!
+  // add zipWith to Iterable; thank you
+  // stackoverflow.com/questions/3895813/how-to-write-a-zipwith-method-that-returns-the-same-type-of-collection-as-those-p
   implicit def toRichIterable[CC[X] <: Iterable[X], A](xs: CC[A]) =
     new RichIterable[A, CC](xs)
   class RichIterable[A, CC[X] <: Iterable[X]](xs: Iterable[A]) {
