@@ -59,14 +59,10 @@ package object euler {
     def digits: Seq[Int] = i.toString.map(_.asDigit)
   }
 
-  implicit def toRichIterable[CC[X] <: Iterable[X], A](xs: CC[A]) = new RichIterable[A, CC](xs)
-
-}
-
-package euler {
-
   // thank you stackoverflow.com/questions/3895813/how-to-write-a-zipwith-method-that-returns-the-same-type-of-collection-as-those-p
   // maybe I could use some of this same magic to make some of my other implicits work on more collection types!
+  implicit def toRichIterable[CC[X] <: Iterable[X], A](xs: CC[A]) =
+    new RichIterable[A, CC](xs)
   class RichIterable[A, CC[X] <: Iterable[X]](xs: Iterable[A]) {
     import scala.collection.generic.CanBuildFrom
     def zipWith[B, C](ys: Iterable[B])(f: (A, B) => C)(implicit cbf: CanBuildFrom[Nothing, C, CC[C]]): CC[C] =
