@@ -61,8 +61,8 @@ package object euler {
 
   // add zipWith to Iterable; thank you stackoverflow.com/q/3895813
   implicit class RichIterable[A, CC[X] <: Iterable[X]](xs: CC[A]) {
-    type Builder = collection.generic.CanBuildFrom[Nothing, C, CC[C]]
-    def zipWith[B, C](ys: Iterable[B])(f: (A, B) => C)(implicit cbf: Builder): CC[C] =
+    type Builder[C] = collection.generic.CanBuildFrom[Nothing, C, CC[C]]
+    def zipWith[B, C](ys: Iterable[B])(f: (A, B) => C)(implicit cbf: Builder[C]): CC[C] =
       xs.zip(ys).map(f.tupled)(collection.breakOut)
   }
 
