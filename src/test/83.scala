@@ -5,10 +5,12 @@ package net.tisue.euler
 
 // http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 
+import collection.immutable.Vector
+
 class Problem83 extends Problem(83, "425185") {
   val matrix = io.Source.fromFile("dat/81.txt")
-    .getLines.map(_.trim.split(",").map(_.toInt).toIndexedSeq)
-    .toIndexedSeq
+    .getLines.map(_.trim.split(",").map(_.toInt).to[Vector])
+    .to[Vector]
   def neighbors(loc: (Int, Int)) =
     List((-1, 0), (0, -1), (1, 0), (0, 1))
       .map(offsets => (loc._1 + offsets._1, loc._2 + offsets._2))
