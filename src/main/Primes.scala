@@ -38,7 +38,8 @@ object Primes {
   // sieve.  so unlike primesBelow, this doesn't require committing in advance to a ceiling on the
   // amount of primes you will need.
   var sieve = Array(false, false, true, true)
-  def isSievedPrime(n: Int): Boolean = {
+  private val lock = new AnyRef
+  def isSievedPrime(n: Int): Boolean = lock.synchronized {
     while (n >= sieve.length) {
       val newSieve = Array.fill(sieve.length * 2)(true)
       Array.copy(sieve, 0, newSieve, 0, sieve.length)
