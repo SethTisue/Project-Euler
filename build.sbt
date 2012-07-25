@@ -16,5 +16,6 @@ scalacOptions ++= Seq(
   "-feature",
   "-optimise",
   "-target:jvm-1.6",  // 1.5 still default in M5, 1.6 will be the default in 2.10.0-M6
-  "-Xfatal-warnings"
+  "-Xfatal-warnings",
+  "-Ywarn-adapted-args"
 )
