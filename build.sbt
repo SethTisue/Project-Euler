@@ -15,7 +15,7 @@ scalacOptions ++= Seq(
   "-unchecked",
   "-feature",
   "-optimise",
-  "-target:jvm-1.6",  // 1.5 still default in M5, 1.6 will be the default in 2.10.0-M6
+  "-Xlint",
   // "-Xfatal-warnings",  pending 2.10 final
   "-Ywarn-adapted-args",
   "-Yinline-warnings"
