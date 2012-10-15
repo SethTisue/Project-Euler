@@ -1,9 +1,9 @@
-scalaVersion := "2.10.0-M7"
+scalaVersion := "2.10.0-RC1"
 
 name := "Seth's Project Euler solutions"
 
 libraryDependencies +=
-  "org.scalatest" % "scalatest_2.10.0-M7" % "1.9-2.10.0-M7-B1" % "test"
+  "org.scalatest" % "scalatest_2.10.0-RC1" % "1.8" % "test"
 
 scalaSource in Compile <<= baseDirectory(_ / "src" / "main")
 
