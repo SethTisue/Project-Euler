@@ -30,7 +30,7 @@ package object euler {
     }
 
   // Haskell has these, dunno why they're not in Scala. some of these
-  // could go on Iterable, actually, instead of Stream specifically
+  // could go on Iterable, actually, instead of Stream specifically.
   implicit class RichStream[T1](s1: Stream[T1]) {
     def circular: Stream[T1] = {
       lazy val s: Stream[T1] = s1 #::: s
@@ -43,7 +43,7 @@ package object euler {
   }
 
   // add gcd, digits methods to Int
-  implicit class RichInt(i: Int) {
+  implicit class RichInt(val i: Int) extends AnyVal {
     def gcd(j: Int): Int =
       if(j == 0) i
       else j.gcd(i - j * (i / j))
@@ -51,12 +51,12 @@ package object euler {
   }
 
   // add digits method to Long
-  implicit class RichLong(i: Long) {
+  implicit class RichLong(val i: Long) extends AnyVal {
     def digits: Seq[Int] = i.toString.map(_.asDigit)
   }
 
   // add digits method to BigInt
-  implicit class RichBigInt(i: BigInt) {
+  implicit class RichBigInt(val i: BigInt) extends AnyVal {
     def digits: Seq[Int] = i.toString.map(_.asDigit)
   }
 
