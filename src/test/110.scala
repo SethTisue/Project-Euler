@@ -6,7 +6,7 @@ import Primes._
 // We are asked to find the first solution n for which A018892(n) exceeds 4,000,000.  Empirically, the
 // factorCounts values which reach new highs for A018892(n) look like:
 // (1)
-// (2)      
+// (2)
 // (1, 1)
 // (2, 1)
 // (3, 1)

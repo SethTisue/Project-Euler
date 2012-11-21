@@ -47,4 +47,3 @@ class Problem50i extends Problem(50, "997651") {
     longest.sum
   }
 }
-

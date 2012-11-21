@@ -17,23 +17,23 @@ isqrt x = let y = round . sqrt . fromIntegral $ x
 -- prime sieve code from:
 -- http://en.literateprograms.org/Sieve_of_Eratosthenes_(Haskell)
 merge :: (Ord a) => [a] -> [a] -> [a]
-merge xs@(x:xt) ys@(y:yt) = 
+merge xs@(x:xt) ys@(y:yt) =
   case compare x y of
     LT -> x : (merge xt ys)
     EQ -> x : (merge xt yt)
     GT -> y : (merge xs yt)
 
 diff :: (Ord a) => [a] -> [a] -> [a]
-diff xs@(x:xt) ys@(y:yt) = 
+diff xs@(x:xt) ys@(y:yt) =
   case compare x y of
     LT -> x : (diff xt ys)
     EQ -> diff xt yt
     GT -> diff xs yt
 
 primes, nonprimes :: [Integer]
-primes    = [2, 3, 5] ++ (diff [7, 9 ..] nonprimes) 
+primes    = [2, 3, 5] ++ (diff [7, 9 ..] nonprimes)
 nonprimes = foldr1 f . map g . tail $ primes
-  where 
+  where
     f (x:xt) ys = x : (merge xt ys)
     g p         = [ n * p | n <- [p, p + 2 ..]]
 
@@ -68,7 +68,7 @@ problem6 = sum nums ^ 2 - sum (map (^2) nums)
 
 problem7 = primes !! 10000
 
-problem8 = maximum $ map (product . map digitToInt . take 5) $ tails input 
+problem8 = maximum $ map (product . map digitToInt . take 5) $ tails input
     where input = "7316717653133062491922511967442657474235534919493496983520312774506326239578318016984801869478851843" ++
                   "8586156078911294949545950173795833195285320880551112540698747158523863050715693290963295227443043557" ++
                   "6689664895044524452316173185640309871112172238311362229893423380308135336276614282806444486645238749" ++

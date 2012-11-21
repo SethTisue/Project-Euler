@@ -101,5 +101,5 @@ object Primes {
       }
     recurse(factors(i))
   }
-  
+
 }

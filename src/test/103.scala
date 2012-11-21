@@ -7,7 +7,7 @@ package net.tisue.euler
 // it takes well over a minute.
 
 // Maybe I'll improve it someday.
-  
+
 class Problem103 extends Problem(103, "20313839404245") {
   val ceil = 300
   type SumSet = List[List[Int]]

@@ -29,4 +29,3 @@ class Problem27 extends Problem(27, "-59231") {
     search(999)
   }
 }
-

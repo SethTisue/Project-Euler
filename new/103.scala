@@ -74,7 +74,7 @@ n = 3: {2, 3, 4} = 9
 n = 4: {3, 5, 6, 7} = 21
 n = 5: {6, 9, 11, 12, 13} = 51
 n = 6: {11, 18, 19, 20, 22, 25} = 115
-n = 7: 
+n = 7:
 
   1-sums 11-18-19-20-22-25
   2-sums 29-30-31-33-36-37-38-39-40-41-42-43-44-45-47
@@ -98,7 +98,7 @@ suppose we know that 3-5-6 is special.
 suppose we have 6-9-11-12. how do we know if we can add 13?
 suppose we know that 6-9-11-12 is special:
   we know that because the 1-sums are: 6-9-11-12                -> 6-9-11-12-13
-                       the 2-sums are: 15-16-18-20-21-23        -> 15-16-18-20-21-23 - 19-22-24-25 
+                       the 2-sums are: 15-16-18-20-21-23        -> 15-16-18-20-21-23 - 19-22-24-25
                        the 3-sums are: 26-27-29-32              -> 26-27-29-32 - 28-29-31-33-34-36
                        the 4-sums are: 38
   13 is ok to add because:
@@ -132,7 +132,7 @@ class Problem103 extends Problem(103, "") {
     yield seed ++ seed.map(x => Subset(c :: x.ns, x.size + 1, x.sum + c))
   def solve = sol
 }
-  
+
 class Problem103 extends Problem(103, "") {
   val disjointSubsets: List[Int] => Stream[(List[Int], List[Int])] = memoize{ns =>
     if(ns.isEmpty) Stream((Nil, Nil))
