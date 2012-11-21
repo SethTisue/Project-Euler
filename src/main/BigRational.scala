@@ -33,7 +33,7 @@ class BigRational(n: BigInt, d: BigInt) {
   def /(i: BigInt): BigRational =
     new BigRational(numer, denom * i)
   def reciprocal = new BigRational(denom, numer)
-  override def toString = numer + "/" + denom
+  override def toString = s"$numer/$denom"
   def toDouble = {
     def div(d1: BigDecimal, d2: BigDecimal) =  // drop down to java.math.BigDecimal
       new BigDecimal(d1.bigDecimal.divide(d2.bigDecimal, 17, java.math.RoundingMode.DOWN))

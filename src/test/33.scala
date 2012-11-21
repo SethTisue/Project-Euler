@@ -19,7 +19,7 @@ class Problem33 extends Problem(33, "100") {
     val fractions =
       for{a <- 10 to 98
           b <- (a + 1) to 99
-          uniqueDigits = (a.toString + b.toString).toSet
+          uniqueDigits = s"$a$b".toSet
           if uniqueDigits.size == 3
           sharedDigit <- uniqueDigits.find(d => a.toString.contains(d) && b.toString.contains(d))
           if sharedDigit != '0'

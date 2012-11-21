@@ -8,7 +8,7 @@ class Problem90 extends Problem(90, "1217") {
     def isSolution(die1: Seq[Int], die2: Seq[Int]) = {
       val rolls =
         for(d1 <- die1; d2 <- die2)
-        yield d1.toString + d2.toString
+        yield s"$d1$d2"
       val allRolls = rolls.flatMap(x => List(x,
                                              x.replaceAll("6", "9"),
                                              x.replaceAll("9", "6")))

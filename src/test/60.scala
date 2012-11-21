@@ -15,7 +15,7 @@ import Primes._
 
 class Problem60 extends Problem(60, "26033") {
   def concat(n1: Int, n2: Int) =
-    (n1.toString + n2.toString).toInt
+    s"$n1$n2".toInt
   def isPair(n1: Int, n2: Int) =
     isPrime(concat(n1, n2)) && isPrime(concat(n2, n1))
   def isSolution(n: Int, ns: List[Int]) =
