@@ -3,10 +3,13 @@ package net.tisue.euler
 // The input file contains one thousand numbers written in valid, but not necessarily minimal, Roman
 // numerals.  Find the number of characters saved by writing each of these in their minimal form.
 
+// pending resolution of https://issues.scala-lang.org/browse/SI-6723 we use
+// (a, b) syntax instead of a -> b  - ST 12/27/12
+
 class Problem89 extends Problem(89, "743") {
   val key = List(
-    "M" -> 1000, "CM" -> 900, "D" -> 500, "CD" -> 400, "C" -> 100, "XC" -> 90,
-    "L" -> 50, "XL" -> 40, "X" -> 10, "IX" -> 9, "V" -> 5, "IV" -> 4, "I" -> 1)
+    ("M", 1000), ("CM", 900), ("D", 500), ("CD", 400), ("C", 100), ("XC", 90),
+    ("L", 50), ("XL", 40), ("X", 10), ("IX", 9), ("V", 5), ("IV", 4), ("I", 1))
   def arabic(s: String): Int =
     key.collectFirst{
       case (letters, number) if s.startsWith(letters) =>
