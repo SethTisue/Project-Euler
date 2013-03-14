@@ -44,8 +44,8 @@ class BigRational(n: BigInt, d: BigInt) {
   override def hashCode = (numer, denom).hashCode
   override def equals(other: Any) = other match {
     case that: BigRational =>
-      (this.numer, this.denom) == (that.numer, that.denom) ||
-      (this.numer, that.numer) == (0, 0)
+      this.numer == that.numer && this.denom == that.denom ||
+      this.numer == 0 && that.numer == 0
     case _ => false
   }
 }
