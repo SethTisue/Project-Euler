@@ -11,3 +11,4 @@
 /target/
 .DS_Store
 /.lib/
+/.ensime_lucene/
