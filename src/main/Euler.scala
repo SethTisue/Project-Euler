@@ -32,10 +32,8 @@ package object euler {
   // Haskell has these, dunno why they're not in Scala. some of these
   // could go on Iterable, actually, instead of Stream specifically.
   implicit class RichStream[T](s: Stream[T]) {
-    def circular: Stream[T] = {
-      lazy val circle: Stream[T] = s #::: circle
-      circle
-    }
+    lazy val circular: Stream[T] =
+      s #::: circular
     def group: Stream[Stream[T]] =
       unfold(s){s =>
         if(s.isEmpty) None
