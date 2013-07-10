@@ -3,10 +3,9 @@ import Control.Monad (guard)
 import Control.Applicative ((<$>), (<*>))
 import Data.Char (digitToInt)
 import Data.List (tails, find, maximumBy)
-import Data.Maybe (fromJust)
+import Data.Maybe (fromJust, maybeToList)
 import Data.Ord (comparing)
 import Data.Ix (inRange)
-import Maybe (maybeToList)
 import Data.Time.Clock (getCurrentTime, diffUTCTime)
 
 -- integer square root code from Hellige
