@@ -14,7 +14,7 @@ scalacOptions ++= Seq(
   "-deprecation",
   "-unchecked",
   "-feature",
-  "-optimize",
+//  "-optimize",   too fragile in 2.11.0-M4 - ST 7/12/13
   "-Xlint",
   "-Xfatal-warnings",
   "-Yinline-warnings"
