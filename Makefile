@@ -6,7 +6,7 @@ test: euler
 	./euler
 
 euler: euler.hs
-	ghc --make -O2 -fglasgow-exts euler.hs
+	ghc --make -O2 euler.hs
 
 clean:
 	rm -f euler euler.hi euler.o
