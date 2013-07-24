@@ -23,7 +23,7 @@ package object euler {
         binarySearch(guess, upperBound)(tooBig)
     }
 
-  def unfold[T1,T2](x: T1)(fn: T1 => Option[(T2, T1)]): Stream[T2] =
+  def unfold[T1, T2](x: T1)(fn: T1 => Option[(T2, T1)]): Stream[T2] =
     fn(x) match {
       case None => Stream()
       case Some((result, next)) => result #:: unfold(next)(fn)
@@ -31,15 +31,13 @@ package object euler {
 
   // Haskell has these, dunno why they're not in Scala. some of these
   // could go on Iterable, actually, instead of Stream specifically.
-  implicit class RichStream[T1](s1: Stream[T1]) {
-    def circular: Stream[T1] = {
-      lazy val s: Stream[T1] = s1 #::: s
-      s
-    }
-    def group: Stream[Stream[T1]] =
-      unfold(s1){s1 =>
-        if(s1.isEmpty) None
-        else Some(s1.span(_ == s1.head))}
+  implicit class RichStream[T](s: Stream[T]) {
+    lazy val circular: Stream[T] =
+      s #::: circular
+    def group: Stream[Stream[T]] =
+      unfold(s){s =>
+        if(s.isEmpty) None
+        else Some(s.span(_ == s.head))}
   }
 
   // add gcd, digits methods to Int
