@@ -5,9 +5,9 @@ name := "Seth's Project Euler solutions"
 libraryDependencies +=
   "org.scalatest" % "scalatest_2.10" % "2.0.M5b" % "test"
 
-scalaSource in Compile <<= baseDirectory(_ / "src" / "main")
+scalaSource in Compile := baseDirectory.value / "src" / "main"
 
-scalaSource in Test <<= baseDirectory(_ / "src" / "test")
+scalaSource in Test := baseDirectory.value / "src" / "test"
 
 scalacOptions ++= Seq(
   "-encoding", "us-ascii",
