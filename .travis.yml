@@ -1,3 +1,7 @@
 language: scala
+env:
+  - SBT_OPTS="-Xmx2048M -Xss4M -XX:MaxPermSize=256M"
+install:
+  - sbt update
 scala:
   - 2.10.2
