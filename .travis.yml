@@ -1,5 +1,7 @@
 language: scala
 install:
   - sbt update
+before_script:
+  - sbt test:compile
 scala:
   - 2.10.2
