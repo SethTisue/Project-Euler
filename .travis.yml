@@ -1,7 +1,10 @@
 language: scala
-env:
-  - SBT_OPTS="-Xmx2048M -Xss4M -XX:MaxPermSize=256M"
-install:
-  - sbt update
 scala:
   - 2.10.2
+before_install:
+  # Remove local .jvmopts file to run sbt-extras with
+  # Travis default JVM options (stored in /etc/sbt/jvmopts)
+  - rm .jvmopts
+# keep heap usage down by running tests serially
+script:
+  - sbt 'set parallelExecution in Test := false' test
