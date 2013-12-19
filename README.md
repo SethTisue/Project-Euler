@@ -4,13 +4,13 @@ Solve it yourself first!
 
 This is the language I've done my serious solving in.
 
-Type `bin/sbt` to start sbt, then enter `test` at the sbt prompt.  (Run `ensime generate` if you want to use ENSIME.)
+Type `./sbt` to start sbt, then enter `test` at the sbt prompt.  (Run `ensime generate` if you want to use ENSIME.)
 
 ## Haskell
 
 Some solutions ported from Scala.
 
-Build and run using make.
+Build and run using `cd haskell` followed by `make`.
 
 ## NetLogo
 
