@@ -1,6 +1,6 @@
 language: scala
 scala:
-  - 2.10.3
+  - 2.10.4-RC1
 before_install:
   # Remove local .jvmopts file to run sbt-extras with
   # Travis default JVM options (stored in /etc/sbt/jvmopts)
