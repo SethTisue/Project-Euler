@@ -4,21 +4,17 @@ Solve it yourself first!
 
 This is the language I've done my serious solving in.
 
-Type `bin/sbt` to start sbt, then enter `test` at the sbt prompt.  (Run `ensime generate` if you want to use ENSIME.)
+Type `./sbt` to start sbt, then enter `test` at the sbt prompt.  (Run `ensime generate` if you want to use ENSIME.)
 
 ## Haskell
 
 Some solutions ported from Scala.
 
-Build and run using make.
+Build and run using `cd haskell` followed by `make`.
 
 ## NetLogo
 
 These solutions were originally written for NetLogo 4.1 and have been only lightly updated for 5.0.  NetLogo 5.0 has tasks (aka lambda, closures, first-class functions) now, so probably some of these solutions could be redone to use that, and tackling the more advanced problems would be more feasible.
-
-## Clojure
-
-I hardly know any Clojure yet.
 
 ## License
 
