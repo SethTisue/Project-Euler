@@ -9,9 +9,9 @@ package net.tisue.euler
 class Problem65 extends Problem(65, "272") {
   // This would be more easily and clearly expressed using some sort of
   // BigRational class, I think.  The recursion is basically a fold
-  // and if we didn't have to assemble and reassemble Pairs I have a
+  // and if we didn't have to assemble and reassemble Tuple2s I have a
   // hunch that could be made clearer.
-  def calc(xs: List[Int]): Pair[BigInt, BigInt] = xs match {
+  def calc(xs: List[Int]): (BigInt, BigInt) = xs match {
     case x :: xs => calc(xs) match { case (a, b) => (b + a * x, a) }
     case Nil => (1, 0)
   }
