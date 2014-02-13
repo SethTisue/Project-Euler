@@ -31,6 +31,7 @@ package object euler {
 
   // Haskell has these, dunno why they're not in Scala. some of these
   // could go on Iterable, actually, instead of Stream specifically.
+  // Note that we can't "extends AnyVal" because of the lazy val.
   implicit class RichStream[T](s: Stream[T]) {
     lazy val circular: Stream[T] =
       s #::: circular
@@ -41,7 +42,7 @@ package object euler {
   }
 
   // add gcd, digits methods to Int
-  implicit class RichInt(val i: Int) extends AnyVal {
+  implicit class RichInt(private val i: Int) extends AnyVal {
     def gcd(j: Int): Int =
       if(j == 0) i
       else j.gcd(i - j * (i / j))
@@ -49,17 +50,17 @@ package object euler {
   }
 
   // add digits method to Long
-  implicit class RichLong(val i: Long) extends AnyVal {
+  implicit class RichLong(private val i: Long) extends AnyVal {
     def digits: Seq[Int] = i.toString.map(_.asDigit)
   }
 
   // add digits method to BigInt
-  implicit class RichBigInt(val i: BigInt) extends AnyVal {
+  implicit class RichBigInt(private val i: BigInt) extends AnyVal {
     def digits: Seq[Int] = i.toString.map(_.asDigit)
   }
 
   // add zipWith to Iterable; thank you stackoverflow.com/q/3895813
-  implicit class RichIterable[A, CC[X] <: Iterable[X]](xs: CC[A]) {
+  implicit class RichIterable[A, CC[X] <: Iterable[X]](private val xs: CC[A]) extends AnyVal {
     type Builder[C] = collection.generic.CanBuildFrom[Nothing, C, CC[C]]
     def zipWith[B, C](ys: Iterable[B])(f: (A, B) => C)(implicit cbf: Builder[C]): CC[C] =
       xs.zip(ys).map(f.tupled)(collection.breakOut)
