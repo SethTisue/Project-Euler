@@ -4,8 +4,8 @@
 # Author: Paul Phillips <paulp@typesafe.com>
 
 # todo - make this dynamic
-declare -r sbt_release_version="0.13.2"
-declare -r sbt_unreleased_version="0.13.5-RC4"
+declare -r sbt_release_version="0.13.5"
+declare -r sbt_unreleased_version="0.13.5"
 declare -r buildProps="project/build.properties"
 
 declare sbt_jar sbt_dir sbt_create
