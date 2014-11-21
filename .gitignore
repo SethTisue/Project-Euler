@@ -4,11 +4,12 @@
 *.jar
 *.hi
 *.o
-.ensime
+/.ensime
+/.ensime_cache/
+/.ensime_lucene/
 /haskell/euler
 /project/target/
 /project/project/
 /target/
 .DS_Store
 /.lib/
-/.ensime_lucene/
