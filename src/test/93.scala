@@ -64,6 +64,8 @@ class Problem93 extends Problem(93, "1258") {
   def smallestMissing(ns: Set[Int]): Int =
     Stream.from(1).find(!ns.contains(_)).get
   def solve =
-    (1 to 9).toList.combinations(4).toList.maxBy(ns => smallestMissing(targets(ns)))
+    (1 to 9).toList
+      .combinations(4).toList
+      .maxBy(ns => smallestMissing(targets(ns)))
       .mkString
 }
