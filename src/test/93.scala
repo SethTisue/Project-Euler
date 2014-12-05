@@ -46,7 +46,7 @@ class Problem93 extends Problem(93, "1258") {
       Some(stack.head)
     else items.head match {
       case Operator(_, fn) =>
-        fn(stack(0), stack(1)) match {
+        fn(stack(1), stack(0)) match {
           case Some(n) =>
             eval(items.tail, n :: stack.drop(2))
           case None => None
