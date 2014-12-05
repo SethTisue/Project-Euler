@@ -58,8 +58,8 @@ class Problem93 extends Problem(93, "1258") {
     expressions(ns.map(Digit(_)), 0)
       .flatMap(e => eval(e, Nil))
       .filter(_.denom == 1)
-      .filter(_.toDouble > 0)
-      .map(_.toDouble.toInt)
+      .map(_.numer.toInt)
+      .filter(_ > 0)
       .toSet
   def smallestMissing(ns: Set[Int]): Int =
     Stream.from(1).find(!ns.contains(_)).get
