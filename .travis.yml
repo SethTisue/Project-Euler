@@ -1,4 +1,4 @@
-jdk: oraclejdk7
+jdk: oraclejdk8
 language: scala
 before_install:
   # Remove local .jvmopts file to run sbt-extras with
