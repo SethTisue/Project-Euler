@@ -16,7 +16,7 @@ package net.tisue.euler
 // "Eliminating Bad Guesses", where we just use trial and error.
 
 class Problem96 extends Problem(96, "24702") {
-  type Puzzle = List[List[Int]]  // 81 lists of integers in 1-9 range
+  type Puzzle = List[List[Int]]  // 9 lists of 9 integers in 1-9 range
   type Group = List[Int]         // 9 integers in 0-80 range
   val groups: List[Group] = {
     val rows    = for(i <- (0 to 8).toList)
