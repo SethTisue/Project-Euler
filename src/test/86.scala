@@ -32,7 +32,7 @@ class Problem86 extends Problem(86, "1818") {
 
   def solve = {
     case class Triple(a: Int, b: Int, c: Int) {
-      def * (k : Int) = Triple(a * k, b * k, c * k)
+      def *(k : Int) = Triple(a * k, b * k, c * k)
       def canonical = if(b > a) this else swap
       def swap = Triple(b, a, c)
       def children =
@@ -45,9 +45,12 @@ class Problem86 extends Problem(86, "1818") {
              Triple(  -  a + 2 * b + 2 * c,
                     -2 * a +     b + 2 * c,
                     -2 * a + 2 * b + 3 * c))
-      // I no longer remember the logic behind this formula.  I think the idea is something like,
-      // b can't be too big or too small or the shortest path changes.
-      def cuboidCount = (b min (a / 2)) - (1 max (a - b)) + 1
+
+      // Can't remember the logic behind this formula.  I think the idea was
+      // something like, b can't be too big or too small or the shortest path
+      // changes.
+      def cuboidCount: Int =
+        (b min (a / 2)) - (1 max (a - b)) + 1
     }
 
     val primitiveTriples = {
