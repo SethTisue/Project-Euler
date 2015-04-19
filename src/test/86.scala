@@ -51,8 +51,8 @@ class Problem86 extends Problem(86, "1818") {
     }
 
     val primitiveTriples = {
-      implicit val ordering = new Ordering[Triple] {
-        def compare(t1: Triple, t2: Triple) = t2.b compare t1.b }
+      implicit val ordering: Ordering[Triple] =
+        Ordering.by[Triple, Int](_.b).reverse
       val heap = new collection.mutable.PriorityQueue[Triple]
       heap += Triple(3, 4, 5)
       Stream.continually{
@@ -65,14 +65,17 @@ class Problem86 extends Problem(86, "1818") {
     // this gives us all the triples (primitive or not) where either leg
     // equals m and the other leg is at most 2m (since to fit cuboids
     // in the triple we will break the other leg into two parts)
-    def triples(m: Int) =
+    def triples(m: Int) = {
+      def fits(t: Triple): Boolean =
+        t.b <= m * 2
       for {
-        t1 <- primitiveTriples.takeWhile(_.b <= m * 2)
-        t2 <- Stream.from(1).map(t1 * _).takeWhile(_.b <= m * 2)
+        t1 <- primitiveTriples.takeWhile(fits)
+        t2 <- Stream.from(1).map(t1 * _).takeWhile(fits)
         if t2.a == m || t2.b == m
       }
       yield if(t2.b == m) t2
-            else t2.swap
+      else t2.swap
+    }
 
     def cuboidCount(k: Int): Int =
       triples(k).map(_.cuboidCount).sum
