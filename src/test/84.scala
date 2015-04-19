@@ -25,26 +25,38 @@ class Problem84 extends Problem(84, solution = "101524") {
                    "JAIL", "C1", "U1", "C2", "C3", "R2", "D1", "CC2", "D2", "D3",
                    "FP", "E1", "CH2", "E2", "E3", "R3", "F1", "F2", "U2", "F3",
                    "G2J", "G1", "G2", "CC3", "G3", "R4", "CH3", "H1", "T2", "H2")
-  val squares = names.zipWithIndex.toMap  // map from name to number
-  val namesCycle = names.toStream.circular
+  val squares: Map[String, Int] = // from name to number
+    names.zipWithIndex.toMap
+  val namesCycle: Stream[String] =
+    names.toStream.circular
 
   def limit(squareNumber: Int): Int =
     (squareNumber + names.size) % names.size
 
   def nextSquare(square: Int, roll: Int): List[BigRational] = {
-    def nextSpecial(square: Int, kind: Char) =  // kind is R for railroad or U for utility
-      limit(square + namesCycle.drop(square).indexWhere(_.head == kind))
-    val newSquare = (square + roll) % names.size
-    val nexts =
+    // kind is R for railroad or U for utility
+    def nextSpecial(square: Int, kind: Char): Int =
+      limit(square +
+        namesCycle
+          .drop(square)
+          .indexWhere(_.head == kind))
+    val newSquare: Int =
+      (square + roll) % names.size
+    val nexts: List[Int] =
       names(newSquare) match {
-        case "G2J" => List(squares("JAIL"))
+        case "G2J" =>
+          List(squares("JAIL"))
         case "CC1" | "CC2" | "CC3" =>
           List(squares("GO"), squares("JAIL")) ::: List.fill(14)(newSquare)
         case "CH1" | "CH2" | "CH3" =>
-          List(squares("GO"), squares("JAIL"), squares("C1"), squares("E3"), squares("H2"), squares("R1"),
-               nextSpecial(square, 'R'), nextSpecial(square, 'R'), nextSpecial(square, 'U'),
-               limit(square - 3)) ::: List.fill(6)(newSquare)
-        case _ => List(newSquare)
+          List(squares("GO"), squares("JAIL"), squares("C1"),
+               squares("E3"), squares("H2"), squares("R1"),
+               nextSpecial(square, 'R'), nextSpecial(square, 'R'),
+               nextSpecial(square, 'U'),
+            limit(square - 3)) :::
+          List.fill(6)(newSquare)
+        case _ =>
+          List(newSquare)
       }
     names.indices.toList.map(next =>
       new BigRational(
@@ -56,9 +68,12 @@ class Problem84 extends Problem(84, solution = "101524") {
   val P: List[List[Double]] = {
     val zeroVector = List.fill(names.size)(0: BigRational)
     val rolls =
-      for(die1 <- 1 to die; die2 <- 1 to die)
+      for {
+        die1 <- 1 to die
+        die2 <- 1 to die
+      }
       yield die1 + die2
-    def row(i: Int) =
+    def row(i: Int): List[BigRational] =
       rolls.toList.foldLeft(zeroVector){(vec, roll) =>
         (vec, nextSquare(i, roll)).zipped.map(_ + _)}
     names.indices.toList.map(row(_).map(_.toDouble))
