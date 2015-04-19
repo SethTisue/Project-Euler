@@ -31,7 +31,7 @@ package net.tisue.euler
 class Problem86 extends Problem(86, "1818") {
 
   def solve = {
-     case class Triple(a: Int, b: Int, c: Int) {
+    case class Triple(a: Int, b: Int, c: Int) {
       def * (k : Int) = Triple(a * k, b * k, c * k)
       def canonical = if(b > a) this else swap
       def swap = Triple(b, a, c)
