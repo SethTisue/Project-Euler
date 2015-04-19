@@ -10,8 +10,10 @@ class Problem54 extends Problem(54, solution = "376") {
   case class Card(rank: Int, suit: Char)
   type Hand = List[Card]
 
-  // for example if hand is 9-9-8-8-7 (in any order), result is List((2, 9), (2, 8), (1, 7)) (so we
-  // can use Ordering[Iterable[(Int, Int)]] to compare two hands)
+  // We'll often need to know what groups of same-ranked cards exist.
+  // We'll sort the groups in descending order by size, then by rank.
+  // So for example for the hand 9-9-8-8-7 (in any order), the result
+  // here is Seq((2, 9), (2, 8), (1, 7)).
   def groups(hand: Hand): Seq[(Int, Int)] =
     hand.groupBy(_.rank)
       .mapValues(_.size)
@@ -20,38 +22,44 @@ class Problem54 extends Problem(54, solution = "376") {
       .sortBy(-_._2)
       .sortBy(-_._1)
 
-  // for example if hand is 9-9-8-8-7, result is List(2, 2, 1)
-  def groupSizes(hand: Hand) =
+  // sometimes we only care what size the groups are.
+  // for example if hand is 9-9-8-8-7, result here is Seq(2, 2, 1)
+  def groupSizes(hand: Hand): Seq[Int] =
     groups(hand).map(_._1)
 
-  // returns 0 if it's 1 of a kind, 1 if it's 2 of a kind, 2 for 2 pairs, and so on
-  def handKind(hand: Hand) = {
-    def isStraightFlush(hand: Hand) =
-      isStraight(hand) && isFlush(hand)
-    def isNOfAKind(hand: Hand, n: Int) =
+  // higher-is-better return value, so:
+  //   0 for 1 of a kind
+  //   1 for 2 of a kind
+  //   2 for 2 pairs
+  //   ...
+  def handKind(hand: Hand): Int = {
+    def isStraightFlush =
+      isStraight && isFlush
+    def isNOfAKind(n: Int) =
       groupSizes(hand).head >= n
-    def isFullHouse(hand: Hand) =
+    def isFullHouse =
       groupSizes(hand) == List(3, 2)
-    def isFlush(hand: Hand) =
-      hand.map(_.suit).toSet.size == 1
-    def isTwoPairs(hand: Hand) =
+    def isFlush =
+      hand.map(_.suit).distinct.size == 1
+    def isTwoPairs =
       groupSizes(hand) == List(2, 2, 1)
-    def isStraight(hand: Hand) =
+    def isStraight =
       hand.map(_.rank)
         .sorted
         .sliding(2)
         .forall{case Seq(r1, r2) => r2 == r1 + 1}
-    val handFunctions: List[Hand => Boolean] =
-      List(isStraightFlush _,
-           isNOfAKind(_, 4),
-           isFullHouse _,
-           isFlush _,
-           isStraight _,
-           isNOfAKind(_, 3),
-           isTwoPairs _,
-           isNOfAKind(_, 2),
-           isNOfAKind(_, 1))
-    handFunctions.size - handFunctions.indexWhere(_(hand))
+    val handFunctions =
+      IndexedSeq(
+        () => isNOfAKind(1),
+        () => isNOfAKind(2),
+        () => isTwoPairs,
+        () => isNOfAKind(3),
+        () => isStraight,
+        () => isFlush,
+        () => isFullHouse,
+        () => isNOfAKind(4),
+        () => isStraightFlush)
+    handFunctions.lastIndexWhere(_.apply)
   }
 
   def beats(hand1: Hand, hand2: Hand): Boolean = {
