@@ -15,6 +15,7 @@ scalacOptions ++= Seq(
   "-unchecked",
   "-feature",
   "-Xlint",
+  "-Ywarn-value-discard",
   "-Xfatal-warnings",
   "-Yinline-warnings"
 )
