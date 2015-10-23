@@ -1,3 +1,5 @@
+scalaOrganization := "org.typelevel"
+
 scalaVersion := "2.11.7"
 
 name := "Seth's Project Euler solutions"
