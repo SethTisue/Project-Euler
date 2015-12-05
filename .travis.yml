@@ -16,4 +16,4 @@ before_install:
   - rm .jvmopts
 # keep heap usage down by running tests serially
 script:
-  - sbt 'set parallelExecution in Test := false' test
+  - sbt 'set parallelExecution in Test := false' test scalastyle

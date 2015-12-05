@@ -19,3 +19,5 @@ scalacOptions ++= Seq(
   "-Xfatal-warnings",
   "-Yinline-warnings"
 )
+
+scalastyleFailOnError := true

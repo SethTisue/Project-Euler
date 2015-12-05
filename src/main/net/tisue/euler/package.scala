@@ -13,11 +13,11 @@ package object euler {
 
   // binary search
   @tailrec def binarySearch(lowerBound: Int, upperBound: Int)(tooBig: Int => Boolean): Int =
-    if(lowerBound == upperBound - 1)
+    if (lowerBound == upperBound - 1)
       lowerBound
     else {
       val guess = (lowerBound + upperBound + 1) / 2
-      if(tooBig(guess))
+      if (tooBig(guess))
         binarySearch(lowerBound, guess)(tooBig)
       else
         binarySearch(guess, upperBound)(tooBig)
@@ -40,14 +40,14 @@ package object euler {
     }
     def group: Stream[Stream[T]] =
       unfold(s){s =>
-        if(s.isEmpty) None
+        if (s.isEmpty) None
         else Some(s.span(_ == s.head))}
   }
 
   // add gcd, digits methods to Int
   implicit class RichInt(private val i: Int) extends AnyVal {
     def gcd(j: Int): Int =
-      if(j == 0) i
+      if (j == 0) i
       else j.gcd(i - j * (i / j))
     def digits: Seq[Int] = i.toString.map(_.asDigit)
   }
