@@ -2,13 +2,15 @@ package net.tisue.euler
 
 object Primes {
 
+  private final val Certainty = 100
+
   // simple primality test
   def isPrime(n: Int): Boolean =
-    BigInt(n).isProbablePrime(100)
+    BigInt(n).isProbablePrime(Certainty)
   def isPrime(n: Long): Boolean =
-    BigInt(n).isProbablePrime(100)
+    BigInt(n).isProbablePrime(Certainty)
   def isPrime(n: BigInt): Boolean =
-    n.isProbablePrime(100)
+    n.isProbablePrime(Certainty)
 
   // prime sieve; use instead of the test or stream when you know the
   // upper bound of the primes you will need.
