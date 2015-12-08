@@ -13,3 +13,7 @@
 /target/
 .DS_Store
 /.lib/
+
+# pants stuff
+/.pants.d/
+/.pids/
