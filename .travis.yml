@@ -7,6 +7,7 @@ cache:
   - $HOME/.ivy2
   - $HOME/.sbt/boot
   - $HOME/.sbt/launchers
+  - $HOME/.pants.d
 
 jdk: oraclejdk8
 language: scala
@@ -14,6 +15,6 @@ before_install:
   # Remove local .jvmopts file to run sbt-extras with
   # Travis default JVM options (stored in /etc/sbt/jvmopts)
   - rm .jvmopts
-# keep heap usage down by running tests serially
+
 script:
-  - sbt 'set parallelExecution in Test := false' test
+  - "./pants test src/test/net/tisue/euler/::"
