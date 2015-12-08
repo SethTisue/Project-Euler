@@ -17,4 +17,6 @@ before_install:
   - rm .jvmopts
 
 script:
+  - "./pants dep-usage.jvm src/test/net/tisue/euler/::"
+  - "./pants dep-usage.jvm --no-summary src/test/net/tisue/euler/::"
   - "./pants test src/test/net/tisue/euler/::"
