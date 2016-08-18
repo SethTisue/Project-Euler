@@ -58,7 +58,7 @@ class Problem122Functional extends Problem(122, "1582") {
   }
   def solve = {
     val start = (List(BitSet(1)), Map[Int, Int]())
-    Iterator.iterate(start)(Function.tupled(iterate))
+    Iterator.iterate(start)(Function.tupled(iterate _))
       .collectFirst{
         case (cur, m) if cur.isEmpty =>
           m.values.map(_ - 1).sum

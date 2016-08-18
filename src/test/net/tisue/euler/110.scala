@@ -37,7 +37,7 @@ class Problem110 extends Problem(110, "9350130049860600") {
   }
   def primorialsWithNFactors(n: Int) = {
     def expand(f: Int, k: Int) = BigInt(primes(k)).pow(f)
-    partitions(n).map(_.zipWithIndex.map(Function.tupled(expand)).product)
+    partitions(n).map(_.zipWithIndex.map(Function.tupled(expand _)).product)
   }
   val threshold = 4000000
   // empirically, 18 is high enough to get the answer.  even using a much larger limit like 40
