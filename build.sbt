@@ -1,4 +1,10 @@
-scalaVersion := "2.11.8"
+scalaOrganization := "ch.epfl.lamp"
+scalaVersion := "0.1-SNAPSHOT"
+autoScalaLibrary := false
+libraryDependencies += "org.scala-lang" % "scala-library" % "2.11.5"
+scalaBinaryVersion := "2.11"
+scalaCompilerBridgeSource :=
+  ("ch.epfl.lamp" % "dotty-bridge" % "0.1.1-SNAPSHOT" % "component").sources()
 
 name := "Seth's Project Euler solutions"
 
@@ -13,11 +19,7 @@ scalacOptions ++= Seq(
   "-encoding", "us-ascii",
   "-deprecation",
   "-unchecked",
-  "-feature",
-  "-Xlint",
-  "-Ywarn-value-discard",
-  "-Xfatal-warnings",
-  "-Yinline-warnings"
+  "-feature"
 )
 
 scalastyleFailOnError := true
