@@ -1,4 +1,4 @@
-scalaVersion := "2.11.8"
+scalaVersion := "2.12.0"
 
 name := "Seth's Project Euler solutions"
 
@@ -16,8 +16,7 @@ scalacOptions ++= Seq(
   "-feature",
   "-Xlint",
   "-Ywarn-value-discard",
-  "-Xfatal-warnings",
-  "-Yinline-warnings"
+  "-Xfatal-warnings"
 )
 
 scalastyleFailOnError := true
