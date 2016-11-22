@@ -18,3 +18,7 @@ before_install:
 # keep heap usage down by running tests serially
 script:
   - sbt 'set parallelExecution in Test := false' test scalastyle
+
+before_cache:
+  - find $HOME/.sbt -name "*.lock" | xargs rm
+  - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
