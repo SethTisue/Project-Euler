@@ -19,4 +19,10 @@ scalacOptions ++= Seq(
   "-Xfatal-warnings"
 )
 
+scalacOptions ++=
+  Seq(
+    "-Xplugin:/Users/tisue/scala-fortify/target/scala-2.12/scala-fortify_2.12-f67f340f.jar",
+    "-Xplugin-require:fortify",
+    s"-P:fortify:out=${target.value}")
+
 scalastyleFailOnError := true
