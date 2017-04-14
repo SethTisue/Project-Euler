@@ -1,7 +1,5 @@
 package net.tisue.euler
 
-import annotation.tailrec
-
 // Given that L is the length of the wire, for how many values of L <= 2,000,000 can exactly one
 // right angle triangle be formed?
 
