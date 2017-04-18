@@ -4,7 +4,8 @@ package net.tisue.euler
 
 class Problem25 extends Problem(25, "4782") {
   def solve = {
-    lazy val fibs: Stream[BigInt] = 0 #:: 1 #:: fibs.zipWith(fibs.tail)(_ + _)
+    lazy val fibs: Stream[BigInt] =
+      BigInt(0) #:: BigInt(1) #:: fibs.zipWith(fibs.tail)(_ + _)
     fibs.takeWhile(_.toString.size < 1000).size
   }
 }
