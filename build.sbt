@@ -19,10 +19,14 @@ scalacOptions ++= Seq(
   "-Xfatal-warnings"
 )
 
-scalacOptions ++=
-  Seq(
-    "-Xplugin:/Users/tisue/scala-fortify/target/scala-2.12/scala-fortify_2.12-359c2338.jar",
-    "-Xplugin-require:fortify",
-    s"-P:fortify:out=${target.value}")
+credentials += Credentials(Path.userHome / ".lightbend" / "commercial.credentials")
+resolvers += Resolver.url(
+  "lightbend-commercial-releases",
+  new URL("http://repo.lightbend.com/commercial-releases/"))(
+  Resolver.ivyStylePatterns)
+
+autoCompilerPlugins := true
+addCompilerPlugin("com.lightbend" %% "scala-fortify" % "2804f550")
+scalacOptions += s"-P:fortify:out=${target.value}"
 
 scalastyleFailOnError := true
