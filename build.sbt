@@ -26,7 +26,7 @@ resolvers += Resolver.url(
   Resolver.ivyStylePatterns)
 
 autoCompilerPlugins := true
-addCompilerPlugin("com.lightbend" %% "scala-fortify" % "2804f550")
+addCompilerPlugin("com.lightbend" %% "scala-fortify" % "4733abe5")
 scalacOptions += s"-P:fortify:out=${target.value}"
 
 scalastyleFailOnError := true
