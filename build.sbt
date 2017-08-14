@@ -1,7 +1,5 @@
 scalaVersion := "2.12.3"
 
-name := "Seth's Project Euler solutions"
-
 libraryDependencies +=
   "org.scalatest" %% "scalatest" % "3.0.3" % "test"
 
@@ -18,5 +16,3 @@ scalacOptions ++= Seq(
   "-Ywarn-value-discard",
   "-Xfatal-warnings"
 )
-
-scalastyleFailOnError := true
