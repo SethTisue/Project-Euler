@@ -16,3 +16,6 @@ scalacOptions ++= Seq(
   "-Ywarn-value-discard",
   "-Xfatal-warnings"
 )
+
+scalastyleFailOnWarning := true
+scalastyleFailOnError := true
