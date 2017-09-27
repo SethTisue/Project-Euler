@@ -1,9 +1,7 @@
 scalaVersion := "2.12.3"
 
-name := "Seth's Project Euler solutions"
-
 libraryDependencies +=
-  "org.scalatest" %% "scalatest" % "3.0.3" % "test"
+  "org.scalatest" %% "scalatest" % "3.0.4" % "test"
 
 scalaSource in Compile := baseDirectory.value / "src" / "main"
 
@@ -25,10 +23,10 @@ resolvers += Resolver.url(
   new URL("http://repo.lightbend.com/commercial-releases/"))(
   Resolver.ivyStylePatterns)
 
-autoCompilerPlugins := true
 addCompilerPlugin(
-  "com.lightbend" %% "scala-fortify" % "08abd94d" classifier "assembly"
+  "com.lightbend" %% "scala-fortify" % "a38e9881" classifier "assembly"
     exclude("com.typesafe.conductr", "ent-suite-licenses-parser"))
-scalacOptions += s"-P:fortify:out=${target.value}"
+scalacOptions += s"-P:fortify:out=${target.value}/nst"
 
+scalastyleFailOnWarning := true
 scalastyleFailOnError := true
