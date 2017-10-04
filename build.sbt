@@ -24,8 +24,7 @@ resolvers += Resolver.url(
   Resolver.ivyStylePatterns)
 
 addCompilerPlugin(
-  "com.lightbend" %% "scala-fortify" % "061c1856" classifier "assembly"
-    exclude("com.typesafe.conductr", "ent-suite-licenses-parser"))
+  "com.lightbend" %% "scala-fortify" % "eda9178e" classifier "assembly")
 scalacOptions += s"-P:fortify:build=euler"
 
 scalastyleFailOnWarning := true
