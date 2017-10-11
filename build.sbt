@@ -1,4 +1,5 @@
-scalaVersion := "2.12.3"
+crossScalaVersions := Seq("2.12.3", "2.11.11")
+scalaVersion := crossScalaVersions.value.head
 
 libraryDependencies +=
   "org.scalatest" %% "scalatest" % "3.0.4" % "test"
@@ -23,8 +24,9 @@ resolvers += Resolver.url(
   new URL("http://repo.lightbend.com/commercial-releases/"))(
   Resolver.ivyStylePatterns)
 
-addCompilerPlugin(
-  "com.lightbend" %% "scala-fortify" % "eda9178e" classifier "assembly")
+libraryDependencies +=
+  compilerPlugin(
+    "com.lightbend" %% "scala-fortify" % "aa07381f" classifier "assembly")
 scalacOptions += s"-P:fortify:build=euler"
 
 scalastyleFailOnWarning := true
