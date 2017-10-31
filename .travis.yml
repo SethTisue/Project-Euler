@@ -9,7 +9,10 @@ cache:
   - $HOME/.sbt/launchers
   - $HOME/.coursier
 
-jdk: oraclejdk8
+jdk:
+- oraclejdk8
+- oraclejdk9
+
 language: scala
 before_install:
   # Remove local .jvmopts file to run sbt-extras with
