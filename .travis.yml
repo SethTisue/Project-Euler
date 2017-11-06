@@ -20,7 +20,7 @@ before_install:
   - rm .jvmopts
 # keep heap usage down by running tests serially
 script:
-  - sbt 'set parallelExecution in Test := false' +test scalastyle
+  - sbt -Dsbt.scala.version=2.10.7 'set parallelExecution in Test := false' +test scalastyle
 
 before_cache:
   - find $HOME/.sbt -name "*.lock" | xargs rm
