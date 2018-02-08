@@ -24,9 +24,10 @@ resolvers += Resolver.url(
   new URL("http://repo.lightbend.com/commercial-releases/"))(
   Resolver.ivyStylePatterns)
 
-libraryDependencies +=
-  compilerPlugin(
-    "com.lightbend" %% "scala-fortify" % "aa07381f" classifier "assembly")
+addCompilerPlugin(
+  "com.lightbend" %% "scala-fortify" % "1.0.4"
+    classifier "assembly"
+    cross CrossVersion.patch)
 scalacOptions += s"-P:fortify:build=euler"
 
 scalastyleFailOnWarning := true
