@@ -8,7 +8,7 @@ package net.tisue.euler
 import collection.immutable.Vector
 
 class Problem83 extends Problem(83, "425185") {
-  val matrix = io.Source.fromFile("dat/81.txt")
+  val matrix = io.Source.fromResource("81.txt")
     .getLines.map(_.trim.split(",").map(_.toInt).to[Vector])
     .to[Vector]
   def neighbors(loc: (Int, Int)) =

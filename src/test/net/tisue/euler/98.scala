@@ -5,7 +5,7 @@ package net.tisue.euler
 
 class Problem98 extends Problem(98, "18769") {
   val words: Iterable[String] =
-    io.Source.fromFile("dat/98.txt").mkString.trim.split(",")
+    io.Source.fromResource("98.txt").mkString.trim.split(",")
       .map(_.drop(1).dropRight(1).mkString)
   val anagrams: Iterable[List[String]] =
     words.groupBy(_.sorted.mkString).values.map(_.toList).filter(_.size > 1)

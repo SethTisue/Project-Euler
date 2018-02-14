@@ -1,4 +1,4 @@
-Solve it yourself first!
+Solve them yourself first!
 
 ## License
 

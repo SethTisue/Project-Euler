@@ -4,7 +4,7 @@ package net.tisue.euler
 
 class Problem13 extends Problem(13, "5537376230") {
   def solve = {
-    val inputs = io.Source.fromFile("dat/13.txt").getLines.map(line => BigInt(line.trim)).toList
+    val inputs = io.Source.fromResource("13.txt").getLines.map(line => BigInt(line.trim)).toList
     inputs.sum.toString.slice(0, 10).mkString
   }
 }

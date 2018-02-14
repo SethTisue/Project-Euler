@@ -5,7 +5,7 @@ package net.tisue.euler
 
 class Problem11 extends Problem(11, "70600674") {
   def solve = {
-    val a = io.Source.fromFile("dat/11.txt").getLines.map(_.trim.split(" ").map(_.toInt)).toArray
+    val a = io.Source.fromResource("11.txt").getLines.map(_.trim.split(" ").map(_.toInt)).toArray
     def inBounds(i: Int) = i >= 0 && i < a.size
     val directions = List((1, 0), (1, 1), (1, -1), (0, 1))
     (for{i <- 0 until a.size ; j <- 0 until a.size  // try all starting points

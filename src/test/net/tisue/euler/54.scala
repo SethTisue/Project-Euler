@@ -75,7 +75,7 @@ class Problem54 extends Problem(54, solution = "376") {
       def readCard(s: String) =
         Card("23456789TJQKA".indexOf(s(0)), s(1))
       for {
-        line <- io.Source.fromFile("dat/54.txt").getLines.toList
+        line <- io.Source.fromResource("54.txt").getLines.toList
         cards = line.split(" ").toList.map(readCard)
       }
       yield cards.splitAt(5)

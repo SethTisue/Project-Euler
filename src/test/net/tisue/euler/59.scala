@@ -15,7 +15,7 @@ class Problem59 extends Problem(59, "107359") {
     s.toStream.zip(key.toStream.circular)
      .map{case (c1, c2) => c1 ^ c2}.map(_.toChar).mkString
   val cipherText =
-    io.Source.fromFile("dat/59.txt").mkString.trim.split(",").map(_.toInt.toChar).mkString
+    io.Source.fromResource("59.txt").mkString.trim.split(",").map(_.toInt.toChar).mkString
   val allKeys =
     for{c1 <- 'a' to 'z'; c2 <- 'a' to 'z'; c3 <- 'a' to 'z'}
     yield List(c1, c2, c3)

@@ -21,7 +21,7 @@ class Problem89 extends Problem(89, "743") {
         letters + roman(n - number)
     }.getOrElse("")
   def solve =
-    io.Source.fromFile("dat/89.txt")
+    io.Source.fromResource("89.txt")
       .getLines.map(_.trim)
       .map(r => r.size - roman(arabic(r)).size)
       .sum

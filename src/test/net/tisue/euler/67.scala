@@ -9,7 +9,7 @@ package net.tisue.euler
 
 class Problem67 extends Problem(67, "7273") {
   val triangle =
-    io.Source.fromFile("dat/67.txt")
+    io.Source.fromResource("67.txt")
       .mkString.trim
       .split("\n").toList
       .map(_.split(" ").toList.map(_.toInt))
