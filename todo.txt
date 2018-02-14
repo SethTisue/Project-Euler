@@ -1,7 +1,0 @@
-BigDecimal is improved in 2.8, maybe the code here that uses it could be improved
-
-HEY! maybe I should be using a generic memoization package instead of rolling my own,
-e.g. problem 14
-
-when I'm factorizing a lot I should probably be caching the factorizations so for example once
-I figure out 360 is divisible by 2, I can just cons 2 onto my cached answer for 180

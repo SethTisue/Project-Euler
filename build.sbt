@@ -5,9 +5,9 @@ scalaVersion := crossScalaVersions.value.head
 libraryDependencies +=
   "org.scalatest" %% "scalatest" % "3.0.5-M1" % "test"
 
-scalaSource in Compile := baseDirectory.value / "src" / "main"
+Compile / scalaSource := baseDirectory.value / "src" / "main"
 
-scalaSource in Test := baseDirectory.value / "src" / "test"
+Test / scalaSource := baseDirectory.value / "src" / "test"
 
 scalacOptions ++= Seq(
   "-encoding", "us-ascii",
