@@ -1,6 +1,6 @@
 package net.tisue.euler
 
-class Problem173 extends Problem(173, "1572729") {
+object Problem173 extends Problem(173, "1572729") {
   val limit = 1000000
   def isSolution(outerDim: Int, innerDim: Int) =
     (outerDim + innerDim) * (outerDim - innerDim) <= limit

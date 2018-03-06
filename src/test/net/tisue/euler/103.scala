@@ -8,7 +8,7 @@ package net.tisue.euler
 
 // Maybe I'll improve it someday.
 
-class Problem103 extends Problem(103, "20313839404245") {
+object Problem103 extends Problem(103, "20313839404245") {
   val ceil = 300
   type SumSet = List[List[Int]]
   def augment(x: Int, ss: SumSet) =

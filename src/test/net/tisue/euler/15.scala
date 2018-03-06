@@ -5,7 +5,7 @@ package net.tisue.euler
 
 // (It's simpler if you use combinatorics.  It's just 40 choose 20, or 40! / (20! * 20!).)
 
-class Problem15 extends Problem(15, "137846528820") {
+object Problem15 extends Problem(15, "137846528820") {
   def solve = {
     val dim = 20
     val mem = Array.ofDim[BigInt](dim + 1, dim + 1)

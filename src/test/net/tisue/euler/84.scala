@@ -18,7 +18,7 @@ package net.tisue.euler
 // shouldn't you take another card?" but that doesn't affect the final answer
 // either.
 
-class Problem84 extends Problem(84, solution = "101524") {
+object Problem84 extends Problem(84, solution = "101524") {
 
   val die = 4
   val names = List("GO", "A1", "CC1", "A2", "T1", "R1", "B1", "CH1", "B2", "B3",
@@ -27,8 +27,8 @@ class Problem84 extends Problem(84, solution = "101524") {
                    "G2J", "G1", "G2", "CC3", "G3", "R4", "CH3", "H1", "T2", "H2")
   val squares: Map[String, Int] = // from name to number
     names.zipWithIndex.toMap
-  val namesCycle: Stream[String] =
-    names.toStream.circular
+  val namesCycle: LazyList[String] =
+    names.to(LazyList).circular
 
   def limit(squareNumber: Int): Int =
     (squareNumber + names.size) % names.size

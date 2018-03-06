@@ -12,9 +12,9 @@ package net.tisue.euler
 // 8 seconds on my iMac.  Making it faster would involve being smart about only testing each
 // combination of digits once.
 
-class Problem92 extends Problem(92, "8581146") {
+object Problem92 extends Problem(92, "8581146") {
   def next(n: Int) = n.digits.map(d => d * d).sum
-  def chain(n: Int) = Stream.iterate(n)(next)
+  def chain(n: Int) = LazyList.iterate(n)(next)
   def stuck(n: Int) = n == 1 || n == 89
   def solve = {
     val memory = IndexedSeq.tabulate(1000)(n =>

@@ -10,11 +10,11 @@ package net.tisue.euler
 // Find the sum of all the numbers less than 10^8 that are both palindromic and can be written as the
 // sum of consecutive squares.
 
-class Problem125 extends Problem(125, "2906969179") {
+object Problem125 extends Problem(125, "2906969179") {
   def isPalindrome(k: Int) = k.toString == k.toString.reverse
   val limit = 100000000
   def solve =
-    Stream.from(1)
+    LazyList.from(1)
       .map(x => x * x)
       .takeWhile(_ < limit / 2)
       .tails

@@ -13,8 +13,8 @@ import annotation.tailrec
 // not to use vars, so I replaced the loops with recursion, resulting in the code below, but it's
 // actually less elegant than the imperative version, I think.
 
-class Problem50 extends Problem(50, "997651") {
-  def solve(ps: Stream[Int], longest: List[Int]): Int = {
+object Problem50 extends Problem(50, "997651") {
+  def solve(ps: LazyList[Int], longest: List[Int]): Int = {
     if(ps.take(longest.size + 1).sum >= 1000000)
       longest.sum
     else {
@@ -31,7 +31,7 @@ class Problem50 extends Problem(50, "997651") {
 }
 
 // and an imperative version:
-class Problem50i extends Problem(50, "997651") {
+object Problem50i extends Problem(50, "997651") {
   def solve = {
     var ps = primes
     var longest: List[Int] = Nil

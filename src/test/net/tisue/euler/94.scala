@@ -7,7 +7,7 @@ package net.tisue.euler
 
 // Brute force, but runs plenty fast enough (8 seconds).
 
-class Problem94 extends Problem(94, "518408346") {
+object Problem94 extends Problem(94, "518408346") {
   def isSquare(n: Long) = {
     val r = math.sqrt(n).toLong
     r * r == n

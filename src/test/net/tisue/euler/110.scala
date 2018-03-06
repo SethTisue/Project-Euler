@@ -22,7 +22,7 @@ import Primes._
 // And so on.  The factor counts are always decreasing, which is another way of saying
 // that these are the products of primorials (en.wikipedia.org/wiki/Primorials).
 
-class Problem110 extends Problem(110, "9350130049860600") {
+object Problem110 extends Problem(110, "9350130049860600") {
   // thank you On-Line Encyclopedia of Integer Sequences!
   def A018892(n: BigInt) =
     (factorCounts(n).map(_ * 2 + 1).product + 1) / 2

@@ -10,7 +10,7 @@ import Primes._
 // Find the smallest prime which, by replacing part of the number (not necessarily adjacent digits)
 // with the same digit, is part of an eight prime value family.
 
-class Problem51 extends Problem(51, "121313") {
+object Problem51 extends Problem(51, "121313") {
   def solve = {
     def nDigitPrimes(n: Int) = {
       val lowerLimit = List.fill(n - 1)(10).product
@@ -22,7 +22,7 @@ class Problem51 extends Problem(51, "121313") {
       else
         templates(n - 1).flatMap(template => "0123456789*".map(_ + template))
     val solutions =
-      for{numDigits <- Stream.from(1)
+      for{numDigits <- LazyList.from(1)
           primes = nDigitPrimes(numDigits)
           template <- templates(numDigits)
           if template(0) != '0' && template.contains('*')}

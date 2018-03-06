@@ -2,12 +2,12 @@ package net.tisue.euler
 
 // How many Lychrel numbers are there below 10000?  (You may assume 50 steps is adequate to test.)
 
-class Problem55 extends Problem(55, "249") {
+object Problem55 extends Problem(55, "249") {
   def isPalindromic(s: String) = s == s.reverse
-  def lychrelStream(n: BigInt): Stream[BigInt] = {
+  def lychrelStream(n: BigInt): LazyList[BigInt] = {
     val next = n + BigInt(n.toString.reverse)
     if (isPalindromic(next.toString))
-      Stream(next)
+      LazyList(next)
     else
       next #:: lychrelStream(next)
   }

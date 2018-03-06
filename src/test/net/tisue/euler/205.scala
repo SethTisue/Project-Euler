@@ -7,7 +7,7 @@ package net.tisue.euler
 // What is the probability that Pyramidal Pete beats Cubic Colin? Give your answer rounded to seven
 // decimal places in the form 0.abcdefg
 
-class Problem205 extends Problem(205, "0.5731441") {
+object Problem205 extends Problem(205, "0.5731441") {
   def rolls(n: Int, sides: Int): List[Int] =
     if(n == 0)
       List(0)
@@ -16,9 +16,10 @@ class Problem205 extends Problem(205, "0.5731441") {
         .flatMap(roll => rolls(n - 1, sides)
                            .map(_ + roll))
   def counts[T](ns: List[T]): Map[T, Int] = {
-    def increment(map: Map[T, Int], key: T) =
+    def increment(map: Map.WithDefault[T, Int], key: T) =
       map.updated(key, map(key) + 1)
     ns.foldLeft(Map[T, Int]().withDefaultValue(0))(increment)
+      .to(Map)
   }
   def answer(n1: Int, sides1: Int, n2: Int, sides2: Int) = {
     val firstWins =

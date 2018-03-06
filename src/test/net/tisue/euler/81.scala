@@ -5,7 +5,7 @@ package net.tisue.euler
 
 // This solution is totally imperative.
 
-class Problem81 extends Problem(81, "427337") {
+object Problem81 extends Problem(81, "427337") {
   def solve = {
      val matrix = io.Source.fromResource("81.txt").mkString.trim.split("\n")
       .map(_.split(",").map(_.toInt))

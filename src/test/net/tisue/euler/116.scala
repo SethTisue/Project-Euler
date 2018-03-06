@@ -3,7 +3,7 @@ import Memo.memoize
 
 // hardly any different from 114 & 115
 
-class Problem116 extends Problem(116, "20492570929") {
+object Problem116 extends Problem(116, "20492570929") {
   def solve(size: Int, tileSize: Int) = {
     lazy val count: Int => Long = memoize{start =>
       val results =

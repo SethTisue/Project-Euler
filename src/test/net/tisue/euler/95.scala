@@ -7,7 +7,7 @@ import Memo.memoize
 // amicable chain of five numbers: 12496 14288 15472 14536 14264 (12496 ...)
 // Find the smallest member of the longest amicable chain with no element exceeding one million.
 
-class Problem95 extends Problem(95, "14316") {
+object Problem95 extends Problem(95, "14316") {
   // mathworld.wolfram.com/DivisorFunction.html
   def properDivisorSum(n: Int): Int =
     if(n == 1) 1
@@ -15,11 +15,11 @@ class Problem95 extends Problem(95, "14316") {
                                     val exponent = fs.size
                                     (List.fill(exponent + 1)(factor).product - 1) / (factor - 1)}
                          .product.toInt - n
-  val chain: Int => Stream[Int] = memoize(n =>
+  val chain: Int => LazyList[Int] = memoize(n =>
     n #:: chain(properDivisorSum(n)))
   // This part isn't very elegant. I'm not sure how to do better.
-  def cycle(ns: Stream[Int]): List[Int] = {
-    def recurse(ns: Stream[Int], seen: List[Int]): List[Int] =
+  def cycle(ns: LazyList[Int]): List[Int] = {
+    def recurse(ns: LazyList[Int], seen: List[Int]): List[Int] =
       ns match {
         case n #:: ns => if(seen.contains(n))
                            n :: seen.takeWhile(_ != n).reverse

@@ -15,7 +15,7 @@ package net.tisue.euler
 import java.math.{RoundingMode => J}
 import scala.math.BigDecimal.{RoundingMode => S}
 
-class Problem80 extends Problem(80, "40886") {
+object Problem80 extends Problem(80, "40886") {
   val digits = 100
   def isSquare(n: Int) = { val r = math.sqrt(n).toInt; r * r == n }
   // drop down to java.math.BigDecimal to use API not exposed by the Scala wrapper
@@ -26,7 +26,7 @@ class Problem80 extends Problem(80, "40886") {
   def firstDuplicate[A](xs: Seq[A]) =
     xs.zip(xs.tail).find{case (d1, d2) => d1 == d2}.get._1
   def babylonian(n: BigDecimal) =
-    Stream.iterate(n){next =>
+    LazyList.iterate(n){next =>
       ((next + roundingDivide(n, next)) / 2)
         .setScale(digits, S.DOWN)}
   def solve =

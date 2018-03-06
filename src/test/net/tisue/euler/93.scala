@@ -21,7 +21,7 @@ package net.tisue.euler
 // You have to be careful here to allow fractional intermediate results on the
 // way to getting an integer in the end, e.g. 1 / 2 + 3 / 6 = 1.
 
-class Problem93 extends Problem(93, "1258") {
+object Problem93 extends Problem(93, "1258") {
 
   val Zero: BigRational = 0
 
@@ -88,7 +88,7 @@ class Problem93 extends Problem(93, "1258") {
       .toSet
 
   def smallestMissing(ns: Set[Int]): Int =
-    Stream.from(1).find(!ns.contains(_)).get
+    LazyList.from(1).find(!ns.contains(_)).get
 
   def solve =
     (1 to 9).toList

@@ -7,11 +7,11 @@ import Primes._
 // We're looking for a number that's a product of exactly two fairly large primes.
 // That's the idea behind the optimizations in isSolution.
 
-class Problem70 extends Problem(70, "8319823") {
+object Problem70 extends Problem(70, "8319823") {
   // use Stream so we don't compute more factors than we need
-  def factors(n: Int): Stream[Int] =
+  def factors(n: Int): LazyList[Int] =
     if(isSievedPrime(n))
-      Stream(n)
+      LazyList(n)
     else {
       val f = primes.find(n % _ == 0).get
       f #:: factors(n / f)

@@ -5,11 +5,11 @@ package net.tisue.euler
 
 import collection.immutable.Vector
 
-class Problem99 extends Problem(99, "709") {
+object Problem99 extends Problem(99, "709") {
   val pairs =
     io.Source.fromResource("99.txt").getLines
       .map(_.split(",").map(_.toInt))
-      .to[Vector]
+      .to(Vector)
   def magnitude(index: Int) =
     pairs(index) match {
       case Array(a, b) => math.log(a) * b

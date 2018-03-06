@@ -21,10 +21,10 @@ package net.tisue.euler
 // is not technically correct."  What I don't know is whether there is any way to get the runtime
 // under a minute while still doing the broader search.
 
-class Problem44 extends Problem(44, "5482660") {
+object Problem44 extends Problem(44, "5482660") {
   def solve = {
     def pentagonal(n: BigInt) = n * (n * 3 - 1) / 2
-    val pstream = Stream.from(1).map(n => pentagonal(BigInt(n)))
+    val pstream = LazyList.from(1).map(n => pentagonal(BigInt(n)))
     val pset = pstream.take(5000).toSet
     def isPentagonal(n: BigInt) = pset.contains(n)
     (for{a <- pstream;

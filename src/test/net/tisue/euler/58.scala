@@ -15,7 +15,7 @@ import Primes._
 // process is continued, what is the side length of the square spiral for which the ratio of primes
 // along both diagonals first falls below 10%?
 
-class Problem58 extends Problem(58, "26241") {
+object Problem58 extends Problem(58, "26241") {
   def next(n: Int, primeCount: Int) =
     (n + 2,
      primeCount + List(n * n + n + 1,
@@ -25,7 +25,7 @@ class Problem58 extends Problem(58, "26241") {
   def isSolution(n: Int, primeCount: Int) =
     primeCount.toDouble / (2 * n - 1) < 0.10
   def solve =
-    Stream.iterate((1, 0))((next _).tupled)
+    LazyList.iterate((1, 0))((next _).tupled)
       .tail
       .find((isSolution _).tupled)
       .get._1

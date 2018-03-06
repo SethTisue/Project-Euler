@@ -1,9 +1,6 @@
-crossScalaVersions := Seq("2.12.4", "2.13.0-M3")
-scalaVersion := crossScalaVersions.value.head
-
-// this is the only version available for 2.13.0-M3
-libraryDependencies +=
-  "org.scalatest" %% "scalatest" % "3.0.5-M1" % "test"
+resolvers += "scala-pr" at
+  "https://scala-ci.typesafe.com/artifactory/scala-pr-validation-snapshots/"
+scalaVersion := "2.13.0-pre-08218cd-SNAPSHOT"
 
 Compile / scalaSource := baseDirectory.value / "src" / "main"
 Test / scalaSource := baseDirectory.value / "src" / "test"
@@ -17,6 +14,3 @@ scalacOptions ++= Seq(
   "-Ywarn-value-discard",
   "-Xfatal-warnings"
 )
-
-scalastyleFailOnWarning := true
-scalastyleFailOnError := true

@@ -1,7 +1,7 @@
 package net.tisue.euler
 import Primes._
 
-class Problem204 extends Problem(204, "2944730") {
+object Problem204 extends Problem(204, "2944730") {
   val ps = primes.takeWhile(_ < 100)
   def count(n: Long, p: Int): Int =
     if(n * p > 1000000000L)

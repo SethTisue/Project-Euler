@@ -16,15 +16,15 @@ package net.tisue.euler
 // Richard Choulet's formula since it's the most direct.  (I could also have used my
 // convergents code from problem 66 to generate A001653.)
 
-class Problem100 extends Problem(100, "756872327473") {
+object Problem100 extends Problem(100, "756872327473") {
   def square(n: BigInt) = n * n
   def sqrt(n: BigInt) = {
     def next(guess: BigInt) = (guess + n / guess) / 2
-    Stream.iterate(n)(next).find(square(_) <= n).get
+    LazyList.iterate(n)(next).find(square(_) <= n).get
   }
   def solve = {
     def next(n: BigInt) = n * 3 - 1 + sqrt(n * n * 8 - n * 8 + 1)
-    val solutions = Stream.iterate(BigInt(1))(next)
+    val solutions = LazyList.iterate(BigInt(1))(next)
     solutions.takeWhile(_ < BigInt("1000000000000")).last
   }
 }

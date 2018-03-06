@@ -6,7 +6,7 @@ import Primes._
 // mathworld.wolfram.com/PrimePartition.html
 // mathworld.wolfram.com/EulerTransform.html
 
-class Problem77 extends Problem(77, "71") {
+object Problem77 extends Problem(77, "71") {
   def solve = {
     def factorSum(n:Int) = if(n < 2) 0 else factors(n).toSet.sum
     val memo = new collection.mutable.ArrayBuffer[Int]
@@ -15,6 +15,6 @@ class Problem77 extends Problem(77, "71") {
       memo += ((1 until n).map(k => factorSum(k) * memo(n - k)).sum + factorSum(n)) / n
       memo.last
     }
-    Stream.from(2).find(partitionCount(_) > 5000).get
+    LazyList.from(2).find(partitionCount(_) > 5000).get
   }
 }

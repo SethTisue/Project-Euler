@@ -8,11 +8,11 @@ package net.tisue.euler
 // 4-digit numbers for which each polygonal type (triangular through octagonal), is represented by a
 // different number in the set.
 
-class Problem61 extends Problem(61, "28684") {
+object Problem61 extends Problem(61, "28684") {
   def concat(n1: Int, n2: Int) = n1 * 100 + n2
   def p(s: Int, n: Int) = ((s - 2) * n * n - (s - 4) * n) / 2  // en.wikipedia.org/wiki/Polygonal_number
   def inRange(n: Int) = n >= 1000 && n < 10000
-  def ps(s: Int) = Stream.from(1).map(p(s, _)).dropWhile(!inRange(_)).takeWhile(inRange).toSet
+  def ps(s: Int) = LazyList.from(1).map(p(s, _)).dropWhile(!inRange(_)).takeWhile(inRange).toSet
   val polygonals = (3 to 8).flatMap(ps).toSet
   val pMap = (3 to 8).map(n => (n, ps(n))).toMap
   def isPolygonal(n: Int) = polygonals(n)

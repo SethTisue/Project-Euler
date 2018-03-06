@@ -3,7 +3,7 @@ import Primes._
 
 // 6 seconds!
 
-class Problem118 extends Problem(118, "44680") {
+object Problem118 extends Problem(118, "44680") {
   // not that happy with the clarity of this function, but oh well
   def partitions[T](ns: List[T]): List[List[List[T]]] =
     ns match {
