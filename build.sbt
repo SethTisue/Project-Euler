@@ -1,4 +1,4 @@
-crossScalaVersions := Seq("2.12.4", "2.13.0-M3")
+crossScalaVersions := Seq("2.12.5", "2.13.0-M3")
 scalaVersion := crossScalaVersions.value.head
 
 // this is the only version available for 2.13.0-M3
