@@ -6,7 +6,6 @@ libraryDependencies +=
   "org.scalatest" %% "scalatest" % "3.0.5-M1" % "test"
 
 Compile / scalaSource := baseDirectory.value / "src" / "main"
-
 Test / scalaSource := baseDirectory.value / "src" / "test"
 
 scalacOptions ++= Seq(
