@@ -1,6 +1,9 @@
-resolvers += "scala-pr" at
-  "https://scala-ci.typesafe.com/artifactory/scala-pr-validation-snapshots/"
-scalaVersion := "2.13.0-pre-08218cd-SNAPSHOT"
+crossScalaVersions := Seq("2.12.4", "2.13.0-M4")
+scalaVersion := crossScalaVersions.value.head
+
+// this is the only version available for 2.13.0-M4
+libraryDependencies +=
+  "org.scalatest" %% "scalatest" % "3.0.5-SNAP1" % "test"
 
 Compile / scalaSource := baseDirectory.value / "src" / "main"
 Test / scalaSource := baseDirectory.value / "src" / "test"
