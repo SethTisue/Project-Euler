@@ -1,5 +1,4 @@
-crossScalaVersions := Seq("2.12.6", "2.13.0-M4")
-scalaVersion := crossScalaVersions.value.head
+scalaVersion := "2.13.0-M4"
 
 // this is the only version available for 2.13.0-M4
 libraryDependencies +=
