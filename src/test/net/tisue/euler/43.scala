@@ -15,7 +15,7 @@ import Primes._
 // d8d9d10=289 is divisible by 17
 // Find the sum of all 0 to 9 pandigital numbers with this property.
 
-object Problem43 extends Problem(43, "16695334890") {
+class Problem43 extends Problem(43, "16695334890") {
   def solve = {
     def missingDigits(x: String) =
       ('0' to '9').toList.filterNot(x.contains(_))

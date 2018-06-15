@@ -6,7 +6,7 @@ import Primes._
 
 // Not optimized, but plenty fast enough (5 seconds) on this problem size.
 
-object Problem124 extends Problem(124, "21417") {
+class Problem124 extends Problem(124, "21417") {
   def rad(n: Int) =
     if(n == 1)
       1

@@ -4,7 +4,7 @@ package net.tisue.euler
 // in ascending order of size, find the numerator of the fraction
 // immediately to the left of 3/7.
 
-object Problem71 extends Problem(71, "428570") {
+class Problem71 extends Problem(71, "428570") {
   def solve =
    (1 to 1000000)
      .map(d => (d * 3 / 7, d))

@@ -15,7 +15,7 @@ package net.tisue.euler
 import java.math.{RoundingMode => J}
 import scala.math.BigDecimal.{RoundingMode => S}
 
-object Problem80 extends Problem(80, "40886") {
+class Problem80 extends Problem(80, "40886") {
   val digits = 100
   def isSquare(n: Int) = { val r = math.sqrt(n).toInt; r * r == n }
   // drop down to java.math.BigDecimal to use API not exposed by the Scala wrapper

@@ -11,7 +11,7 @@ trait Problem4Helpers {
 }
 
 // imperative version
-object Problem4 extends Problem(4, "906609") with Problem4Helpers {
+class Problem4 extends Problem(4, "906609") with Problem4Helpers {
   def solve: Int = {
     var winner = 0
     var a = 999
@@ -29,7 +29,7 @@ object Problem4 extends Problem(4, "906609") with Problem4Helpers {
 }
 
 // functional version
-object Problem4f extends Problem(4, "906609") with Problem4Helpers {
+class Problem4f extends Problem(4, "906609") with Problem4Helpers {
   def solve = {
     def loop1(a: Int, winner: Int): Int =
       if(a < 100 || a * a <= winner) winner

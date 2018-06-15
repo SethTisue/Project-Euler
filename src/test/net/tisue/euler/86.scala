@@ -28,7 +28,7 @@ package net.tisue.euler
 // arrive in a useful order, we use a priority queue where the next parent we
 // allow to spawn is the one with the smallest longer leg.
 
-object Problem86 extends Problem(86, "1818") {
+class Problem86 extends Problem(86, "1818") {
 
   def solve = {
     case class Triple(a: Int, b: Int, c: Int) {

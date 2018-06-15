@@ -4,7 +4,7 @@ import Memo.memoize
 // I solved this from first principles, but after solving it, I looked it up
 // and it's www.research.att.com/~njas/sequences/A005252
 
-object Problem114 extends Problem(114, "16475640049") {
+class Problem114 extends Problem(114, "16475640049") {
   def solve(min: Int, lim: Int) = {
     lazy val count: Int => Long = memoize{start =>
       val results =

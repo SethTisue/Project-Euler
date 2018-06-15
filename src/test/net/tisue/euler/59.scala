@@ -7,7 +7,7 @@ package net.tisue.euler
 // knowledge that the plain text must contain common English words, decrypt the message and find the
 // sum of the ASCII values in the original text.
 
-object Problem59 extends Problem(59, "107359") {
+class Problem59 extends Problem(59, "107359") {
   // extremely rough heuristic, but it's good enough in this case
   def isEnglish(s: String): Boolean =
     (s.split(' ').size / s.size.toDouble) > 0.15

@@ -9,7 +9,7 @@ package net.tisue.euler
 // There are no reversible 9 digit numbers, so we only need to check up to 100 million, which we
 // can do in 10 seconds.
 
-object Problem145 extends Problem(145, "608720") {
+class Problem145 extends Problem(145, "608720") {
   def allOdd(n: Int): Boolean =
     n == 0 || n % 2 == 1 && allOdd(n / 10)
   def reverse(n: Int, result: Int): Int =

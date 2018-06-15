@@ -5,7 +5,7 @@ package net.tisue.euler
 
 // (note: glguy's Haskell solution on the Euler forum is more elegant)
 
-object Problem54 extends Problem(54, solution = "376") {
+class Problem54 extends Problem(54, solution = "376") {
 
   case class Card(rank: Int, suit: Char)
   type Hand = List[Card]

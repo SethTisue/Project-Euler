@@ -8,7 +8,7 @@ package net.tisue.euler
 // Analytically, 1200 is an upper bound on the solution since
 // a 2x1200 grid has over 2 million rectangles.
 
-object Problem85 extends Problem(85, "2772") {
+class Problem85 extends Problem(85, "2772") {
   def tri(n: Int) = n * (n + 1) / 2
   def rectangles(w: Int, h: Int) = tri(w) * tri(h)
   val candidates =

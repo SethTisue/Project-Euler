@@ -20,7 +20,7 @@ before_install:
   - rm .jvmopts
 # keep heap usage down by running tests serially
 script:
-  - sbt 'set parallelExecution in Test := false' 'test:runMain net.tisue.euler.Main'
+  - sbt 'set parallelExecution in Test := false' +test
 
 before_cache:
   - find $HOME/.sbt -name "*.lock" | xargs rm

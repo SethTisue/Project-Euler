@@ -1,11 +1,12 @@
 package net.tisue.euler
 
-abstract class Problem(number: Int, solution: String) {
-  def main(args: Array[String]): Unit = {
-    println(s"problem $number")
+import org.scalatest.FunSuite
+
+abstract class Problem(number: Int, solution: String) extends FunSuite {
+  test(s"problem $number") {
     val (result, elapsed) = time(solve)
-    println(f"$elapsed%.3f seconds")
-    assert(solution == result.toString)
+    info(f"$elapsed%.3f seconds")
+    assert(solution === result.toString)
     ()
   }
   def solve: Any

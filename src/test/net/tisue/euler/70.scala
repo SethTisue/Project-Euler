@@ -7,7 +7,7 @@ import Primes._
 // We're looking for a number that's a product of exactly two fairly large primes.
 // That's the idea behind the optimizations in isSolution.
 
-object Problem70 extends Problem(70, "8319823") {
+class Problem70 extends Problem(70, "8319823") {
   // use Stream so we don't compute more factors than we need
   def factors(n: Int): LazyList[Int] =
     if(isSievedPrime(n))

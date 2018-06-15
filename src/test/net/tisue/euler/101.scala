@@ -12,7 +12,7 @@ package net.tisue.euler
 // expressed.  I'm not sure whether I'm more happy that we used a similar solution plan, or more sad
 // that his is better.
 
-object Problem101 extends Problem(101, "37076114526") {
+class Problem101 extends Problem(101, "37076114526") {
   def differences(ns: Seq[BigInt]) =
     (ns.tail, ns).zipped.map(_ - _)
   def diagonal(ns: Seq[BigInt]) =

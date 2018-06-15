@@ -6,7 +6,7 @@ package net.tisue.euler
 // the last eight digits stop changing after 1777^^7, so you don't really need
 // to go all the way up to 1777^^1855.
 
-object Problem188 extends Problem(188, "95962097") {
+class Problem188 extends Problem(188, "95962097") {
   def modpow(b: Long, e: Long, m: Int): Long = {
     case class Loop(b: Long, e: Long, result: Long) {
       def next = Loop(b * b % m,

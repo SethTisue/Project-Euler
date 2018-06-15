@@ -2,7 +2,7 @@ package net.tisue.euler
 
 // [...]
 
-object Problem90 extends Problem(90, "1217") {
+class Problem90 extends Problem(90, "1217") {
   def solve = {
      val squares = List("01", "04", "09", "16", "25", "36", "49", "64", "81")
     def isSolution(die1: Seq[Int], die2: Seq[Int]) = {

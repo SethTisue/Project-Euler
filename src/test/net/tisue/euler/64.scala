@@ -10,7 +10,7 @@ package net.tisue.euler
 // we only need to remember what the beginning of the iteration looked like so when we return
 // to the beginning we recognize it.
 
-object Problem64 extends Problem(64, "1322") {
+class Problem64 extends Problem(64, "1322") {
   def period(n: Int) = {
     val m = math.sqrt(n).toInt
     val seen = new collection.mutable.HashMap[(Int, Int), Int]

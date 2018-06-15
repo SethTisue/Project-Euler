@@ -3,7 +3,7 @@ package net.tisue.euler
 // Find the number of integers 1 < n < 10^7, for which n and n + 1 have the same number of positive
 // divisors. For example, 14 has the positive divisors 1, 2, 7, 14 while 15 has 1, 3, 5, 15.
 
-object Problem179 extends Problem(179, "986262") {
+class Problem179 extends Problem(179, "986262") {
   def solve = {
      val max = 10000000
     val counts = Array.ofDim[Int](max + 1)
