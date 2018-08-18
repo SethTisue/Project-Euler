@@ -14,6 +14,8 @@ class Problem99 extends Problem(99, "709") {
     pairs(index) match {
       case Array(a, b) => math.log(a) * b
     }
-  def solve =
+  def solve = {
+    import Ordering.Double.TotalOrdering
     1 + pairs.indices.maxBy(magnitude)
+  }
 }

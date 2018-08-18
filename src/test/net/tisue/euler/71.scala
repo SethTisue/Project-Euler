@@ -5,6 +5,7 @@ package net.tisue.euler
 // immediately to the left of 3/7.
 
 class Problem71 extends Problem(71, "428570") {
+  import Ordering.Double.TotalOrdering
   def solve =
    (1 to 1000000)
      .map(d => (d * 3 / 7, d))

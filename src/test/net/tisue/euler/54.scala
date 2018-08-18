@@ -16,7 +16,7 @@ class Problem54 extends Problem(54, solution = "376") {
   // here is Seq((2, 9), (2, 8), (1, 7)).
   def groups(hand: Hand): Seq[(Int, Int)] =
     hand.groupBy(_.rank)
-      .mapValues(_.size)
+      .view.mapValues(_.size)
       .toList
       .map(_.swap)
       .sortBy(-_._2)

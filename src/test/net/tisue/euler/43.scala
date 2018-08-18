@@ -24,7 +24,7 @@ class Problem43 extends Problem(43, "16695334890") {
     def recurse(x: String): List[String] =
       if(x.size == 10) List(x)
       else if(!hasProperty(x)) Nil
-      else missingDigits(x).flatMap(d => recurse(d + x))
+      else missingDigits(x).flatMap(d => recurse(d.toString + x))
     recurse("").filter(_(0) != '0').map(BigInt(_)).sum
   }
 }

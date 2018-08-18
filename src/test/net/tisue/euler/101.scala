@@ -14,7 +14,7 @@ package net.tisue.euler
 
 class Problem101 extends Problem(101, "37076114526") {
   def differences(ns: Seq[BigInt]) =
-    (ns.tail, ns).zipped.map(_ - _)
+    ns.tail.lazyZip(ns).map(_ - _)
   def diagonal(ns: Seq[BigInt]) =
     Iterator.iterate(ns)(differences)
       .takeWhile(_.nonEmpty)

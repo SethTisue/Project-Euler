@@ -24,10 +24,15 @@ class Problem118 extends Problem(118, "44680") {
   def countSolutions(ns: List[List[Int]]): Int =
     // this quick check on the sum of digits prunes the search space a lot
     if(ns.exists(x => x.size > 1 && x.sum % 3 == 0)) 0
-    else ns.foldLeft(1){case (product, n) =>
-      val p = countPrimePermutations(n)
-      if(p == 0) return 0  // early exit for speed
-      else product * p
+    else {
+      object EarlyExit extends util.control.ControlThrowable
+      try
+        ns.foldLeft(1){case (product, n) =>
+          val p = countPrimePermutations(n)
+          if(p == 0) throw EarlyExit
+          else product * p
+        }
+      catch { case EarlyExit => 0 }
     }
   def solve =
     partitions((1 to 9).toList).map(countSolutions).sum
