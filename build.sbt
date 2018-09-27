@@ -1,9 +1,8 @@
-crossScalaVersions := Seq("2.12.7", "2.13.0-M3")
+crossScalaVersions := Seq("2.12.7")
 scalaVersion := crossScalaVersions.value.head
 
-// this is the only version available for 2.13.0-M3
 libraryDependencies +=
-  "org.scalatest" %% "scalatest" % "3.0.5-M1" % "test"
+  "org.scalatest" %% "scalatest" % "3.0.5" % "test"
 
 Compile / scalaSource := baseDirectory.value / "src" / "main"
 Test / scalaSource := baseDirectory.value / "src" / "test"
