@@ -23,3 +23,12 @@ test_script:
 cache:
   - '%USERPROFILE%\.ivy2\cache'
   - '%USERPROFILE%\.sbt'
+
+notifications:
+- provider: Email
+  to:
+  - seth@tisue.net
+  subject: 'AppVeyor: Project Euler'
+  on_build_success: false
+  on_build_failure: true
+  on_build_status_changed: true
