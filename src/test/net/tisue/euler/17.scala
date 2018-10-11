@@ -2,7 +2,7 @@ package net.tisue.euler
 
 // If the numbers from 1 to 1000 inclusive is written out in words, how many letters are used?
 
-class Problem17 extends Problem(17, "21024") {
+class Problem17 extends Problem(17, "21124") {
   def english(n: Int): String = {
     if(n == 1000)
       "onethousand"
