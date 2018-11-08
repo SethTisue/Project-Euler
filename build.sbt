@@ -6,7 +6,7 @@ scalaVersion := "2.13.0-M5"
 
 // this is the only version available for 2.13.0-M5
 libraryDependencies +=
-  "org.scalatest" %% "scalatest" % "3.0.6-SNAP3" % "test"
+  "org.scalatest" %% "scalatest" % "3.0.6-SNAP5" % "test"
 
 Compile / scalaSource := baseDirectory.value / "src" / "main"
 Test / scalaSource := baseDirectory.value / "src" / "test"
