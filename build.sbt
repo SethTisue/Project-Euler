@@ -1,4 +1,6 @@
-scalaVersion := "2.13.0-M5"
+resolvers += "scala-integration" at
+  "https://scala-ci.typesafe.com/artifactory/scala-integration/"
+scalaVersion := "2.13.0-pre-481a78b"
 
 Compile / scalaSource := baseDirectory.value / "src" / "main"
 Test / scalaSource := baseDirectory.value / "src" / "test"

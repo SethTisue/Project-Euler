@@ -16,7 +16,7 @@ class Problem205 extends Problem(205, "0.5731441") {
         .flatMap(roll => rolls(n - 1, sides)
                            .map(_ + roll))
   def counts[T](ns: List[T]): Map[T, Int] = {
-    def increment(map: Map.WithDefault[T, Int], key: T) =
+    def increment(map: Map[T, Int], key: T) =
       map.updated(key, map(key) + 1)
     ns.foldLeft(Map[T, Int]().withDefaultValue(0))(increment)
       .to(Map)
