@@ -27,8 +27,8 @@ class Problem84 extends Problem(84, solution = "101524") {
                    "G2J", "G1", "G2", "CC3", "G3", "R4", "CH3", "H1", "T2", "H2")
   val squares: Map[String, Int] = // from name to number
     names.zipWithIndex.toMap
-  val namesCycle: Stream[String] =
-    names.toStream.circular
+  val namesCycle: LazyList[String] =
+    names.to(LazyList).circular
 
   def limit(squareNumber: Int): Int =
     (squareNumber + names.size) % names.size
@@ -75,7 +75,7 @@ class Problem84 extends Problem(84, solution = "101524") {
       yield die1 + die2
     def row(i: Int): List[BigRational] =
       rolls.toList.foldLeft(zeroVector){(vec, roll) =>
-        (vec, nextSquare(i, roll)).zipped.map(_ + _)}
+        vec.lazyZip(nextSquare(i, roll)).map(_ + _)}
     names.indices.toList.map(row(_).map(_.toDouble))
   }
 
@@ -93,6 +93,7 @@ class Problem84 extends Problem(84, solution = "101524") {
     val stationaryProbabilityVector =
       Iterator.iterate(P)(matrixMul(_, P))
         .drop(150).next.head
+    import Ordering.Double.TotalOrdering
     stationaryProbabilityVector
       .zipWithIndex
       .sortBy(-_._1)

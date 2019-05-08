@@ -88,7 +88,7 @@ class Problem93 extends Problem(93, "1258") {
       .toSet
 
   def smallestMissing(ns: Set[Int]): Int =
-    Stream.from(1).find(!ns.contains(_)).get
+    LazyList.from(1).find(!ns.contains(_)).get
 
   def solve =
     (1 to 9).toList

@@ -23,5 +23,5 @@ class Problem108 extends Problem(108, "180180") {
   def A018892(n: Int) =
     (factorCounts(n).map(_ * 2 + 1).product + 1) / 2
   def solve =
-    Stream.from(2).find(A018892(_) > 1000).get
+    LazyList.from(2).find(A018892(_) > 1000).get
 }

@@ -65,28 +65,28 @@ object Primes {
   }
 
   // stream of cached sieved primes
-  val primes: Stream[Int] = Stream.from(2).filter(isSievedPrime)
+  val primes: LazyList[Int] = LazyList.from(2).filter(isSievedPrime)
 
   // factorization
-  def factors(n: Int): Stream[Int] = {
+  def factors(n: Int): LazyList[Int] = {
     require(n > 1)
-    if(isSievedPrime(n)) Stream(n)
+    if(isSievedPrime(n)) LazyList(n)
     else {
       val f = primes.find(n % _ == 0).get
       f #:: factors(n / f)
     }
   }
   // this is only going to work for BigInts that only have small prime factors
-  def factors(n: BigInt): Stream[Int] = {
+  def factors(n: BigInt): LazyList[Int] = {
     require(n > 1)
-    if(isPrime(n)) Stream(n.toInt)
+    if(isPrime(n)) LazyList(n.toInt)
     else {
       val f = primes.find(n % _ == 0).get
       f #:: factors(n / f)
     }
   }
   def factorCounts(i: Int): List[Int] = {
-    def recurse(fs: Stream[Int]): List[Int] =
+    def recurse(fs: LazyList[Int]): List[Int] =
       if(fs.isEmpty) Nil
       else {
         val (firstGroup, moreGroups) = fs.span(_ == fs.head)
@@ -95,7 +95,7 @@ object Primes {
     recurse(factors(i))
   }
   def factorCounts(i: BigInt): List[Int] = {
-    def recurse(fs: Stream[Int]): List[Int] =
+    def recurse(fs: LazyList[Int]): List[Int] =
       if(fs.isEmpty) Nil
       else {
         val (firstGroup, moreGroups) = fs.span(_ == fs.head)

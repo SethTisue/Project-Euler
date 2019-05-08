@@ -15,7 +15,7 @@ class Problem65 extends Problem(65, "272") {
     case x :: xs => calc(xs) match { case (a, b) => (b + a * x, a) }
     case Nil => (1, 0)
   }
-  val series = 2 #:: Stream.from(1).flatMap(n => Stream(1, n * 2, 1))
+  val series = 2 #:: LazyList.from(1).flatMap(n => LazyList(1, n * 2, 1))
   def solve =
     calc(series.take(100).toList)._1.digits.sum
 }

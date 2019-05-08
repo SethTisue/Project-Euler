@@ -24,17 +24,17 @@ class Problem66 extends Problem(66, "661") {
   // presumably the code in this next method could be made more concise
   def continuedFraction(n: Int) = {
     val m = math.sqrt(n).toInt
-    def iterate(num: Int, c: Int): Stream[Int] = {
+    def iterate(num: Int, c: Int): LazyList[Int] = {
       val denom = n - c * c
       val nextA = num * (m + c) / denom
       nextA #:: iterate(denom / num, (nextA * denom - num * c) / num)
     }
-    m #:: (if(m * m == n) Stream.empty
+    m #:: (if(m * m == n) LazyList.empty
            else iterate(1, m))
   }
   def convergents(n: Int) =
-    Stream.from(1).map(len => continuedFraction(n).take(len).map(new BigRational(_))
-                                .reduceRight((next, partialResult) => partialResult.reciprocal + next))
+    LazyList.from(1).map(len => continuedFraction(n).take(len).map(new BigRational(_))
+                                  .reduceRight((next, partialResult) => partialResult.reciprocal + next))
   def smallestX(d: Int) =
     convergents(d).find(r => isSolution(r.numer, r.denom, d)).get.numer
   def solve(maxD: Int) =

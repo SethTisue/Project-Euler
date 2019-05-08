@@ -14,7 +14,7 @@ import annotation.tailrec
 // actually less elegant than the imperative version, I think.
 
 class Problem50 extends Problem(50, "997651") {
-  def solve(ps: Stream[Int], longest: List[Int]): Int = {
+  def solve(ps: LazyList[Int], longest: List[Int]): Int = {
     if(ps.take(longest.size + 1).sum >= 1000000)
       longest.sum
     else {

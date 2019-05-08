@@ -19,6 +19,7 @@ class Problem205 extends Problem(205, "0.5731441") {
     def increment(map: Map[T, Int], key: T) =
       map.updated(key, map(key) + 1)
     ns.foldLeft(Map[T, Int]().withDefaultValue(0))(increment)
+      .to(Map)
   }
   def answer(n1: Int, sides1: Int, n2: Int, sides2: Int) = {
     val firstWins =

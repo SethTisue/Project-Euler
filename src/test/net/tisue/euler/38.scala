@@ -8,7 +8,7 @@ import annotation.tailrec
 
 class Problem38 extends Problem(38, "932718654") {
   def findPandigital(input: Int): Option[Int] = {
-    def isPandigital(s: String) = s.sorted == "123456789"
+    def isPandigital(s: String) = s.toSeq.sorted.mkString == "123456789"
     @tailrec def recurse(n: Int, result: String): Option[Int] =
       if(result.size > 9) None
       else if(isPandigital(result)) Some(result.toInt)

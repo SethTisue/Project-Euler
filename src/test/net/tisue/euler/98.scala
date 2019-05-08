@@ -8,8 +8,8 @@ class Problem98 extends Problem(98, "18769") {
     io.Source.fromResource("98.txt").mkString.trim.split(",")
       .map(_.drop(1).dropRight(1).mkString)
   val anagrams: Iterable[List[String]] =
-    words.groupBy(_.sorted.mkString).values.map(_.toList).filter(_.size > 1)
-  val squares = Stream.from(1).map(n => n * n)
+    words.groupBy(_.toSeq.sorted.mkString).values.map(_.toList).filter(_.size > 1)
+  val squares = LazyList.from(1).map(n => n * n)
   def squaresOfLength(n: Int) =
     squares
       .dropWhile(_.toString.size < n)

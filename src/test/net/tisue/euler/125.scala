@@ -14,7 +14,7 @@ class Problem125 extends Problem(125, "2906969179") {
   def isPalindrome(k: Int) = k.toString == k.toString.reverse
   val limit = 100000000
   def solve =
-    Stream.from(1)
+    LazyList.from(1)
       .map(x => x * x)
       .takeWhile(_ < limit / 2)
       .tails

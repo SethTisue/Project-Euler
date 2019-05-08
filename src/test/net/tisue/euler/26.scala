@@ -7,7 +7,7 @@ import Primes._
 class Problem26 extends Problem(26, "983") {
   def solve = {
     def period(d: Int): Int =
-      Stream.from(1).find(p => (BigInt(10) pow p) % d == BigInt(1)).get
+      LazyList.from(1).find(p => (BigInt(10) pow p) % d == BigInt(1)).get
     val candidates = primes.drop(3).takeWhile(_ < 1000)
     candidates.maxBy(period)
   }

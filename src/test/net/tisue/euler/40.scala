@@ -8,7 +8,7 @@ package net.tisue.euler
 
 class Problem40 extends Problem(40, "210") {
   def solve = {
-    val digits = Stream.from(1).flatMap(_.toString).map(_.asDigit)
+    val digits = LazyList.from(1).flatMap(_.toString).map(_.asDigit)
     List(1, 10, 100, 1000, 10000, 100000, 1000000).map(n => digits(n - 1)).product
   }
 }

@@ -16,7 +16,7 @@ class Problem54 extends Problem(54, solution = "376") {
   // here is Seq((2, 9), (2, 8), (1, 7)).
   def groups(hand: Hand): Seq[(Int, Int)] =
     hand.groupBy(_.rank)
-      .mapValues(_.size)
+      .view.mapValues(_.size)
       .toList
       .map(_.swap)
       .sortBy(-_._2)
@@ -63,10 +63,11 @@ class Problem54 extends Problem(54, solution = "376") {
   }
 
   def beats(hand1: Hand, hand2: Hand): Boolean = {
-    type Score = (Int, Iterable[(Int, Int)])
+    type Score = (Int, Seq[(Int, Int)])
     def score(hand: Hand): Score =
       (handKind(hand), groups(hand))
     // tuples get ordered fieldwise, so we can just:
+    import Ordering.Implicits._
     Ordering[Score].gt(score(hand1), score(hand2))
   }
 

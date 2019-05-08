@@ -14,7 +14,7 @@ class Problem27 extends Problem(27, "-59231") {
   def solve = {
     def primeCount(a: Int, b: Int): Int = {
       def polynomial(n: Int) = n * (a + n) + b
-      Stream.from(0)
+      LazyList.from(0)
         .map(polynomial)
         .takeWhile(p => p > 0 && isSievedPrime(p))
         .size

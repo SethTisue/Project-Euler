@@ -22,7 +22,7 @@ import Primes._
 // assignment (stream = stream.dropWhile(...)).
 
 class Problem88 extends Problem(88, "7587457") {
-  val divisors = Stream.from(0).map(n => (2 to n).filter(n % _ == 0).toList)
+  val divisors = LazyList.from(0).map(n => (2 to n).filter(n % _ == 0).toList)
   def factorizations(n: Int) = {
     def helper(n: Int, ceiling: Int): List[List[Int]] =
       if(n == 1) List(Nil)
@@ -33,7 +33,7 @@ class Problem88 extends Problem(88, "7587457") {
     helper(n, n)
   }
   def getK(factors: List[Int]) = factors.size + factors.product - factors.sum
-  var stream = Stream.from(2).filter(!isPrime(_)).map(n => (n, factorizations(n)))
+  var stream = LazyList.from(2).filter(!isPrime(_)).map(n => (n, factorizations(n)))
   def solve(limit: Int) =
     (for{k <- (2 to limit).toList
          _ = (stream = stream.dropWhile(_._1 < k))

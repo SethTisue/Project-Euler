@@ -1,13 +1,10 @@
 package net.tisue.euler
 
-import org.scalatest.FunSuite
+import org.junit.Test
+import org.junit.Assert._
 
-abstract class Problem(number: Int, solution: String) extends FunSuite {
-  test(s"problem $number") {
-    val (result, elapsed) = time(solve)
-    info(f"$elapsed%.3f seconds")
-    assert(solution === result.toString)
-    ()
-  }
+abstract class Problem(number: Int, solution: String) {
   def solve: Any
+  @Test def test(): Unit =
+    assertEquals(solution, solve.toString)
 }

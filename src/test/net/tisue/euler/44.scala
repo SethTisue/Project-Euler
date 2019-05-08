@@ -24,7 +24,7 @@ package net.tisue.euler
 class Problem44 extends Problem(44, "5482660") {
   def solve = {
     def pentagonal(n: BigInt) = n * (n * 3 - 1) / 2
-    val pstream = Stream.from(1).map(n => pentagonal(BigInt(n)))
+    val pstream = LazyList.from(1).map(n => pentagonal(BigInt(n)))
     val pset = pstream.take(5000).toSet
     def isPentagonal(n: BigInt) = pset.contains(n)
     (for{a <- pstream;

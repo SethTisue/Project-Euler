@@ -1,11 +1,12 @@
-crossScalaVersions := Seq("2.12.8")
-scalaVersion := crossScalaVersions.value.head
-
-libraryDependencies +=
-  "org.scalatest" %% "scalatest" % "3.0.7" % "test"
+scalaVersion := "2.13.0-RC1"
 
 Compile / scalaSource := baseDirectory.value / "src" / "main"
 Test / scalaSource := baseDirectory.value / "src" / "test"
+
+libraryDependencies ++= Seq(
+  "junit" % "junit" % "4.12" % Test,
+  "com.novocode" % "junit-interface" % "0.11" % Test
+)
 
 scalacOptions ++= Seq(
   "-encoding", "us-ascii",
@@ -16,6 +17,3 @@ scalacOptions ++= Seq(
   "-Ywarn-value-discard",
   "-Xfatal-warnings"
 )
-
-scalastyleFailOnWarning := true
-scalastyleFailOnError := true

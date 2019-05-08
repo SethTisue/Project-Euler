@@ -19,6 +19,6 @@ class Problem47 extends Problem(47, "134043") {
         val f = primes.find(n % _ == 0).get
         factorSet(n / f) + f
       }
-    Stream.from(1).tails.find(_.take(4).forall(factorSet(_).size == 4)).get.head
+    LazyList.from(1).tails.find(_.take(4).forall(factorSet(_).size == 4)).get.head
   }
 }

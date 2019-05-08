@@ -5,7 +5,7 @@ package net.tisue.euler
 
 class Problem9 extends Problem(9, "31875000") {
   def solve = {
-    (for{a <- Stream.from(1)
+    (for{a <- LazyList.from(1)
          b <- 1 to a
          sum = a * a + b * b
          c = math.sqrt(sum).toInt

@@ -26,7 +26,7 @@ class Problem80 extends Problem(80, "40886") {
   def firstDuplicate[A](xs: Seq[A]) =
     xs.zip(xs.tail).find{case (d1, d2) => d1 == d2}.get._1
   def babylonian(n: BigDecimal) =
-    Stream.iterate(n){next =>
+    LazyList.iterate(n){next =>
       ((next + roundingDivide(n, next)) / 2)
         .setScale(digits, S.DOWN)}
   def solve =

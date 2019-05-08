@@ -3,7 +3,7 @@ package net.tisue.euler
 class Problem119 extends Problem(119, "248155780267521") {
   def isSolution(n: BigInt) = {
     val digitSum = BigInt(n.digits.sum)
-    val ns = Stream.from(2).map(digitSum.pow).takeWhile(_ <= n)
+    val ns = LazyList.from(2).map(digitSum.pow).takeWhile(_ <= n)
     digitSum > 1 && ns.nonEmpty && n == ns.last
   }
   // Upper bounds for search arrived at by trial and error.  I also wrote stream-of-streams merging

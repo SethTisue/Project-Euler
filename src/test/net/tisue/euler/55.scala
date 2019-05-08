@@ -4,10 +4,10 @@ package net.tisue.euler
 
 class Problem55 extends Problem(55, "249") {
   def isPalindromic(s: String) = s == s.reverse
-  def lychrelStream(n: BigInt): Stream[BigInt] = {
+  def lychrelStream(n: BigInt): LazyList[BigInt] = {
     val next = n + BigInt(n.toString.reverse)
     if (isPalindromic(next.toString))
-      Stream(next)
+      LazyList(next)
     else
       next #:: lychrelStream(next)
   }

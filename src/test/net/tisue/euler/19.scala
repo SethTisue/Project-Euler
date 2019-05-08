@@ -18,7 +18,7 @@ class Problem19 extends Problem(19, "171") {
     newCal
   }
   def solve =
-    Stream.iterate(centuryBegin)(nextMonth)
+    LazyList.iterate(centuryBegin)(nextMonth)
       .take(1200)
       .count(_.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY)
 }

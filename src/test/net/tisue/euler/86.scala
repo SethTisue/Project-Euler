@@ -58,7 +58,7 @@ class Problem86 extends Problem(86, "1818") {
         Ordering.by[Triple, Int](_.b).reverse
       val heap = new collection.mutable.PriorityQueue[Triple]
       heap += Triple(3, 4, 5)
-      Stream.continually{
+      LazyList.continually{
         val result = heap.dequeue()
         heap ++= result.children.map(_.canonical)
         result
@@ -73,7 +73,7 @@ class Problem86 extends Problem(86, "1818") {
         t.b <= m * 2
       for {
         t1 <- primitiveTriples.takeWhile(fits)
-        t2 <- Stream.from(1).map(t1 * _).takeWhile(fits)
+        t2 <- LazyList.from(1).map(t1 * _).takeWhile(fits)
         if t2.a == m || t2.b == m
       }
       yield if(t2.b == m) t2
@@ -83,11 +83,11 @@ class Problem86 extends Problem(86, "1818") {
     def cuboidCount(k: Int): Int =
       triples(k).map(_.cuboidCount).sum
 
-    def partialSums(ns: Stream[Int]): Stream[Int] =
+    def partialSums(ns: LazyList[Int]): LazyList[Int] =
       ns.scanLeft(0)(_ + _)
 
     val solutionCounts =
-      partialSums(Stream.from(1).map(cuboidCount))
+      partialSums(LazyList.from(1).map(cuboidCount))
 
     solutionCounts.takeWhile(_ < 1000000).size
   }

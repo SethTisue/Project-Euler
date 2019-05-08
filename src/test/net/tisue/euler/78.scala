@@ -18,13 +18,13 @@ class Problem78 extends Problem(78, "55374") {
   val memo = collection.mutable.ArrayBuffer[Int](1)
   def p(n: Int) = {
     memo +=
-      Stream.from(1).flatMap(k => List(n - (k * k * 3 - k) / 2,
-                                       n - (k * k * 3 + k) / 2))
+      LazyList.from(1).flatMap(k => List(n - (k * k * 3 - k) / 2,
+                                         n - (k * k * 3 + k) / 2))
         .takeWhile(_ >= 0)
-        .zip(Stream(1, 1, -1, -1).circular)
+        .zip(LazyList(1, 1, -1, -1).circular)
         .map{case (j, sign) => memo(j) * sign}
         .sum % 1000000
     memo.last
   }
-  def solve = Stream.from(1).find(p(_) == 0).get
+  def solve = LazyList.from(1).find(p(_) == 0).get
 }
