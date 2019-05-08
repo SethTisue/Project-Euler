@@ -23,16 +23,25 @@ class Problem118 extends Problem(118, "44680") {
     n.permutations.map(_.mkString.toInt).count(fastPrimeTest)
   def countSolutions(ns: List[List[Int]]): Int =
     // this quick check on the sum of digits prunes the search space a lot
-    if(ns.exists(x => x.size > 1 && x.sum % 3 == 0)) 0
+    if (ns.exists(x => x.size > 1 && x.sum % 3 == 0))
+      0
     else {
-      object EarlyExit extends util.control.ControlThrowable
-      try
-        ns.foldLeft(1){case (product, n) =>
-          val p = countPrimePermutations(n)
-          if(p == 0) throw EarlyExit
-          else product * p
+      // this is a fold with an early exit. not sure what the clearest
+      // way to write it is. see the git history for an alternate version
+      // that calls `foldLeft` and then uses a `ControlThrowable` for early exit.
+      // note that `foldLeftSome` doesn't apply here because on early exit, we
+      // want to exit with 0, not with the-result-of-the-fold-so-far
+      def loop(ns: List[List[Int]], acc: Int): Int =
+        if (ns.isEmpty)
+          acc
+        else {
+          val p = countPrimePermutations(ns.head)
+          if (p == 0)
+            0
+          else
+            loop(ns.tail, acc * p)
         }
-      catch { case EarlyExit => 0 }
+      loop(ns, 1)
     }
   def solve =
     partitions((1 to 9).toList).map(countSolutions).sum
