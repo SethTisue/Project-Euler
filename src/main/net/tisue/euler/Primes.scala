@@ -22,7 +22,7 @@ object Primes {
     sieve(1) = false
     // we use while instead of for comprehensions for a little extra speed - ST 7/19/10
     var i = 2
-    val stop = math.sqrt(limit).toInt
+    val stop = math.sqrt(limit.toDouble).toInt
     while (i <= stop) {
       if (sieve(i)) {
         var j = i * 2
@@ -47,7 +47,7 @@ object Primes {
       Array.copy(sieve, 0, newSieve, 0, sieve.length)
       // we use while instead of for comprehensions for a little extra speed - ST 7/19/10
       var i = 2
-      val stop = math.sqrt(newSieve.length).toInt
+      val stop = math.sqrt(newSieve.length.toDouble).toInt
       while (i <= stop) {
         if (newSieve(i)) {
           // start at least multiple of i at or above sieve.length
