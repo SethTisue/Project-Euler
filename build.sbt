@@ -1,4 +1,4 @@
-scalaVersion := "2.13.0-RC2"
+scalaVersion := "2.13.0-RC3"
 
 Compile / scalaSource := baseDirectory.value / "src" / "main"
 Test / scalaSource := baseDirectory.value / "src" / "test"
