@@ -22,12 +22,6 @@ package object euler {
         binarySearch(guess, upperBound)(tooBig)
     }
 
-  def unfold[T1, T2](x: T1)(fn: T1 => Option[(T2, T1)]): LazyList[T2] =
-    fn(x) match {
-      case None => LazyList()
-      case Some((result, next)) => result #:: unfold(next)(fn)
-    }
-
   // Haskell has these, dunno why they're not in Scala. `group`
   // could go on Iterable, actually, instead of LazyList specifically.
   implicit class RichLazyList[T](private val s: LazyList[T]) extends AnyVal {
@@ -38,7 +32,7 @@ package object euler {
       result
     }
     def group: LazyList[LazyList[T]] =
-      unfold(s){s =>
+      LazyList.unfold(s){s =>
         if (s.isEmpty) None
         else Some(s.span(_ == s.head))}
   }
