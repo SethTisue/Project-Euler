@@ -1,8 +1,5 @@
 scalaVersion := "2.13.0"
 
-Compile / scalaSource := baseDirectory.value / "src" / "main"
-Test / scalaSource := baseDirectory.value / "src" / "test"
-
 libraryDependencies ++= Seq(
   "junit" % "junit" % "4.12" % Test,
   "com.novocode" % "junit-interface" % "0.11" % Test
