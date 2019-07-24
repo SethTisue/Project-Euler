@@ -1,1 +1,1 @@
--Xmx6144m
+-Xmx6144m -XX:MaxInlineLevel=18
