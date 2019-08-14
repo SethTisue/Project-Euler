@@ -7,7 +7,7 @@ package net.tisue.euler
 // Note that since the last coin is a penny, we never get into
 // a situation where we can't make change.
 
-class Problem31 extends Problem(31, "73682") {
+object Problem31 extends Problem(31, "73682") {
   def solve = {
     def change(n: Int, coins:List[Int]): Int =
       if(n == 0) 1

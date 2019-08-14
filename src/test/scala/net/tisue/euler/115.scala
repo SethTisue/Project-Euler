@@ -3,7 +3,7 @@ import Memo.memoize
 
 // same code as 114. still runs plenty fast (0.3 seconds) even with increased problem size.
 
-class Problem115 extends Problem(115, "168") {
+object Problem115 extends Problem(115, "168") {
   def solve(min: Int, lim: Int) = {
     lazy val count: Int => Long = memoize{start =>
       val results =

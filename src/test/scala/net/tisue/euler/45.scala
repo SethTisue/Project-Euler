@@ -7,7 +7,7 @@ package net.tisue.euler
 // It can be verified that T285 = P165 = H143 = 40755.
 // Find the next triangle number that is also pentagonal and hexagonal.
 
-class Problem45 extends Problem(45, "1533776805") {
+object Problem45 extends Problem(45, "1533776805") {
   def solve = {
     def triangle(n: BigInt) = n * (n + 1) / 2
     def pentagonal(n: BigInt) = n * (n * 3 - 1) / 2

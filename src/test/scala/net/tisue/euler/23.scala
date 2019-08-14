@@ -4,7 +4,7 @@ package net.tisue.euler
 // all the positive integers which cannot be written as the sum of two abundant numbers.  (It can be
 // shown that all integers greater than 28123 can be written as the sum of two abundant numbers.)
 
-class Problem23 extends Problem(23, "4179871") {
+object Problem23 extends Problem(23, "4179871") {
   def divisorSum(i: Int) =
     (2 to math.sqrt(i).toInt)
       .filter(i % _ == 0)

@@ -3,7 +3,7 @@ package net.tisue.euler
 // Find all the square anagram word pairs (e.g. CARE 1296 = 36^2, RACE 9216 = 96^2).
 // What is the largest square number formed by any member of such a pair?
 
-class Problem98 extends Problem(98, "18769") {
+object Problem98 extends Problem(98, "18769") {
   val words: Iterable[String] =
     io.Source.fromResource("98.txt").mkString.trim.split(",")
       .map(_.drop(1).dropRight(1).mkString)

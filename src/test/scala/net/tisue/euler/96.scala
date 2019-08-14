@@ -21,7 +21,7 @@ package net.tisue.euler
 // solve3 corresponds to the final phase, "Eliminating Bad Guesses", where we
 // just use trial and error.
 
-class Problem96 extends Problem(96, "24702") {
+object Problem96 extends Problem(96, "24702") {
 
   type Puzzle = List[List[Int]]  // 9 lists of 9 integers in 1-9 range
   type Group = List[Int]         // 9 integers in 0-80 range

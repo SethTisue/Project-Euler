@@ -1,10 +1,10 @@
 package net.tisue.euler
 
-import org.junit.Test
-import org.junit.Assert._
+import verify._
 
-abstract class Problem(number: Int, solution: String) {
+abstract class Problem(number: Int, solution: String) extends BasicTestSuite {
   def solve: Any
-  @Test def test(): Unit =
-    assertEquals(solution, solve.toString)
+  test(s"problem $number") {
+    assert(solution == solve.toString)
+  }
 }

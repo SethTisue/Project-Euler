@@ -6,7 +6,7 @@ package net.tisue.euler
 // This is clumsy and runs slow (30 seconds).
 // There are speedier, more elegant solutions on the forum.
 
-class Problem75 extends Problem(75, "214954") {
+object Problem75 extends Problem(75, "214954") {
   // how many elements appear only once?
   def uniqueCount[T](xs: List[T]): Int =
     xs.groupBy(identity).count(_._2.size == 1)

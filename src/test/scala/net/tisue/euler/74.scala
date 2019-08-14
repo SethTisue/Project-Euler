@@ -21,7 +21,7 @@ import Memo.memoize
 // This got uglier when I optimized it.  It could use another round of work to make it more elegant
 // again.
 
-class Problem74 extends Problem(74, "402") {
+object Problem74 extends Problem(74, "402") {
   def fact(n: Int): Int = (2 to n).product
   def next(n: Int): Int = n.digits.map(fact).sum
   val chain: Int => LazyList[Int] =

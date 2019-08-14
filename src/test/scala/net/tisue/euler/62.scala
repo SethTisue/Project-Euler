@@ -2,7 +2,7 @@ package net.tisue.euler
 
 // Find the smallest cube for which exactly five permutations of its digits are cube.
 
-class Problem62 extends Problem(62, "127035954683") {
+object Problem62 extends Problem(62, "127035954683") {
   val cubes = LazyList.from(1).map(n => BigInt(n) * n * n)
   def cubesOfLength(len:Int) =
     cubes.dropWhile(_.toString.size < len).takeWhile(_.toString.size == len)

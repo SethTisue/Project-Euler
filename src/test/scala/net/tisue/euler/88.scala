@@ -21,7 +21,7 @@ import Primes._
 // already-computed values, but we also drop no-longer needed entries, using
 // assignment (stream = stream.dropWhile(...)).
 
-class Problem88 extends Problem(88, "7587457") {
+object Problem88 extends Problem(88, "7587457") {
   val divisors = LazyList.from(0).map(n => (2 to n).filter(n % _ == 0).toList)
   def factorizations(n: Int) = {
     def helper(n: Int, ceiling: Int): List[List[Int]] =

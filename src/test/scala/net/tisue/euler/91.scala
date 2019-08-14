@@ -4,7 +4,7 @@ package net.tisue.euler
 // origin, O(0, 0), to form triangle OPQ.  Given that 0 <= x1, y1, x2, y2 <= 50, how many right
 // triangles can be formed?
 
-class Problem91 extends Problem(91, "14234") {
+object Problem91 extends Problem(91, "14234") {
   def square(d: Double) = d * d
   def distance(x1: Double, y1: Double, x2: Double, y2: Double) =
     math.sqrt(square(x2 - x1) + square(y2 - y1))

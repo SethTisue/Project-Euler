@@ -9,7 +9,7 @@ import Primes._
 // It's not necessary to check 8 and 9 digit pandigitals, since
 // they are all divisible by 3.
 
-class Problem41 extends Problem(41, "7652413") {
+object Problem41 extends Problem(41, "7652413") {
   def solve =
     (1 to 7).permutations.map(_.mkString.toInt).filter(isPrime).max
 }

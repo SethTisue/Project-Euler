@@ -16,7 +16,7 @@ package net.tisue.euler
 // Richard Choulet's formula since it's the most direct.  (I could also have used my
 // convergents code from problem 66 to generate A001653.)
 
-class Problem100 extends Problem(100, "756872327473") {
+object Problem100 extends Problem(100, "756872327473") {
   def square(n: BigInt) = n * n
   def sqrt(n: BigInt) = {
     def next(guess: BigInt) = (guess + n / guess) / 2
