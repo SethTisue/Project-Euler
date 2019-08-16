@@ -1,9 +1,10 @@
 scalaVersion := "2.13.0"
 
 libraryDependencies ++= Seq(
-  "junit" % "junit" % "4.12" % Test,
-  "com.novocode" % "junit-interface" % "0.11" % Test
+  "com.eed3si9n.verify" %% "verify" % "0.1.0" % Test
 )
+
+testFrameworks += new TestFramework("verify.runner.Framework")
 
 scalacOptions ++= Seq(
   "-encoding", "us-ascii",

@@ -8,7 +8,7 @@ import Primes._
 // property, but there is one other 4-digit increasing sequence.
 // What 12-digit number do you form by concatenating the three terms in this sequence?
 
-class Problem49 extends Problem(49, "296962999629") {
+object Problem49 extends Problem(49, "296962999629") {
   val eligibles = primesBelow(10000).dropWhile(_ < 1000).toSet
   def sameDigits(n1: Int, n2: Int) =
     n1.digits.sorted == n2.digits.sorted

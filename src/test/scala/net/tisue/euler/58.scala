@@ -15,7 +15,7 @@ import Primes._
 // process is continued, what is the side length of the square spiral for which the ratio of primes
 // along both diagonals first falls below 10%?
 
-class Problem58 extends Problem(58, "26241") {
+object Problem58 extends Problem(58, "26241") {
   def next(n: Int, primeCount: Int) =
     (n + 2,
      primeCount + List(n * n + n + 1,

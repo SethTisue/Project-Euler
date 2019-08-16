@@ -7,7 +7,7 @@ import Memo.memoize
 // amicable chain of five numbers: 12496 14288 15472 14536 14264 (12496 ...)
 // Find the smallest member of the longest amicable chain with no element exceeding one million.
 
-class Problem95 extends Problem(95, "14316") {
+object Problem95 extends Problem(95, "14316") {
   // mathworld.wolfram.com/DivisorFunction.html
   def properDivisorSum(n: Int): Int =
     if(n == 1) 1

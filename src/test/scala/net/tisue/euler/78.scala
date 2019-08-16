@@ -14,7 +14,7 @@ package net.tisue.euler
 // instead of the full p(n). This works because every p(n) is the sum of previous p(n)'s.)
 // I changed my code to include this optimization, without needing to restructure anything.
 
-class Problem78 extends Problem(78, "55374") {
+object Problem78 extends Problem(78, "55374") {
   val memo = collection.mutable.ArrayBuffer[Int](1)
   def p(n: Int) = {
     memo +=

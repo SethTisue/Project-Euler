@@ -2,7 +2,7 @@ package net.tisue.euler
 
 // This is actually faster if you don't memoize.
 
-class Problem14 extends Problem(14, "837799") {
+object Problem14 extends Problem(14, "837799") {
   def next(n: Long) =
     if(n % 2 == 0) n / 2
     else 3 * n + 1

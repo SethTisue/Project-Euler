@@ -14,7 +14,7 @@ package net.tisue.euler
 // think, to iterate over possible individual digits rather than
 // iterating over possible two-digit numbers.
 
-class Problem33 extends Problem(33, "100") {
+object Problem33 extends Problem(33, "100") {
   def solve = {
     val fractions =
       for{a <- 10 to 98

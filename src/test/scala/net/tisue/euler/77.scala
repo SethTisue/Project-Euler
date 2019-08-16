@@ -6,7 +6,7 @@ import Primes._
 // mathworld.wolfram.com/PrimePartition.html
 // mathworld.wolfram.com/EulerTransform.html
 
-class Problem77 extends Problem(77, "71") {
+object Problem77 extends Problem(77, "71") {
   def solve = {
     def factorSum(n:Int) = if(n < 2) 0 else factors(n).toSet.sum
     val memo = new collection.mutable.ArrayBuffer[Int]

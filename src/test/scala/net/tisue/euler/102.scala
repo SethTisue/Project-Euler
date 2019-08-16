@@ -7,7 +7,7 @@ package net.tisue.euler
 // develop a little library of geometric stuff, but for now we just grind
 // out the math.
 
-class Problem102 extends Problem(102, "228") {
+object Problem102 extends Problem(102, "228") {
   def check(x1: Double, y1: Double, x2: Double, y2: Double, x3: Double, y3: Double) = {
     val q = (((x2 - x3) * y2) - ((y2 - y3) * x2)) /
             (((y3 - y2) * x1) - ((x3 - x2) * y1))

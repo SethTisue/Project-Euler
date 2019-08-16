@@ -7,7 +7,7 @@ package net.tisue.euler
 // What is the probability that Pyramidal Pete beats Cubic Colin? Give your answer rounded to seven
 // decimal places in the form 0.abcdefg
 
-class Problem205 extends Problem(205, "0.5731441") {
+object Problem205 extends Problem(205, "0.5731441") {
   def rolls(n: Int, sides: Int): List[Int] =
     if(n == 0)
       List(0)

@@ -1,7 +1,7 @@
 package net.tisue.euler
 import Primes._
 
-class Problem123 extends Problem(123, "21035") {
+object Problem123 extends Problem(123, "21035") {
   def r(n: Int) = {
     val p = BigInt(primes(n - 1))
     ((p - 1).pow(n) + (p + 1).pow(n)) % (p * p)

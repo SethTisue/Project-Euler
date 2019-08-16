@@ -14,7 +14,7 @@ import Primes._
 //   http://en.wikipedia.org/wiki/Farey_sequence
 // but it might be useful if there are more problems later on this theme.
 
-class Problem72 extends Problem(72, "303963552391") {
+object Problem72 extends Problem(72, "303963552391") {
   def factors(n: Int): List[Int] =
     if(isSievedPrime(n))
       List(n)
