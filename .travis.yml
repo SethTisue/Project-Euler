@@ -21,3 +21,4 @@ cache:
 before_cache:
   - find $HOME/.sbt -name "*.lock" | xargs rm
   - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
+  - find $HOME/.coursier -name "*.lock" | xargs rm
