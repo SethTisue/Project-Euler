@@ -1,4 +1,4 @@
-scalaVersion := "2.13.0"
+scalaVersion := "2.13.1"
 
 libraryDependencies ++= Seq(
   "com.eed3si9n.verify" %% "verify" % "0.2.0" % Test
