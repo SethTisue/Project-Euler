@@ -5,7 +5,7 @@ import Primes._
 // of the digits: 197, 971, and 719, are themselves prime.
 // How many circular primes are there below one million?
 
-object Problem35 extends Problem(35, "55") {
+class Problem35 extends Problem(35, "55") {
   def solve = {
     def rotations[A](xs: Seq[A]): Seq[Seq[A]] =
       (0 until xs.size).map(n => xs.drop(n) ++ xs.take(n))

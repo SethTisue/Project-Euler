@@ -24,7 +24,7 @@ package net.tisue.euler
 
 import collection.immutable.BitSet
 
-object Problem122Imperative extends Problem(122, "1582") {
+class Problem122Imperative extends Problem(122, "1582") {
   def children(s: BitSet): List[BitSet] =
     s.toList
       .map(k => s + (k + s.last))
@@ -46,7 +46,7 @@ object Problem122Imperative extends Problem(122, "1582") {
 // here's my attempt, but all the tupling and untupling makes kind of ugly.  I'd love to know
 // if there's a better way.
 
-object Problem122Functional extends Problem(122, "1582") {
+class Problem122Functional extends Problem(122, "1582") {
   def children(s: BitSet): List[BitSet] =
     s.toList
       .map(k => s + (k + s.last))

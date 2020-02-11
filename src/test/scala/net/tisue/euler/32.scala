@@ -5,7 +5,7 @@ package net.tisue.euler
 
 // This is pretty clumsy, but oh well...
 
-object Problem32 extends Problem(32, "45228") {
+class Problem32 extends Problem(32, "45228") {
   def makeNum(digits: Seq[Int]) =
     digits.reduceLeft((a, b) => 10 * a + b)
   val products =

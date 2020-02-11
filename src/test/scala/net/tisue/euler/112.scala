@@ -7,7 +7,7 @@ package net.tisue.euler
 // bouncy numbers first exceeds 50% is 538.  By 21780 the proportion of bouncy numbers is equal to
 // 90%.  Find the least number for which the proportion of bouncy numbers is exactly 99%.
 
-object Problem112 extends Problem(112, "1587000") {
+class Problem112 extends Problem(112, "1587000") {
   def isIncreasing(n: Int): Boolean =
     n < 10 || n % 10 >= (n % 100) / 10 && isIncreasing(n / 10)
   def isDecreasing(n: Int): Boolean =

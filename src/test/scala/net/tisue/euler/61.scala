@@ -8,7 +8,7 @@ package net.tisue.euler
 // 4-digit numbers for which each polygonal type (triangular through octagonal), is represented by a
 // different number in the set.
 
-object Problem61 extends Problem(61, "28684") {
+class Problem61 extends Problem(61, "28684") {
   def concat(n1: Int, n2: Int) = n1 * 100 + n2
   def p(s: Int, n: Int) = ((s - 2) * n * n - (s - 4) * n) / 2  // en.wikipedia.org/wiki/Polygonal_number
   def inRange(n: Int) = n >= 1000 && n < 10000

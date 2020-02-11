@@ -4,7 +4,7 @@ import Memo.memoize
 // How many numbers below a googol (10^100) are not bouncy?
 // (see problem 112 for definition)
 
-object Problem113 extends Problem(113, "51161058134250") {
+class Problem113 extends Problem(113, "51161058134250") {
   // To count decreasing numbers, we recurse on how many digits of room we have left and how
   // low the digits so far have sunk.  Memoizing keeps it efficient.
   val decreasings: (Int, Int) => Long =

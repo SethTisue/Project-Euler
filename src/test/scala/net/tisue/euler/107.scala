@@ -12,7 +12,7 @@ package net.tisue.euler
 // minimum-spanning-tree algorithms, I think.  I did include one optimization, using "throw" for
 // early exit from pathExists.  The whole thing runs in about 1 second.
 
-object Problem107 extends Problem(107, "259679") {
+class Problem107 extends Problem(107, "259679") {
   type Network[T] = Map[(T, T), Int]
   val input: Network[Int] = {
     val entries =

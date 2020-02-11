@@ -1,10 +1,7 @@
 scalaVersion := "2.13.1"
 
-libraryDependencies ++= Seq(
-  "com.eed3si9n.verify" %% "verify" % "0.2.0" % Test
-)
-
-testFrameworks += new TestFramework("verify.runner.Framework")
+libraryDependencies += "org.scalameta" %% "munit" % "0.4.5"
+testFrameworks += new TestFramework("munit.Framework")
 
 scalacOptions ++= Seq(
   "-encoding", "us-ascii",
