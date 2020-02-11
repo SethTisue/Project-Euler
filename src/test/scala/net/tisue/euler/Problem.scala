@@ -1,8 +1,6 @@
 package net.tisue.euler
 
-import verify._
-
-abstract class Problem(number: Int, solution: String) extends BasicTestSuite {
+abstract class Problem(number: Int, solution: String) extends munit.FunSuite {
   def solve: Any
   test(s"problem $number") {
     assert(solution == solve.toString)

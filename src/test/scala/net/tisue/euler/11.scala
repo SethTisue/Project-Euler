@@ -3,7 +3,7 @@ package net.tisue.euler
 // What is the greatest product of four numbers in any direction (up, down, left, right, or
 // diagonally) in the 20x20 grid?
 
-object Problem11 extends Problem(11, "70600674") {
+class Problem11 extends Problem(11, "70600674") {
   def solve = {
     val a = io.Source.fromResource("11.txt").getLines.map(_.trim.split(" ").map(_.toInt)).toArray
     def inBounds(i: Int) = i >= 0 && i < a.size

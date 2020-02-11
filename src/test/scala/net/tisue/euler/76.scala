@@ -9,7 +9,7 @@ package net.tisue.euler
 // 1 + 1 + 1 + 1 + 1
 // How many different ways can one hundred be written as a sum of at least two positive integers?
 
-object Problem76 extends Problem(76, "190569291") {
+class Problem76 extends Problem(76, "190569291") {
   def sums(n: Int) = {
     val mem = Array.ofDim[Int](n + 1, n + 1)
     def sums(n: Int, limit: Int): Int = {

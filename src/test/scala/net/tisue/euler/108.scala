@@ -18,7 +18,7 @@ import Primes._
 // (other than the hypotenuse) of a primitive or nonprimitive right triangle."  So another
 // possibility would be to use the pythagorean triple code from problem 86.
 
-object Problem108 extends Problem(108, "180180") {
+class Problem108 extends Problem(108, "180180") {
   // thank you On-Line Encyclopedia of Integer Sequences!
   def A018892(n: Int) =
     (factorCounts(n).map(_ * 2 + 1).product + 1) / 2

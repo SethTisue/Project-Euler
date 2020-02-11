@@ -3,7 +3,7 @@ import Memo.memoize
 
 // even easier than 114/115/116!
 
-object Problem117 extends Problem(117, "100808458960497") {
+class Problem117 extends Problem(117, "100808458960497") {
   val count: Int => Long = memoize(size =>
     if(size < 0) 0
     else if(size == 0) 1

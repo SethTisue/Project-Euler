@@ -5,7 +5,7 @@ package net.tisue.euler
 
 import collection.immutable.Vector
 
-object Problem99 extends Problem(99, "709") {
+class Problem99 extends Problem(99, "709") {
   val pairs =
     io.Source.fromResource("99.txt").getLines
       .map(_.split(",").map(_.toInt))

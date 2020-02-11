@@ -3,7 +3,7 @@ package net.tisue.euler
 // Find the unique positive integer whose square has the form 1_2_3_4_5_6_7_8_9_0,
 // where each _ is a single digit.
 
-object Problem206 extends Problem(206, "1389019170") {
+class Problem206 extends Problem(206, "1389019170") {
   def solve = {
      // reduces to finding a square 1_2_3_4_5_6_7_8_9 since the last _ above must be 0.
     val range = math.sqrt(10203040506070809L).toInt to

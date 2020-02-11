@@ -1,6 +1,6 @@
 package net.tisue.euler
 
-object Problem119 extends Problem(119, "248155780267521") {
+class Problem119 extends Problem(119, "248155780267521") {
   def isSolution(n: BigInt) = {
     val digitSum = BigInt(n.digits.sum)
     val ns = LazyList.from(2).map(digitSum.pow).takeWhile(_ <= n)

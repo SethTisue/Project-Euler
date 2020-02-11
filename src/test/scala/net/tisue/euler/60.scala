@@ -13,7 +13,7 @@ import Primes._
 // he assumes the first solution that pops out has the minimum sum, rather than continuing
 // to search the rest of the space as my code does.
 
-object Problem60 extends Problem(60, "26033") {
+class Problem60 extends Problem(60, "26033") {
   def concat(n1: Int, n2: Int) =
     s"$n1$n2".toInt
   def isPair(n1: Int, n2: Int) =

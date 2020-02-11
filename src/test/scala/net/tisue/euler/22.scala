@@ -2,7 +2,7 @@ package net.tisue.euler
 
 // What is the total of all the name scores in the file?
 
-object Problem22 extends Problem(22, "871198282") {
+class Problem22 extends Problem(22, "871198282") {
   val names =
     io.Source.fromResource("22.txt")
       .filter(_ != '"').mkString

@@ -7,7 +7,7 @@ package net.tisue.euler
 // overall recursion is a fold (a foldRight if we don't reverse the input
 // triangle).
 
-object Problem67 extends Problem(67, "7273") {
+class Problem67 extends Problem(67, "7273") {
   val triangle =
     io.Source.fromResource("67.txt")
       .mkString.trim

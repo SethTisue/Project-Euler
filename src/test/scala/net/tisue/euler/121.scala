@@ -1,6 +1,6 @@
 package net.tisue.euler
 
-object Problem121 extends Problem(121, "2269") {
+class Problem121 extends Problem(121, "2269") {
   // the inputs are how many discs of each color I have drawn so far
   def winChance(blue: Int, red: Int): BigRational =
     if(blue + red == 15)

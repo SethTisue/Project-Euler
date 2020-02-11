@@ -16,7 +16,7 @@ package net.tisue.euler
 // http://en.wikipedia.org/wiki/Pell%27s_equation#Solution_technique tells us that this is really a
 // continued fraction problem!  So we need similar code as problem 64.
 
-object Problem66 extends Problem(66, "661") {
+class Problem66 extends Problem(66, "661") {
   def isSquare(n: Int) =
     { val r = math.sqrt(n).toInt; r * r == n }
   def isSolution(x: BigInt, y: BigInt, d: Int) =
