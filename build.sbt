@@ -1,6 +1,6 @@
 scalaVersion := "2.13.1"
 
-libraryDependencies += "org.scalameta" %% "munit" % "0.5.0"
+libraryDependencies += "org.scalameta" %% "munit" % "0.5.1"
 testFrameworks += new TestFramework("munit.Framework")
 
 scalacOptions ++= Seq(
