@@ -1,25 +1,17 @@
-language: scala
+version: ~> 1.0
+import: scala/scala-dev:travis/default.yml
 
-jdk:
-- openjdk8
-- openjdk11
-- openjdk14
+language: scala
+env:
+  - ADOPTOPENJDK=8
+  - ADOPTOPENJDK=11
+  - ADOPTOPENJDK=14
 
 before_install:
   # Remove local .jvmopts file to run sbt-extras with
   # Travis default JVM options (stored in /etc/sbt/jvmopts)
   - rm .jvmopts
 # keep heap usage down by running tests serially
+
 script:
   - sbt 'set parallelExecution in Test := false' +test
-
-cache:
-  directories:
-  - $HOME/.sbt/boot
-  - $HOME/.sbt/launchers
-  - $HOME/.ivy2
-  - $HOME/.cache/coursier
-
-before_cache:
-  - find $HOME/.sbt -name "*.lock" | xargs rm
-  - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
