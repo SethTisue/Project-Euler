@@ -1,4 +1,5 @@
 package net.tisue.euler
+
 import Primes._
 
 // Euler's Totient function phi(n) is used to determine the number of numbers less than n which are
@@ -8,9 +9,9 @@ import Primes._
 // I wasn't 100% sure this approach would be guaranteed to produce the right answer, but it does.
 // (People on the forum seem confident the algorithm is guaranteed to work.)
 
-class Problem69 extends Problem(69, "510510") {
+class Problem69 extends Problem(69, "510510"):
   def solve =
     primes.scanLeft(1)(_ * _)
       .takeWhile(_ <= 1000000)
       .last
-}
+

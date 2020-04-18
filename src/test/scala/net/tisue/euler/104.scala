@@ -3,7 +3,7 @@ package net.tisue.euler
 // Given that F(k) is the first Fibonacci number for which the first nine digits AND the last nine
 // digits are 1-9 pandigital, find k.
 
-class Problem104 extends Problem(104, "329468") {
+class Problem104 extends Problem(104, "329468"):
   import java.math.{ BigDecimal, MathContext }
   lazy val fibLastNines: LazyList[Int] =
     0 #:: 1 #::
@@ -21,4 +21,3 @@ class Problem104 extends Problem(104, "329468") {
       .collect{case (f, k) if isPandigital(f.digits) => k}
       .find(k => isPandigital(fibFirstNine(k)))
       .get
-}

@@ -1,4 +1,5 @@
 package net.tisue.euler
+
 import Memo.memoize
 
 // The number 145 is well known for the property that the sum of the factorial of its digits is
@@ -21,22 +22,20 @@ import Memo.memoize
 // This got uglier when I optimized it.  It could use another round of work to make it more elegant
 // again.
 
-class Problem74 extends Problem(74, "402") {
+class Problem74 extends Problem(74, "402"):
   def fact(n: Int): Int = (2 to n).product
   def next(n: Int): Int = n.digits.map(fact).sum
   val chain: Int => LazyList[Int] =
     memoize(n => n #:: chain(next(n)))
   def isSolution(n: Int) = chain(n).take(60).distinct.size == 60
-  def solve = {
+  def solve =
     val candidates =
-      for{d1 <- 0 to 9; d2 <- 0 :: (d1 to 9).toList; d3 <- 0 :: (d2 to 9).toList
-          d4 <- 0 :: (d3 to 9).toList; d5 <- 0 :: (d4 to 9).toList; d6 <- 0 :: (d5 to 9).toList}
+      for d1 <- 0 to 9; d2 <- 0 :: (d1 to 9).toList; d3 <- 0 :: (d2 to 9).toList
+          d4 <- 0 :: (d3 to 9).toList; d5 <- 0 :: (d4 to 9).toList; d6 <- 0 :: (d5 to 9).toList
       yield List(d1, d2, d3, d4, d5, d6).reduceLeft(_ * 10 + _)
     val survivors = candidates.filter(isSolution)
     val permutations =
-      for{c <- survivors
-          n <- c.toString.toList.zipWithIndex.permutations.map(_.map(_._1).mkString.toInt)}
+      for c <- survivors
+          n <- c.toString.toList.zipWithIndex.permutations.map(_.map(_._1).mkString.toInt)
       yield n
     permutations.distinct.count(isSolution)
-  }
-}

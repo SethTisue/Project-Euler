@@ -28,12 +28,11 @@ package net.tisue.euler
 // arrive in a useful order, we use a priority queue where the next parent we
 // allow to spawn is the one with the smallest longer leg.
 
-class Problem86 extends Problem(86, "1818") {
-
-  def solve = {
-    case class Triple(a: Int, b: Int, c: Int) {
+class Problem86 extends Problem(86, "1818"):
+  def solve =
+    case class Triple(a: Int, b: Int, c: Int):
       def *(k : Int) = Triple(a * k, b * k, c * k)
-      def canonical = if(b > a) this else swap
+      def canonical = if b > a then this else swap
       def swap = Triple(b, a, c)
       def children =
         List(Triple(     a - 2 * b + 2 * c,
@@ -51,14 +50,12 @@ class Problem86 extends Problem(86, "1818") {
       // changes.
       def cuboidCount: Int =
         (b min (a / 2)) - (1 max (a - b)) + 1
-    }
-
     val primitiveTriples = {
       implicit val ordering: Ordering[Triple] =
         Ordering.by[Triple, Int](_.b).reverse
       val heap = new collection.mutable.PriorityQueue[Triple]
       heap += Triple(3, 4, 5)
-      LazyList.continually{
+      LazyList.continually {
         val result = heap.dequeue()
         heap ++= result.children.map(_.canonical)
         result
@@ -68,17 +65,14 @@ class Problem86 extends Problem(86, "1818") {
     // this gives us all the triples (primitive or not) where either leg
     // equals m and the other leg is at most 2m (since to fit cuboids
     // in the triple we will break the other leg into two parts)
-    def triples(m: Int) = {
+    def triples(m: Int) =
       def fits(t: Triple): Boolean =
         t.b <= m * 2
-      for {
-        t1 <- primitiveTriples.takeWhile(fits)
-        t2 <- LazyList.from(1).map(t1 * _).takeWhile(fits)
-        if t2.a == m || t2.b == m
-      }
-      yield if(t2.b == m) t2
-      else t2.swap
-    }
+      for t1 <- primitiveTriples.takeWhile(fits)
+          t2 <- LazyList.from(1).map(t1 * _).takeWhile(fits)
+          if t2.a == m || t2.b == m
+      yield if t2.b == m then t2
+            else t2.swap
 
     def cuboidCount(k: Int): Int =
       triples(k).map(_.cuboidCount).sum
@@ -90,5 +84,3 @@ class Problem86 extends Problem(86, "1818") {
       partialSums(LazyList.from(1).map(cuboidCount))
 
     solutionCounts.takeWhile(_ < 1000000).size
-  }
-}

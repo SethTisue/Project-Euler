@@ -21,7 +21,7 @@ package net.tisue.euler
 // You have to be careful here to allow fractional intermediate results on the
 // way to getting an integer in the end, e.g. 1 / 2 + 3 / 6 = 1.
 
-class Problem93 extends Problem(93, "1258") {
+class Problem93 extends Problem(93, "1258"):
 
   val Zero: BigRational = 0
 
@@ -39,45 +39,38 @@ class Problem93 extends Problem(93, "1258") {
       Operator('+', (a, b) => Some(a + b)),
       Operator('-', (a, b) => Some(a - b)),
       Operator('*', (a, b) => Some(a * b)),
-      Operator('/', (a, b) => if(b != Zero) Some(a / b)
+      Operator('/', (a, b) => if b != Zero then Some(a / b)
                               else None))
 
-  def expressions(digits: List[Digit], stackHeight: Int): List[List[Item]] = {
+  def expressions(digits: List[Digit], stackHeight: Int): List[List[Item]] =
     def pushes =
-      for {
-        d <- digits
-        e <- expressions(digits diff List(d), stackHeight + 1)
-      }
+      for d <- digits
+          e <- expressions(digits diff List(d), stackHeight + 1)
       yield d :: e
     def pops =
-      for {
-        o <- operators
-        e <- expressions(digits, stackHeight - 1)
-      }
+      for o <- operators
+          e <- expressions(digits, stackHeight - 1)
       yield o :: e
-    if(stackHeight < 0)
+    if stackHeight < 0 then
       Nil
-    else if (stackHeight == 1 && digits.isEmpty)
+    else if stackHeight == 1 && digits.isEmpty then
       List(Nil)
-    else if (stackHeight < 2)
+    else if stackHeight < 2 then
       pushes
     else
-      (pushes ::: pops)
-  }
+      pushes ::: pops
 
   def eval(items: List[Item], stack: List[BigRational]): Option[BigRational] =
-    if(items.isEmpty)
+    if items.isEmpty then
       Some(stack.head)
-    else items.head match {
+    else items.head match
       case Operator(_, fn) =>
-        fn(stack(1), stack(0)) match {
+        fn(stack(1), stack(0)) match
           case Some(n) =>
             eval(items.tail, n :: stack.drop(2))
           case None => None
-        }
       case Digit(n) =>
         eval(items.tail, n :: stack)
-    }
 
   def targets(ns: List[Int]): Set[Int] =
     expressions(ns.map(Digit(_)), 0)
@@ -95,4 +88,3 @@ class Problem93 extends Problem(93, "1258") {
       .combinations(4).toList
       .maxBy(ns => smallestMissing(targets(ns)))
       .mkString
-}

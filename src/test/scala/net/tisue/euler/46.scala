@@ -1,10 +1,11 @@
 package net.tisue.euler
+
 import Primes._
 
 // What is the smallest odd composite that cannot be written as the sum of a prime and twice a
 // square?
 
-class Problem46 extends Problem(46, "5777") {
+class Problem46 extends Problem(46, "5777"):
   def square(n: Int) = n * n
   def isSquare(n: Int) =
     n == square(math.round(math.sqrt(n)).toInt)
@@ -15,4 +16,4 @@ class Problem46 extends Problem(46, "5777") {
     LazyList.from(3, 2)
       .find(n => !isSievedPrime(n) && !hasSolution(n))
       .get
-}
+

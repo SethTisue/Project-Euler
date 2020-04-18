@@ -7,7 +7,7 @@ package net.tisue.euler
 // knowledge that the plain text must contain common English words, decrypt the message and find the
 // sum of the ASCII values in the original text.
 
-class Problem59 extends Problem(59, "107359") {
+class Problem59 extends Problem(59, "107359"):
   // extremely rough heuristic, but it's good enough in this case
   def isEnglish(s: String): Boolean =
     (s.split(' ').size / s.size.toDouble) > 0.15
@@ -17,7 +17,7 @@ class Problem59 extends Problem(59, "107359") {
   val cipherText =
     io.Source.fromResource("59.txt").mkString.trim.split(",").map(_.toInt.toChar).mkString
   val allKeys =
-    for{c1 <- 'a' to 'z'; c2 <- 'a' to 'z'; c3 <- 'a' to 'z'}
+    for c1 <- 'a' to 'z'; c2 <- 'a' to 'z'; c3 <- 'a' to 'z'
     yield List(c1, c2, c3)
   val key =
     allKeys.filter(key => isEnglish(decrypt(cipherText, key)))
@@ -25,7 +25,6 @@ class Problem59 extends Problem(59, "107359") {
       .head
   def solve =
     decrypt(cipherText, key).map(_.toInt).sum
-}
 
 /*
 a less janky way to write isEnglish, assuming you have a dictionary available:

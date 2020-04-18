@@ -6,9 +6,9 @@ import Primes._
 
 // Not optimized, but plenty fast enough (5 seconds) on this problem size.
 
-class Problem124 extends Problem(124, "21417") {
+class Problem124 extends Problem(124, "21417"):
   def rad(n: Int) =
-    if(n == 1)
+    if n == 1 then
       1
     else
       factors(n).distinct.product
@@ -16,4 +16,4 @@ class Problem124 extends Problem(124, "21417") {
     util.Sorting.stableSort(1 to limit, rad _)
       .apply(n - 1)
   def solve = solve(10000, 100000)
-}
+

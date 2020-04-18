@@ -10,22 +10,19 @@ import Primes._
 
 // takes 11 seconds
 
-class Problem27 extends Problem(27, "-59231") {
-  def solve = {
-    def primeCount(a: Int, b: Int): Int = {
+class Problem27 extends Problem(27, "-59231"):
+  def solve =
+    def primeCount(a: Int, b: Int): Int =
       def polynomial(n: Int) = n * (a + n) + b
       LazyList.from(0)
         .map(polynomial)
         .takeWhile(p => p > 0 && isSievedPrime(p))
         .size
-    }
-    def search(limit: Int) = {
+    def search(limit: Int) =
       val range = -limit to limit
-      val candidates = for(a <- range; b <- range)
+      val candidates = for a <- range
+                           b <- range
                        yield (a, b)
       val (a, b) = candidates.maxBy((primeCount _).tupled)
       a * b
-    }
     search(999)
-  }
-}

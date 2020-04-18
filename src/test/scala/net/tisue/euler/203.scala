@@ -9,7 +9,7 @@ import Primes._
 
 // To make this fast we represent a number as a Seq of prime factors.
 
-class Problem203 extends Problem(203, "34029210557338") {
+class Problem203 extends Problem(203, "34029210557338"):
   def factorial(n: Int) =
     (2 to n).flatMap(factors)
   def combinations(n: Int, r: Int) =
@@ -23,4 +23,4 @@ class Problem203 extends Problem(203, "34029210557338") {
   def answer(rowCount: Int) =
     distincts(rowCount).map(_.map(BigInt(_)).product).sum
   def solve = answer(51)
-}
+

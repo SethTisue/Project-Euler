@@ -2,10 +2,10 @@ package net.tisue.euler
 
 // Identify the special sum sets in sets.txt and find the sum of their sums.
 
-class Problem105 extends Problem(105, "73702") {
+class Problem105 extends Problem(105, "73702"):
   type SumSet = List[List[Int]]
   def augment(ss: SumSet, x: Int) =
-    if(ss.isEmpty)
+    if ss.isEmpty then
       List(List(x))
     else
       (ss.head :+ x) +: ss.sliding(2).collect{case List(l1, l2) => l2 ++ l1.map(_ + x)}.toList :+ List(ss.head.sum + x)
@@ -24,4 +24,4 @@ class Problem105 extends Problem(105, "73702") {
       .filter(isSpecial)
       .map(_.head.sum)
       .sum
-}
+

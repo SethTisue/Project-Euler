@@ -18,7 +18,7 @@ package net.tisue.euler
 // shouldn't you take another card?" but that doesn't affect the final answer
 // either.
 
-class Problem84 extends Problem(84, solution = "101524") {
+class Problem84 extends Problem(84, solution = "101524"):
 
   val die = 4
   val names = List("GO", "A1", "CC1", "A2", "T1", "R1", "B1", "CH1", "B2", "B3",
@@ -33,7 +33,7 @@ class Problem84 extends Problem(84, solution = "101524") {
   def limit(squareNumber: Int): Int =
     (squareNumber + names.size) % names.size
 
-  def nextSquare(square: Int, roll: Int): List[BigRational] = {
+  def nextSquare(square: Int, roll: Int): List[BigRational] =
     // kind is R for railroad or U for utility
     def nextSpecial(square: Int, kind: Char): Int =
       limit(square +
@@ -43,7 +43,7 @@ class Problem84 extends Problem(84, solution = "101524") {
     val newSquare: Int =
       (square + roll) % names.size
     val nexts: List[Int] =
-      names(newSquare) match {
+      names(newSquare) match
         case "G2J" =>
           List(squares("JAIL"))
         case "CC1" | "CC2" | "CC3" =>
@@ -57,21 +57,17 @@ class Problem84 extends Problem(84, solution = "101524") {
           List.fill(6)(newSquare)
         case _ =>
           List(newSquare)
-      }
     names.indices.toList.map(next =>
       new BigRational(
         nexts.count(_ == next),
         nexts.size * die * die))
-  }
 
   // P is the Markov matrix
   val P: List[List[Double]] = {
     val zeroVector = List.fill(names.size)(0: BigRational)
     val rolls =
-      for {
-        die1 <- 1 to die
-        die2 <- 1 to die
-      }
+      for die1 <- 1 to die
+          die2 <- 1 to die
       yield die1 + die2
     def row(i: Int): List[BigRational] =
       rolls.toList.foldLeft(zeroVector){(vec, roll) =>
@@ -79,17 +75,16 @@ class Problem84 extends Problem(84, solution = "101524") {
     names.indices.toList.map(row(_).map(_.toDouble))
   }
 
-  def matrixMul(m1: List[List[Double]], m2: List[List[Double]]) = {
+  def matrixMul(m1: List[List[Double]], m2: List[List[Double]]) =
     val indices = m1.indices.toList
     indices.map(i =>
       indices.map(j =>
         indices.map(r => m1(i)(r) * m2(r)(j))
           .sum))
-  }
 
   // as k approaches infinity, all rows of P^k approach the stationary probability vector.
   // trial and error says k=150 gives accuracy to at least 3 decimal places
-  def solve = {
+  def solve =
     val stationaryProbabilityVector =
       Iterator.iterate(P)(matrixMul(_, P))
         .drop(150).next.head
@@ -101,6 +96,3 @@ class Problem84 extends Problem(84, solution = "101524") {
       .map(_._2)
       .map("%02d".format(_))
       .mkString
-  }
-
-}

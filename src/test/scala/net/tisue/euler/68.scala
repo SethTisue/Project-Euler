@@ -3,7 +3,7 @@ package net.tisue.euler
 // What is the maximum 16-digit string for a "magic" 5-gon ring?
 // see http://projecteuler.net/index.php?section=problems&id=68 for details
 
-class Problem68 extends Problem(68, "6531031914842725") {
+class Problem68 extends Problem(68, "6531031914842725"):
   def isSolution(ns: IndexedSeq[Int]) =
     ns(0) < ns(3) &&
       ns(0) < ns(5) &&
@@ -27,4 +27,4 @@ class Problem68 extends Problem(68, "6531031914842725") {
       .filter(_.size == 16)
       .map(_.toLong)
       .max
-}
+
