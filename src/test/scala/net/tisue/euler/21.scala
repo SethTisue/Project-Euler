@@ -10,7 +10,7 @@ package net.tisue.euler
 // both numbers must be below the bound, and under that interpretation the code below is correct in
 // general.
 
-class Problem21 extends Problem(21, "31626") {
+class Problem21 extends Problem(21, "31626"):
   def divisorSum(n: Int) =
     (1 to n / 2).filter(n % _ == 0).sum
   val solutions =
@@ -18,4 +18,4 @@ class Problem21 extends Problem(21, "31626") {
       val sum = divisorSum(n)
       n != sum && n == divisorSum(sum)}
   def solve = solutions.sum
-}
+

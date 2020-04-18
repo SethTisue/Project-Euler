@@ -14,10 +14,10 @@ package net.tisue.euler
 // think, to iterate over possible individual digits rather than
 // iterating over possible two-digit numbers.
 
-class Problem33 extends Problem(33, "100") {
-  def solve = {
+class Problem33 extends Problem(33, "100"):
+  def solve =
     val fractions =
-      for{a <- 10 to 98
+      for a <- 10 to 98
           b <- (a + 1) to 99
           uniqueDigits = s"$a$b".toSet
           if uniqueDigits.size == 3
@@ -26,8 +26,6 @@ class Problem33 extends Problem(33, "100") {
           newA = a.toString.filter(_ != sharedDigit).mkString.toInt
           newB = b.toString.filter(_ != sharedDigit).mkString.toInt
           if a * newB == b * newA
-        } yield (a, b)
+        yield (a, b)
     val (a, b) = (fractions.map(_._1).product, fractions.map(_._2).product)
     b / (a gcd b)
-  }
-}

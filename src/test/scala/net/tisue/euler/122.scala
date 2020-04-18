@@ -24,44 +24,38 @@ package net.tisue.euler
 
 import collection.immutable.BitSet
 
-class Problem122Imperative extends Problem(122, "1582") {
+class Problem122Imperative extends Problem(122, "1582"):
   def children(s: BitSet): List[BitSet] =
     s.toList
       .map(k => s + (k + s.last))
       .takeWhile(_.last <= 200)
-  def solve = {
+  def solve =
     var cur = List(BitSet(1))
     var m = Map[Int, Int]()
     def isMinimal(s: BitSet) =
       !m.contains(s.last)
-    while(cur.nonEmpty) {
+    while cur.nonEmpty do
       cur = cur.flatMap(children).filter(isMinimal)
       m ++= cur.map(bs => bs.last -> bs.size)
-    }
     m.values.map(_ - 1).sum
-  }
-}
 
 // since we have two state variables it's tricky to restate this without using "var" or "mutable".
 // here's my attempt, but all the tupling and untupling makes kind of ugly.  I'd love to know
 // if there's a better way.
 
-class Problem122Functional extends Problem(122, "1582") {
+class Problem122Functional extends Problem(122, "1582"):
   def children(s: BitSet): List[BitSet] =
     s.toList
       .map(k => s + (k + s.last))
       .takeWhile(_.last <= 200)
-  def iterate(cur: List[BitSet], m: Map[Int, Int]) = {
+  def iterate(cur: List[BitSet], m: Map[Int, Int]) =
     def isMinimal(s: BitSet) = !m.contains(s.last)
     val next = cur.flatMap(children).filter(isMinimal)
     (next, m ++ next.map(bs => bs.last -> bs.size))
-  }
-  def solve = {
+  def solve =
     val start = (List(BitSet(1)), Map[Int, Int]())
     Iterator.iterate(start)(Function.tupled(iterate))
       .collectFirst{
         case (cur, m) if cur.isEmpty =>
           m.values.map(_ - 1).sum
       }.get
-  }
-}

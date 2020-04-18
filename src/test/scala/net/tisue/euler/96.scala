@@ -21,27 +21,26 @@ package net.tisue.euler
 // solve3 corresponds to the final phase, "Eliminating Bad Guesses", where we
 // just use trial and error.
 
-class Problem96 extends Problem(96, "24702") {
+class Problem96 extends Problem(96, "24702"):
 
   type Puzzle = List[List[Int]]  // 9 lists of 9 integers in 1-9 range
   type Group = List[Int]         // 9 integers in 0-80 range
 
   val groups: List[Group] = {
-    val rows    = for (i <- (0 to 8).toList)
+    val rows    = for i <- (0 to 8).toList
                   yield (0 to 80).toList.filter(_ / 9 == i)
-    val columns = for (i <- (0 to 8).toList)
+    val columns = for i <- (0 to 8).toList
                   yield (0 to 80).toList.filter(_ % 9 == i)
-    val boxes   = for (i <- (0 to 2).toList; j <- 0 to 2)
+    val boxes   = for i <- (0 to 2).toList; j <- 0 to 2
                   yield (0 to 80).toList.filter(n => n / 27 == i && n % 9 / 3 == j)
     rows ::: columns ::: boxes
   }
 
   // from initial guess x0, iterate until we find x such that fn(x) = x
-  def fixedPoint[A](x0: A)(fn: (A) => A): A = {
+  def fixedPoint[A](x0: A)(fn: (A) => A): A =
     val x = fn(x0)
-    if (x == x0) x
+    if x == x0 then x
     else fixedPoint(x)(fn)
-  }
 
   // I think that solve1, solve2, and solve3 could probably all be clarified,
   // and their interrelation could probably be clarified as well, but I feel
@@ -53,7 +52,7 @@ class Problem96 extends Problem(96, "24702") {
     groups.foldLeft(puzzle){(puzzle, group) =>
       val usedDigits = group.map(puzzle(_)).filter(_.size == 1).map(_.head)
       puzzle.zipWithIndex.map{case (entry, index) =>
-        if (!group.contains(index) || entry.size == 1)
+        if !group.contains(index) || entry.size == 1 then
           entry
         else
           entry.filter(!usedDigits.contains(_))}}
@@ -68,7 +67,7 @@ class Problem96 extends Problem(96, "24702") {
       v.foldLeft(puzzle){(puzzle, d) =>
         val start =
           puzzle.zipWithIndex.map{case (entry, index) =>
-            if (group.contains(index) && entry.contains(d))
+            if group.contains(index) && entry.contains(d) then
               List(d)
             else entry}
         fixedPoint(start)(solve1)}}
@@ -80,10 +79,10 @@ class Problem96 extends Problem(96, "24702") {
     groups.forall(g => g.flatMap(puzzle(_)).toSet.size == 9)
 
   def solve3(puzzle: Puzzle): Option[Puzzle] =
-    if (!isValid(puzzle))
+    if !isValid(puzzle) then
       None
     else
-      puzzle.indexWhere(_.size > 1) match {
+      puzzle.indexWhere(_.size > 1) match
         case -1 =>
           Some(puzzle)
         case index =>
@@ -91,18 +90,16 @@ class Problem96 extends Problem(96, "24702") {
             .flatMap{guess =>
               solve3(fixedPoint(puzzle.updated(index, List(guess)))(solve1and2))}
             .headOption
-      }
 
   val puzzles: Iterator[Puzzle] =
     io.Source.fromResource("96.txt")
       .getLines.filterNot(_.startsWith("Grid"))
       .grouped(9)
       .map(_.mkString.filter(_.isDigit).map(_.asDigit).toList
-            .map(d => if (d == 0) (1 to 9).toList
+            .map(d => if d == 0 then (1 to 9).toList
                       else List(d)))
 
   def solve =
     puzzles.flatMap(p => solve3(solve1and2(p)))
      .map(_.take(3).map(_.head).mkString.toInt)
      .sum
-}

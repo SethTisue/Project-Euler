@@ -10,12 +10,12 @@ package net.tisue.euler
 // we only need to remember what the beginning of the iteration looked like so when we return
 // to the beginning we recognize it.
 
-class Problem64 extends Problem(64, "1322") {
-  def period(n: Int) = {
+class Problem64 extends Problem(64, "1322"):
+  def period(n: Int) =
     val m = math.sqrt(n).toInt
     val seen = new collection.mutable.HashMap[(Int, Int), Int]
     def iterate(num: Int, c: Int, count: Int): Int =
-      seen.get((num, c)) match {
+      seen.get((num, c)) match
         case Some(oldCount) =>
           count - oldCount
         case None =>
@@ -25,11 +25,8 @@ class Problem64 extends Problem(64, "1322") {
           iterate(denom / num,
                   (nextA * denom - num * c) / num,
                   count + 1)
-      }
-    if(m * m == n)
+    if m * m == n then
       0
     else
       iterate(1, m, 0)
-  }
-  def solve = (2 to 10000).count(period(_) %2 == 1)
-}
+  def solve = (2 to 10000).count(period(_) % 2 == 1)

@@ -1,4 +1,5 @@
 package net.tisue.euler
+
 import Primes._
 import annotation.tailrec
 
@@ -13,37 +14,30 @@ import annotation.tailrec
 // not to use vars, so I replaced the loops with recursion, resulting in the code below, but it's
 // actually less elegant than the imperative version, I think.
 
-class Problem50 extends Problem(50, "997651") {
-  def solve(ps: LazyList[Int], longest: List[Int]): Int = {
-    if(ps.take(longest.size + 1).sum >= 1000000)
+class Problem50 extends Problem(50, "997651"):
+  def solve(ps: LazyList[Int], longest: List[Int]): Int =
+    if ps.take(longest.size + 1).sum >= 1000000 then
       longest.sum
-    else {
-      @tailrec def solve2(len: Int, newLongest: List[Int]): List[Int] = {
-        if(ps.take(len).sum >= 1000000) newLongest
+    else
+      @tailrec def solve2(len: Int, newLongest: List[Int]): List[Int] =
+        if ps.take(len).sum >= 1000000 then newLongest
         else solve2(len + 1,
-                    if(isPrime(ps.take(len).sum)) ps.take(len).toList
+                    if isPrime(ps.take(len).sum) then ps.take(len).toList
                     else newLongest)
-      }
       solve(ps.tail, solve2(longest.size + 1, longest))
-    }
-  }
   def solve = solve(primes, Nil)
-}
 
 // and an imperative version:
-class Problem50i extends Problem(50, "997651") {
-  def solve = {
+class Problem50i extends Problem(50, "997651"):
+  def solve =
     var ps = primes
     var longest: List[Int] = Nil
-    while(ps.take(longest.size + 1).sum < 1000000) {
+    while ps.take(longest.size + 1).sum < 1000000 do
       var len = longest.size + 1
-      while(ps.take(len).sum < 1000000) {
-        if(isPrime(ps.take(len).sum))
+      while ps.take(len).sum < 1000000 do
+        if isPrime(ps.take(len).sum) then
           longest = ps.take(len).toList
         len += 1
-      }
       ps = ps.tail
-    }
+    end while
     longest.sum
-  }
-}

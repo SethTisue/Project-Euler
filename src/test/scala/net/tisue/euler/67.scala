@@ -7,21 +7,21 @@ package net.tisue.euler
 // overall recursion is a fold (a foldRight if we don't reverse the input
 // triangle).
 
-class Problem67 extends Problem(67, "7273") {
+class Problem67 extends Problem(67, "7273"):
   val triangle =
     io.Source.fromResource("67.txt")
       .mkString.trim
       .split("\n").toList
       .map(_.split(" ").toList.map(_.toInt))
   def recurse(t: List[List[Int]]): Int =
-    t match {
+    t match
       case Seq(Seq(n)) => n
       // yuck. this is really cryptic - ST 11/13/09
-      case r0::r1::rest =>
+      case r0 :: r1 :: rest =>
         val rr0 = r0.lazyZip(r0.tail).map(_ max _)
         val rr1 = r1.lazyZip(rr0).map(_ + _)
         recurse(rr1 :: rest)
-    }
+      case _ => ???
   def solve =
     recurse(triangle.reverse)
-}
+

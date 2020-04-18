@@ -14,9 +14,9 @@ package net.tisue.euler
 // instead of the full p(n). This works because every p(n) is the sum of previous p(n)'s.)
 // I changed my code to include this optimization, without needing to restructure anything.
 
-class Problem78 extends Problem(78, "55374") {
+class Problem78 extends Problem(78, "55374"):
   val memo = collection.mutable.ArrayBuffer[Int](1)
-  def p(n: Int) = {
+  def p(n: Int) =
     memo +=
       LazyList.from(1).flatMap(k => List(n - (k * k * 3 - k) / 2,
                                          n - (k * k * 3 + k) / 2))
@@ -25,6 +25,5 @@ class Problem78 extends Problem(78, "55374") {
         .map{case (j, sign) => memo(j) * sign}
         .sum % 1000000
     memo.last
-  }
   def solve = LazyList.from(1).find(p(_) == 0).get
-}
+

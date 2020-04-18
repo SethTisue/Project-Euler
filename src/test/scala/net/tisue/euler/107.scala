@@ -12,43 +12,42 @@ package net.tisue.euler
 // minimum-spanning-tree algorithms, I think.  I did include one optimization, using "throw" for
 // early exit from pathExists.  The whole thing runs in about 1 second.
 
-class Problem107 extends Problem(107, "259679") {
+class Problem107 extends Problem(107, "259679"):
   type Network[T] = Map[(T, T), Int]
-  val input: Network[Int] = {
+  val input: Network[Int] =
     val entries =
-      for{(line, v1) <- io.Source.fromResource("107.txt").getLines.zipWithIndex
+      for (line, v1) <- io.Source.fromResource("107.txt").getLines.zipWithIndex
           (weight, v2) <- line.split(",").iterator.zipWithIndex
-          if weight != "-" && v1 < v2}
+          if weight != "-" && v1 < v2
       yield (v1, v2) -> weight.toInt
     entries.toMap
-  }
-  def pathExists[T](edge: (T, T), net: Network[T]) = {
+  def pathExists[T](edge: (T, T), net: Network[T]) =
     object Found extends Throwable
     def traverse(v: T, visited: Set[T] = Set()): Set[T] =
-      if(v == edge._2)
+      if v == edge._2 then
         throw Found
-      else if(visited(v))
+      else if visited(v) then
         visited
       else net.keys.foldLeft(visited + v){(visited, edge) =>
-        edge match {
-          case (`v`, other) => traverse(other, visited)
-          case (other, `v`) => traverse(other, visited)
-          case _ => visited
-        }}
-    try { traverse(edge._1); false }
-    catch { case Found => true }
-  }
-  def minimize[T](net: Network[T]) = {
+          edge match
+            case (`v`, other) => traverse(other, visited)
+            case (other, `v`) => traverse(other, visited)
+            case _ => visited
+        }
+    try
+      traverse(edge._1)
+      false
+    catch case Found => true
+  def minimize[T](net: Network[T]) =
     val sortedEdges = net.toSeq.sortBy(_._2).reverse.map(_._1)
     sortedEdges.foldLeft(net){(net, edge) =>
       val erased = net - edge
-      if(pathExists(edge, erased))
-        erased
+      if pathExists(edge, erased)
+      then erased
       else net
     }
-  }
   def weight[T](net: Network[T]) =
     net.values.sum
   def solve =
     weight(input) - weight(minimize(input))
-}
+

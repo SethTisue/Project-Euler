@@ -5,7 +5,7 @@ package net.tisue.euler
 
 // (note: glguy's Haskell solution on the Euler forum is more elegant)
 
-class Problem54 extends Problem(54, solution = "376") {
+class Problem54 extends Problem(54, solution = "376"):
 
   case class Card(rank: Int, suit: Char)
   type Hand = List[Card]
@@ -32,7 +32,7 @@ class Problem54 extends Problem(54, solution = "376") {
   //   1 for 2 of a kind
   //   2 for 2 pairs
   //   ...
-  def handKind(hand: Hand): Int = {
+  def handKind(hand: Hand): Int =
     def isStraightFlush =
       isStraight && isFlush
     def isNOfAKind(n: Int) =
@@ -47,7 +47,7 @@ class Problem54 extends Problem(54, solution = "376") {
       hand.map(_.rank)
         .sorted
         .sliding(2)
-        .forall{case Seq(r1, r2) => r2 == r1 + 1}
+        .forall{case Seq(r1, r2) : Seq[Int] @unchecked => r2 == r1 + 1}
     val handFunctions =
       IndexedSeq(
         () => isNOfAKind(1),
@@ -60,29 +60,21 @@ class Problem54 extends Problem(54, solution = "376") {
         () => isNOfAKind(4),
         () => isStraightFlush)
     handFunctions.lastIndexWhere(_.apply)
-  }
 
-  def beats(hand1: Hand, hand2: Hand): Boolean = {
+  def beats(hand1: Hand, hand2: Hand): Boolean =
     type Score = (Int, Seq[(Int, Int)])
     def score(hand: Hand): Score =
       (handKind(hand), groups(hand))
     // tuples get ordered fieldwise, so we can just:
     import Ordering.Implicits._
     Ordering[Score].gt(score(hand1), score(hand2))
-  }
 
-  def solve = {
-    val input: List[(Hand, Hand)] = {
+  def solve =
+    val input: List[(Hand, Hand)] =
       def readCard(s: String) =
         Card("23456789TJQKA".indexOf(s(0)), s(1))
-      for {
-        line <- io.Source.fromResource("54.txt").getLines.toList
-        cards = line.split(" ").toList.map(readCard)
-      }
+      for line <- io.Source.fromResource("54.txt").getLines.toList
+          cards = line.split(" ").toList.map(readCard)
       yield cards.splitAt(5)
-    }
     input.count{case (hand1, hand2) =>
       beats(hand1, hand2)}
-  }
-
-}

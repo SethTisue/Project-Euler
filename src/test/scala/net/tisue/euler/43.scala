@@ -1,4 +1,5 @@
 package net.tisue.euler
+
 import Primes._
 
 // The number, 1406357289, is a 0 to 9 pandigital number because it is
@@ -15,16 +16,14 @@ import Primes._
 // d8d9d10=289 is divisible by 17
 // Find the sum of all 0 to 9 pandigital numbers with this property.
 
-class Problem43 extends Problem(43, "16695334890") {
-  def solve = {
+class Problem43 extends Problem(43, "16695334890"):
+  def solve =
     def missingDigits(x: String) =
       ('0' to '9').toList.filterNot(x.contains(_))
     def hasProperty(x: String) =
       x.size < 3 || x.take(3).toInt % primes(9 - x.size) == 0
     def recurse(x: String): List[String] =
-      if(x.size == 10) List(x)
-      else if(!hasProperty(x)) Nil
+      if x.size == 10 then List(x)
+      else if !hasProperty(x) then Nil
       else missingDigits(x).flatMap(d => recurse(d.toString + x))
     recurse("").filter(_(0) != '0').map(BigInt(_)).sum
-  }
-}

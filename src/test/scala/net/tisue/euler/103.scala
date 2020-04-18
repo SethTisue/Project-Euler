@@ -8,14 +8,15 @@ package net.tisue.euler
 
 // Maybe I'll improve it someday.
 
-class Problem103 extends Problem(103, "20313839404245") {
+class Problem103 extends Problem(103, "20313839404245"):
   val ceil = 300
   type SumSet = List[List[Int]]
   def augment(x: Int, ss: SumSet) =
-    if(ss.isEmpty)
+    if ss.isEmpty then
       List(List(x))
     else
-      (ss.head :+ x) +: ss.sliding(2).collect{case List(l1, l2) => l2 ++ l1.map(_ + x)}.toList :+ List(ss.head.sum + x)
+      val middle = ss.sliding(2).collect{case List(l1, l2) => l2 ++ l1.map(_ + x)}
+      (ss.head :+ x) +: middle.toList :+ List(ss.head.sum + x)
   def isSpecial(ss: SumSet): Boolean =
     ss.size < 2 || ss.sliding(2).forall{
       case List(xs1, xs2) =>
@@ -24,9 +25,9 @@ class Problem103 extends Problem(103, "20313839404245") {
         xs1.last < xs2.head
       case _ => throw new IllegalStateException
     }
-  def solve = {
+  def solve =
     val solutions =
-      for {
+      for
         n1 <- Iterator.from(20).takeWhile(_ <= ceil)
         ss1 = augment(n1, Nil)
         if isSpecial(ss1)
@@ -48,7 +49,5 @@ class Problem103 extends Problem(103, "20313839404245") {
         n7 <- Iterator.from(n6 + 1).takeWhile(_ + n6 + n5 + n4 + n3 + n2 + n1 <= ceil)
         ss7 = augment(n7, ss6)
         if isSpecial(ss7)
-      } yield ss7.head
+      yield ss7.head
     solutions.next.mkString
-  }
-}

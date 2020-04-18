@@ -1,4 +1,5 @@
 package net.tisue.euler
+
 import Primes._
 
 // Starting with 1 and spiralling anticlockwise in the following way, a square spiral with side
@@ -15,7 +16,7 @@ import Primes._
 // process is continued, what is the side length of the square spiral for which the ratio of primes
 // along both diagonals first falls below 10%?
 
-class Problem58 extends Problem(58, "26241") {
+class Problem58 extends Problem(58, "26241"):
   def next(n: Int, primeCount: Int) =
     (n + 2,
      primeCount + List(n * n + n + 1,
@@ -29,4 +30,4 @@ class Problem58 extends Problem(58, "26241") {
       .tail
       .find((isSolution _).tupled)
       .get._1
-}
+

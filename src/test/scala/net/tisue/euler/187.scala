@@ -8,7 +8,7 @@ import Primes._
 
 // brute force solution. 36 seconds, nearly all of which is the sieving time.
 
-class Problem187 extends Problem(187, "17427258") {
+class Problem187 extends Problem(187, "17427258"):
   val limit = 100000000
   val primes = primesBelow(limit / 2)
   def solve =
@@ -18,4 +18,4 @@ class Problem187 extends Problem(187, "17427258") {
                   .takeWhile(p * _ < limit)
                   .size)
       .sum
-}
+

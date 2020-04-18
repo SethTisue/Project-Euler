@@ -1,4 +1,5 @@
 package net.tisue.euler
+
 import Primes._
 
 // How many elements would be contained in the set of reduced proper fractions with denominator <=
@@ -14,16 +15,15 @@ import Primes._
 //   http://en.wikipedia.org/wiki/Farey_sequence
 // but it might be useful if there are more problems later on this theme.
 
-class Problem72 extends Problem(72, "303963552391") {
+class Problem72 extends Problem(72, "303963552391"):
   def factors(n: Int): List[Int] =
-    if(isSievedPrime(n))
+    if isSievedPrime(n) then
       List(n)
-    else {
+    else
       val f = primes.find(n % _ == 0).get
       f :: factors(n / f)
-    }
   def totient(n: Int) =
     factors(n).distinct
       .foldLeft(n.toLong)((t, f) => t * (f - 1) / f)
   def solve = (2 to 1000000).map(totient).sum
-}
+
