@@ -1,8 +1,14 @@
 Solve them yourself first!
 
-## Scala version
+## Scala 3
 
-2.13 only.  2.12 solutions are [here](https://github.com/SethTisue/Project-Euler/commit/e11a46e07d0f6853b3089dab2dab2dc9cbfea0e0).
+On HEAD, the code is Dotty-only.
+
+## Scala 2 solutions
+
+Last 2.13 version: https://github.com/SethTisue/Project-Euler/commit/c3688346bf849d36b39e46bd13ea7fc27704ad2d
+
+Last 2.12 version: https://github.com/SethTisue/Project-Euler/commit/e11a46e07d0f6853b3089dab2dab2dc9cbfea0e0
 
 ## License
 
