@@ -1,4 +1,4 @@
-scalaVersion := "2.13.1"
+scalaVersion := "0.23.0-RC1"
 
 libraryDependencies += "org.scalameta" %% "munit" % "0.7.2"
 testFrameworks += new TestFramework("munit.Framework")
@@ -8,7 +8,6 @@ scalacOptions ++= Seq(
   "-deprecation",
   "-unchecked",
   "-feature",
-  "-Xlint",
-  "-Ywarn-value-discard",
-  "-Xfatal-warnings"
+  "-Xfatal-warnings",
+  "-language:implicitConversions",  // TODO
 )
