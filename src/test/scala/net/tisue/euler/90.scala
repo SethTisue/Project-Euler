@@ -4,7 +4,7 @@ package net.tisue.euler
 
 class Problem90 extends Problem(90, "1217") {
   def solve = {
-     val squares = List("01", "04", "09", "16", "25", "36", "49", "64", "81")
+    val squares = List("01", "04", "09", "16", "25", "36", "49", "64", "81")
     def isSolution(die1: Seq[Int], die2: Seq[Int]) = {
       val rolls =
         for(d1 <- die1; d2 <- die2)

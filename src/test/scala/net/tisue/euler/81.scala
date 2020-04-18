@@ -7,7 +7,7 @@ package net.tisue.euler
 
 class Problem81 extends Problem(81, "427337") {
   def solve = {
-     val matrix = io.Source.fromResource("81.txt").mkString.trim.split("\n")
+    val matrix = io.Source.fromResource("81.txt").mkString.trim.split("\n")
       .map(_.split(",").map(_.toInt))
     val range = 1 until matrix.size
     for{x <- range} matrix(x)(0) += matrix(x - 1)(0)

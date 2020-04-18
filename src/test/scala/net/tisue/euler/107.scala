@@ -47,7 +47,7 @@ class Problem107 extends Problem(107, "259679") {
       else net
     }
   }
-  def weight(net: Network[_]) =
+  def weight[T](net: Network[T]) =
     net.values.sum
   def solve =
     weight(input) - weight(minimize(input))
