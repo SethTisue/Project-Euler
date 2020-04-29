@@ -1,4 +1,4 @@
-scalaVersion := "0.23.0-RC1"
+scalaVersion := "0.24.0-RC1"
 
 libraryDependencies += "org.scalameta" %% "munit" % "0.7.4"
 testFrameworks += new TestFramework("munit.Framework")
