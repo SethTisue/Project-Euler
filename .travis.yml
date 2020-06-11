@@ -5,7 +5,7 @@ language: scala
 env:
   - ADOPTOPENJDK=8
   - ADOPTOPENJDK=11
-#  - ADOPTOPENJDK=14  re-enable on next Dotty: https://github.com/SethTisue/Project-Euler/issues/36
+  - ADOPTOPENJDK=14
 
 before_install:
   # Remove local .jvmopts file to run sbt-extras with
