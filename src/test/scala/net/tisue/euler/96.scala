@@ -95,7 +95,7 @@ class Problem96 extends Problem(96, "24702") {
 
   val puzzles: Iterator[Puzzle] =
     io.Source.fromResource("96.txt")
-      .getLines.filterNot(_.startsWith("Grid"))
+      .getLines().filterNot(_.startsWith("Grid"))
       .grouped(9)
       .map(_.mkString.filter(_.isDigit).map(_.asDigit).toList
             .map(d => if (d == 0) (1 to 9).toList

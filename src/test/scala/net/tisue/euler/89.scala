@@ -22,7 +22,7 @@ class Problem89 extends Problem(89, "743") {
     }.getOrElse("")
   def solve =
     io.Source.fromResource("89.txt")
-      .getLines.map(_.trim)
+      .getLines().map(_.trim)
       .map(r => r.size - roman(arabic(r)).size)
       .sum
 }

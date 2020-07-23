@@ -49,6 +49,6 @@ class Problem103 extends Problem(103, "20313839404245") {
         ss7 = augment(n7, ss6)
         if isSpecial(ss7)
       } yield ss7.head
-    solutions.next.mkString
+    solutions.next().mkString
   }
 }

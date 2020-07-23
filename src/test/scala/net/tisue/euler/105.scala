@@ -18,7 +18,7 @@ class Problem105 extends Problem(105, "73702") {
       case _ => throw new IllegalStateException
     }
   def solve =
-    io.Source.fromResource("105.txt").getLines
+    io.Source.fromResource("105.txt").getLines()
       .map(_.split(",").map(_.toInt).sorted)
       .map(_.foldLeft(Nil: SumSet)(augment))
       .filter(isSpecial)
