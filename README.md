@@ -4,11 +4,11 @@ Solve them yourself first!
 
 On HEAD, the code is Dotty-only.
 
-## Scala 2 solutions
+## Scala 2
 
-Last 2.13 version: https://github.com/SethTisue/Project-Euler/commit/c3688346bf849d36b39e46bd13ea7fc27704ad2d
+Scala 2.13 solutions are on the [scala2 branch](https://github.com/SethTisue/Project-Euler/tree/scala2).
 
-Last 2.12 version: https://github.com/SethTisue/Project-Euler/commit/e11a46e07d0f6853b3089dab2dab2dc9cbfea0e0
+The last Scala 2.12 version was [here](https://github.com/SethTisue/Project-Euler/commit/e11a46e07d0f6853b3089dab2dab2dc9cbfea0e0).
 
 ## License
 
