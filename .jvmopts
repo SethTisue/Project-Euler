@@ -1,2 +1,2 @@
--Xmx6144m
+-Xmx8G
 -XX:MaxInlineLevel=18
