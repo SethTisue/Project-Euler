@@ -28,11 +28,10 @@ class Problem93 extends Problem(93, "1258"):
   type OperatorFunction =
     (BigRational, BigRational) => Option[BigRational]
 
-  sealed trait Item
-  case class Digit(n: Int)
-    extends Item
-  case class Operator(c: Char, fn: OperatorFunction)
-    extends Item
+  enum Item:
+    case Digit(n: Int)
+    case Operator(c: Char, fn: OperatorFunction)
+  import Item.{ Digit, Operator }
 
   val operators =
     List(
@@ -73,7 +72,7 @@ class Problem93 extends Problem(93, "1258"):
         eval(items.tail, n :: stack)
 
   def targets(ns: List[Int]): Set[Int] =
-    expressions(ns.map(Digit(_)), 0)
+    expressions(ns.map(new Digit(_)), 0)  // by 3.0.0-M1 it will be possible to type-ascribe rather than use `new`
       .flatMap(e => eval(e, Nil))
       .filter(_.denom == 1)
       .map(_.numer.toInt)
