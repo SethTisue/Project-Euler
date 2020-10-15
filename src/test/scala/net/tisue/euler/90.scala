@@ -17,4 +17,4 @@ class Problem90 extends Problem(90, "1217"):
     val pairs = for die1 <- dies
                     die2 <- dies
                 yield (die1, die2)
-    pairs.count((isSolution _).tupled) / 2
+    pairs.count(isSolution.tupled) / 2

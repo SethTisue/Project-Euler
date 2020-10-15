@@ -13,7 +13,7 @@ class Problem124 extends Problem(124, "21417"):
     else
       factors(n).distinct.product
   def solve(n: Int, limit: Int) =
-    util.Sorting.stableSort(1 to limit, rad _)
+    util.Sorting.stableSort(1 to limit, rad)
       .apply(n - 1)
   def solve = solve(10000, 100000)
 

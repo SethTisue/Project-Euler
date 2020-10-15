@@ -26,8 +26,8 @@ class Problem58 extends Problem(58, "26241"):
   def isSolution(n: Int, primeCount: Int) =
     primeCount.toDouble / (2 * n - 1) < 0.10
   def solve =
-    LazyList.iterate((1, 0))((next _).tupled)
+    LazyList.iterate((1, 0))(next.tupled)
       .tail
-      .find((isSolution _).tupled)
+      .find(isSolution.tupled)
       .get._1
 
