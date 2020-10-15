@@ -28,4 +28,4 @@ class Problem33 extends Problem(33, "100"):
           if a * newB == b * newA
         yield (a, b)
     val (a, b) = (fractions.map(_._1).product, fractions.map(_._2).product)
-    b / (a gcd b)
+    b / a.gcd(b)
