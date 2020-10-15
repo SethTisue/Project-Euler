@@ -2,6 +2,8 @@ package net.tisue.euler
 
 /// from Programming in Scala book, but converted to use BigInt
 
+import annotation.alpha
+
 class BigRational(n: BigInt, d: BigInt):
   require(d != 0)
   private val g = gcd(n.abs, d.abs)
@@ -9,26 +11,34 @@ class BigRational(n: BigInt, d: BigInt):
   val numer = n / g
   val denom = d / g
   def this(n: BigInt) = this(n, 1)
+  @alpha("plus")
   def +(that: BigRational): BigRational =
     BigRational(
       numer * that.denom + that.numer * denom,
       denom * that.denom
     )
+  @alpha("plus")
   def +(i: BigInt): BigRational =
     BigRational(numer + i * denom, denom)
+  @alpha("minus")
   def -(that: BigRational): BigRational =
     BigRational(
       numer * that.denom - that.numer * denom,
       denom * that.denom
     )
+  @alpha("minus")
   def -(i: BigInt): BigRational =
     BigRational(numer - i * denom, denom)
+  @alpha("times")
   def *(that: BigRational): BigRational =
     BigRational(numer * that.numer, denom * that.denom)
+  @alpha("times")
   def *(i: BigInt): BigRational =
     BigRational(numer * i, denom)
+  @alpha("divide")
   def /(that: BigRational): BigRational =
     BigRational(numer * that.denom, denom * that.numer)
+  @alpha("divide")
   def /(i: BigInt): BigRational =
     BigRational(numer, denom * i)
   def reciprocal: BigRational =
