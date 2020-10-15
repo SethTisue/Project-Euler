@@ -9,5 +9,5 @@ scalacOptions ++= Seq(
   "-unchecked",
   "-feature",
   "-Xfatal-warnings",
-  "-language:implicitConversions",  // TODO
+  "-language:implicitConversions",  // TODO for 3.0.0-M1, as per https://github.com/lampepfl/dotty/pull/9935
 )

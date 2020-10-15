@@ -20,7 +20,7 @@ def time[T](fn: => T): (T, Double) =
 
 // Haskell has these, dunno why they're not in Scala. `group`
 // could go on Iterable, actually, instead of LazyList specifically.
-implicit class RichLazyList[T](private val s: LazyList[T]) extends AnyVal:
+extension [T](s: LazyList[T]):
   // if we put the lazy val at the top level, we can't extend AnyVal,
   // so we make it local, like this:
   def circular: LazyList[T] =
@@ -32,16 +32,16 @@ implicit class RichLazyList[T](private val s: LazyList[T]) extends AnyVal:
       else Some(s.span(_ == s.head)))
 
 // add gcd, digits methods to Int
-implicit class RichInt(private val i: Int) extends AnyVal:
+extension (i: Int):
   def gcd(j: Int): Int =
     if j == 0 then i
     else j.gcd(i - j * (i / j))
   def digits: Seq[Int] = i.toString.map(_.asDigit)
 
 // add digits method to Long
-implicit class RichLong(private val i: Long) extends AnyVal:
+extension (i: Long):
   def digits: Seq[Int] = i.toString.map(_.asDigit)
 
 // add digits method to BigInt
-implicit class RichBigInt(private val i: BigInt) extends AnyVal:
+extension (i: BigInt):
   def digits: Seq[Int] = i.toString.map(_.asDigit)

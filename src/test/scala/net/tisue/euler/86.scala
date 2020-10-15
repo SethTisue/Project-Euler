@@ -51,8 +51,7 @@ class Problem86 extends Problem(86, "1818"):
       def cuboidCount: Int =
         (b min (a / 2)) - (1 max (a - b)) + 1
     val primitiveTriples = {
-      implicit val ordering: Ordering[Triple] =
-        Ordering.by[Triple, Int](_.b).reverse
+      given Ordering[Triple] = Ordering.by[Triple, Int](_.b).reverse
       val heap = new collection.mutable.PriorityQueue[Triple]
       heap += Triple(3, 4, 5)
       LazyList.continually {

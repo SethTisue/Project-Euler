@@ -66,7 +66,7 @@ class Problem54 extends Problem(54, solution = "376"):
     def score(hand: Hand): Score =
       (handKind(hand), groups(hand))
     // tuples get ordered fieldwise, so we can just:
-    import Ordering.Implicits._
+    import Ordering.Implicits.{given Ordering[?]}
     Ordering[Score].gt(score(hand1), score(hand2))
 
   def solve =

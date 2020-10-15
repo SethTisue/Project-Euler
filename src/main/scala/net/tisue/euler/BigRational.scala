@@ -1,7 +1,5 @@
 package net.tisue.euler
 
-import language.implicitConversions
-
 /// from Programming in Scala book, but converted to use BigInt
 
 class BigRational(n: BigInt, d: BigInt):
@@ -55,4 +53,5 @@ class BigRational(n: BigInt, d: BigInt):
 
 object BigRational:
   def unapply(b: BigRational): Option[(BigInt,BigInt)] = Some((b.numer, b.denom))
-  implicit def int2BigRational(i: Int): BigRational = new BigRational(i)
+  given Conversion[Int, BigRational]:
+    def apply(i: Int): BigRational = new BigRational(i)
