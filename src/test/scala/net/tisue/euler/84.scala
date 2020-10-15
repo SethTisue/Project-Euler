@@ -58,7 +58,7 @@ class Problem84 extends Problem(84, solution = "101524"):
         case _ =>
           List(newSquare)
     names.indices.toList.map(next =>
-      new BigRational(
+      BigRational(
         nexts.count(_ == next),
         nexts.size * die * die))
 

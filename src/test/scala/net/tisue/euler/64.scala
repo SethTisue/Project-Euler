@@ -13,7 +13,7 @@ package net.tisue.euler
 class Problem64 extends Problem(64, "1322"):
   def period(n: Int) =
     val m = math.sqrt(n).toInt
-    val seen = new collection.mutable.HashMap[(Int, Int), Int]
+    val seen = collection.mutable.HashMap[(Int, Int), Int]()
     def iterate(num: Int, c: Int, count: Int): Int =
       seen.get((num, c)) match
         case Some(oldCount) =>

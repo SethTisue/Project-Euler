@@ -16,7 +16,7 @@ class Problem83 extends Problem(83, "425185"):
       .map(offsets => (loc._1 + offsets._1, loc._2 + offsets._2))
       .filter(coords => matrix.isDefinedAt(coords._1) &&
                         matrix.isDefinedAt(coords._2))
-  val dist = new collection.mutable.HashMap[(Int, Int), Int]
+  val dist = collection.mutable.HashMap[(Int, Int), Int]()
   dist((0, 0)) = matrix(0)(0)
   var queue = matrix.indices.flatMap(i => matrix(i).indices.map((i, _))).toList
   while !queue.isEmpty do

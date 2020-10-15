@@ -7,8 +7,8 @@ class Problem121 extends Problem(121, "2269"):
       if blue > red then 1 else 0
     else
       val rounds = blue + red
-      val chanceIfBlue = winChance(blue + 1, red) * new BigRational(1, rounds + 2)
-      val chanceIfRed  = winChance(blue, red + 1) * new BigRational(rounds + 1, rounds + 2)
+      val chanceIfBlue = winChance(blue + 1, red) * BigRational(1, rounds + 2)
+      val chanceIfRed  = winChance(blue, red + 1) * BigRational(rounds + 1, rounds + 2)
       chanceIfBlue + chanceIfRed
   def solve = winChance(0, 0) match
     case BigRational(n, d) => d / n

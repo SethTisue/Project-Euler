@@ -10,34 +10,34 @@ class BigRational(n: BigInt, d: BigInt):
   val denom = d / g
   def this(n: BigInt) = this(n, 1)
   def +(that: BigRational): BigRational =
-    new BigRational(
+    BigRational(
       numer * that.denom + that.numer * denom,
       denom * that.denom
     )
   def +(i: BigInt): BigRational =
-    new BigRational(numer + i * denom, denom)
+    BigRational(numer + i * denom, denom)
   def -(that: BigRational): BigRational =
-    new BigRational(
+    BigRational(
       numer * that.denom - that.numer * denom,
       denom * that.denom
     )
   def -(i: BigInt): BigRational =
-    new BigRational(numer - i * denom, denom)
+    BigRational(numer - i * denom, denom)
   def *(that: BigRational): BigRational =
-    new BigRational(numer * that.numer, denom * that.denom)
+    BigRational(numer * that.numer, denom * that.denom)
   def *(i: BigInt): BigRational =
-    new BigRational(numer * i, denom)
+    BigRational(numer * i, denom)
   def /(that: BigRational): BigRational =
-    new BigRational(numer * that.denom, denom * that.numer)
+    BigRational(numer * that.denom, denom * that.numer)
   def /(i: BigInt): BigRational =
-    new BigRational(numer, denom * i)
+    BigRational(numer, denom * i)
   def reciprocal: BigRational =
-    new BigRational(denom, numer)
+    BigRational(denom, numer)
   override def toString: String =
     s"$numer/$denom"
   def toDouble: Double =
     def div(d1: BigDecimal, d2: BigDecimal) =  // drop down to java.math.BigDecimal
-      new BigDecimal(d1.bigDecimal.divide(d2.bigDecimal, Precision, java.math.RoundingMode.DOWN))
+      BigDecimal(d1.bigDecimal.divide(d2.bigDecimal, Precision, java.math.RoundingMode.DOWN))
     div(BigDecimal(numer), BigDecimal(denom))
       .setScale(Precision).doubleValue
   private def gcd(a: BigInt, b: BigInt): BigInt =
@@ -54,4 +54,4 @@ class BigRational(n: BigInt, d: BigInt):
 object BigRational:
   def unapply(b: BigRational): Option[(BigInt,BigInt)] = Some((b.numer, b.denom))
   given Conversion[Int, BigRational]:
-    def apply(i: Int): BigRational = new BigRational(i)
+    def apply(i: Int): BigRational = BigRational(i)

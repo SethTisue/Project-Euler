@@ -23,7 +23,7 @@ class Problem103 extends Problem(103, "20313839404245"):
         xs1.size == xs1.distinct.size &&
         xs2.size == xs2.distinct.size &&
         xs1.last < xs2.head
-      case _ => throw new IllegalStateException
+      case _ => throw IllegalStateException()
     }
   def solve =
     val solutions =

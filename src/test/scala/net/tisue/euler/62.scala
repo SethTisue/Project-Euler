@@ -10,7 +10,7 @@ class Problem62 extends Problem(62, "127035954683"):
     // the use of a mutable data structure is completely encapsulated
     // within cubeMap; still, I'd prefer a pure-functional solution
     def cubeMap(len: Int) =
-      val m = new collection.mutable.HashMap[List[Int], Int]
+      val m = collection.mutable.HashMap[List[Int], Int]()
       for c <- cubesOfLength(len)
           ds = c.digits.sorted.toList
       do m(ds) = if m.contains(ds) then m(ds) + 1 else 1

@@ -22,7 +22,7 @@ class Problem80 extends Problem(80, "40886"):
     r * r == n
   // drop down to java.math.BigDecimal to use API not exposed by the Scala wrapper
   def roundingDivide(d1: BigDecimal, d2: BigDecimal) =
-    new BigDecimal(d1.bigDecimal.divide(d2.bigDecimal, digits, J.DOWN))
+    BigDecimal(d1.bigDecimal.divide(d2.bigDecimal, digits, J.DOWN))
   def digitalSum(d: BigDecimal) =
     d.toString.filter(_.isDigit).take(digits).map(_.asDigit).sum
   def firstDuplicate[A](xs: Seq[A]) =

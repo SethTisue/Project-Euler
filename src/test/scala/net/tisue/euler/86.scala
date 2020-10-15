@@ -52,7 +52,7 @@ class Problem86 extends Problem(86, "1818"):
         (b min (a / 2)) - (1 max (a - b)) + 1
     val primitiveTriples = {
       given Ordering[Triple] = Ordering.by[Triple, Int](_.b).reverse
-      val heap = new collection.mutable.PriorityQueue[Triple]
+      val heap = collection.mutable.PriorityQueue[Triple]()
       heap += Triple(3, 4, 5)
       LazyList.continually {
         val result = heap.dequeue()

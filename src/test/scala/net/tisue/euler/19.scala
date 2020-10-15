@@ -8,7 +8,7 @@ class Problem19 extends Problem(19, "171"):
   import java.util.Calendar
   def centuryBegin =
     val c = Calendar.getInstance
-    c.setTime(new java.text.SimpleDateFormat("MMM d yyyy")
+    c.setTime(java.text.SimpleDateFormat("MMM d yyyy")
               .parse("Jan 1 1901"))
     c
   def nextMonth(cal: Calendar) =
