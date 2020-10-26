@@ -6,7 +6,6 @@ testFrameworks += new TestFramework("munit.Framework")
 scalacOptions ++= Seq(
   "-encoding", "us-ascii",
   "-deprecation",
-  "-unchecked",
   "-feature",
   "-Xfatal-warnings",
   // "-source", "3.1",  // re-test with every version bump
