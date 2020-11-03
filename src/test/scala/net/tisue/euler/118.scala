@@ -33,7 +33,7 @@ class Problem118 extends Problem(118, "44680"):
       // want to exit with 0, not with the-result-of-the-fold-so-far
       def loop(ns: List[List[Int]], acc: Int): Int =
         if ns.isEmpty
-          acc
+        then acc
         else
           val p = countPrimePermutations(ns.head)
           if p == 0 then

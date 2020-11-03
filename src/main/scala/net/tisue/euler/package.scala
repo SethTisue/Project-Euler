@@ -14,9 +14,8 @@ def time[T](fn: => T): (T, Double) =
   else
     val guess = (lowerBound + upperBound + 1) / 2
     if tooBig(guess)
-      binarySearch(lowerBound, guess)(tooBig)
-    else
-      binarySearch(guess, upperBound)(tooBig)
+    then binarySearch(lowerBound, guess)(tooBig)
+    else binarySearch(guess, upperBound)(tooBig)
 
 // Haskell has these, dunno why they're not in Scala. `group`
 // could go on Iterable, actually, instead of LazyList specifically.
