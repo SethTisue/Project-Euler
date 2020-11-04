@@ -64,7 +64,7 @@ class Problem84 extends Problem(84, solution = "101524"):
 
   // P is the Markov matrix
   val P: List[List[Double]] = {
-    val zeroVector = List.fill(names.size)(0: BigRational)
+    val zeroVector = List.fill(names.size)(BigRational(0))
     val rolls =
       for die1 <- 1 to die
           die2 <- 1 to die

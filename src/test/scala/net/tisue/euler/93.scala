@@ -23,7 +23,7 @@ package net.tisue.euler
 
 class Problem93 extends Problem(93, "1258"):
 
-  val Zero: BigRational = 0
+  val Zero = BigRational(0)
 
   type OperatorFunction =
     (BigRational, BigRational) => Option[BigRational]
@@ -69,7 +69,7 @@ class Problem93 extends Problem(93, "1258"):
             eval(items.tail, n :: stack.drop(2))
           case None => None
       case Digit(n) =>
-        eval(items.tail, n :: stack)
+        eval(items.tail, BigRational(n) :: stack)
 
   def targets(ns: List[Int]): Set[Int] =
     expressions(ns.map(new Digit(_)), 0)  // by 3.0.0-M1 it will be possible to type-ascribe rather than use `new`

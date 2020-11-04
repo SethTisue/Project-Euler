@@ -62,6 +62,5 @@ class BigRational(n: BigInt, d: BigInt):
       case _ => false
 
 object BigRational:
-  def unapply(b: BigRational): Option[(BigInt,BigInt)] = Some((b.numer, b.denom))
-  given Conversion[Int, BigRational]:
-    def apply(i: Int): BigRational = BigRational(i)
+  def unapply(b: BigRational): Some[(BigInt,BigInt)] =
+    Some((b.numer, b.denom))
