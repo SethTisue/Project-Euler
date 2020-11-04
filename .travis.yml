@@ -5,7 +5,7 @@ language: scala
 env:
   - ADOPTOPENJDK=8
   - ADOPTOPENJDK=11
-  - ADOPTOPENJDK=14
+#  - ADOPTOPENJDK=14  # try again on 3.0.0-M2
 
 before_install:
   # Remove local .jvmopts file to run sbt-extras with
