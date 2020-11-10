@@ -7,7 +7,7 @@ class Problem116 extends Problem(116, "20492570929"):
   def solve(size: Int, tileSize: Int) =
     lazy val count: Int => Long = memoize{start =>
       val results =
-        for(position <- start to size - tileSize)
+        for position <- start to size - tileSize
         yield 1 + count(position + tileSize)
       results.sum
     }
