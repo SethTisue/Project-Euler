@@ -10,5 +10,6 @@ scalacOptions ++= Seq(
   "-Xfatal-warnings",
   // re-test with every version bump. as of 3.0.0-M1 I'm reluctant to
   // enable it because on BigInt,  "Alphanumeric method to is not declared @infix"
+  // (https://github.com/lampepfl/dotty/issues/10383)
   // "-source", "3.1",
 )
