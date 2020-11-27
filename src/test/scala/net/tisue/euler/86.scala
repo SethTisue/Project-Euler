@@ -50,16 +50,14 @@ class Problem86 extends Problem(86, "1818"):
       // changes.
       def cuboidCount: Int =
         (b min (a / 2)) - (1 max (a - b)) + 1
-    val primitiveTriples = {
+    val primitiveTriples = locally:
       given Ordering[Triple] = Ordering.by[Triple, Int](_.b).reverse
       val heap = collection.mutable.PriorityQueue[Triple]()
       heap += Triple(3, 4, 5)
-      LazyList.continually {
+      LazyList.continually:
         val result = heap.dequeue()
         heap ++= result.children.map(_.canonical)
         result
-      }
-    }
 
     // this gives us all the triples (primitive or not) where either leg
     // equals m and the other leg is at most 2m (since to fit cuboids

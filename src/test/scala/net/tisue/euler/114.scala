@@ -6,11 +6,12 @@ import Memo.memoize
 
 class Problem114 extends Problem(114, "16475640049"):
   def solve(min: Int, lim: Int) =
-    lazy val count: Int => Long = memoize{start =>
-      val results =
-        for position <- start to lim - min
-            size <- min to lim - position
-        yield count(position + size + 1)
-      1 + results.sum}
+    lazy val count: Int => Long = memoize:
+      start =>
+        val results =
+          for position <- start to lim - min
+              size <- min to lim - position
+          yield count(position + size + 1)
+        1 + results.sum
     count(0)
   def solve = solve(3, 50)

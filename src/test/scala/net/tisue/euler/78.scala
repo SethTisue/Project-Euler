@@ -22,7 +22,8 @@ class Problem78 extends Problem(78, "55374"):
                                          n - (k * k * 3 + k) / 2))
         .takeWhile(_ >= 0)
         .zip(LazyList(1, 1, -1, -1).circular)
-        .map{case (j, sign) => memo(j) * sign}
+        .map:
+          case (j, sign) => memo(j) * sign
         .sum % 1000000
     memo.last
   def solve = LazyList.from(1).find(p(_) == 0).get

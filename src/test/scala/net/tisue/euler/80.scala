@@ -26,11 +26,15 @@ class Problem80 extends Problem(80, "40886"):
   def digitalSum(d: BigDecimal) =
     d.toString.filter(_.isDigit).take(digits).map(_.asDigit).sum
   def firstDuplicate[A](xs: Seq[A]) =
-    xs.zip(xs.tail).find{case (d1, d2) => d1 == d2}.get._1
+    xs.zip(xs.tail)
+      .find:
+        case (d1, d2) => d1 == d2
+      .get._1
   def babylonian(n: BigDecimal) =
-    LazyList.iterate(n){next =>
-      ((next + roundingDivide(n, next)) / 2)
-        .setScale(digits, S.DOWN)}
+    LazyList.iterate(n):
+      next =>
+        ((next + roundingDivide(n, next)) / 2)
+          .setScale(digits, S.DOWN)
   def solve =
     (1 to 100)
       .filter(!isSquare(_))

@@ -37,7 +37,7 @@ object Primes:
   // amount of primes you will need.
   var sieve = Array(false, false, true, true)
   private val lock = AnyRef()
-  def isSievedPrime(n: Int): Boolean = lock.synchronized {
+  def isSievedPrime(n: Int): Boolean = lock.synchronized:
     while n >= sieve.length do
       val newSieve = Array.fill(sieve.length * 2)(true)
       Array.copy(sieve, 0, newSieve, 0, sieve.length)
@@ -54,7 +54,6 @@ object Primes:
         i += 1
       sieve = newSieve
     sieve(n)
-  }
 
   // stream of cached sieved primes
   val primes: LazyList[Int] = LazyList.from(2).filter(isSievedPrime)

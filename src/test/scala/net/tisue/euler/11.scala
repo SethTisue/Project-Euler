@@ -13,8 +13,9 @@ class Problem11 extends Problem(11, "70600674"):
           j <- 0 until a.size  // try all starting points
           (xdir, ydir) <- directions
           coords = (0 to 3).map(distance => (i + distance * xdir, j + distance * ydir)) // compute coords of four numbers
-          if coords.forall{case (i, j) => inBounds(i) && inBounds(j)} // are all coords in bounds?
-          product = coords.map{case (i, j) => a(i)(j)}.product // compute product
-      yield product
+          if coords.forall:
+            case (i, j) => inBounds(i) && inBounds(j) // are all coords in bounds?
+          products = coords.map:
+            case (i, j) => a(i)(j)
+      yield products.product
     products.max
-

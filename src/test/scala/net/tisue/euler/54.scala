@@ -47,7 +47,9 @@ class Problem54 extends Problem(54, solution = "376"):
       hand.map(_.rank)
         .sorted
         .sliding(2)
-        .forall{case Seq(r1, r2) : Seq[Int] @unchecked => r2 == r1 + 1}
+        .forall:
+          case Seq(r1, r2) : Seq[Int] @unchecked =>
+            r2 == r1 + 1
     val handFunctions =
       IndexedSeq(
         () => isNOfAKind(1),
@@ -76,5 +78,6 @@ class Problem54 extends Problem(54, solution = "376"):
       for line <- io.Source.fromResource("54.txt").getLines.toList
           cards = line.split(" ").toList.map(readCard)
       yield cards.splitAt(5)
-    input.count{case (hand1, hand2) =>
-      beats(hand1, hand2)}
+    input.count:
+      case (hand1, hand2) =>
+        beats(hand1, hand2)

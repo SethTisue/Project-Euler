@@ -12,10 +12,15 @@ class Problem95 extends Problem(95, "14316"):
   // mathworld.wolfram.com/DivisorFunction.html
   def properDivisorSum(n: Int): Int =
     if n == 1 then 1
-    else factors(n).group.map{fs => val factor = fs.head.toLong
-                                    val exponent = fs.size
-                                    (List.fill(exponent + 1)(factor).product - 1) / (factor - 1)}
-                         .product.toInt - n
+    else
+      factors(n)
+        .group
+        .map:
+          fs =>
+            val factor = fs.head.toLong
+            val exponent = fs.size
+            (List.fill(exponent + 1)(factor).product - 1) / (factor - 1)
+        .product.toInt - n
   val chain: Int => LazyList[Int] = memoize(n =>
     n #:: chain(properDivisorSum(n)))
   // This part isn't very elegant. I'm not sure how to do better.

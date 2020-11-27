@@ -63,17 +63,17 @@ class Problem84 extends Problem(84, solution = "101524"):
         nexts.size * die * die))
 
   // P is the Markov matrix
-  val P: List[List[Double]] = {
+  val P: List[List[Double]] = locally:
     val zeroVector = List.fill(names.size)(BigRational(0))
     val rolls =
       for die1 <- 1 to die
           die2 <- 1 to die
       yield die1 + die2
     def row(i: Int): List[BigRational] =
-      rolls.toList.foldLeft(zeroVector){(vec, roll) =>
-        vec.lazyZip(nextSquare(i, roll)).map(_ + _)}
+      rolls.toList.foldLeft(zeroVector):
+        (vec, roll) =>
+          vec.lazyZip(nextSquare(i, roll)).map(_ + _)
     names.indices.toList.map(row(_).map(_.toDouble))
-  }
 
   def matrixMul(m1: List[List[Double]], m2: List[List[Double]]) =
     val indices = m1.indices.toList

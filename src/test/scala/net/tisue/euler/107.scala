@@ -28,24 +28,25 @@ class Problem107 extends Problem(107, "259679"):
         throw Found
       else if visited(v) then
         visited
-      else net.keys.foldLeft(visited + v){(visited, edge) =>
-          edge match
-            case (`v`, other) => traverse(other, visited)
-            case (other, `v`) => traverse(other, visited)
-            case _ => visited
-        }
+      else
+        net.keys.foldLeft(visited + v):
+          (visited, edge) =>
+            edge match
+              case (`v`, other) => traverse(other, visited)
+              case (other, `v`) => traverse(other, visited)
+              case _ => visited
     try
       traverse(edge._1)
       false
     catch case Found => true
   def minimize[T](net: Network[T]) =
     val sortedEdges = net.toSeq.sortBy(_._2).reverse.map(_._1)
-    sortedEdges.foldLeft(net){(net, edge) =>
-      val erased = net - edge
-      if pathExists(edge, erased)
-      then erased
-      else net
-    }
+    sortedEdges.foldLeft(net):
+      (net, edge) =>
+        val erased = net - edge
+        if pathExists(edge, erased)
+        then erased
+        else net
   def weight[T](net: Network[T]) =
     net.values.sum
   def solve =
