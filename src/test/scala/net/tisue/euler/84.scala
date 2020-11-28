@@ -63,7 +63,7 @@ class Problem84 extends Problem(84, solution = "101524"):
         nexts.size * die * die))
 
   // P is the Markov matrix
-  val P: List[List[Double]] = locally:
+  val P: List[List[Double]] =
     val zeroVector = List.fill(names.size)(BigRational(0))
     val rolls =
       for die1 <- 1 to die

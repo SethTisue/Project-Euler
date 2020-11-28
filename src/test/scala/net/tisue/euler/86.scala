@@ -50,7 +50,7 @@ class Problem86 extends Problem(86, "1818"):
       // changes.
       def cuboidCount: Int =
         (b min (a / 2)) - (1 max (a - b)) + 1
-    val primitiveTriples = locally:
+    val primitiveTriples =
       given Ordering[Triple] = Ordering.by[Triple, Int](_.b).reverse
       val heap = collection.mutable.PriorityQueue[Triple]()
       heap += Triple(3, 4, 5)

@@ -26,7 +26,7 @@ class Problem96 extends Problem(96, "24702"):
   type Puzzle = List[List[Int]]  // 9 lists of 9 integers in 1-9 range
   type Group = List[Int]         // 9 integers in 0-80 range
 
-  val groups: List[Group] = locally:
+  val groups: List[Group] =
     val rows    = for i <- (0 to 8).toList
                   yield (0 to 80).toList.filter(_ / 9 == i)
     val columns = for i <- (0 to 8).toList

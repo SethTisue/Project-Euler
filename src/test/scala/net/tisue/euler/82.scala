@@ -14,7 +14,7 @@ class Problem82 extends Problem(82, "260324"):
     // rather than (x,y), but oh well
     for x <- range.reverse.drop(1)
         y <- range
-      do matrix(y)(x) = locally:
+      do matrix(y)(x) =
         val down = if y == 0 then Integer.MAX_VALUE
                    else matrix(y - 1)(x) + matrix(y)(x)
         val up =
