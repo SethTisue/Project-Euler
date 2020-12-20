@@ -19,7 +19,7 @@ def time[T](fn: => T): (T, Double) =
 
 // Haskell has these, dunno why they're not in Scala. `group`
 // could go on Iterable, actually, instead of LazyList specifically.
-extension [T](s: LazyList[T]):
+extension [T](s: LazyList[T])
   // if we put the lazy val at the top level, we can't extend AnyVal,
   // so we make it local, like this:
   def circular: LazyList[T] =
@@ -31,16 +31,16 @@ extension [T](s: LazyList[T]):
       else Some(s.span(_ == s.head)))
 
 // add gcd, digits methods to Int
-extension (i: Int):
+extension (i: Int)
   def gcd(j: Int): Int =
     if j == 0 then i
     else j.gcd(i - j * (i / j))
   def digits: Seq[Int] = i.toString.map(_.asDigit)
 
 // add digits method to Long
-extension (i: Long):
+extension (i: Long)
   def digits: Seq[Int] = i.toString.map(_.asDigit)
 
 // add digits method to BigInt
-extension (i: BigInt):
+extension (i: BigInt)
   def digits: Seq[Int] = i.toString.map(_.asDigit)

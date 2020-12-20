@@ -55,7 +55,7 @@ class BigRational(n: BigInt, d: BigInt):
   override def hashCode: Int =
     (numer, denom).hashCode
   override def equals(other: Any): Boolean =
-    other match
+    other.asInstanceOf[Matchable] match  // sigh: https://github.com/lampepfl/dotty/issues/10855
       case that: BigRational =>
         this.numer == that.numer && this.denom == that.denom ||
         this.numer == 0 && that.numer == 0

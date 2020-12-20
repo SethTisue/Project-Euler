@@ -12,13 +12,13 @@ class Problem91 extends Problem(91, "14234"):
     math.abs(d1 - d2) < 0.00000000001
   case class Triangle(x1: Int, y1: Int, x2: Int, y2: Int)
   def isSolution(t: Triangle) =
-    val List(side0, side1, side2): @unchecked = {
+    val List(side0, side1, side2) = {
       import Ordering.Double.TotalOrdering
       List(distance(t.x1, t.y1, t.x2, t.y2),
            distance(t.x1, t.y1, 0, 0),
            distance(t.x2, t.y2, 0, 0))
         .sorted.reverse
-    }
+    }: @unchecked
     near(square(side0), square(side1) + square(side2)) &&
       !near(side0, side1 + side2)
   def candidates =
