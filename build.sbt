@@ -4,7 +4,7 @@ scalaVersion := "3.0.0-M3"
 // as per https://eed3si9n.com/sbt-1.5.0-beta
 resolvers += Resolver.JCenterRepository
 
-libraryDependencies += "org.scalameta" %% "munit" % "0.7.20"
+libraryDependencies += "org.scalameta" %% "munit" % "0.7.21"
 testFrameworks += new TestFramework("munit.Framework")
 
 scalacOptions ++= Seq(
