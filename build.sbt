@@ -1,10 +1,6 @@
-scalaVersion := "3.0.0-M3"
+scalaVersion := "3.0.0-RC1"
 
-// only needed for Scaladoc generation, and is only temporary,
-// as per https://eed3si9n.com/sbt-1.5.0-beta
-resolvers += Resolver.JCenterRepository
-
-libraryDependencies += "org.scalameta" %% "munit" % "0.7.21"
+libraryDependencies += "org.scalameta" %% "munit" % "0.7.22" % Test
 testFrameworks += new TestFramework("munit.Framework")
 
 scalacOptions ++= Seq(
