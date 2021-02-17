@@ -72,7 +72,7 @@ class Problem93 extends Problem(93, "1258"):
         eval(items.tail, BigRational(n) :: stack)
 
   def targets(ns: List[Int]): Set[Int] =
-    expressions(ns.map(new Digit(_)), 0)  // by 3.0.0-M1 it will be possible to type-ascribe rather than use `new`
+    expressions(ns.map(Digit(_)), 0)
       .flatMap(e => eval(e, Nil))
       .filter(_.denom == 1)
       .map(_.numer.toInt)
