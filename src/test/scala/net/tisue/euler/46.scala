@@ -1,6 +1,6 @@
 package net.tisue.euler
 
-import Primes._
+import Primes.*
 
 // What is the smallest odd composite that cannot be written as the sum of a prime and twice a
 // square?

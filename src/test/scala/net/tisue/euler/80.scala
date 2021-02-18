@@ -12,8 +12,8 @@ package net.tisue.euler
 // lampsvn.epfl.ch/trac/scala/ticket/1812 is fixed in 2.9, but I don't feel like
 // messing with it right now - ST 3/31/11
 
-import java.math.{RoundingMode => J}
-import scala.math.BigDecimal.{RoundingMode => S}
+import java.math.RoundingMode as J
+import scala.math.BigDecimal.RoundingMode as S
 
 class Problem80 extends Problem(80, "40886"):
   val digits = 100

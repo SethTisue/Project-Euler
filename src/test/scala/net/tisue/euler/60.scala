@@ -1,6 +1,6 @@
 package net.tisue.euler
 
-import Primes._
+import Primes.*
 
 // Find the lowest sum for a set of five primes from which any two primes concatenate to produce
 // another prime.

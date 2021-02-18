@@ -1,5 +1,5 @@
 package net.tisue.euler
-import Primes._
+import Primes.*
 
 // The first eight rows of Pascal's triangle contain twelve distinct numbers: 1, 2, 3, 4, 5, 6, 7,
 // 10, 15, 20, 21 and 35.  A positive integer n is called squarefree if no square of a prime divides

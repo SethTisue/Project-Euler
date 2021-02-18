@@ -1,6 +1,6 @@
 package net.tisue.euler
 
-import Primes._
+import Primes.*
 
 // How many elements would be contained in the set of reduced proper fractions with denominator <=
 // 1,000,000?  (for denominator <= 8, there are 21)

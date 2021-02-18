@@ -1,6 +1,6 @@
 package net.tisue.euler
 
-import Primes._
+import Primes.*
 import Memo.memoize
 
 // The sum of the proper divisors of 220 is 284, and vice versa.  220 and 284 are called an amicable

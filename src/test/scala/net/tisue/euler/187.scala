@@ -1,5 +1,5 @@
 package net.tisue.euler
-import Primes._
+import Primes.*
 
 // A composite is a number containing at least two prime factors. For example, 15 = 3 x 5; 9 = 3 x
 // 3; 12 = 2 x 2 x 3.  There are ten composites below thirty containing precisely two, not

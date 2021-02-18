@@ -1,6 +1,6 @@
 package net.tisue.euler
 
-import Primes._
+import Primes.*
 
 // By replacing the 1st digit of *57, it turns out that six of the possible values: 157, 257, 457,
 // 557, 757, and 857, are all prime.

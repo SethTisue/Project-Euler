@@ -1,6 +1,6 @@
 package net.tisue.euler
 
-import Primes._
+import Primes.*
 
 // The first two consecutive numbers to have two distinct prime factors are:
 //   14 = 2 x 7

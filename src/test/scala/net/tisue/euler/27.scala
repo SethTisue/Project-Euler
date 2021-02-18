@@ -1,5 +1,5 @@
 package net.tisue.euler
-import Primes._
+import Primes.*
 
 // Considering quadratics of the form:
 // n^2 + an + b, where |a| < 1000 and |b| < 1000

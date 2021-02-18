@@ -1,6 +1,6 @@
 package net.tisue.euler
 
-import Primes._
+import Primes.*
 
 // Euler's Totient function phi(n) is used to determine the number of numbers less than n which are
 // relatively prime to n.  n=6 produces a maximum n/phi(n) for n <= 10.  Find the value of n <=

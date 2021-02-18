@@ -1,6 +1,6 @@
 package net.tisue.euler
 
-import Primes._
+import Primes.*
 
 // Find the value of n, 1 < n < 10^7, for which the totient phi(n) is a permutation of n and the ratio
 // n/phi(n) produces a minimum.

@@ -1,6 +1,6 @@
 package net.tisue.euler
 
-import Primes._
+import Primes.*
 
 // We shall say that an n-digit number is pandigital if it makes use
 // of all the digits 1 to n exactly once. For example, 2143 is a

@@ -1,6 +1,6 @@
 package net.tisue.euler
 
-import Primes._
+import Primes.*
 
 // What is the first value which can be written as the sum of primes in over 5000 different ways?
 

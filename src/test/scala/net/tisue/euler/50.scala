@@ -1,6 +1,6 @@
 package net.tisue.euler
 
-import Primes._
+import Primes.*
 import annotation.tailrec
 
 // The prime 41, can be written as the sum of six consecutive primes:

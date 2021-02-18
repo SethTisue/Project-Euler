@@ -1,5 +1,5 @@
 package net.tisue.euler
-import Primes._
+import Primes.*
 
 class Problem123 extends Problem(123, "21035"):
   def r(n: Int) =

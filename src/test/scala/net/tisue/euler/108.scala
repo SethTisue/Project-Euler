@@ -1,5 +1,5 @@
 package net.tisue.euler
-import Primes._
+import Primes.*
 
 // In the following equation x, y, and n are positive integers:
 // 1/x + 1/y = 1/n

@@ -1,6 +1,6 @@
 package net.tisue.euler
 
-import Primes._
+import Primes.*
 
 // How many numbers below fifty million can be expressed as the sum of a prime square, prime cube, and
 // prime fourth power?  (There are exactly four such numbers below fifty.)

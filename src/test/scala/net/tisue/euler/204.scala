@@ -1,5 +1,5 @@
 package net.tisue.euler
-import Primes._
+import Primes.*
 
 class Problem204 extends Problem(204, "2944730"):
   val ps = primes.takeWhile(_ < 100)
