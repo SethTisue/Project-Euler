@@ -14,4 +14,4 @@ before_install:
 
 script:
   # keep heap usage down by running tests serially
-  - sbt 'set parallelExecution in Test := false' +test
+  - sbt 'set Test / parallelExecution := false' +test
