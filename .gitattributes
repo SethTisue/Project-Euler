@@ -1,0 +1,2 @@
+# Some sbt launcher scripts can't handle CR in .jvmopts
+.jvmopts  eol=lf
