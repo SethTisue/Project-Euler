@@ -12,7 +12,7 @@ jobs:
             os: ubuntu-latest
           - java: 11
             os: ubuntu-latest
-          - java: 16
+          - java: 15
             os: ubuntu-latest
           - java: 8
             os: windows-latest
