@@ -1,7 +1,5 @@
-name: ci
-on:
-  push:
-  pull_request:
+name: test
+on: [push, pull_request]
 jobs:
   test:
     strategy:
@@ -18,7 +16,8 @@ jobs:
             os: windows-latest
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
+    - uses: coursier/cache-action@v6
     - uses: olafurpg/setup-scala@v10
       with:
         java-version: adopt@1.${{ matrix.java }}
