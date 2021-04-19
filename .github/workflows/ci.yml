@@ -14,17 +14,17 @@ jobs:
             os: ubuntu-latest
           - java: 11
             os: ubuntu-latest
-          - java: 16-ea   # as of Apr 18 2021 anyway, just "16" doesn't work
+          - java: 15   # 16 isn't available?! (as of April 2021)
             os: ubuntu-latest
           - java: 8
             os: windows-latest
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{matrix.os}}
     steps:
     - uses: actions/checkout@v2
     - uses: coursier/cache-action@v6
     - uses: olafurpg/setup-scala@v10
       with:
-        java-version: adopt@1.${{ matrix.java }}
+        java-version: adopt@1.${{matrix.java}}
     - name: Test
       # keep heap usage down by running tests serially
       run: sbt 'set Test / parallelExecution := false' +test
