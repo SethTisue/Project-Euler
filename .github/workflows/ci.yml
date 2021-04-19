@@ -14,7 +14,7 @@ jobs:
             os: ubuntu-latest
           - java: 11
             os: ubuntu-latest
-          - java: 15
+          - java: 16-ea   # as of Apr 18 2021 anyway, just "16" doesn't work
             os: ubuntu-latest
           - java: 8
             os: windows-latest
