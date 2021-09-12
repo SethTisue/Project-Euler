@@ -28,7 +28,7 @@ class Problem84 extends Problem(84, solution = "101524"):
   val squares: Map[String, Int] = // from name to number
     names.zipWithIndex.toMap
   val namesCycle: LazyList[String] =
-    names.to(LazyList).circular
+    names.to(LazyList).cycle
 
   def limit(squareNumber: Int): Int =
     (squareNumber + names.size) % names.size

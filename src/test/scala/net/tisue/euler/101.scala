@@ -23,7 +23,7 @@ class Problem101 extends Problem(101, "37076114526"):
   def extrapolate(ns: Seq[BigInt]) =
     def addDifferences(diffs: LazyList[BigInt], init: BigInt): LazyList[BigInt] =
       init #:: addDifferences(diffs.tail, init + diffs.head)
-    diagonal(ns).foldLeft(LazyList(BigInt(0)).circular)(addDifferences)
+    diagonal(ns).foldLeft(LazyList(BigInt(0)).cycle)(addDifferences)
   def mismatch[T](master: Seq[T], copy: Seq[T]) =
     (master zip copy).find(p => p._1 != p._2).get._2
   def solve =

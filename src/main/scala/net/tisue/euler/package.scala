@@ -22,7 +22,7 @@ def time[T](fn: => T): (T, Double) =
 extension [T](s: LazyList[T])
   // if we put the lazy val at the top level, we can't extend AnyVal,
   // so we make it local, like this:
-  def circular: LazyList[T] =
+  def cycle: LazyList[T] =
     lazy val result: LazyList[T] = s #::: result
     result
   def group: LazyList[LazyList[T]] =

@@ -12,7 +12,7 @@ class Problem59 extends Problem(59, "107359"):
   def isEnglish(s: String): Boolean =
     (s.split(' ').size / s.size.toDouble) > 0.15
   def decrypt(s: String, key: Seq[Char]) =
-    s.to(LazyList).zip(key.to(LazyList).circular)
+    s.to(LazyList).zip(key.to(LazyList).cycle)
      .map{case (c1, c2) => c1 ^ c2}.map(_.toChar).mkString
   val cipherText =
     io.Source.fromResource("59.txt").mkString.trim.split(",").map(_.toInt.toChar).mkString
