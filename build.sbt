@@ -7,8 +7,5 @@ scalacOptions ++= Seq(
   "-deprecation",
   "-feature",
   "-Xfatal-warnings",
-  // re-test with every version bump?
-  // on BigInt, "Alphanumeric method to is not declared @infix"
-  // (https://github.com/lampepfl/dotty/issues/10383)
-  // "-source", "3.1",
+  "-source:future",
 )
