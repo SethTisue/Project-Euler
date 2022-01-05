@@ -2,7 +2,7 @@ Solve them yourself first!
 
 ## Scala 3
 
-On HEAD, the code is Dotty-only.
+On `main`, the code requires Scala 3.
 
 ## Scala 2
 
