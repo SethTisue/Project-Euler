@@ -36,7 +36,9 @@ object Primes:
   // sieve.  so unlike primesBelow, this doesn't require committing in advance to a ceiling on the
   // amount of primes you will need.
   var sieve = Array(false, false, true, true)
-  private val lock = new AnyRef  // not `AnyRef()?` sigh: https://github.com/lampepfl/dotty/issues/10862
+  private val lock =
+    // not `AnyRef()?` sigh: https://github.com/lampepfl/dotty/issues/10862
+    new AnyRef
   def isSievedPrime(n: Int): Boolean = lock.synchronized {
     while n >= sieve.length do
       val newSieve = Array.fill(sieve.length * 2)(true)

@@ -46,7 +46,8 @@ class BigRational(n: BigInt, d: BigInt):
   override def toString: String =
     s"$numer/$denom"
   def toDouble: Double =
-    def div(d1: BigDecimal, d2: BigDecimal) =  // drop down to java.math.BigDecimal
+    def div(d1: BigDecimal, d2: BigDecimal) =
+      // drop down to java.math.BigDecimal
       BigDecimal(d1.bigDecimal.divide(d2.bigDecimal, Precision, java.math.RoundingMode.DOWN))
     div(BigDecimal(numer), BigDecimal(denom))
       .setScale(Precision).doubleValue
@@ -55,7 +56,8 @@ class BigRational(n: BigInt, d: BigInt):
   override def hashCode: Int =
     (numer, denom).hashCode
   override def equals(other: Any): Boolean =
-    other.asInstanceOf[Matchable] match  // sigh: https://github.com/lampepfl/dotty/issues/10855
+    // sigh: https://github.com/lampepfl/dotty/issues/10855
+    other.asInstanceOf[Matchable] match
       case that: BigRational =>
         this.numer == that.numer && this.denom == that.denom ||
         this.numer == 0 && that.numer == 0
