@@ -18,7 +18,7 @@ class Problem91 extends Problem(91, "14234"):
         .sorted.reverse
     }: @unchecked
     near(square(side0), square(side1) + square(side2)) &&
-    !near(side0, side1 + side2)
+      !near(side0, side1 + side2)
   def candidates =
     for
       x1 <- 0 to 50
