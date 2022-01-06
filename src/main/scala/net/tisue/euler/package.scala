@@ -5,16 +5,17 @@ import annotation.tailrec
 // measure how long something takes to compute
 def time[T](fn: => T): (T, Double) =
   val start = System.nanoTime
-  (fn, (System.nanoTime - start) / 1.0E9)
+  (fn, (System.nanoTime - start) / 1.0e9)
 
 // binary search
-@tailrec def binarySearch(lowerBound: Int, upperBound: Int)(tooBig: Int => Boolean): Int =
+@tailrec def binarySearch(
+    lowerBound: Int,
+    upperBound: Int)(tooBig: Int => Boolean): Int =
   if lowerBound == upperBound - 1 then
     lowerBound
   else
     val guess = (lowerBound + upperBound + 1) / 2
-    if tooBig(guess)
-    then binarySearch(lowerBound, guess)(tooBig)
+    if tooBig(guess) then binarySearch(lowerBound, guess)(tooBig)
     else binarySearch(guess, upperBound)(tooBig)
 
 // Haskell has these, dunno why they're not in Scala. `group`

@@ -48,7 +48,10 @@ class BigRational(n: BigInt, d: BigInt):
   def toDouble: Double =
     def div(d1: BigDecimal, d2: BigDecimal) =
       // drop down to java.math.BigDecimal
-      BigDecimal(d1.bigDecimal.divide(d2.bigDecimal, Precision, java.math.RoundingMode.DOWN))
+      BigDecimal(d1.bigDecimal.divide(
+        d2.bigDecimal,
+        Precision,
+        java.math.RoundingMode.DOWN))
     div(BigDecimal(numer), BigDecimal(denom))
       .setScale(Precision).doubleValue
   private def gcd(a: BigInt, b: BigInt): BigInt =
@@ -60,9 +63,9 @@ class BigRational(n: BigInt, d: BigInt):
     other.asInstanceOf[Matchable] match
       case that: BigRational =>
         this.numer == that.numer && this.denom == that.denom ||
-        this.numer == 0 && that.numer == 0
+          this.numer == 0 && that.numer == 0
       case _ => false
 
 object BigRational:
-  def unapply(b: BigRational): Some[(BigInt,BigInt)] =
+  def unapply(b: BigRational): Some[(BigInt, BigInt)] =
     Some((b.numer, b.denom))
