@@ -11,9 +11,9 @@ class Problem17 extends Problem(17, "21124"):
     else if n > 100 then
       english(100 * (n / 100)) + "and" + english(n % 100)
     else if n < 20 then
-      List("one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
-        "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen",
-        "seventeen", "eighteen", "nineteen")(n - 1)
+      List("one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven",
+        "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen",
+        "nineteen")(n - 1)
     else if n % 10 == 0 then
       List("twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety")(n / 10 - 2)
     else

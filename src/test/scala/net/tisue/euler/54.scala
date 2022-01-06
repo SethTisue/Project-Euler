@@ -50,14 +50,8 @@ class Problem54 extends Problem(54, solution = "376"):
         .forall { case Seq(r1, r2): Seq[Int] @unchecked => r2 == r1 + 1 }
     val handFunctions =
       IndexedSeq(
-        () => isNOfAKind(1),
-        () => isNOfAKind(2),
-        () => isTwoPairs,
-        () => isNOfAKind(3),
-        () => isStraight,
-        () => isFlush,
-        () => isFullHouse,
-        () => isNOfAKind(4),
+        () => isNOfAKind(1), () => isNOfAKind(2), () => isTwoPairs, () => isNOfAKind(3),
+        () => isStraight, () => isFlush, () => isFullHouse, () => isNOfAKind(4),
         () => isStraightFlush)
     handFunctions.lastIndexWhere(_.apply)
 

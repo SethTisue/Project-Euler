@@ -8,8 +8,19 @@ package net.tisue.euler
 
 class Problem89 extends Problem(89, "743"):
   val key = List(
-    ("M", 1000), ("CM", 900), ("D", 500), ("CD", 400), ("C", 100), ("XC", 90),
-    ("L", 50), ("XL", 40), ("X", 10), ("IX", 9), ("V", 5), ("IV", 4), ("I", 1))
+    "M" -> 1000,
+    "CM" -> 900,
+    "D" -> 500,
+    "CD" -> 400,
+    "C" -> 100,
+    "XC" -> 90,
+    "L" -> 50,
+    "XL" -> 40,
+    "X" -> 10,
+    "IX" -> 9,
+    "V" -> 5,
+    "IV" -> 4,
+    "I" -> 1)
   def arabic(s: String): Int =
     key.collectFirst {
       case (letters, number) if s.startsWith(letters) =>

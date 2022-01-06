@@ -21,10 +21,9 @@ package net.tisue.euler
 class Problem84 extends Problem(84, solution = "101524"):
 
   val die = 4
-  val names = List("GO", "A1", "CC1", "A2", "T1", "R1", "B1", "CH1", "B2", "B3",
-                   "JAIL", "C1", "U1", "C2", "C3", "R2", "D1", "CC2", "D2", "D3",
-                   "FP", "E1", "CH2", "E2", "E3", "R3", "F1", "F2", "U2", "F3",
-                   "G2J", "G1", "G2", "CC3", "G3", "R4", "CH3", "H1", "T2", "H2")
+  val names = List("GO", "A1", "CC1", "A2", "T1", "R1", "B1", "CH1", "B2", "B3", "JAIL", "C1", "U1",
+    "C2", "C3", "R2", "D1", "CC2", "D2", "D3", "FP", "E1", "CH2", "E2", "E3", "R3", "F1", "F2",
+    "U2", "F3", "G2J", "G1", "G2", "CC3", "G3", "R4", "CH3", "H1", "T2", "H2")
   val squares: Map[String, Int] = // from name to number
     names.zipWithIndex.toMap
   val namesCycle: LazyList[String] =
@@ -49,12 +48,19 @@ class Problem84 extends Problem(84, solution = "101524"):
         case "CC1" | "CC2" | "CC3" =>
           List(squares("GO"), squares("JAIL")) ::: List.fill(14)(newSquare)
         case "CH1" | "CH2" | "CH3" =>
-          List(squares("GO"), squares("JAIL"), squares("C1"),
-               squares("E3"), squares("H2"), squares("R1"),
-               nextSpecial(square, 'R'), nextSpecial(square, 'R'),
-               nextSpecial(square, 'U'),
-            limit(square - 3)) :::
-          List.fill(6)(newSquare)
+          List(
+            squares("GO"),
+            squares("JAIL"),
+            squares("C1"),
+            squares("E3"),
+            squares("H2"),
+            squares("R1"),
+            nextSpecial(square, 'R'),
+            nextSpecial(square, 'R'),
+            nextSpecial(square, 'U'),
+            limit(square - 3)
+          ) :::
+            List.fill(6)(newSquare)
         case _ =>
           List(newSquare)
     names.indices.toList.map(next =>
