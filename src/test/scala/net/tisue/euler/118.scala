@@ -10,10 +10,12 @@ class Problem118 extends Problem(118, "44680"):
       case Nil => List(Nil)
       case n :: ns =>
         val recurse = partitions(ns)
-        recurse.map(r => List(n) :: r) :::
-          (for r <- recurse
-               m <- r.indices
-           yield r.patch(m, List(n :: r(m)), 1))
+        val rest =
+          for
+            r <- recurse
+            m <- r.indices
+          yield r.patch(m, List(n :: r(m)), 1)
+        recurse.map(r => List(n) :: r) ::: rest
   // we need to test lots of small numbers but only a few large numbers,
   // so we use two different prime tests depending on the size of n
   def fastPrimeTest(n: Int) =

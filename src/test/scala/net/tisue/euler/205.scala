@@ -22,8 +22,8 @@ class Problem205 extends Problem(205, "0.5731441"):
       .to(Map)
   def answer(n1: Int, sides1: Int, n2: Int, sides2: Int) =
     val firstWins =
-      for (sum1, count1) <- counts(rolls(n1, sides1))
-          (sum2, count2) <- counts(rolls(n2, sides2))
+      for case (sum1, count1) <- counts(rolls(n1, sides1))
+          case (sum2, count2) <- counts(rolls(n2, sides2))
           if sum1 > sum2
       yield count1 * count2
     firstWins.map(_.toLong).sum /
