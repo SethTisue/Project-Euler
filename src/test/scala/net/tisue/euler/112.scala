@@ -23,8 +23,7 @@ class Problem112 extends Problem(112, "1587000"):
         n
       else
         helper(
-          if isBouncy(n + 1)
-          then bouncies + 1
+          if isBouncy(n + 1) then bouncies + 1
           else bouncies,
           n + 1)
     helper(0, 0)

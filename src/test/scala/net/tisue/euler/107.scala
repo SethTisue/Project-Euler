@@ -44,8 +44,7 @@ class Problem107 extends Problem(107, "259679"):
     val sortedEdges = net.toSeq.sortBy(_._2).reverse.map(_._1)
     sortedEdges.foldLeft(net) { (net, edge) =>
       val erased = net - edge
-      if pathExists(edge, erased)
-      then erased
+      if pathExists(edge, erased) then erased
       else net
     }
   def weight[T](net: Network[T]) =
