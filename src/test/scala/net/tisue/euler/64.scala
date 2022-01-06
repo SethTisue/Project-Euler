@@ -22,9 +22,7 @@ class Problem64 extends Problem(64, "1322"):
           seen((num, c)) = count
           val denom = n - c * c
           val nextA = num * (m + c) / denom
-          iterate(denom / num,
-                  (nextA * denom - num * c) / num,
-                  count + 1)
+          iterate(denom / num, (nextA * denom - num * c) / num, count + 1)
     if m * m == n then
       0
     else

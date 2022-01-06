@@ -5,4 +5,3 @@ package net.tisue.euler
 class Problem16 extends Problem(16, "1366"):
   val powersOfTwo = LazyList.iterate(BigInt(1))(_ * 2)
   def solve = powersOfTwo(1000).digits.sum
-

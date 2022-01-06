@@ -24,4 +24,3 @@ class Problem108 extends Problem(108, "180180"):
     (factorCounts(n).map(_ * 2 + 1).product + 1) / 2
   def solve =
     LazyList.from(2).find(A018892(_) > 1000).get
-

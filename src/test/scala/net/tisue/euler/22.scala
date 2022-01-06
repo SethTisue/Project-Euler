@@ -13,4 +13,3 @@ class Problem22 extends Problem(22, "871198282"):
     for (name, index) <- names.sorted.zipWithIndex
     yield score(name) * (index + 1)
   def solve = scores.sum
-

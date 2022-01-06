@@ -5,4 +5,3 @@ package net.tisue.euler
 class Problem6 extends Problem(6, "25164150"):
   val range = BigInt(1) to 100
   def solve = range.sum.pow(2) - range.map(n => n * n).sum
-

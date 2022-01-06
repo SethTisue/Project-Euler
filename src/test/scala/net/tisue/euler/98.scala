@@ -24,10 +24,11 @@ class Problem98 extends Problem(98, "18769"):
   // slight loss of generality here: assume there are no anagram triples in the input. in the actual
   // input there is one triple but the words are short so we can ignore it.
   val solutions =
-    for case List(word1, word2) <- anagrams ++ anagrams.map(_.reverse)
-        squares = squaresOfLength(word1.size).toSet
-        s <- squares
-        scrambled <- scramble(s, word1, word2)
-        if s != scrambled && squares.contains(scrambled)
+    for
+      case List(word1, word2) <- anagrams ++ anagrams.map(_.reverse)
+      squares = squaresOfLength(word1.size).toSet
+      s <- squares
+      scrambled <- scramble(s, word1, word2)
+      if s != scrambled && squares.contains(scrambled)
     yield s
   def solve = solutions.max

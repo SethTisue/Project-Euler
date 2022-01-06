@@ -32,11 +32,11 @@ class Problem66 extends Problem(66, "661"):
     m #:: (if m * m == n then LazyList.empty
            else iterate(1, m))
   def convergents(n: Int) =
-    LazyList.from(1).map(len => continuedFraction(n).take(len).map(BigRational(_))
-                                  .reduceRight((next, partialResult) => partialResult.reciprocal + next))
+    LazyList.from(1).map(len =>
+      continuedFraction(n).take(len).map(BigRational(_))
+        .reduceRight((next, partialResult) => partialResult.reciprocal + next))
   def smallestX(d: Int) =
     convergents(d).find(r => isSolution(r.numer, r.denom, d)).get.numer
   def solve(maxD: Int) =
     (1 to maxD).filter(!isSquare(_)).maxBy(smallestX)
   def solve = solve(1000)
-

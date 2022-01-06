@@ -31,24 +31,29 @@ class Problem93 extends Problem(93, "1258"):
   enum Item:
     case Digit(n: Int)
     case Operator(c: Char, fn: OperatorFunction)
-  import Item.{ Digit, Operator }
+  import Item.{Digit, Operator}
 
   val operators =
     List(
       Operator('+', (a, b) => Some(a + b)),
       Operator('-', (a, b) => Some(a - b)),
       Operator('*', (a, b) => Some(a * b)),
-      Operator('/', (a, b) => if b != Zero then Some(a / b)
-                              else None))
+      Operator(
+        '/',
+        (a, b) =>
+          if b != Zero then Some(a / b)
+          else None))
 
   def expressions(digits: List[Digit], stackHeight: Int): List[List[Item]] =
     def pushes =
-      for d <- digits
-          e <- expressions(digits diff List(d), stackHeight + 1)
+      for
+        d <- digits
+        e <- expressions(digits diff List(d), stackHeight + 1)
       yield d :: e
     def pops =
-      for o <- operators
-          e <- expressions(digits, stackHeight - 1)
+      for
+        o <- operators
+        e <- expressions(digits, stackHeight - 1)
       yield o :: e
     if stackHeight < 0 then
       Nil
@@ -62,14 +67,15 @@ class Problem93 extends Problem(93, "1258"):
   def eval(items: List[Item], stack: List[BigRational]): Option[BigRational] =
     if items.isEmpty then
       Some(stack.head)
-    else items.head match
-      case Operator(_, fn) =>
-        fn(stack(1), stack(0)) match
-          case Some(n) =>
-            eval(items.tail, n :: stack.drop(2))
-          case None => None
-      case Digit(n) =>
-        eval(items.tail, BigRational(n) :: stack)
+    else
+      items.head match
+        case Operator(_, fn) =>
+          fn(stack(1), stack(0)) match
+            case Some(n) =>
+              eval(items.tail, n :: stack.drop(2))
+            case None => None
+        case Digit(n) =>
+          eval(items.tail, BigRational(n) :: stack)
 
   def targets(ns: List[Int]): Set[Int] =
     expressions(ns.map(Digit(_)), 0)

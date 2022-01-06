@@ -18,11 +18,12 @@ import Primes.*
 
 class Problem58 extends Problem(58, "26241"):
   def next(n: Int, primeCount: Int) =
-    (n + 2,
-     primeCount + List(n * n + n + 1,
-                       n * n + n * 2 + 2,
-                       n * n + n * 3 + 3)
-                  .count(isPrime))
+    val candidates =
+      List(
+        n * n + n + 1,
+        n * n + n * 2 + 2,
+        n * n + n * 3 + 3)
+    (n + 2, primeCount + candidates.count(isPrime))
   def isSolution(n: Int, primeCount: Int) =
     primeCount.toDouble / (2 * n - 1) < 0.10
   def solve =
@@ -30,4 +31,3 @@ class Problem58 extends Problem(58, "26241"):
       .tail
       .find(isSolution.tupled)
       .get._1
-

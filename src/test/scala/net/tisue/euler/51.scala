@@ -22,9 +22,10 @@ class Problem51 extends Problem(51, "121313"):
       else
         templates(n - 1).flatMap(template => "0123456789*".map(_.toString + template))
     val solutions =
-      for numDigits <- LazyList.from(1)
-          primes = nDigitPrimes(numDigits)
-          template <- templates(numDigits)
-          if template(0) != '0' && template.contains('*')
-      yield (0 to 9).map(d => template.replaceAll("\\*", d.toString).toInt).filter(primes.contains(_))
+      for
+        numDigits <- LazyList.from(1)
+        primes = nDigitPrimes(numDigits)
+        template <- templates(numDigits)
+        if template(0) != '0' && template.contains('*')
+      yield (0 to 9).map(d => template.replaceAll("\\*", d.toString).toInt).filter(primes.contains)
     solutions.find(_.size == 8).get.head

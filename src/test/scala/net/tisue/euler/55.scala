@@ -12,4 +12,3 @@ class Problem55 extends Problem(55, "249"):
       next #:: lychrelStream(next)
   def solve =
     (1 to 10000).count(lychrelStream(_).take(50).size == 50)
-

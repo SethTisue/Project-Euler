@@ -6,7 +6,8 @@ import Primes.*
 
 class Problem37 extends Problem(37, "748317"):
   def solve =
-    def isTruncatable(n:Int) =
-      (1 until n.toString.size).forall(j => isSievedPrime(n.toString.drop(j).toInt) &&
-                                            isSievedPrime(n.toString.take(j).toInt))
+    def isTruncatable(n: Int) =
+      (1 until n.toString.size).forall(j =>
+        isSievedPrime(n.toString.drop(j).toInt) &&
+          isSievedPrime(n.toString.take(j).toInt))
     primes.dropWhile(_ < 10).filter(isTruncatable).take(11).sum

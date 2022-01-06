@@ -20,9 +20,11 @@ class Problem27 extends Problem(27, "-59231"):
         .size
     def search(limit: Int) =
       val range = -limit to limit
-      val candidates = for a <- range
-                           b <- range
-                       yield (a, b)
+      val candidates =
+        for
+          a <- range
+          b <- range
+        yield (a, b)
       val (a, b) = candidates.maxBy(primeCount.tupled)
       a * b
     search(999)

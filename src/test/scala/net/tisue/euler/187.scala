@@ -14,8 +14,8 @@ class Problem187 extends Problem(187, "17427258"):
   def solve =
     primes
       .takeWhile(_ < math.sqrt(limit))
-      .map(p => primes.dropWhile(_ < p)
-                  .takeWhile(p * _ < limit)
-                  .size)
+      .map(p =>
+        primes.dropWhile(_ < p)
+          .takeWhile(p * _ < limit)
+          .size)
       .sum
-

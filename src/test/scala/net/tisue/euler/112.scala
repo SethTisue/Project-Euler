@@ -22,9 +22,10 @@ class Problem112 extends Problem(112, "1587000"):
       if n > 0 && bouncies.toDouble / n == min then
         n
       else
-        helper(if isBouncy(n + 1) then bouncies + 1
-               else bouncies,
-               n + 1)
+        helper(
+          if isBouncy(n + 1)
+          then bouncies + 1
+          else bouncies,
+          n + 1)
     helper(0, 0)
   def solve = solve(0.99)
-

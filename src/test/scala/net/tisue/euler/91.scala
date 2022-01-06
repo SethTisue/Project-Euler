@@ -14,18 +14,17 @@ class Problem91 extends Problem(91, "14234"):
   def isSolution(t: Triangle) =
     val List(side0, side1, side2) = {
       import Ordering.Double.TotalOrdering
-      List(distance(t.x1, t.y1, t.x2, t.y2),
-           distance(t.x1, t.y1, 0, 0),
-           distance(t.x2, t.y2, 0, 0))
+      List(distance(t.x1, t.y1, t.x2, t.y2), distance(t.x1, t.y1, 0, 0), distance(t.x2, t.y2, 0, 0))
         .sorted.reverse
     }: @unchecked
     near(square(side0), square(side1) + square(side2)) &&
-      !near(side0, side1 + side2)
+    !near(side0, side1 + side2)
   def candidates =
-    for x1 <- 0 to 50
-        y1 <- 0 to 50
-        x2 <- x1 to 50
-        y2 <- 0 to 50
-        if x1 < x2 || y1 < y2
+    for
+      x1 <- 0 to 50
+      y1 <- 0 to 50
+      x2 <- x1 to 50
+      y2 <- 0 to 50
+      if x1 < x2 || y1 < y2
     yield Triangle(x1, y1, x2, y2)
   def solve = candidates.count(isSolution)

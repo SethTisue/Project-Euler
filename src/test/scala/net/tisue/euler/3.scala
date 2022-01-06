@@ -10,4 +10,3 @@ class Problem3 extends Problem(3, "6857"):
       if f == n then f
       else largestPrimeFactor(n / f)
     largestPrimeFactor(600851475143L)
-

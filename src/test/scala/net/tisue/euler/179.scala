@@ -7,7 +7,8 @@ class Problem179 extends Problem(179, "986262"):
   def solve =
     val max = 10000000
     val counts = Array.ofDim[Int](max + 1)
-    for a <- 2 to max
-        b <- a to max by a
+    for
+      a <- 2 to max
+      b <- a to max by a
     do counts(b) += 1
     (2 to max - 1).count(n => counts(n) == counts(n + 1))

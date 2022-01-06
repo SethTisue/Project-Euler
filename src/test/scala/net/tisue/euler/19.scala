@@ -8,8 +8,9 @@ class Problem19 extends Problem(19, "171"):
   import java.util.Calendar
   def centuryBegin =
     val c = Calendar.getInstance
-    c.setTime(java.text.SimpleDateFormat("MMM d yyyy")
-              .parse("Jan 1 1901"))
+    c.setTime(
+      java.text.SimpleDateFormat("MMM d yyyy")
+        .parse("Jan 1 1901"))
     c
   def nextMonth(cal: Calendar) =
     val newCal = cal.clone.asInstanceOf[Calendar]
@@ -19,4 +20,3 @@ class Problem19 extends Problem(19, "171"):
     LazyList.iterate(centuryBegin)(nextMonth)
       .take(1200)
       .count(_.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY)
-

@@ -5,8 +5,9 @@ package net.tisue.euler
 
 class Problem73 extends Problem(73, "5066251"):
   def solutions =
-    for d <- 2 to 10000
-        n <- math.ceil(d.toDouble / 3).toInt to math.floor(d.toDouble / 2).toInt
-        if n.gcd(d) == 1
+    for
+      d <- 2 to 10000
+      n <- math.ceil(d.toDouble / 3).toInt to math.floor(d.toDouble / 2).toInt
+      if n.gcd(d) == 1
     yield (n, d)
   def solve = solutions.size - 2

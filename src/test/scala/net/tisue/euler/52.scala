@@ -9,4 +9,3 @@ class Problem52 extends Problem(52, "142857"):
     (1 to 6).map(f => (f * x).digits.sorted).distinct.size == 1
   def solve =
     LazyList.from(1).find(isSolution).get
-

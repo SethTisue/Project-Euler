@@ -14,6 +14,6 @@ class Problem94 extends Problem(94, "518408346"):
   def solve =
     val candidates = 3L to (1000000000L / 6)
     type Filter = PartialFunction[Long, Long]
-    val filter1: Filter = {case n if isSquare(3 * n * n - 4 * n + 1) => 6 * n - 2}
-    val filter2: Filter = {case n if isSquare(3 * n * n + 4 * n + 1) => 6 * n + 2}
+    val filter1: Filter = { case n if isSquare(3 * n * n - 4 * n + 1) => 6 * n - 2 }
+    val filter2: Filter = { case n if isSquare(3 * n * n + 4 * n + 1) => 6 * n + 2 }
     candidates.collect(filter1).sum + candidates.collect(filter2).sum

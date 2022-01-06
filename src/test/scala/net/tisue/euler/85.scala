@@ -12,8 +12,9 @@ class Problem85 extends Problem(85, "2772"):
   def tri(n: Int) = n * (n + 1) / 2
   def rectangles(w: Int, h: Int) = tri(w) * tri(h)
   val candidates =
-    for w <- 2 to 1200
-        h <- w to 1200
+    for
+      w <- 2 to 1200
+      h <- w to 1200
     yield (w, h)
   def closeness(w: Int, h: Int) =
     math.abs(rectangles(w, h) - 2000000)

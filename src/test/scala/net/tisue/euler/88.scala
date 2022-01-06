@@ -28,17 +28,19 @@ class Problem88 extends Problem(88, "7587457"):
     def helper(n: Int, ceiling: Int): List[List[Int]] =
       if n == 1 then List(Nil)
       else
-        for d <- divisors(n).takeWhile(_ <= ceiling)
-            f <- helper(n / d, d)
+        for
+          d <- divisors(n).takeWhile(_ <= ceiling)
+          f <- helper(n / d, d)
         yield d :: f
     helper(n, n)
   def getK(factors: List[Int]) = factors.size + factors.product - factors.sum
   var stream = LazyList.from(2).filter(!isPrime(_)).map(n => (n, factorizations(n)))
   def solve(limit: Int) =
     val numbers =
-      for k <- (2 to limit).toList
-          _ = (stream = stream.dropWhile(_._1 < k))
-          n = stream.find(_._2.exists(fs => getK(fs) == k)).get._1
+      for
+        k <- (2 to limit).toList
+        _ = (stream = stream.dropWhile(_._1 < k))
+        n = stream.find(_._2.exists(fs => getK(fs) == k)).get._1
       yield n
     numbers.distinct.sum
   def solve = solve(12000)

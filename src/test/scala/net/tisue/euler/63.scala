@@ -10,4 +10,3 @@ class Problem63 extends Problem(63, "49"):
       .takeWhile(_.toString.size == n)
   def solve =
     (1 to 25).flatMap(solutions(_)).size
-

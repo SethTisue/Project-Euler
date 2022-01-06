@@ -14,4 +14,3 @@ class Problem69 extends Problem(69, "510510"):
     primes.scanLeft(1)(_ * _)
       .takeWhile(_ <= 1000000)
       .last
-

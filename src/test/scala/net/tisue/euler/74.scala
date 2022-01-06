@@ -30,12 +30,14 @@ class Problem74 extends Problem(74, "402"):
   def isSolution(n: Int) = chain(n).take(60).distinct.size == 60
   def solve =
     val candidates =
-      for d1 <- 0 to 9; d2 <- 0 :: (d1 to 9).toList; d3 <- 0 :: (d2 to 9).toList
-          d4 <- 0 :: (d3 to 9).toList; d5 <- 0 :: (d4 to 9).toList; d6 <- 0 :: (d5 to 9).toList
+      for
+        d1 <- 0 to 9; d2 <- 0 :: (d1 to 9).toList; d3 <- 0 :: (d2 to 9).toList
+        d4 <- 0 :: (d3 to 9).toList; d5 <- 0 :: (d4 to 9).toList; d6 <- 0 :: (d5 to 9).toList
       yield List(d1, d2, d3, d4, d5, d6).reduceLeft(_ * 10 + _)
     val survivors = candidates.filter(isSolution)
     val permutations =
-      for c <- survivors
-          n <- c.toString.toList.zipWithIndex.permutations.map(_.map(_._1).mkString.toInt)
+      for
+        c <- survivors
+        n <- c.toString.toList.zipWithIndex.permutations.map(_.map(_._1).mkString.toInt)
       yield n
     permutations.distinct.count(isSolution)

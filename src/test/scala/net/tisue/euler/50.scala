@@ -21,9 +21,11 @@ class Problem50 extends Problem(50, "997651"):
     else
       @tailrec def solve2(len: Int, newLongest: List[Int]): List[Int] =
         if ps.take(len).sum >= 1000000 then newLongest
-        else solve2(len + 1,
-                    if isPrime(ps.take(len).sum) then ps.take(len).toList
-                    else newLongest)
+        else
+          solve2(
+            len + 1,
+            if isPrime(ps.take(len).sum) then ps.take(len).toList
+            else newLongest)
       solve(ps.tail, solve2(longest.size + 1, longest))
   def solve = solve(primes, Nil)
 

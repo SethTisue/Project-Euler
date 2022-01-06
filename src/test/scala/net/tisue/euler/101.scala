@@ -29,7 +29,7 @@ class Problem101 extends Problem(101, "37076114526"):
   def solve =
     val coefficients = List[BigInt](1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1)
     val sequence = LazyList.from(1).map(n => coefficients.reduceLeft(_ * n + _))
-    sequence.take(coefficients.size - 1)  // subtract one so there's always a mismatch
+    sequence.take(coefficients.size - 1) // subtract one so there's always a mismatch
       .inits
       .map(extrapolate)
       .map(mismatch(sequence, _))

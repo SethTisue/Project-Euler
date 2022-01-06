@@ -16,4 +16,3 @@ class Problem38 extends Problem(38, "932718654"):
     recurse(1, "")
   def solve =
     (1 to 9999).flatMap(findPandigital).max
-

@@ -19,4 +19,3 @@ class Problem145 extends Problem(145, "608720"):
     n % 10 != 0 && allOdd(n + reverse(n, 0))
   def solve =
     (1 until 100000000).count(reversible)
-

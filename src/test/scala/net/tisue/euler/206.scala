@@ -5,8 +5,8 @@ package net.tisue.euler
 
 class Problem206 extends Problem(206, "1389019170"):
   def solve =
-     // reduces to finding a square 1_2_3_4_5_6_7_8_9 since the last _ above must be 0.
+    // reduces to finding a square 1_2_3_4_5_6_7_8_9 since the last _ above must be 0.
     val range = math.sqrt(10203040506070809d).toInt to
-                math.sqrt(19293949596979899d).toInt
+      math.sqrt(19293949596979899d).toInt
     val regex = java.util.regex.Pattern.compile("1.2.3.4.5.6.7.8.9")
     10 * range.find(n => regex.matcher((n.toLong * n).toString).matches).get

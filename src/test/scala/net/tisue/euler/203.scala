@@ -23,4 +23,3 @@ class Problem203 extends Problem(203, "34029210557338"):
   def answer(rowCount: Int) =
     distincts(rowCount).map(_.map(BigInt(_)).product).sum
   def solve = answer(51)
-

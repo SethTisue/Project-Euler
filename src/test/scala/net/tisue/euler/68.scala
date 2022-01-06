@@ -27,4 +27,3 @@ class Problem68 extends Problem(68, "6531031914842725"):
       .filter(_.size == 16)
       .map(_.toLong)
       .max
-

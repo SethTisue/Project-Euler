@@ -3,7 +3,7 @@ import Memo.memoize
 
 class Problem191 extends Problem(191, "1918080160"):
   val count: (Int, Int, Boolean) => Int =
-    memoize{(days, consecutiveAbsents, hasBeenLate) =>
+    memoize { (days, consecutiveAbsents, hasBeenLate) =>
       if consecutiveAbsents >= 3 then 0
       else if days == 30 then 1
       else

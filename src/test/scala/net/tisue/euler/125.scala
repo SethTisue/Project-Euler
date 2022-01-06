@@ -18,11 +18,12 @@ class Problem125 extends Problem(125, "2906969179"):
       .map(x => x * x)
       .takeWhile(_ < limit / 2)
       .tails
-      .flatMap(_.scanLeft(0)(_ + _)
-                .drop(2)  // ignore "sums" with zero or one term
-                .takeWhile(_ < limit))
+      .flatMap(
+        _.scanLeft(0)(_ + _)
+          .drop(2) // ignore "sums" with zero or one term
+          .takeWhile(_ < limit))
       .filter(isPalindrome)
       .toSeq
       .distinct
-      .map(_.toLong)  // otherwise sum will overflow
+      .map(_.toLong) // otherwise sum will overflow
       .sum

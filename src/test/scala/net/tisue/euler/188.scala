@@ -9,10 +9,11 @@ package net.tisue.euler
 class Problem188 extends Problem(188, "95962097"):
   def modpow(b: Long, e: Long, m: Int): Long =
     case class Loop(b: Long, e: Long, result: Long):
-      def next = Loop(b * b % m,
-                      e >> 1,
-                      if (e & 1) == 0 then result
-                      else result * b % m)
+      def next = Loop(
+        b * b % m,
+        e >> 1,
+        if (e & 1) == 0 then result
+        else result * b % m)
     Iterator.iterate(Loop(b, e, 1))(_.next)
       .dropWhile(_.e > 0)
       .next.result
@@ -20,4 +21,3 @@ class Problem188 extends Problem(188, "95962097"):
     Iterator.iterate(base)(modpow(base, _, modulus))
       .drop(exponent).next
   def solve = hyper(1777, 1855, 100000000)
-

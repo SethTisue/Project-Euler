@@ -26,4 +26,3 @@ class Problem72 extends Problem(72, "303963552391"):
     factors(n).distinct
       .foldLeft(n.toLong)((t, f) => t * (f - 1) / f)
   def solve = (2 to 1000000).map(totient).sum
-

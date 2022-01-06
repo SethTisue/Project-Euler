@@ -23,16 +23,19 @@ package net.tisue.euler
 
 class Problem96 extends Problem(96, "24702"):
 
-  type Puzzle = List[List[Int]]  // 9 lists of 9 integers in 1-9 range
-  type Group = List[Int]         // 9 integers in 0-80 range
+  type Puzzle = List[List[Int]] // 9 lists of 9 integers in 1-9 range
+  type Group = List[Int] // 9 integers in 0-80 range
 
   val groups: List[Group] = {
-    val rows    = for i <- (0 to 8).toList
-                  yield (0 to 80).toList.filter(_ / 9 == i)
-    val columns = for i <- (0 to 8).toList
-                  yield (0 to 80).toList.filter(_ % 9 == i)
-    val boxes   = for i <- (0 to 2).toList; j <- 0 to 2
-                  yield (0 to 80).toList.filter(n => n / 27 == i && n % 9 / 3 == j)
+    val rows =
+      for i <- (0 to 8).toList
+      yield (0 to 80).toList.filter(_ / 9 == i)
+    val columns =
+      for i <- (0 to 8).toList
+      yield (0 to 80).toList.filter(_ % 9 == i)
+    val boxes =
+      for i <- (0 to 2).toList; j <- 0 to 2
+      yield (0 to 80).toList.filter(n => n / 27 == i && n % 9 / 3 == j)
     rows ::: columns ::: boxes
   }
 
@@ -49,28 +52,34 @@ class Problem96 extends Problem(96, "24702"):
   // makes a guess, solve2 and solve1 must be run to exhaustion.
 
   def solve1(puzzle: Puzzle) =
-    groups.foldLeft(puzzle){(puzzle, group) =>
+    groups.foldLeft(puzzle) { (puzzle, group) =>
       val usedDigits = group.map(puzzle(_)).filter(_.size == 1).map(_.head)
-      puzzle.zipWithIndex.map{case (entry, index) =>
+      puzzle.zipWithIndex.map { case (entry, index) =>
         if !group.contains(index) || entry.size == 1 then
           entry
         else
-          entry.filter(!usedDigits.contains(_))}}
+          entry.filter(!usedDigits.contains(_))
+      }
+    }
 
   def solve2(puzzle: Puzzle) =
-    groups.foldLeft(puzzle){(puzzle, group) =>
+    groups.foldLeft(puzzle) { (puzzle, group) =>
       val v =
         (1 to 9)
-          .filter(d => group.filter(puzzle(_).size > 1)
-                         .flatMap(puzzle(_))
-                         .count(_ == d) == 1)
-      v.foldLeft(puzzle){(puzzle, d) =>
+          .filter(d =>
+            group.filter(puzzle(_).size > 1)
+              .flatMap(puzzle(_))
+              .count(_ == d) == 1)
+      v.foldLeft(puzzle) { (puzzle, d) =>
         val start =
-          puzzle.zipWithIndex.map{case (entry, index) =>
+          puzzle.zipWithIndex.map { case (entry, index) =>
             if group.contains(index) && entry.contains(d) then
               List(d)
-            else entry}
-        fixedPoint(start)(solve1)}}
+            else entry
+          }
+        fixedPoint(start)(solve1)
+      }
+    }
 
   def solve1and2(puzzle: Puzzle) =
     fixedPoint(fixedPoint(puzzle)(solve1))(solve2)
@@ -87,8 +96,9 @@ class Problem96 extends Problem(96, "24702"):
           Some(puzzle)
         case index =>
           puzzle(index)
-            .flatMap{guess =>
-              solve3(fixedPoint(puzzle.updated(index, List(guess)))(solve1and2))}
+            .flatMap { guess =>
+              solve3(fixedPoint(puzzle.updated(index, List(guess)))(solve1and2))
+            }
             .headOption
 
   val puzzles: Iterator[Puzzle] =
@@ -96,10 +106,11 @@ class Problem96 extends Problem(96, "24702"):
       .getLines.filterNot(_.startsWith("Grid"))
       .grouped(9)
       .map(_.mkString.filter(_.isDigit).map(_.asDigit).toList
-            .map(d => if d == 0 then (1 to 9).toList
-                      else List(d)))
+        .map(d =>
+          if d == 0 then (1 to 9).toList
+          else List(d)))
 
   def solve =
     puzzles.flatMap(p => solve3(solve1and2(p)))
-     .map(_.take(3).map(_.head).mkString.toInt)
-     .sum
+      .map(_.take(3).map(_.head).mkString.toInt)
+      .sum

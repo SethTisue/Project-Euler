@@ -16,4 +16,3 @@ class Problem124 extends Problem(124, "21417"):
     util.Sorting.stableSort(1 to limit, rad)
       .apply(n - 1)
   def solve = solve(10000, 100000)
-

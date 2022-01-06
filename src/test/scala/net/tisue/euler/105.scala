@@ -8,13 +8,15 @@ class Problem105 extends Problem(105, "73702"):
     if ss.isEmpty then
       List(List(x))
     else
-      (ss.head :+ x) +: ss.sliding(2).collect{case List(l1, l2) => l2 ++ l1.map(_ + x)}.toList :+ List(ss.head.sum + x)
+      (ss.head :+ x) +: ss.sliding(2).collect { case List(l1, l2) =>
+        l2 ++ l1.map(_ + x)
+      }.toList :+ List(ss.head.sum + x)
   def isSpecial(ss: SumSet): Boolean =
-    ss.size < 2 || ss.sliding(2).forall{
+    ss.size < 2 || ss.sliding(2).forall {
       case List(xs1, xs2) =>
         xs1.size == xs1.distinct.size &&
-        xs2.size == xs2.distinct.size &&
-        xs1.last < xs2.head
+          xs2.size == xs2.distinct.size &&
+          xs1.last < xs2.head
       case _ => throw IllegalStateException()
     }
   def solve =
@@ -24,4 +26,3 @@ class Problem105 extends Problem(105, "73702"):
       .filter(isSpecial)
       .map(_.head.sum)
       .sum
-

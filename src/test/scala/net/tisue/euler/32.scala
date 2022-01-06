@@ -18,4 +18,3 @@ class Problem32 extends Problem(32, "45228"):
       if n1 * n2 == p
     yield p
   def solve = products.toSet.sum
-

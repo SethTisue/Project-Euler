@@ -11,7 +11,9 @@ class Problem29 extends Problem(29, "9183"):
       else
         val f = primes.find(n % _ == 0).get
         f :: factors(n / f)
-    val terms = for a <- (2 to 100)
-                    b <- (2 to 100)
-                yield factors(a).flatMap(List.fill(b)(_))
+    val terms =
+      for
+        a <- (2 to 100)
+        b <- (2 to 100)
+      yield factors(a).flatMap(List.fill(b)(_))
     terms.toSet.size

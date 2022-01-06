@@ -10,4 +10,3 @@ class Problem14 extends Problem(14, "837799"):
     Iterator.iterate(n)(next).takeWhile(_ != 1).size
   def solve =
     (3L until 1000000 by 2).maxBy(chainLength)
-

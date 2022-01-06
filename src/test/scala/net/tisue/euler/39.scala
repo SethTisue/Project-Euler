@@ -8,9 +8,10 @@ package net.tisue.euler
 class Problem39 extends Problem(39, "840"):
   def solve =
     def triangles(p: Int) =
-      for a <- 1 to p / 2
-          b <- 1 to a - 1
-          c = p - a - b
-          if a * a + b * b == c * c
+      for
+        a <- 1 to p / 2
+        b <- 1 to a - 1
+        c = p - a - b
+        if a * a + b * b == c * c
       yield (a, b, c)
     (1 until 1000).maxBy(triangles(_).size)

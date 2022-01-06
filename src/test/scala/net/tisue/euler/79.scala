@@ -20,9 +20,9 @@ package net.tisue.euler
 // make it shorter by removing unneeded digits one at a time.
 
 class Problem79 extends Problem(79, "73162890"):
-  val keylog = List(319, 680, 180, 690, 129, 620, 762, 689, 762, 318, 368, 710, 720, 710, 629, 168, 160,
-                    689, 716, 731, 736, 729, 316, 729, 729, 710, 769, 290, 719, 680, 318, 389, 162, 289,
-                    162, 718, 729, 319, 790, 680, 890, 362, 319, 760, 316, 729, 380, 319, 728, 716)
+  val keylog = List(319, 680, 180, 690, 129, 620, 762, 689, 762, 318, 368, 710, 720, 710, 629, 168,
+    160, 689, 716, 731, 736, 729, 316, 729, 729, 710, 769, 290, 719, 680, 318, 389, 162, 289, 162,
+    718, 729, 319, 790, 680, 890, 362, 319, 760, 316, 729, 380, 319, 728, 716)
     .distinct.sorted.map(_.toString)
   def contains(a: String, b: String): Boolean =
     b.isEmpty || !a.isEmpty && (if a.head == b.head then contains(a.tail, b.tail)
@@ -33,4 +33,3 @@ class Problem79 extends Problem(79, "73162890"):
   def iterate(guess: String): String =
     nextAnswer(guess).map(iterate).getOrElse(guess)
   def solve = iterate(keylog.mkString)
-

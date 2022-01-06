@@ -16,9 +16,10 @@ class Problem107 extends Problem(107, "259679"):
   type Network[T] = Map[(T, T), Int]
   val input: Network[Int] =
     val entries =
-      for case (line, v1) <- io.Source.fromResource("107.txt").getLines.zipWithIndex
-          case (weight, v2) <- line.split(",").iterator.zipWithIndex
-          if weight != "-" && v1 < v2
+      for
+        case (line, v1) <- io.Source.fromResource("107.txt").getLines.zipWithIndex
+        case (weight, v2) <- line.split(",").iterator.zipWithIndex
+        if weight != "-" && v1 < v2
       yield (v1, v2) -> weight.toInt
     entries.toMap
   def pathExists[T](edge: (T, T), net: Network[T]) =
@@ -28,11 +29,12 @@ class Problem107 extends Problem(107, "259679"):
         throw Found
       else if visited(v) then
         visited
-      else net.keys.foldLeft(visited + v){(visited, edge) =>
+      else
+        net.keys.foldLeft(visited + v) { (visited, edge) =>
           edge match
             case (`v`, other) => traverse(other, visited)
             case (other, `v`) => traverse(other, visited)
-            case _ => visited
+            case _            => visited
         }
     try
       traverse(edge._1)
@@ -40,7 +42,7 @@ class Problem107 extends Problem(107, "259679"):
     catch case Found => true
   def minimize[T](net: Network[T]) =
     val sortedEdges = net.toSeq.sortBy(_._2).reverse.map(_._1)
-    sortedEdges.foldLeft(net){(net, edge) =>
+    sortedEdges.foldLeft(net) { (net, edge) =>
       val erased = net - edge
       if pathExists(edge, erased)
       then erased
@@ -50,4 +52,3 @@ class Problem107 extends Problem(107, "259679"):
     net.values.sum
   def solve =
     weight(input) - weight(minimize(input))
-

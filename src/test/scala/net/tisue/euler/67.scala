@@ -24,4 +24,3 @@ class Problem67 extends Problem(67, "7273"):
       case _ => ???
   def solve =
     recurse(triangle.reverse)
-

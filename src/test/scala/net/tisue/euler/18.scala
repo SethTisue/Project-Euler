@@ -10,8 +10,9 @@ class Problem18 extends Problem(18, "1074"):
   def solve =
     def recurse(triangle: List[List[Int]]): Int =
       if triangle.isEmpty then 0
-      else triangle.head.head + (recurse(triangle.tail.map(_.init)) max
-                                 recurse(triangle.tail.map(_.tail)))
+      else
+        triangle.head.head + (recurse(triangle.tail.map(_.init)) max
+          recurse(triangle.tail.map(_.tail)))
     val triangle =
       io.Source.fromResource("18.txt").getLines.toList.map(_.trim.split(" ").map(_.toInt).toList)
     recurse(triangle)

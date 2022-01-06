@@ -31,19 +31,14 @@ package net.tisue.euler
 class Problem86 extends Problem(86, "1818"):
   def solve =
     case class Triple(a: Int, b: Int, c: Int):
-      def *(k : Int) = Triple(a * k, b * k, c * k)
+      def *(k: Int) = Triple(a * k, b * k, c * k)
       def canonical = if b > a then this else swap
       def swap = Triple(b, a, c)
       def children =
-        List(Triple(     a - 2 * b + 2 * c,
-                    2 * a -     b + 2 * c,
-                    2 * a - 2 * b + 3 * c),
-             Triple(     a + 2 * b + 2 * c,
-                    2 * a +     b + 2 * c,
-                    2 * a + 2 * b + 3 * c),
-             Triple(  -  a + 2 * b + 2 * c,
-                    -2 * a +     b + 2 * c,
-                    -2 * a + 2 * b + 3 * c))
+        List(
+          Triple(a - 2 * b + 2 * c, 2 * a - b + 2 * c, 2 * a - 2 * b + 3 * c),
+          Triple(a + 2 * b + 2 * c, 2 * a + b + 2 * c, 2 * a + 2 * b + 3 * c),
+          Triple(-a + 2 * b + 2 * c, -2 * a + b + 2 * c, -2 * a + 2 * b + 3 * c))
 
       // Can't remember the logic behind this formula.  I think the idea was
       // something like, b can't be too big or too small or the shortest path
@@ -67,11 +62,13 @@ class Problem86 extends Problem(86, "1818"):
     def triples(m: Int) =
       def fits(t: Triple): Boolean =
         t.b <= m * 2
-      for t1 <- primitiveTriples.takeWhile(fits)
-          t2 <- LazyList.from(1).map(t1 * _).takeWhile(fits)
-          if t2.a == m || t2.b == m
-      yield if t2.b == m then t2
-            else t2.swap
+      for
+        t1 <- primitiveTriples.takeWhile(fits)
+        t2 <- LazyList.from(1).map(t1 * _).takeWhile(fits)
+        if t2.a == m || t2.b == m
+      yield
+        if t2.b == m then t2
+        else t2.swap
 
     def cuboidCount(k: Int): Int =
       triples(k).map(_.cuboidCount).sum

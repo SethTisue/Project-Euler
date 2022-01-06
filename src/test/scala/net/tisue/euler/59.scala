@@ -13,7 +13,7 @@ class Problem59 extends Problem(59, "107359"):
     (s.split(' ').size / s.size.toDouble) > 0.15
   def decrypt(s: String, key: Seq[Char]) =
     s.to(LazyList).zip(key.to(LazyList).cycle)
-     .map{case (c1, c2) => c1 ^ c2}.map(_.toChar).mkString
+      .map { case (c1, c2) => c1 ^ c2 }.map(_.toChar).mkString
   val cipherText =
     io.Source.fromResource("59.txt").mkString.trim.split(",").map(_.toInt.toChar).mkString
   val allKeys =
@@ -34,4 +34,4 @@ a less janky way to write isEnglish, assuming you have a dictionary available:
     val words = s.toLowerCase.filter((c:Char) => c == ' ' || c.isLetter).mkString.split(' ')
     0.5 < words.count(dict.contains(_)) / words.size.toDouble
   }
-*/
+ */

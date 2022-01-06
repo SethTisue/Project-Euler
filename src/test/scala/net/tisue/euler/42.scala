@@ -16,4 +16,3 @@ class Problem42 extends Problem(42, "162"):
   def score(word: String) = word.map(_ - 'A' + 1).sum
   def solve =
     words.count(word => isTriangle(score(word)))
-

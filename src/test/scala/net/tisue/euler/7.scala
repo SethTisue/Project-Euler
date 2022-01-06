@@ -6,4 +6,3 @@ import Primes.*
 
 class Problem7 extends Problem(7, "104743"):
   def solve = primes(10000)
-

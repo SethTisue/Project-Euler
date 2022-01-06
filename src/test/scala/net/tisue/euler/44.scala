@@ -27,8 +27,9 @@ class Problem44 extends Problem(44, "5482660"):
     val pstream = LazyList.from(1).map(n => pentagonal(BigInt(n)))
     val pset = pstream.take(5000).toSet
     def isPentagonal(n: BigInt) = pset.contains(n)
-    (for a <- pstream;
-         b <- pstream.takeWhile(_ < a)
-         if isPentagonal(a + b)
-         if isPentagonal(a - b)
-     yield (a - b)).head
+    (for
+      a <- pstream;
+      b <- pstream.takeWhile(_ < a)
+      if isPentagonal(a + b)
+      if isPentagonal(a - b)
+    yield (a - b)).head

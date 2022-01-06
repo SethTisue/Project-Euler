@@ -7,4 +7,3 @@ class Problem5 extends Problem(5, "232792560"):
   def lcm(a: BigInt, b: BigInt): BigInt =
     a * b / a.gcd(b)
   def solve = (BigInt(2) to 20).reduce(lcm)
-

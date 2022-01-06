@@ -23,11 +23,12 @@ class Problem70 extends Problem(70, "8319823"):
     val factorMin = math.sqrt(limit) / 10 // "fairly large"
     def isSolution(n: Int) =
       val fs = factors(n)
-      fs.head > factorMin && fs.take(3).size == 2 &&
-        n.digits.sorted == totient(n, fs).digits.sorted
+      def equivalent(n1: Int, n2: Int) =
+        n1.digits.sorted == n2.digits.sorted
+      fs.head > factorMin && fs.take(3).size == 2 && equivalent(n, totient(n, fs))
     // we redundantly recompute the factors here but it doesn't matter
     // since there aren't that many solutions to test
     def ratio(n: Int) = n.toDouble / totient(n, factors(n))
     import Ordering.Double.TotalOrdering
     (2 until limit).filter(isSolution).minBy(ratio)
-  def solve = solve(10000000)  // takes about 17 seconds
+  def solve = solve(10000000) // takes about 17 seconds

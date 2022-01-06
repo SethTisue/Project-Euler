@@ -24,10 +24,11 @@ class Problem60 extends Problem(60, "26033"):
   def solutions(n: Int, primes: List[Int]): List[List[Int]] =
     if n == 1 then
       primes.map(List(_))
-    else for p <- primes
-             filtered = primes.dropWhile(_ <= p).filter(isPair(p, _))
-             soln <- solutions(n - 1, filtered)
-         yield p :: soln
+    else
+      for
+        p <- primes
+        filtered = primes.dropWhile(_ <= p).filter(isPair(p, _))
+        soln <- solutions(n - 1, filtered)
+      yield p :: soln
   def solve =
     solutions(5, primesBelow(10000)).minBy(_.sum).sum
-

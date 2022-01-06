@@ -6,4 +6,3 @@ package net.tisue.euler
 class Problem120 extends Problem(120, "333082500"):
   def rMax(a: Int) = 2 * a * ((a - 1) / 2)
   def solve = (3 to 1000).map(rMax).sum
-
