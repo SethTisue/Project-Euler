@@ -10,13 +10,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - java: 8
-            os: ubuntu-latest
-          - java: 11
-            os: ubuntu-latest
           - java: 17
             os: ubuntu-latest
-          - java: 8
+          - java: 17
             os: windows-latest
     runs-on: ${{matrix.os}}
     steps:
