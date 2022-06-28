@@ -15,9 +15,13 @@ class Problem102 extends Problem(102, "228"):
   def solve =
     io.Source.fromResource("102.txt").getLines
       .map(_.trim.split(",").toList.map(_.toInt))
-      .filter { case Seq(x1, y1, x2, y2, x3, y3): Seq[Int] @unchecked =>
-        check(x1, y1, x2, y2, x3, y3) &&
-          check(x2, y2, x1, y1, x3, y3) &&
-          check(x3, y3, x1, y1, x2, y2)
+      // can't figure out how to use `@unchecked` to eliminate the unwanted
+      // exhaustivity warning on Scala 3.2.0-RC1; so using `case _` instead
+      .filter {
+        case Seq(x1, y1, x2, y2, x3, y3) =>
+          check(x1, y1, x2, y2, x3, y3) &&
+            check(x2, y2, x1, y1, x3, y3) &&
+            check(x3, y3, x1, y1, x2, y2)
+        case _ => ???
       }
       .size
