@@ -3,7 +3,7 @@ package net.tisue.euler
 // Using a text file containing the coordinates of 1000 "random" triangles, find the number of
 // triangles for which the interior contains the origin.
 
-// If there going to be a bunch more problems like this it would be better to
+// If there's going to be a bunch more problems like this it would be better to
 // develop a little library of geometric stuff, but for now we just grind
 // out the math.
 
