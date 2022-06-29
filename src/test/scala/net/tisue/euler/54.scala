@@ -47,9 +47,9 @@ class Problem54 extends Problem(54, solution = "376"):
       hand.map(_.rank)
         .sorted
         .sliding(2)
-        // can't figure out how to use `@unchecked` to eliminate the unwanted
-        // exhaustivity warning on Scala 3.2.0-RC1; so using `case _` instead
-        .forall { case Seq(r1, r2) => r2 == r1 + 1; case _ => ???}
+        .forall { (_: @unchecked) match
+          case Seq(r1, r2) => r2 == r1 + 1; case _ => ???
+        }
     val handFunctions =
       IndexedSeq(
         () => isNOfAKind(1), () => isNOfAKind(2), () => isTwoPairs, () => isNOfAKind(3),
