@@ -16,7 +16,7 @@ class Problem82 extends Problem(82, "260324"):
       x <- range.reverse.drop(1)
       y <- range
     do
-      matrix(y)(x) = {
+      matrix(y)(x) =
         val down =
           if y == 0 then Integer.MAX_VALUE
           else matrix(y - 1)(x) + matrix(y)(x)
@@ -24,5 +24,4 @@ class Problem82 extends Problem(82, "260324"):
           (y until matrix.size).map(y2 =>
             (y to y2).map(matrix(_)(x)).sum + matrix(y2)(x + 1))
         down min up.min
-      }
     range.map(matrix(_)(0)).min

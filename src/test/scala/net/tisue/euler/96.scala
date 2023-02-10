@@ -26,7 +26,7 @@ class Problem96 extends Problem(96, "24702"):
   type Puzzle = List[List[Int]] // 9 lists of 9 integers in 1-9 range
   type Group = List[Int] // 9 integers in 0-80 range
 
-  val groups: List[Group] = {
+  val groups: List[Group] =
     val rows =
       for i <- (0 to 8).toList
       yield (0 to 80).toList.filter(_ / 9 == i)
@@ -37,7 +37,6 @@ class Problem96 extends Problem(96, "24702"):
       for i <- (0 to 2).toList; j <- 0 to 2
       yield (0 to 80).toList.filter(n => n / 27 == i && n % 9 / 3 == j)
     rows ::: columns ::: boxes
-  }
 
   // from initial guess x0, iterate until we find x such that fn(x) = x
   def fixedPoint[A](x0: A)(fn: (A) => A): A =
@@ -52,34 +51,28 @@ class Problem96 extends Problem(96, "24702"):
   // makes a guess, solve2 and solve1 must be run to exhaustion.
 
   def solve1(puzzle: Puzzle) =
-    groups.foldLeft(puzzle) { (puzzle, group) =>
+    groups.foldLeft(puzzle): (puzzle, group) =>
       val usedDigits = group.map(puzzle(_)).filter(_.size == 1).map(_.head)
-      puzzle.zipWithIndex.map { case (entry, index) =>
-        if !group.contains(index) || entry.size == 1 then
-          entry
-        else
-          entry.filter(!usedDigits.contains(_))
-      }
-    }
+      puzzle.zipWithIndex.map: (entry, index) =>
+        if !group.contains(index) || entry.size == 1
+        then entry
+        else entry.filter(!usedDigits.contains(_))
 
   def solve2(puzzle: Puzzle) =
-    groups.foldLeft(puzzle) { (puzzle, group) =>
+    groups.foldLeft(puzzle): (puzzle, group) =>
       val v =
         (1 to 9)
           .filter(d =>
             group.filter(puzzle(_).size > 1)
               .flatMap(puzzle(_))
               .count(_ == d) == 1)
-      v.foldLeft(puzzle) { (puzzle, d) =>
+      v.foldLeft(puzzle): (puzzle, d) =>
         val start =
-          puzzle.zipWithIndex.map { case (entry, index) =>
+          puzzle.zipWithIndex.map: (entry, index) =>
             if group.contains(index) && entry.contains(d) then
               List(d)
             else entry
-          }
         fixedPoint(start)(solve1)
-      }
-    }
 
   def solve1and2(puzzle: Puzzle) =
     fixedPoint(fixedPoint(puzzle)(solve1))(solve2)
@@ -96,9 +89,8 @@ class Problem96 extends Problem(96, "24702"):
           Some(puzzle)
         case index =>
           puzzle(index)
-            .flatMap { guess =>
+            .flatMap: guess =>
               solve3(fixedPoint(puzzle.updated(index, List(guess)))(solve1and2))
-            }
             .headOption
 
   val puzzles: Iterator[Puzzle] =

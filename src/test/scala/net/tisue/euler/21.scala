@@ -14,8 +14,7 @@ class Problem21 extends Problem(21, "31626"):
   def divisorSum(n: Int) =
     (1 to n / 2).filter(n % _ == 0).sum
   val solutions =
-    (2 until 10000).filter { n =>
+    (2 until 10000).filter: n =>
       val sum = divisorSum(n)
       n != sum && n == divisorSum(sum)
-    }
   def solve = solutions.sum

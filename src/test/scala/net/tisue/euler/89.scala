@@ -22,15 +22,15 @@ class Problem89 extends Problem(89, "743"):
     "IV" -> 4,
     "I" -> 1)
   def arabic(s: String): Int =
-    key.collectFirst {
+    key.collectFirst:
       case (letters, number) if s.startsWith(letters) =>
         number + arabic(s.drop(letters.size))
-    }.getOrElse(0)
+    .getOrElse(0)
   def roman(n: Int): String =
-    key.collectFirst {
+    key.collectFirst:
       case (letters, number) if number <= n =>
         letters + roman(n - number)
-    }.getOrElse("")
+    .getOrElse("")
   def solve =
     io.Source.fromResource("89.txt")
       .getLines.map(_.trim)
