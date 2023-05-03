@@ -16,7 +16,8 @@ class Problem11 extends Problem(11, "70600674"):
         coords =
           (0 to 3).map(distance =>
             (i + distance * xdir, j + distance * ydir)) // compute coords of four numbers
-        if coords.forall { case (i, j) => inBounds(i) && inBounds(j) } // are all coords in bounds?
-        product = coords.map { case (i, j) => a(i)(j) }.product // compute product
+        if coords.forall: (i, j) =>  // are all coords in bounds?
+          inBounds(i) && inBounds(j)
+        product = coords.map(a(_)(_)).product // compute product
       yield product
     products.max

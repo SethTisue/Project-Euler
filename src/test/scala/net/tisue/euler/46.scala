@@ -11,9 +11,8 @@ class Problem46 extends Problem(46, "5777"):
     n == square(math.round(math.sqrt(n)).toInt)
   def hasSolution(n: Int) =
     primes.takeWhile(_ < n)
-      .exists { p =>
+      .exists: p =>
         val diff = n - p; diff % 2 == 0 && isSquare(diff / 2)
-      }
   def solve =
     LazyList.from(3, 2)
       .find(n => !isSievedPrime(n) && !hasSolution(n))

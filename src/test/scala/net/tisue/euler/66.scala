@@ -4,7 +4,7 @@ package net.tisue.euler
 //   x^2 - Dy^2 = 1
 // For example, when D=13, the minimal solution in x is 6492 - 131802 = 1.
 // It can be assumed that there are no solutions in positive integers when D is square.
-// By finding minimal solutions in x for D = {2, 3, 5, 6, 7}, we obtain the following:
+// By finding minimal solutions in x for D = [2, 3, 5, 6, 7], we obtain the following:
 //   3^2 - 2x2^2 = 1
 //   2^2 - 3x1^2 = 1
 //   9^2 - 5x4^2 = 1
