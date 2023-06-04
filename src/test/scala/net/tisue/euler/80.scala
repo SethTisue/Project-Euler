@@ -27,8 +27,8 @@ class Problem80 extends Problem(80, "40886"):
     d.toString.filter(_.isDigit).take(digits).map(_.asDigit).sum
   def firstDuplicate[A](xs: Seq[A]) =
     xs.zip(xs.tail)
-      .find:
-        (d1, d2) => d1 == d2
+      .find: (d1, d2) =>
+        d1 == d2
       .get._1
   def babylonian(n: BigDecimal) =
     LazyList.iterate(n): next =>

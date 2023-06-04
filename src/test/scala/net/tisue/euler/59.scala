@@ -13,8 +13,8 @@ class Problem59 extends Problem(59, "107359"):
     (s.split(' ').size / s.size.toDouble) > 0.15
   def decrypt(s: String, key: Seq[Char]) =
     s.to(LazyList).zip(key.to(LazyList).cycle)
-      .map:
-        (c1, c2) => c1 ^ c2
+      .map: (c1, c2) =>
+        c1 ^ c2
       .map:
         _.toChar
       .mkString
