@@ -6,14 +6,15 @@ package net.tisue.euler
 import collection.immutable.Vector
 
 class Problem99 extends Problem(99, "709") {
-  val pairs =
+  val pairs: Vector[(Int, Int)] =
     io.Source.fromResource("99.txt").getLines()
       .map(_.split(",").map(_.toInt))
+      .collect{case Array(a, b) => (a, b)}
       .to(Vector)
-  def magnitude(index: Int) =
-    pairs(index) match {
-      case Array(a, b) => math.log(a) * b
-    }
+  def magnitude(index: Int) = {
+    val (a, b) = pairs(index)
+    math.log(a) * b
+  }
   def solve = {
     import Ordering.Double.TotalOrdering
     1 + pairs.indices.maxBy(magnitude)

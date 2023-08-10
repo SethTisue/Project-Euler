@@ -1,7 +1,6 @@
-scalaVersion := "2.13.3"
+scalaVersion := "2.13.11"
 
-libraryDependencies += "org.scalameta" %% "munit" % "0.7.9"
-testFrameworks += new TestFramework("munit.Framework")
+libraryDependencies += "org.scalameta" %% "munit" % "1.0.0-M8" % Test
 
 scalacOptions ++= Seq(
   "-encoding", "us-ascii",

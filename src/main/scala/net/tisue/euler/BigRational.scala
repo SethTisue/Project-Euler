@@ -56,6 +56,6 @@ class BigRational(n: BigInt, d: BigInt) {
     }
 }
 object BigRational {
-  def unapply(b: BigRational): Option[(BigInt,BigInt)] = Some((b.numer, b.denom))
+  def unapply(b: BigRational): Some[(BigInt,BigInt)] = Some((b.numer, b.denom))
   implicit def int2BigRational(i: Int): BigRational = new BigRational(i)
 }
