@@ -8,9 +8,8 @@ import collection.immutable.Vector
 class Problem99 extends Problem(99, "709"):
   val pairs =
     io.Source.fromResource("99.txt").getLines
-      .map(_.split(",").map(_.toInt))
       .collect:
-        case Array(a, b) => (a, b)
+        case s"$a,$b" => (a.toInt, b.toInt)
       .to(Vector)
   def magnitude(index: Int) =
     val (a, b) = pairs(index)
