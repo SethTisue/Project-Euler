@@ -1,4 +1,4 @@
-scalaVersion := "3.4.1"
+scalaVersion := "3.4.2"
 
 libraryDependencies += "org.scalameta" %% "munit" % "1.0.0-RC1" % Test
 
