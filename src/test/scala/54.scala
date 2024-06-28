@@ -67,8 +67,7 @@ class Problem54 extends Problem(54, solution = "376"):
     type Score = (Int, Seq[(Int, Int)])
     def score(hand: Hand): Score =
       (handKind(hand), groups(hand))
-    // tuples get ordered fieldwise, so we can just:
-    import Ordering.Implicits.{given Ordering[?]}
+    import Ordering.Implicits.seqOrdering
     Ordering[Score].gt(score(hand1), score(hand2))
 
   def solve =
