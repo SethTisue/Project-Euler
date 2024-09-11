@@ -8,7 +8,7 @@ package net.tisue.euler
 class Problem15 extends Problem(15, "137846528820"):
   def solve =
     val dim = 20
-    val mem = Array.ofDim[BigInt](dim + 1, dim + 1)
+    val mem = Array.ofDim[BigInt | Null](dim + 1, dim + 1)
     def recur(x: Int, y: Int): BigInt =
       val lookup = mem(x)(y)
       if lookup != null then lookup
