@@ -35,7 +35,7 @@ object Primes:
   // primality test using a sieve that doubles in size if we ask for a number larger than the current
   // sieve.  so unlike primesBelow, this doesn't require committing in advance to a ceiling on the
   // amount of primes you will need.
-  var sieve = Array(false, false, true, true)
+  private var sieve = Array(false, false, true, true)
   private val lock =
     // not `AnyRef()?` sigh: https://github.com/lampepfl/dotty/issues/10862
     new AnyRef
