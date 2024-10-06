@@ -7,5 +7,3 @@ scalacOptions ++= Seq(
   "-Werror", "-source:future", "-Wunused:all",
   "-Yexplicit-nulls"
 )
-
-licenses += License.CC0
