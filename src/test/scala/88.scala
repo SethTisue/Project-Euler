@@ -36,10 +36,12 @@ class Problem88 extends Problem(88, "7587457"):
   def getK(factors: List[Int]) = factors.size + factors.product - factors.sum
   var stream = LazyList.from(2).filter(!isPrime(_)).map(n => (n, factorizations(n)))
   def solve(limit: Int) =
+    // for performance, I do a trick here of side-effecting `stream` inside the `for`.
+    // perhaps this could be expressed more elegantly?
     val numbers =
       for
         k <- (2 to limit).toList
-        _ = (stream = stream.dropWhile(_._1 < k))
+        _ = stream = stream.dropWhile(_._1 < k)
         n = stream.find(_._2.exists(fs => getK(fs) == k)).get._1
       yield n
     numbers.distinct.sum
