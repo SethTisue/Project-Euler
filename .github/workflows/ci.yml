@@ -16,6 +16,7 @@ jobs:
       with:
         distribution: temurin
         java-version: 23
+    - uses: sbt/setup-sbt@v1
     - name: Test
       # keep heap usage down by running tests serially
       run: sbt 'set Test / parallelExecution := false' +test
