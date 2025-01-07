@@ -1,6 +1,6 @@
 scalaVersion := "3.6.2"
 
-libraryDependencies += "org.scalameta" %% "munit" % "1.0.3" % Test
+libraryDependencies += "org.scalameta" %% "munit" % "1.0.4" % Test
 
 scalacOptions ++= Seq(
   "-encoding", "us-ascii", "-deprecation", "-feature",
