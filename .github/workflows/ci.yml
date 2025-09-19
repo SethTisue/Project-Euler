@@ -14,8 +14,8 @@ jobs:
     - uses: coursier/cache-action@v6
     - uses: actions/setup-java@v5
       with:
-        distribution: temurin
-        java-version: 24
+        distribution: zulu
+        java-version: 25
     - uses: sbt/setup-sbt@v1
     - name: Test
       # keep heap usage down by running tests serially
