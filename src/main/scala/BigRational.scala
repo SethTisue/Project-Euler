@@ -2,7 +2,7 @@ package net.tisue.euler
 
 /// from Programming in Scala book, but converted to use BigInt
 
-import annotation.alpha
+import annotation.targetName
 
 class BigRational(n: BigInt, d: BigInt):
   require(d != 0)
@@ -11,34 +11,34 @@ class BigRational(n: BigInt, d: BigInt):
   val numer = n / g
   val denom = d / g
   def this(n: BigInt) = this(n, 1)
-  @alpha("plus")
+  @targetName("plus")
   def +(that: BigRational): BigRational =
     BigRational(
       numer * that.denom + that.numer * denom,
       denom * that.denom
     )
-  @alpha("plus")
+  @targetName("plus")
   def +(i: BigInt): BigRational =
     BigRational(numer + i * denom, denom)
-  @alpha("minus")
+  @targetName("minus")
   def -(that: BigRational): BigRational =
     BigRational(
       numer * that.denom - that.numer * denom,
       denom * that.denom
     )
-  @alpha("minus")
+  @targetName("minus")
   def -(i: BigInt): BigRational =
     BigRational(numer - i * denom, denom)
-  @alpha("times")
+  @targetName("times")
   def *(that: BigRational): BigRational =
     BigRational(numer * that.numer, denom * that.denom)
-  @alpha("times")
+  @targetName("times")
   def *(i: BigInt): BigRational =
     BigRational(numer * i, denom)
-  @alpha("divide")
+  @targetName("divide")
   def /(that: BigRational): BigRational =
     BigRational(numer * that.denom, denom * that.numer)
-  @alpha("divide")
+  @targetName("divide")
   def /(i: BigInt): BigRational =
     BigRational(numer, denom * i)
   def reciprocal: BigRational =
