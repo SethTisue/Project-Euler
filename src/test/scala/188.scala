@@ -8,7 +8,6 @@ package net.tisue.euler
 
 class Problem188 extends Problem(188, "95962097"):
   def modpow(b: Long, e: Long, m: Int): Long =
-    @annotation.nowarn("msg=unused local definition")  // https://github.com/scala/scala3/issues/24457
     case class Loop(b: Long, e: Long, result: Long):
       def next = Loop(
         b * b % m,
