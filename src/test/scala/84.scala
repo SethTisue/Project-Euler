@@ -93,7 +93,7 @@ class Problem84 extends Problem(84, solution = "101524"):
   def solve =
     val stationaryProbabilityVector =
       Iterator.iterate(P)(matrixMul(_, P))
-        .drop(150).next.head
+        .drop(150).next().head
     import Ordering.Double.TotalOrdering
     stationaryProbabilityVector
       .zipWithIndex

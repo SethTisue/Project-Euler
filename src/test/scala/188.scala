@@ -16,8 +16,8 @@ class Problem188 extends Problem(188, "95962097"):
         else result * b % m)
     Iterator.iterate(Loop(b, e, 1))(_.next)
       .dropWhile(_.e > 0)
-      .next.result
+      .next().result
   def hyper(base: Long, exponent: Int, modulus: Int): Long =
     Iterator.iterate(base)(modpow(base, _, modulus))
-      .drop(exponent).next
+      .drop(exponent).next()
   def solve = hyper(1777, 1855, 100000000)

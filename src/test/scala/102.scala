@@ -16,7 +16,7 @@ class Problem102 extends Problem(102, "228"):
       (((p3.y - p2.y) * p1.x) - ((p3.x - p2.x) * p1.y))
     q < 0 || q > 1
   def solve =
-    io.Source.fromResource("102.txt").getLines
+    io.Source.fromResource("102.txt").getLines()
       .collect:
         case s"$x1,$y1,$x2,$y2,$x3,$y3" =>
           val p1 = Point(x1.toDouble, y1.toDouble)

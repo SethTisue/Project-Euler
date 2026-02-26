@@ -8,7 +8,7 @@ package net.tisue.euler
 class Problem82 extends Problem(82, "260324"):
   def solve =
     val matrix = io.Source.fromResource("81.txt")
-      .getLines.map(_.trim.split(",").map(_.toInt)).toArray
+      .getLines().map(_.trim.split(",").map(_.toInt)).toArray
     val range = 0 until matrix.size
     // This is a little confusing because we address the matrix using (y, x)
     // rather than (x,y), but oh well

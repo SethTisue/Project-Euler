@@ -17,7 +17,7 @@ class Problem107 extends Problem(107, "259679"):
   val input: Network[Int] =
     val entries =
       for
-        case (line, v1) <- io.Source.fromResource("107.txt").getLines.zipWithIndex
+        case (line, v1) <- io.Source.fromResource("107.txt").getLines().zipWithIndex
         case (weight, v2) <- line.split(",").iterator.zipWithIndex
         if weight != "-" && v1 < v2
       yield (v1, v2) -> weight.toInt

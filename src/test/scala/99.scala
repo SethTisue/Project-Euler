@@ -7,7 +7,7 @@ import collection.immutable.Vector
 
 class Problem99 extends Problem(99, "709"):
   val pairs =
-    io.Source.fromResource("99.txt").getLines
+    io.Source.fromResource("99.txt").getLines()
       .collect:
         case s"$a,$b" => (a.toInt, b.toInt)
       .to(Vector)

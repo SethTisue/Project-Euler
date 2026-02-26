@@ -33,7 +33,7 @@ class Problem59 extends Problem(59, "107359"):
 /*
 a less janky way to write isEnglish, assuming you have a dictionary available:
   val dict = io.Source.fromFile("/usr/share/dict/words")("ISO-8859-1")
-               .getLines.map(_.trim.toLowerCase).toSet
+               .getLines().map(_.trim.toLowerCase).toSet
   def isEnglish(s: String): Boolean =
     val words = s.toLowerCase.filter((c:Char) => c == ' ' || c.isLetter).mkString.split(' ')
     0.5 < words.count(dict.contains(_)) / words.size.toDouble

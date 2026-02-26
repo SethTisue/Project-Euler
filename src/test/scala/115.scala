@@ -15,4 +15,4 @@ class Problem115 extends Problem(115, "168"):
     count(0)
   def solve =
     def tooSmall(n: Int) = solve(50, n) <= 1000000
-    Iterator.from(1).dropWhile(tooSmall).next
+    Iterator.from(1).dropWhile(tooSmall).next()
