@@ -1,7 +1,7 @@
 ThisBuild / resolvers += Resolver.scalaNightlyRepository
 scalaVersion := "3.8.3-RC2"
 
-libraryDependencies += "org.scalameta" %% "munit" % "1.2.3" % Test
+libraryDependencies += "org.scalameta" %% "munit" % "1.2.4" % Test
 
 scalacOptions ++= Seq(
   "-encoding", "us-ascii", "-deprecation", "-feature",
