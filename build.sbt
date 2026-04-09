@@ -1,5 +1,5 @@
 resolvers += Resolver.scalaNightlyRepository
-scalaVersion := "3.8.3"
+scalaVersion := "3.8.4-RC1"
 
 libraryDependencies += "org.scalameta" %% "munit" % "1.2.4" % Test
 
