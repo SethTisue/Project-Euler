@@ -1,0 +1,2 @@
+default:
+	scala test .
