@@ -1,4 +1,4 @@
-//> using scala 3.9.0
+//> using scala 3.10.0-RC1
 //> using test.dep org.scalameta::munit:1.3.5
 //> using options -encoding us-ascii -deprecation -feature -Werror -source:future -Wunused:all
 //> using resourceDir inputs
